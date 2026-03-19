@@ -178,8 +178,8 @@ body{background:var(--bg);background-image:var(--dot-grid);background-size:24px 
 <div class="legend"><div><span style="background:#20d6ee"></span>Frontend (React)</div><div><span style="background:#21c45d"></span>Backend API (Edge)</div><div><span style="background:#20d6ee"></span>RAG Pipeline</div><div><span style="background:#f38ba8"></span>External Services</div><div><span style="background:#b26cf8"></span>Observability</div><div><span style="background:#f6b903"></span>Voice Path</div></div>
 <div class="tooltip" id="tooltip"><div class="tt-title" id="tt-title"></div><div id="tt-body"></div></div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/DrawSVGPlugin.min.js"></script>
+<script src="/vendor/gsap.min.js"></script>
+<script src="/vendor/DrawSVGPlugin.min.js"></script>
 <script>
 gsap.registerPlugin(DrawSVGPlugin);
 
@@ -831,7 +831,7 @@ fitViewBox();
 
 // Pan + Zoom via panzoom
 const pzScript = document.createElement('script');
-pzScript.src = 'https://cdn.jsdelivr.net/npm/panzoom@9/dist/panzoom.min.js';
+pzScript.src = '/vendor/panzoom.min.js';
 pzScript.onload = () => {
   window._pz = panzoom(svg, {
     maxZoom: 5,
