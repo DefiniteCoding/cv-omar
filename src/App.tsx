@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useReducer, useRef } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
-import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Users, Globe, Bot, Zap, Database, Layout, BadgeCheck, FolderGit2, Sparkles, Download, Github, Package, MessageSquare, Receipt, CalendarCheck, Shield, FileText, GitBranch, Terminal, Lock, Network, Calendar, Percent, UserCheck, Image, TrendingUp, Timer, SkipForward, ThumbsUp, MessageCircle, Share2, ChevronRight, List, ArrowUp } from 'lucide-react'
+import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Users, Globe, Bot, Zap, Database, Layout, BadgeCheck, FolderGit2, Sparkles, Download, Github, Package, MessageSquare, Receipt, CalendarCheck, Shield, FileText, GitBranch, GitFork, Star, Terminal, Lock, Network, Calendar, Percent, UserCheck, Image, TrendingUp, Timer, SkipForward, ThumbsUp, MessageCircle, Share2, ChevronRight, List, ArrowUp } from 'lucide-react'
 import { translations, seo, type Lang } from './i18n'
 import { useHomeSeo } from './articles/use-article-seo'
 import { getTechIcon } from './tech-icons'
@@ -2014,6 +2014,8 @@ function App() {
               dependencyRole?: string
               caseStudyUrl?: string
               caseStudyLabel?: string
+              stars?: string
+              forks?: string
             }
 
             // Separar proyectos
@@ -2214,29 +2216,7 @@ function App() {
                       }`}>{tech}</span>
                     ))}
                   </div>
-                  <div className="flex items-center gap-4 mt-auto">
-                    {project.link && (
-                      <a
-                        href={`https://${project.link}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 text-xs ${
-                          isTool ? 'text-tool hover:text-tool' : 'text-primary'
-                        } hover:underline`}
-                      >
-                        {project.link.includes('github.com') ? (
-                          <>
-                            <Github className="w-4 h-4" />
-                            {t.projects.viewCode}
-                          </>
-                        ) : (
-                          <>
-                            <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                            {t.projects.viewPrototype}
-                          </>
-                        )}
-                      </a>
-                    )}
+                  <div className="flex flex-col gap-3 mt-auto">
                     {project.caseStudyUrl && (
                       <Link
                         to={project.caseStudyUrl}
@@ -2245,6 +2225,42 @@ function App() {
                         <span className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 group-hover/cta:bg-accent/20 group-hover/cta:border-accent/50 transition-all duration-200">{project.caseStudyLabel}</span>
                         <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
                       </Link>
+                    )}
+                    {project.link && (
+                      <div className="flex items-center gap-3">
+                        <a
+                          href={`https://${project.link}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-2 text-xs ${
+                            isTool ? 'text-tool hover:text-tool' : 'text-primary'
+                          } hover:underline`}
+                        >
+                          {project.link.includes('github.com') ? (
+                            <>
+                              <Github className="w-4 h-4" />
+                              {t.projects.viewCode}
+                            </>
+                          ) : (
+                            <>
+                              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                              {t.projects.viewPrototype}
+                            </>
+                          )}
+                        </a>
+                        {project.stars && (
+                          <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Star className="w-3.5 h-3.5 text-yellow-500" />
+                            {project.stars}
+                          </span>
+                        )}
+                        {project.forks && (
+                          <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <GitFork className="w-3.5 h-3.5" />
+                            {project.forks}
+                          </span>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
