@@ -139,7 +139,7 @@ Python + FastAPI service for LLM-powered content ingestion and digest generation
 ### Life OS (Private · On Request)
 Personal productivity system I built to run my life through conversation. Orchestrates Claude Code with native MCPs (Apple Reminders/Calendar, GitHub), 15 custom skills, 5 automation hooks, and semantic search (BM25 + SQLite FTS5). Pipes into Content Digest for a full knowledge loop and powers Career Ops for HITL automated job search.
 
-### Career Ops (Private · On Request) — [Case Study](https://santifer.io/career-ops-system)
+### Career Ops (Open Source) — [Case Study](https://santifer.io/career-ops-system)
 AI job search tool built as a multi-agent system. 12 operational modes, 10-dimension scoring (A-F), AI resume builder that generates ATS-optimized PDFs per listing, automated job application with Playwright, batch processing 122 URLs in parallel (conductor + workers). 631 evaluations, 354 PDFs generated, 680 URLs deduplicated. HITL design: AI analyzes, I decide. Plugs into Life OS as a specialized skill.
 
 ### Claude Pulse (Open Source)

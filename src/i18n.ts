@@ -1,24 +1,25 @@
 export const seo = {
   es: {
     title:
-      'santifer | AI PM · Solutions Architect · Sistemas que se curan solos',
+      'santifer | Builder of Career-Ops · Agentes IA · Open Source',
     description:
-      'AI Product Manager & Solutions Architect. 16 años construyendo sistemas que funcionan solos. LLMOps, agentes IA, observabilidad agéntica, no-code enterprise.',
+      'Creador de Career-Ops (20K+ estrellas en GitHub). Construye sistemas IA en producción. Head of Applied AI. De automatizar un negocio de 16 años a herramientas open source usadas por miles.',
   },
   en: {
     title:
-      'santifer | AI PM · Solutions Architect · Self-Healing Systems',
+      'santifer | Builder of Career-Ops · AI Agents · Open Source',
     description:
-      'AI Product Manager & Solutions Architect. 16 years building systems that run themselves. LLMOps, agentic observability, AI agents, no-code enterprise.',
+      'Creator of Career-Ops (20K+ GitHub stars). Building AI systems that run in production. Head of Applied AI. From automating a 16-year business to open source tools used by thousands.',
   },
 };
 
 export const translations = {
   es: {
     greeting: 'que construye sistemas',
-    greetingRoles: ['AI Product Manager', 'AI Solutions Architect', 'Forward Deployed Engineer'],
+    greetingRoles: ['Open Source Builder', 'Head of Applied AI', 'Creador de Career-Ops'],
+    pillLabels: ['Builder', 'Applied AI'],
     email: 'hola@santifer.io',
-    role: 'LLMOps que se curan solos.',
+    role: 'AI systems',
     story: {
       context: '+15 años construyendo+ todo desde cero.',
       reflections: ['Funciona. Sin mí.', '...¿y ahora qué?'],
@@ -175,8 +176,8 @@ export const translations = {
           desc: 'Pipeline HITL de búsqueda de empleo: la IA evalúa ofertas periódicamente en 10 dimensiones (scoring A-F), genera CVs PDF optimizados para ATS por oferta, y pre-rellena aplicaciones — yo reviso, filtro y decido cuáles enviar. Procesamiento batch de 48+ ofertas en paralelo (arquitectura conductor + workers), escaneo de portales con deduplicación, y framing adaptativo por arquetipo de rol. Integrado con **Life OS** como skill especializado.',
           tech: ['Claude Code', 'Batch Architecture', 'WebSearch', 'HITL Design'],
           link: 'github.com/santifer/career-ops',
-          stars: '16.5K',
-          forks: '3.1K',
+          stars: '20.9K',
+          forks: '3.9K',
           caseStudyUrl: '/career-ops',
           caseStudyLabel: 'Leer: AI Job Search multi-agente',
         },
@@ -187,8 +188,8 @@ export const translations = {
           desc: 'CV interactivo con SDLC aumentado con IA. Construido con **Claudeable**, monitorizado con **Claude Pulse**, animaciones debuggeadas con **Claude Eye**. Prerender SSR, i18n bilingüe y SEO automatizado.',
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
-          stars: '155',
-          forks: '56',
+          stars: '182',
+          forks: '68',
         },
         {
           title: 'Self-Healing Chatbot',
@@ -280,6 +281,14 @@ export const translations = {
     },
     experience: {
       title: 'Experiencia Laboral',
+      zinkee: {
+        company: 'Zinkee',
+        logo: '/zinkee-logo.webp',
+        location: 'Sevilla, España',
+        role: 'Head of Applied AI',
+        period: '2026 - Presente',
+        desc: 'Construyendo la capa de IA horizontal de la empresa.\nImpulsando la nueva generación de software para PYMEs.',
+      },
       santifer: {
         company: 'Santifer iRepair',
         location: 'Sevilla, España',
@@ -494,8 +503,8 @@ export const translations = {
     redditPosts: [
       {
         hook: 'Construí un sistema de búsqueda de empleo con Claude Code que puntuó 740+ ofertas y me consiguió trabajo. Acabo de hacerlo open source.',
-        upvotes: '2412',
-        comments: '188',
+        upvotes: '2506',
+        comments: '198',
         subreddit: 'r/ClaudeAI',
         cta: 'Leer en Reddit',
         url: 'https://www.reddit.com/r/ClaudeAI/comments/1sd2f37/i_built_an_ai_job_search_system_with_claude_code/',
@@ -503,15 +512,15 @@ export const translations = {
       {
         hook: 'Automaticé mi búsqueda de empleo con agentes IA — 516 evaluaciones, 66 aplicaciones, zero screening manual.',
         upvotes: '544',
-        comments: '341',
+        comments: '346',
         subreddit: 'r/SideProject',
         cta: 'Leer en Reddit',
         url: 'https://www.reddit.com/r/SideProject/comments/1rw1lg4/i_automated_my_job_search_with_ai_agents_516/',
       },
       {
         hook: 'Construí un agente IA con WhatsApp + voz en n8n que gestiona el 90% de la atención al cliente. Vendí el negocio y el comprador lo mantuvo sin mí.',
-        upvotes: '255',
-        comments: '39',
+        upvotes: '269',
+        comments: '42',
         subreddit: 'r/n8n',
         cta: 'Leer en Reddit',
         url: 'https://www.reddit.com/r/n8n/comments/1sc3i30/i_built_a_whatsapp_voice_ai_agent_in_n8n_that/',
@@ -784,9 +793,10 @@ export const translations = {
   },
   en: {
     greeting: 'who builds',
-    greetingRoles: ['AI Product Manager', 'AI Solutions Architect', 'Forward Deployed Engineer'],
+    greetingRoles: ['Open Source Builder', 'Head of Applied AI', 'Career-Ops Creator'],
+    pillLabels: ['Builder', 'Applied AI'],
     email: 'hi@santifer.io',
-    role: 'LLMOps systems.',
+    role: 'AI systems',
     story: {
       context: '+15 years building+ everything from scratch.',
       reflections: ['It works. It actually works.', '...now what?'],
@@ -943,8 +953,8 @@ export const translations = {
           desc: "HITL job search pipeline — AI periodically evaluates offers across 10 dimensions (A-F scoring), spins up ATS-optimized PDF resumes per listing, and pre-fills applications. I review, filter, and decide which ones to ship. Batch-processes 48+ offers in parallel (conductor + workers), scans portals with dedup, and adapts narrative framing per role archetype. Plugs into **Life OS** as a specialized skill.",
           tech: ['Claude Code', 'Batch Architecture', 'WebSearch', 'HITL Design'],
           link: 'github.com/santifer/career-ops',
-          stars: '16.5K',
-          forks: '3.1K',
+          stars: '20.9K',
+          forks: '3.9K',
           caseStudyUrl: '/career-ops-system',
           caseStudyLabel: 'Case Study: AI Job Search',
         },
@@ -955,8 +965,8 @@ export const translations = {
           desc: 'Interactive CV with AI-augmented SDLC. Built with **Claudeable**, monitored with **Claude Pulse**, animations debugged with **Claude Eye**. SSR prerender, bilingual i18n, and automated SEO.',
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
-          stars: '155',
-          forks: '56',
+          stars: '182',
+          forks: '68',
         },
         {
           title: 'Self-Healing Chatbot',
@@ -1048,6 +1058,14 @@ export const translations = {
     },
     experience: {
       title: 'Work Experience',
+      zinkee: {
+        company: 'Zinkee',
+        logo: '/zinkee-logo.webp',
+        location: 'Seville, Spain',
+        role: 'Head of Applied AI',
+        period: '2026 - Present',
+        desc: 'Building the horizontal AI layer across the company.\nPowering the next generation of software for SMBs.',
+      },
       santifer: {
         company: 'Santifer iRepair',
         location: 'Seville, Spain',
@@ -1258,8 +1276,8 @@ export const translations = {
     redditPosts: [
       {
         hook: 'I built an AI job search system with Claude Code that scored 740+ offers and landed me a job. Just open sourced it.',
-        upvotes: '2412',
-        comments: '188',
+        upvotes: '2506',
+        comments: '198',
         subreddit: 'r/ClaudeAI',
         cta: 'Read on Reddit',
         url: 'https://www.reddit.com/r/ClaudeAI/comments/1sd2f37/i_built_an_ai_job_search_system_with_claude_code/',
@@ -1267,15 +1285,15 @@ export const translations = {
       {
         hook: 'I automated my job search with AI agents — 516 evaluations, 66 applications, zero manual screening.',
         upvotes: '544',
-        comments: '341',
+        comments: '346',
         subreddit: 'r/SideProject',
         cta: 'Read on Reddit',
         url: 'https://www.reddit.com/r/SideProject/comments/1rw1lg4/i_automated_my_job_search_with_ai_agents_516/',
       },
       {
         hook: 'I built a WhatsApp + voice AI agent in n8n that handles 90% of customer service. Sold the business, the buyer kept it running without me.',
-        upvotes: '255',
-        comments: '39',
+        upvotes: '269',
+        comments: '42',
         subreddit: 'r/n8n',
         cta: 'Read on Reddit',
         url: 'https://www.reddit.com/r/n8n/comments/1sc3i30/i_built_a_whatsapp_voice_ai_agent_in_n8n_that/',

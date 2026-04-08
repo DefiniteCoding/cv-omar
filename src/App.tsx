@@ -1491,31 +1491,49 @@ function App() {
                   <>
                     {t.greeting}
                     <br />
-                    LLMOps que se <BeamPill>curan solos.</BeamPill>
+                    de IA con <BeamPill>HITL <span className="opacity-60">+</span> MCP <span className="opacity-60">+</span> RAG</BeamPill>
                   </>
                 ) : (
                   <>
-                    {t.greeting} <BeamPill>self-healing</BeamPill>
+                    {t.greeting} {t.role}
                     <br />
-                    {t.role}
+                    with <BeamPill>HITL <span className="opacity-60">+</span> MCP <span className="opacity-60">+</span> RAG</BeamPill>
                   </>
                 )}
               </h1>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                {t.greetingRoles.map((role, i) => (
+                {t.pillLabels.map((label, i) => (
                   <span
-                    key={role}
+                    key={label}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${
                       hydrated && i === roleIndex
                         ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
                         : 'border border-[#20d6ee]/30 bg-background/80 text-muted-foreground'
                     }`}
                   >
-                    {role}
+                    {label}
                   </span>
                 ))}
+                <a
+                  href="https://github.com/santifer/career-ops"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${
+                    hydrated && roleIndex === 2
+                      ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
+                      : 'border border-[#20d6ee]/30 bg-background/80 text-muted-foreground'
+                  }`}
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>career-ops</span>
+                  <Star className="w-3 h-3 text-yellow-500" />
+                  <span className="font-medium">20.9K</span>
+                  <GitFork className="w-3 h-3" />
+                  <span>3.9K</span>
+                </a>
               </div>
+
             </motion.div>
           </div>
 
@@ -1557,6 +1575,22 @@ function App() {
                   </div>
                 ))}
               </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Zinkee */}
+          <AnimatedSection delay={0.1}>
+            <div className="mb-12">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
+                <div className="flex items-center gap-3">
+                  <img src="/zinkee-logo.webp" alt="Zinkee" className="w-10 h-10 shrink-0" width={40} height={40} loading="lazy" decoding="async" />
+                  <h3 className="font-display text-2xl font-bold">{t.experience.zinkee.company}</h3>
+                </div>
+                <span className="text-sm text-muted-foreground">{t.experience.zinkee.location}</span>
+              </div>
+              <p className="text-primary font-medium mb-1">{t.experience.zinkee.role}</p>
+              <p className="text-sm text-muted-foreground mb-2">{t.experience.zinkee.period}</p>
+              <p className="text-muted-foreground whitespace-pre-line">{t.experience.zinkee.desc}</p>
             </div>
           </AnimatedSection>
 
