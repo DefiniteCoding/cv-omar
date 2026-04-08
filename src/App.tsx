@@ -1515,10 +1515,8 @@ function App() {
                     {label}
                   </span>
                 ))}
-                <a
-                  href="https://github.com/santifer/career-ops"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={lang === 'es' ? '/career-ops' : '/career-ops-system'}
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${
                     hydrated && roleIndex === 2
                       ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
@@ -1528,10 +1526,10 @@ function App() {
                   <Github className="w-3.5 h-3.5" />
                   <span>career-ops</span>
                   <Star className="w-3 h-3 text-yellow-500" />
-                  {/* hero-stats:career-ops:stars */}<span className="font-medium">21.3K</span>
+                  {/* hero-stats:career-ops:stars */}<span className="font-medium">21.4K</span>
                   <GitFork className="w-3 h-3" />
                   {/* hero-stats:career-ops:forks */}<span>4.0K</span>
-                </a>
+                </Link>
               </div>
 
             </motion.div>
