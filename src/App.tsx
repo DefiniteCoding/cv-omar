@@ -1526,9 +1526,9 @@ function App() {
                   <Github className="w-3.5 h-3.5" />
                   <span>career-ops</span>
                   <Star className="w-3 h-3 text-yellow-500" />
-                  {/* hero-stats:career-ops:stars */}<span className="font-medium">21.4K</span>
+                  {/* hero-stats:career-ops:stars */}<span className="font-medium">22.8K</span>
                   <GitFork className="w-3 h-3" />
-                  {/* hero-stats:career-ops:forks */}<span>4.0K</span>
+                  {/* hero-stats:career-ops:forks */}<span>4.2K</span>
                 </Link>
               </div>
 
@@ -2432,68 +2432,113 @@ function App() {
             </h2>
           </AnimatedSection>
 
-          {/* Teaching / Speaking cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {t.speaking.items.map((talk: { year: string; event: string; eventUrl: string; title: string; desc: string; pdf: string; featured: boolean; materialUrl?: string; materialLabel?: string }, i: number) => (
-              <AnimatedSection key={i} delay={0.1 + i * 0.1}>
-                {talk.featured ? (
-                  <div className="relative rounded-2xl p-[1.5px] bg-gradient-theme h-full">
-                    <div className="p-6 rounded-[calc(1rem-1.5px)] bg-card h-full flex flex-col">
-                      <span className="text-xs text-primary font-medium">
-                        {talk.year} · {talk.eventUrl ? (
-                          <a href={talk.eventUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                            {talk.event} <ExternalLink className="w-3 h-3 inline" aria-hidden="true" />
-                          </a>
-                        ) : talk.event}
-                      </span>
-                      <h3 className="font-display font-bold mt-2 text-gradient-theme">{talk.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-2 flex-1">{talk.desc}</p>
-                      <span className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground/60">
-                        <Lock className="w-3.5 h-3.5" />
-                        {t.speaking.comingSoon}
-                      </span>
+          {/* X Post — Garry Tan hero card */}
+          {t.xPost && (
+            <AnimatedSection delay={0.1}>
+              <div className="mb-8">
+                <div
+                  className="flex flex-col p-5 rounded-2xl bg-card border border-border/50 hover:border-border transition-colors relative cursor-pointer"
+                  onClick={(e) => { if ((e.target as HTMLElement).closest('.garry-card')) return; window.open(t.xPost.url, '_blank') }}
+                >
+                  {/* Santiago — two column layout like Garry Tan */}
+                  <div className="flex gap-4 mb-8">
+                    <img src="/foto-avatar.webp" alt="santifer" role="presentation" width={384} height={384} className="w-16 h-16 md:w-20 md:h-20 rounded-full shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap mb-1">
+                        <span className="text-base md:text-lg font-bold text-foreground">santifer | AI Builder</span>
+                        <svg viewBox="0 0 22 22" className="w-5 h-5 text-[#1d9bf0] shrink-0" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.893.143.636-.131 1.221-.437 1.69-.883.445-.47.751-1.054.882-1.69.132-.633.083-1.29-.14-1.898.587-.273 1.084-.704 1.438-1.244.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"/></svg>
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 ml-auto" fill="currentColor" opacity={0.4}>
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3">@santifer</p>
+                      <p className="text-base md:text-lg text-foreground leading-relaxed">{t.xPost.hook}</p>
+                      <p className="text-base md:text-lg text-foreground mt-1">{t.xPost.hookLinkPrefix}<span className="text-[#1d9bf0]">{t.xPost.hookLinkUrl}</span></p>
                     </div>
                   </div>
-                ) : (
-                  <div className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors duration-200 group h-full flex flex-col">
-                    <span className="text-xs text-primary font-medium">
-                      {talk.year} · {talk.eventUrl ? (
-                        <a href={talk.eventUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {talk.event} <ExternalLink className="w-3 h-3 inline" aria-hidden="true" />
-                        </a>
-                      ) : talk.event}
-                    </span>
-                    <h3 className="font-display font-bold mt-2 group-hover:text-primary transition-colors">{talk.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-2 flex-1">{talk.desc}</p>
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {talk.pdf && (
-                        <a
-                          href={talk.pdf}
-                          download
-                          className="inline-flex items-center gap-2 text-xs text-primary hover:underline"
-                        >
-                          <Download className="w-4 h-4" />
-                          {t.speaking.slides}
-                        </a>
-                      )}
-                      {talk.materialUrl && (
-                        <Link
-                          to={talk.materialUrl}
-                          className="inline-flex items-center gap-2 text-xs text-primary hover:underline"
-                        >
-                          <FileText className="w-4 h-4" />
-                          {talk.materialLabel || 'Material'}
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </AnimatedSection>
-            ))}
-          </div>
 
-          {/* Separator */}
-          <div className="my-10 border-t border-border/40" />
+                  {/* Garry Tan quote — hero sized with gradient border */}
+                  <a href={t.xPost.quoteUrl} target="_blank" rel="noopener noreferrer" className="garry-card block rounded-2xl p-[2px] bg-gradient-theme w-full max-w-3xl mx-auto hover:brightness-110 transition-all group/garry" onClick={(e) => e.stopPropagation()}>
+                    <div className="rounded-[calc(1rem-2px)] bg-card text-left overflow-hidden">
+                      <div className="flex gap-4 p-5 pb-4">
+                        <img src="/garry-tan.jpg" alt="Garry Tan" className="w-16 h-16 md:w-20 md:h-20 rounded-full shrink-0" width={80} height={80} loading="lazy" />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 flex-wrap mb-1">
+                            <span className="text-base md:text-lg font-bold text-foreground">{t.xPost.quoteAuthor}</span>
+                            <svg viewBox="0 0 22 22" className="w-5 h-5 text-[#1d9bf0] shrink-0" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.893.143.636-.131 1.221-.437 1.69-.883.445-.47.751-1.054.882-1.69.132-.633.083-1.29-.14-1.898.587-.273 1.084-.704 1.438-1.244.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"/></svg>
+                            <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="#FF6600"><rect x="4" y="4" width="16" height="16" rx="2"/><text x="12" y="17" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">Y</text></svg>
+                            <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 ml-auto" fill="currentColor" opacity={0.4}>
+                              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-2">{t.xPost.quoteHandle} · {t.xPost.quoteRole}</p>
+                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">"{t.xPost.quoteText}"</p>
+                        </div>
+                      </div>
+                      {/* Career-Ops demo video — edge to edge, no padding */}
+                      {hydrated && (
+                        <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
+                          <iframe
+                            src="https://player.mux.com/Zhl5qjj02PoD2g01ZsOwJptHNTvThw7udv47tnza1VLUc?accent-color=%2300D9FF&loop=true&muted=true&autoplay=true"
+                            className="absolute inset-0 w-full h-full"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      {/* Garry Tan tweet metrics */}
+                      <div className="px-5 py-3 border-t border-border/30 flex items-center gap-6 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1.5">
+                          <MessageCircle className="w-4 h-4" />
+                          {t.xPost.quoteReplies}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Share2 className="w-4 h-4" />
+                          {t.xPost.quoteRetweets}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <ThumbsUp className="w-4 h-4" />
+                          {t.xPost.quoteLikes}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <TrendingUp className="w-4 h-4" />
+                          {t.xPost.quoteViews}
+                        </span>
+                        <span className="ml-auto text-foreground hover:underline flex items-center gap-1.5 transition-colors">
+                          {t.xPost.cta}
+                          <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Santiago tweet metrics */}
+                  <a href={t.xPost.url} target="_blank" rel="noopener noreferrer" className="mt-8 pt-4 border-t border-border/50 w-full flex items-center justify-center gap-8 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <span className="flex items-center gap-1.5">
+                      <MessageCircle className="w-4 h-4" />
+                      {t.xPost.replies}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Share2 className="w-4 h-4" />
+                      {t.xPost.retweets}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <ThumbsUp className="w-4 h-4" />
+                      {t.xPost.likes}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <TrendingUp className="w-4 h-4" />
+                      {t.xPost.views}
+                    </span>
+                    <span className="ml-auto text-foreground hover:underline flex items-center gap-1.5 transition-colors">
+                      {t.xPost.cta}
+                      <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </AnimatedSection>
+          )}
 
           {/* Reddit Posts */}
           {t.redditPosts?.map((rp, i) => (
@@ -2570,6 +2615,70 @@ function App() {
                     </span>
                   </div>
                 </a>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          
+          {/* Separator */}
+          <div className="my-10 border-t border-border/40" />
+
+{/* Teaching / Speaking cards */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {t.speaking.items.map((talk: { year: string; event: string; eventUrl: string; title: string; desc: string; pdf: string; featured: boolean; materialUrl?: string; materialLabel?: string }, i: number) => (
+              <AnimatedSection key={i} delay={0.1 + i * 0.1}>
+                {talk.featured ? (
+                  <div className="relative rounded-2xl p-[1.5px] bg-gradient-theme h-full">
+                    <div className="p-6 rounded-[calc(1rem-1.5px)] bg-card h-full flex flex-col">
+                      <span className="text-xs text-primary font-medium">
+                        {talk.year} · {talk.eventUrl ? (
+                          <a href={talk.eventUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                            {talk.event} <ExternalLink className="w-3 h-3 inline" aria-hidden="true" />
+                          </a>
+                        ) : talk.event}
+                      </span>
+                      <h3 className="font-display font-bold mt-2 text-gradient-theme">{talk.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-2 flex-1">{talk.desc}</p>
+                      <span className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground/60">
+                        <Lock className="w-3.5 h-3.5" />
+                        {t.speaking.comingSoon}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors duration-200 group h-full flex flex-col">
+                    <span className="text-xs text-primary font-medium">
+                      {talk.year} · {talk.eventUrl ? (
+                        <a href={talk.eventUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {talk.event} <ExternalLink className="w-3 h-3 inline" aria-hidden="true" />
+                        </a>
+                      ) : talk.event}
+                    </span>
+                    <h3 className="font-display font-bold mt-2 group-hover:text-primary transition-colors">{talk.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-2 flex-1">{talk.desc}</p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {talk.pdf && (
+                        <a
+                          href={talk.pdf}
+                          download
+                          className="inline-flex items-center gap-2 text-xs text-primary hover:underline"
+                        >
+                          <Download className="w-4 h-4" />
+                          {t.speaking.slides}
+                        </a>
+                      )}
+                      {talk.materialUrl && (
+                        <Link
+                          to={talk.materialUrl}
+                          className="inline-flex items-center gap-2 text-xs text-primary hover:underline"
+                        >
+                          <FileText className="w-4 h-4" />
+                          {talk.materialLabel || 'Material'}
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                )}
               </AnimatedSection>
             ))}
           </div>
