@@ -32,6 +32,8 @@ const I18N_REPOS = [
   { owner: 'santifer', repo: 'career-ops', label: 'career-ops (i18n)' },
   { owner: 'santifer', repo: 'cv-santiago', label: 'cv-santiago (i18n)' },
   { owner: 'santifer', repo: 'claude-pulse', label: 'claude-pulse (i18n)' },
+  { owner: 'santifer', repo: 'claude-eye', label: 'claude-eye (i18n)' },
+  { owner: 'santifer', repo: 'claudeable', label: 'claudeable (i18n)' },
 ]
 
 function formatCount(n: number): string {
