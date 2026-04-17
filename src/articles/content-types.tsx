@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback, useMemo, Fragment, type ReactNode } from 'react'
 import { motion } from 'motion/react'
-import { ChevronRight, List, Copy, Check, ZoomIn, X } from 'lucide-react'
+import { ChevronRight, List, Copy, Check, ZoomIn, X, Rocket } from 'lucide-react'
 
 // ---------------------------------------------------------------------------
 // Editor Mode
@@ -208,6 +208,28 @@ export function Callout({ children, className, editorId }: CalloutProps) {
       <div className={`bg-primary/5 border-l-4 border-primary/40 rounded-r-lg pl-5 pr-4 py-4 mb-6 ${className ?? ''}`}>
         <p className="text-base text-foreground font-medium leading-relaxed">{children}</p>
       </div>
+    </EditorLabel>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 5b. Manifesto — editorial pull-quote for core thesis statements
+// ---------------------------------------------------------------------------
+
+interface ManifestoProps {
+  children: ReactNode
+  className?: string
+  editorId?: string
+}
+
+export function Manifesto({ children, className, editorId }: ManifestoProps) {
+  return (
+    <EditorLabel name="Manifesto" id={editorId}>
+      <blockquote
+        className={`my-8 border-l-4 border-primary pl-6 pr-4 py-3 text-xl md:text-2xl italic font-display leading-snug text-foreground/90 ${className ?? ''}`}
+      >
+        {children}
+      </blockquote>
     </EditorLabel>
   )
 }
@@ -1149,7 +1171,14 @@ function useAutoToc(): TocItem[] {
   return sections
 }
 
-export function FloatingToc() {
+export interface TocCta {
+  /** href (external link) or hash anchor '#id' for scroll-in-page */
+  href: string
+  label: string
+  variant: 'primary' | 'bmc' | 'anchor'
+}
+
+export function FloatingToc({ ctas }: { ctas?: TocCta[] } = {}) {
   const sections = useAutoToc()
   const [activeId, setActiveId] = useState('')
   const [tocOpen, setTocOpen] = useState(false)
@@ -1191,6 +1220,54 @@ export function FloatingToc() {
   const activeParent = parentMap.get(activeId) ?? activeId
 
   if (sections.length === 0) return null
+
+  const ctaBlock = ctas && ctas.length > 0 ? (
+    <div className="mt-4 pt-4 border-t border-border/40 space-y-2">
+      {ctas.map((cta, i) => {
+        if (cta.variant === 'anchor') {
+          const targetId = cta.href.replace(/^#/, '')
+          return (
+            <button
+              key={i}
+              onClick={() => scrollTo(targetId)}
+              className="flex items-center gap-2 w-full px-3 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/15 transition-colors"
+            >
+              <Rocket className="w-3.5 h-3.5 flex-shrink-0" />
+              <span className="truncate">{cta.label}</span>
+            </button>
+          )
+        }
+        if (cta.variant === 'bmc') {
+          return (
+            <a
+              key={i}
+              href={cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 w-full px-3 py-2 rounded-lg bg-[#FFDD00] text-black text-sm font-semibold hover:bg-[#FFE433] transition-colors shadow-sm"
+            >
+              <img src="/bmc-logo.svg" alt="" className="w-3.5 h-auto flex-shrink-0" width="27" height="39" />
+              <span className="truncate">{cta.label}</span>
+            </a>
+          )
+        }
+        return (
+          <a
+            key={i}
+            href={cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/15 transition-colors"
+          >
+            <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.725-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.09-.745.085-.73.085-.73 1.205.085 1.84 1.24 1.84 1.24 1.07 1.835 2.807 1.305 3.492.997.107-.775.42-1.305.762-1.605-2.665-.305-5.467-1.335-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.305-.54-1.525.105-3.175 0 0 1.005-.325 3.3 1.23.96-.265 1.98-.395 3-.4 1.02.005 2.04.135 3 .4 2.28-1.555 3.285-1.23 3.285-1.23.645 1.65.24 2.87.12 3.175.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.1.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span className="truncate">{cta.label}</span>
+          </a>
+        )
+      })}
+    </div>
+  ) : null
 
   const tocNav = (
     <nav aria-label="Table of contents">
@@ -1238,6 +1315,7 @@ export function FloatingToc() {
       {/* Desktop: sticky sidebar */}
       <div className="hidden xl:block fixed top-24 left-[max(1rem,calc(50%-38rem))] w-52 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-thin">
         {tocNav}
+        {ctaBlock}
       </div>
 
       {/* Mobile/Tablet: hamburger in header + slide-down panel */}
@@ -1253,6 +1331,7 @@ export function FloatingToc() {
           <div className="xl:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40" onClick={() => setTocOpen(false)} />
           <div className="xl:hidden fixed top-14 left-4 z-50 w-72 max-h-[70vh] overflow-y-auto bg-card border border-border rounded-xl shadow-xl p-4">
             {tocNav}
+            {ctaBlock}
           </div>
         </>
       )}

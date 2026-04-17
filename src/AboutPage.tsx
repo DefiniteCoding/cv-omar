@@ -163,6 +163,11 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
           </div>
         </header>
 
+        {/* Manifesto */}
+        <blockquote className="mb-10 border-l-4 border-primary pl-6 pr-4 py-3 text-xl md:text-2xl italic font-display leading-snug text-foreground/90">
+          {t.manifesto}
+        </blockquote>
+
         {/* Bio */}
         <section className="mb-10">
           {t.bio.map((paragraph, i) => (

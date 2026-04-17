@@ -3,13 +3,13 @@ export const seo = {
     title:
       'santifer | Builder of Career-Ops · Agentes IA · Open Source',
     description:
-      'Creador de Career-Ops (35.5K+ estrellas en GitHub). Construye sistemas IA en producción. Head of Applied AI. De automatizar un negocio de 16 años a herramientas open source usadas por miles.',
+      'Creador de Career-Ops (35.6K+ estrellas en GitHub). Construye sistemas IA en producción. Head of Applied AI. De automatizar un negocio de 16 años a herramientas open source usadas por miles.',
   },
   en: {
     title:
       'santifer | Builder of Career-Ops · AI Agents · Open Source',
     description:
-      'Creator of Career-Ops (35.5K+ GitHub stars). Building AI systems that run in production. Head of Applied AI. From automating a 16-year business to open source tools used by thousands.',
+      'Creator of Career-Ops (35.6K+ GitHub stars). Building AI systems that run in production. Head of Applied AI. From automating a 16-year business to open source tools used by thousands.',
   },
 };
 
@@ -160,7 +160,7 @@ export const translations = {
           { icon: 'inbox', name: 'brand-ops', desc: 'Triage social media cross-platform', tag: 'privado' },
           { icon: 'compass', name: 'venture-ops', desc: 'Gobernanza estratégica', tag: 'privado' },
           { icon: 'gitMerge', name: 'career-ops-maintainer', desc: 'PRs, issues, releases de career-ops', tag: 'privado' },
-          { icon: 'users', name: 'community-ops', desc: 'Gestión de comunidad Discord (1K+ miembros)', tag: 'privado' },
+          { icon: 'users', name: 'community-ops', desc: 'Gestión de comunidad Discord (1.3K+ miembros)', tag: 'privado' },
           { icon: 'layout', name: 'portfolio-ops', desc: 'Portfolio con chatbot LLMOps + auto-update', tag: 'privado' },
           { icon: 'briefcase', name: 'applied-ai-ops', desc: 'Onboarding, codebase navigation y specs con IA para mi rol', tag: 'privado' },
         ],
@@ -189,7 +189,7 @@ export const translations = {
           desc: 'Pipeline HITL de búsqueda de empleo: la IA evalúa ofertas periódicamente en 10 dimensiones (scoring A-F), genera CVs PDF optimizados para ATS por oferta, y pre-rellena aplicaciones — yo reviso, filtro y decido cuáles enviar. Procesamiento batch de 48+ ofertas en paralelo (arquitectura conductor + workers), escaneo de portales con deduplicación, y framing adaptativo por arquetipo de rol. Integrado con **Life OS** como skill especializado.',
           tech: ['Claude Code', 'Batch Architecture', 'WebSearch', 'HITL Design'],
           link: 'github.com/santifer/career-ops',
-          stars: '35.5K',
+          stars: '35.6K',
           forks: '7.1K',
           caseStudyUrl: '/career-ops',
           caseStudyLabel: 'Leer: AI Job Search multi-agente',
@@ -201,8 +201,8 @@ export const translations = {
           desc: 'CV interactivo con SDLC aumentado con IA. Construido con **Claudeable**, monitorizado con **Claude Pulse**, animaciones debuggeadas con **Claude Eye**. Prerender SSR, i18n bilingüe y SEO automatizado.',
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
-          stars: '358',
-          forks: '144',
+          stars: '361',
+          forks: '145',
         },
         {
           title: 'Self-Healing Chatbot',
@@ -543,14 +543,14 @@ export const translations = {
       replies: '90',
       retweets: '474',
       likes: '3.8K',
-      views: '528.1K',
+      views: '528.2K',
       cta: 'Ver en X',
       url: 'https://x.com/santifer/status/2041403685696053741',
     },
     redditPosts: [
       {
         hook: 'Construí un sistema de búsqueda de empleo con Claude Code que puntuó 740+ ofertas y me consiguió trabajo. Acabo de hacerlo open source.',
-        upvotes: '2738',
+        upvotes: '2744',
         comments: '239',
         subreddit: 'r/ClaudeAI',
         cta: 'Leer en Reddit',
@@ -558,7 +558,7 @@ export const translations = {
       },
       {
         hook: 'Automaticé mi búsqueda de empleo con agentes IA — 516 evaluaciones, 66 aplicaciones, zero screening manual.',
-        upvotes: '566',
+        upvotes: '569',
         comments: '357',
         subreddit: 'r/SideProject',
         cta: 'Leer en Reddit',
@@ -566,7 +566,7 @@ export const translations = {
       },
       {
         hook: 'Construí un agente IA con WhatsApp + voz en n8n que gestiona el 90% de la atención al cliente. Vendí el negocio y el comprador lo mantuvo sin mí.',
-        upvotes: '301',
+        upvotes: '303',
         comments: '48',
         subreddit: 'r/n8n',
         cta: 'Leer en Reddit',
@@ -981,7 +981,7 @@ export const translations = {
           { icon: 'inbox', name: 'brand-ops', desc: 'Cross-platform social media triage', tag: 'private' },
           { icon: 'compass', name: 'venture-ops', desc: 'Strategic governance', tag: 'private' },
           { icon: 'gitMerge', name: 'career-ops-maintainer', desc: 'PRs, issues, releases for career-ops', tag: 'private' },
-          { icon: 'users', name: 'community-ops', desc: 'Discord community management (1K+ members)', tag: 'private' },
+          { icon: 'users', name: 'community-ops', desc: 'Discord community management (1.3K+ members)', tag: 'private' },
           { icon: 'layout', name: 'portfolio-ops', desc: 'Portfolio with LLMOps chatbot + auto-update', tag: 'private' },
           { icon: 'briefcase', name: 'applied-ai-ops', desc: 'Onboarding, codebase navigation, specs with AI for my role', tag: 'private' },
         ],
@@ -1013,7 +1013,7 @@ export const translations = {
           desc: "HITL job search pipeline — AI periodically evaluates offers across 10 dimensions (A-F scoring), spins up ATS-optimized PDF resumes per listing, and pre-fills applications. I review, filter, and decide which ones to ship. Batch-processes 48+ offers in parallel (conductor + workers), scans portals with dedup, and adapts narrative framing per role archetype. Plugs into **Life OS** as a specialized skill.",
           tech: ['Claude Code', 'Batch Architecture', 'WebSearch', 'HITL Design'],
           link: 'github.com/santifer/career-ops',
-          stars: '35.5K',
+          stars: '35.6K',
           forks: '7.1K',
           caseStudyUrl: '/career-ops-system',
           caseStudyLabel: 'Case Study: AI Job Search',
@@ -1025,8 +1025,8 @@ export const translations = {
           desc: 'Interactive CV with AI-augmented SDLC. Built with **Claudeable**, monitored with **Claude Pulse**, animations debugged with **Claude Eye**. SSR prerender, bilingual i18n, and automated SEO.',
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
-          stars: '358',
-          forks: '144',
+          stars: '361',
+          forks: '145',
         },
         {
           title: 'Self-Healing Chatbot',
@@ -1363,14 +1363,14 @@ export const translations = {
       replies: '90',
       retweets: '474',
       likes: '3.8K',
-      views: '528.1K',
+      views: '528.2K',
       cta: 'View on X',
       url: 'https://x.com/santifer/status/2041403685696053741',
     },
     redditPosts: [
       {
         hook: 'I built an AI job search system with Claude Code that scored 740+ offers and landed me a job. Just open sourced it.',
-        upvotes: '2738',
+        upvotes: '2744',
         comments: '239',
         subreddit: 'r/ClaudeAI',
         cta: 'Read on Reddit',
@@ -1378,7 +1378,7 @@ export const translations = {
       },
       {
         hook: 'I automated my job search with AI agents — 516 evaluations, 66 applications, zero manual screening.',
-        upvotes: '566',
+        upvotes: '569',
         comments: '357',
         subreddit: 'r/SideProject',
         cta: 'Read on Reddit',
@@ -1386,7 +1386,7 @@ export const translations = {
       },
       {
         hook: 'I built a WhatsApp + voice AI agent in n8n that handles 90% of customer service. Sold the business, the buyer kept it running without me.',
-        upvotes: '301',
+        upvotes: '303',
         comments: '48',
         subreddit: 'r/n8n',
         cta: 'Read on Reddit',
