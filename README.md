@@ -9,19 +9,9 @@
 
 ---
 
-<div align="center">
-
-<img src="https://santifer.io/foto-avatar.webp" width="140" alt="santifer" />
-
-### Hi, I'm @santifer,
-
-## Open Source | who builds AI systems<br/>with HITL + MCP + RAG
-
-[![Builder](https://img.shields.io/badge/Builder-0EA5E9?style=for-the-badge)](#)
-[![Applied AI](https://img.shields.io/badge/Applied_AI-1F2937?style=for-the-badge)](#)
-[![career-ops](https://img.shields.io/badge/career--ops-⭐_35.3K_·_🍴_7.0K-1F2937?style=for-the-badge&logo=github&logoColor=white)](https://github.com/santifer/career-ops)
-
-</div>
+<p align="center">
+  <img src="docs/hero.gif" alt="santifer.io in motion" width="100%" />
+</p>
 
 ---
 
@@ -318,19 +308,9 @@ MIT
 
 ---
 
-<div align="center">
-
-<img src="https://santifer.io/foto-avatar.webp" width="140" alt="santifer" />
-
-### Hola, soy @santifer,
-
-## Open Source | construyo sistemas IA<br/>con HITL + MCP + RAG
-
-[![Builder](https://img.shields.io/badge/Builder-0EA5E9?style=for-the-badge)](#)
-[![Applied AI](https://img.shields.io/badge/Applied_AI-1F2937?style=for-the-badge)](#)
-[![career-ops](https://img.shields.io/badge/career--ops-⭐_35.3K_·_🍴_7.0K-1F2937?style=for-the-badge&logo=github&logoColor=white)](https://github.com/santifer/career-ops)
-
-</div>
+<p align="center">
+  <img src="docs/hero.gif" alt="santifer.io en movimiento" width="100%" />
+</p>
 
 ---
 
