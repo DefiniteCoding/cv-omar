@@ -294,6 +294,10 @@ export const articleRegistry: ArticleConfig[] = [
       extra: { proficiencyLevel: 'Advanced', dependencies: 'Airtable Pro, n8n, YouCanBookMe, WATI (WhatsApp API), DataForSEO' },
       citation: [
         { '@type': 'WebPage', name: 'Airtable Enterprise Platform', url: 'https://airtable.com/platform' },
+        { '@type': 'TechArticle', name: 'Airtable Web API Reference', url: 'https://airtable.com/developers/web/api/introduction' },
+        { '@type': 'TechArticle', name: 'n8n Documentation', url: 'https://docs.n8n.io' },
+        { '@type': 'TechArticle', name: 'Anthropic Claude API Documentation', url: 'https://docs.anthropic.com' },
+        { '@type': 'WebPage', name: 'Make.com Automation Platform', url: 'https://www.make.com' },
       ],
       mentions: [
         { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com' },
@@ -384,6 +388,10 @@ export const articleRegistry: ArticleConfig[] = [
       extra: { proficiencyLevel: 'Intermediate', dependencies: 'Airtable, Astro, DataForSEO API, Node.js' },
       citation: [
         { '@type': 'WebPage', name: 'Google Search Central: Crawl Budget', url: 'https://developers.google.com/search/docs/crawling-indexing/large-site-managing-crawl-budget' },
+        { '@type': 'TechArticle', name: 'DataForSEO API Documentation', url: 'https://docs.dataforseo.com' },
+        { '@type': 'TechArticle', name: 'Astro Content Collections', url: 'https://docs.astro.build/en/guides/content-collections/' },
+        { '@type': 'WebPage', name: 'Google Search Central: Programmatic Content', url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' },
+        { '@type': 'TechArticle', name: 'Airtable Web API Reference', url: 'https://airtable.com/developers/web/api/introduction' },
       ],
       mentions: [
         { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com' },

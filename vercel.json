@@ -62,6 +62,7 @@
   ],
   "redirects": [
     { "source": "/jacobo", "destination": "/agente-ia-jacobo", "permanent": true },
+    { "source": "/business-os", "destination": "/business-os-para-airtable", "permanent": true },
     { "source": "/en/", "destination": "/en", "permanent": true },
     { "source": "/:path+/", "destination": "/:path+", "permanent": true }
   ],

@@ -208,8 +208,26 @@ function GridSnakes() {
       }
     }
 
-    const interval = setInterval(tick, TICK_MS)
-    return () => { clearInterval(interval); window.removeEventListener('resize', resize) }
+    let interval: ReturnType<typeof setInterval> | null = null
+    const start = () => { if (!interval) interval = setInterval(tick, TICK_MS) }
+    const stop = () => { if (interval) { clearInterval(interval); interval = null } }
+
+    // Only animate when canvas is in viewport AND tab is visible
+    const io = new IntersectionObserver(
+      entries => { entries[0].isIntersecting && document.visibilityState === 'visible' ? start() : stop() },
+      { threshold: 0 },
+    )
+    io.observe(canvas)
+
+    const onVisibility = () => { document.visibilityState === 'visible' && canvas.getBoundingClientRect().top < window.innerHeight ? start() : stop() }
+    document.addEventListener('visibilitychange', onVisibility)
+
+    return () => {
+      stop()
+      io.disconnect()
+      document.removeEventListener('visibilitychange', onVisibility)
+      window.removeEventListener('resize', resize)
+    }
   }, [])
 
   return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-[1]" />
@@ -1531,9 +1549,9 @@ function App() {
                   <Github className="w-3.5 h-3.5" />
                   <span>career-ops</span>
                   <Star className="w-3 h-3 text-yellow-500" />
-                  {/* hero-stats:career-ops:stars */}<span className="font-medium">35.6K</span>
+                  {/* hero-stats:career-ops:stars */}<span className="font-medium">35.7K</span>
                   <GitFork className="w-3 h-3" />
-                  {/* hero-stats:career-ops:forks */}<span>7.1K</span>
+                  {/* hero-stats:career-ops:forks */}<span>7.2K</span>
                 </Link>
               </div>
 

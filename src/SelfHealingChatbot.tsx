@@ -233,18 +233,24 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         <DiagramZoom
           src="/chatbot/dashboard-evals.webp"
           hdSrc="/chatbot/dashboard-evals.webp"
+          width={1613}
+          height={1056}
           alt={lang === 'es' ? 'Dashboard LLMOps: tab Evals — 95.8% pass rate, 71 tests, 10 categorías con barras de progreso por categoría' : 'LLMOps Dashboard: Evals tab — 95.8% pass rate, 71 tests, 10 categories with per-category progress bars'}
           caption={lang === 'es' ? 'Tab Evals: 95.8% pass rate en 71 tests, desglose por categoría' : 'Evals tab: 95.8% pass rate across 71 tests, breakdown by category'}
         />
         <DiagramZoom
           src="/chatbot/dashboard-conversations.webp"
           hdSrc="/chatbot/dashboard-conversations.webp"
+          width={1613}
+          height={1056}
           alt={lang === 'es' ? 'Dashboard LLMOps: tab Conversations — lista de conversaciones reales con coste, tags, idioma y detalle de traza con spans' : 'LLMOps Dashboard: Conversations tab — real conversation list with cost, tags, language, and trace detail with spans'}
           caption={lang === 'es' ? 'Tab Conversations: conversaciones reales con coste por traza, tags automáticos y spans de latencia' : 'Conversations tab: real conversations with per-trace cost, auto-tags, and latency spans'}
         />
         <DiagramZoom
           src="/chatbot/dashboard-security.webp"
           hdSrc="/chatbot/dashboard-security.webp"
+          width={1613}
+          height={1056}
           alt={lang === 'es' ? 'Dashboard LLMOps: tab Security — 96.7% safety, funnel de seguridad, intentos de jailbreak recientes con detalle' : 'LLMOps Dashboard: Security tab — 96.7% safety, security funnel, recent jailbreak attempts with detail'}
           caption={lang === 'es' ? 'Tab Security: funnel de seguridad, 96.7% safety score, jailbreak attempts en tiempo real' : 'Security tab: security funnel, 96.7% safety score, real-time jailbreak attempts'}
         />

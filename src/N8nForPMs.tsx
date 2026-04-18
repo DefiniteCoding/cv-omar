@@ -144,6 +144,8 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
           <DiagramZoom
             src="/workflows/n8n-sprint-report-automation-workflow.webp"
             hdSrc="/workflows/n8n-sprint-report-automation-workflow-hd.webp"
+            width={1200}
+            height={499}
             alt={t.workflow1.imgAlt}
             caption={t.workflow1.figcaption}
           />
@@ -181,6 +183,8 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
           <DiagramZoom
             src="/workflows/n8n-ai-feedback-classification-workflow.webp"
             hdSrc="/workflows/n8n-ai-feedback-classification-workflow-hd.webp"
+            width={1200}
+            height={499}
             alt={t.workflow2.imgAlt}
             caption={t.workflow2.figcaption}
           />

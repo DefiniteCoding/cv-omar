@@ -9,6 +9,7 @@
  */
 
 import { writeFileSync } from 'node:fs'
+import { execSync } from 'node:child_process'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { articleRegistry } from '../src/articles/registry.ts'
@@ -17,6 +18,27 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const dist = resolve(__dirname, '..', 'dist')
 
 const today = new Date().toISOString().slice(0, 10)
+
+/**
+ * Most recent git commit date (YYYY-MM-DD) across the given files.
+ * Prevents lastmod churn on home + about when unrelated build-pipeline stats
+ * update their stars counts without the page actually changing.
+ */
+function lastmodFromGit(files: string[]): string {
+  let latest = ''
+  for (const file of files) {
+    try {
+      const out = execSync(`git log -1 --format=%cs -- ${file}`, { encoding: 'utf-8' }).trim()
+      if (out && out > latest) latest = out
+    } catch {
+      // Git not available or file not in history — fall through to today
+    }
+  }
+  return latest || today
+}
+
+const homeLastmod = lastmodFromGit(['src/App.tsx', 'src/i18n.ts'])
+const aboutLastmod = lastmodFromGit(['src/AboutPage.tsx', 'src/about-i18n.ts'])
 
 // ---------------------------------------------------------------------------
 // URL builder
@@ -28,7 +50,8 @@ interface SitemapUrl {
   hreflangEn: string
   xDefault: string
   lastmod: string
-  priority: string
+  /** Kept for type-compat with existing call-sites; not emitted (Google ignores since 2017). */
+  priority?: string
 }
 
 function urlBlock(u: SitemapUrl): string {
@@ -38,7 +61,6 @@ function urlBlock(u: SitemapUrl): string {
     <xhtml:link rel="alternate" hreflang="en" href="${u.hreflangEn}"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${u.xDefault}"/>
     <lastmod>${u.lastmod}</lastmod>
-    <priority>${u.priority}</priority>
   </url>`
 }
 
@@ -55,7 +77,7 @@ urls.push({
   hreflangEs: `${base}/`,
   hreflangEn: `${base}/en`,
   xDefault: `${base}/`,
-  lastmod: today,
+  lastmod: homeLastmod,
   priority: '1.0',
 })
 urls.push({
@@ -63,7 +85,7 @@ urls.push({
   hreflangEs: `${base}/`,
   hreflangEn: `${base}/en`,
   xDefault: `${base}/`,
-  lastmod: today,
+  lastmod: homeLastmod,
   priority: '0.9',
 })
 
@@ -73,7 +95,7 @@ urls.push({
   hreflangEs: `${base}/sobre-mi`,
   hreflangEn: `${base}/about`,
   xDefault: `${base}/sobre-mi`,
-  lastmod: today,
+  lastmod: aboutLastmod,
   priority: '0.9',
 })
 urls.push({
@@ -81,7 +103,7 @@ urls.push({
   hreflangEs: `${base}/sobre-mi`,
   hreflangEn: `${base}/about`,
   xDefault: `${base}/sobre-mi`,
-  lastmod: today,
+  lastmod: aboutLastmod,
   priority: '0.9',
 })
 

@@ -449,15 +449,50 @@ function dedupePreloads(html: string): string {
   return html.replace(/<link rel="preload" as="image" href="\/foto-avatar\.webp">/g, '');
 }
 
+/**
+ * Swap the base <link rel="preload"> for the avatar (home LCP) to the
+ * article's hero image (article LCP). Detects `<img ... fetchpriority="high" ...>`
+ * in the rendered content and rewrites the preload to match, preserving srcset
+ * and sizes where available. If no high-priority image found, leave as-is.
+ */
+function swapLcpPreload(html: string, isArticle: boolean): string {
+  if (!isArticle) return html;
+  const imgMatch = html.match(/<img[^>]*fetchpriority="high"[^>]*>/i);
+  if (!imgMatch) return html;
+  const img = imgMatch[0];
+  const src = img.match(/\bsrc="([^"]+)"/)?.[1];
+  if (!src) return html;
+  const srcset = img.match(/\bsrcset="([^"]+)"/)?.[1];
+  const sizes = img.match(/\bsizes="([^"]+)"/)?.[1];
+  const attrs = [
+    `rel="preload"`,
+    `as="image"`,
+    `href="${src}"`,
+    `type="image/webp"`,
+    srcset ? `imagesrcset="${srcset}"` : '',
+    sizes ? `imagesizes="${sizes}"` : '',
+    `fetchpriority="high"`,
+  ].filter(Boolean).join(' ');
+  const newPreload = `<link ${attrs} />`;
+  return html.replace(
+    /<link rel="preload" href="\/foto-avatar-sm\.webp"[^>]*>/,
+    newPreload,
+  );
+}
+
 async function writePage(html: string, outputPath: string, label: string) {
   const dir = dirname(outputPath);
   mkdirSync(dir, { recursive: true });
+  // Article pages live in dist/<slug>/index.html, NOT dist/index.html or dist/en/index.html
+  const isArticle = /\/dist\/[^/]+\/index\.html$/.test(outputPath)
+    && !/\/dist\/(en|privacy|privacidad)\/index\.html$/.test(outputPath);
+  const pre = swapLcpPreload(html, isArticle);
   try {
-    const processed = dedupePreloads(await critters.process(html));
+    const processed = dedupePreloads(await critters.process(pre));
     writeFileSync(outputPath, processed, 'utf-8');
     console.log(`[prerender] ${label} (with critical CSS)`);
   } catch {
-    writeFileSync(outputPath, html, 'utf-8');
+    writeFileSync(outputPath, pre, 'utf-8');
     console.log(`[prerender] ${label} (no critical CSS)`);
   }
 }

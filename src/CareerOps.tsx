@@ -107,10 +107,10 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         fetchPriority="high"
       />
 
-      <Manifesto>{t.manifesto}</Manifesto>
+      <Manifesto cite="https://santifer.io/career-ops">{t.manifesto}</Manifesto>
       <MetricsGrid items={t.heroMetrics} columns={5} compact />
 
-      <GitHubRepoBadge repo="santifer/career-ops" stars="35.6K" forks="7.1K" lang={lang} />
+      <GitHubRepoBadge repo="santifer/career-ops" stars="35.7K" forks="7.2K" lang={lang} />
 
       <Callout className="bg-accent/10 border-accent/40">{t.tldr}</Callout>
 
@@ -153,6 +153,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <DiagramZoom
           src="/career-ops/scan.webp"
           hdSrc="/career-ops/scan.webp"
+          width={3024}
+          height={1890}
           alt={lang === 'es'
             ? 'Modo scan en acción: agente Claude Code lanzando búsqueda en DailyRemote con 8 queries, leyendo pipeline.md y scan-history.tsv para dedup'
             : 'Scan mode in action: Claude Code agent launching DailyRemote search with 8 queries, reading pipeline.md and scan-history.tsv for dedup'}
@@ -175,6 +177,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <DiagramZoom
           src="/career-ops/datadog.webp"
           hdSrc="/career-ops/datadog.webp"
+          width={3024}
+          height={1890}
           alt={lang === 'es'
             ? 'Evaluación real: Datadog Staff AI Engineer, MCP Services — Score 4.55/5, arquetipo AI Platform + Agentic Workflows, resumen del rol con 7 dimensiones'
             : 'Real evaluation: Datadog Staff AI Engineer, MCP Services — Score 4.55/5, archetype AI Platform + Agentic Workflows, role summary with 7 dimensions'}
@@ -185,6 +189,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <DiagramZoom
           src="/career-ops/report1.webp"
           hdSrc="/career-ops/report1.webp"
+          width={3024}
+          height={1890}
           alt={lang === 'es'
             ? 'CV Match: tabla de 6 requisitos de la JD mapeados contra proof points del CV con strength rating (Strong/Very Strong/Moderate)'
             : 'CV Match: table of 6 JD requirements mapped against CV proof points with strength rating (Strong/Very Strong/Moderate)'}
@@ -195,6 +201,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <DiagramZoom
           src="/career-ops/report2.webp"
           hdSrc="/career-ops/report2.webp"
+          width={3024}
+          height={1890}
           alt={lang === 'es'
             ? 'CV Match (cont.) + Gaps and Mitigation: requisitos 7-10 y análisis de gaps con severidad y plan de mitigación'
             : 'CV Match (cont.) + Gaps and Mitigation: requirements 7-10 and gap analysis with severity and mitigation plan'}
@@ -205,6 +213,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <DiagramZoom
           src="/career-ops/report3.webp"
           hdSrc="/career-ops/report3.webp"
+          width={3024}
+          height={1890}
           alt={lang === 'es'
             ? 'Gaps (cont.) + Nivel y Estrategia: detección de nivel IC5, plan "Sell Staff without lying" con framing de experiencia'
             : 'Gaps (cont.) + Level and Strategy: IC5 level detection, "Sell Staff without lying" plan with experience framing'}
@@ -270,6 +280,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
           <DiagramZoom
             src="/career-ops/pdf-wave-cv.webp"
             hdSrc="/career-ops/pdf-wave-cv.webp"
+            width={1391}
+            height={1800}
             alt={lang === 'es'
               ? 'CV personalizado para Wave: summary reescrito, competencias adaptadas a Voice AI + Multi-Agent, bullets reordenados por relevancia'
               : 'Personalized CV for Wave: rewritten summary, competencies adapted to Voice AI + Multi-Agent, bullets reordered by relevance'}
@@ -278,6 +290,8 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
           <DiagramZoom
             src="/career-ops/pdf-wave-cover.webp"
             hdSrc="/career-ops/pdf-wave-cover.webp"
+            width={1082}
+            height={1400}
             alt={lang === 'es'
               ? 'Cover letter para Wave: header gradient, Jacobo como proof point de voz + WhatsApp, links a case studies y dashboard'
               : 'Cover letter for Wave: gradient header, Jacobo as voice + WhatsApp proof point, links to case studies and dashboard'}

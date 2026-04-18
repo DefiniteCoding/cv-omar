@@ -219,13 +219,15 @@ export function Callout({ children, className, editorId }: CalloutProps) {
 interface ManifestoProps {
   children: ReactNode
   className?: string
+  cite?: string
   editorId?: string
 }
 
-export function Manifesto({ children, className, editorId }: ManifestoProps) {
+export function Manifesto({ children, className, cite, editorId }: ManifestoProps) {
   return (
     <EditorLabel name="Manifesto" id={editorId}>
       <blockquote
+        cite={cite}
         className={`my-8 border-l-4 border-primary pl-6 pr-4 py-3 text-xl md:text-2xl italic font-display leading-snug text-foreground/90 ${className ?? ''}`}
       >
         {children}
@@ -480,6 +482,7 @@ interface DiagramZoomProps {
 
 export function DiagramZoom({ src, hdSrc, alt, caption, loading = 'lazy', width, height, hdWidth, hdHeight, className, editorId }: DiagramZoomProps) {
   const [lightbox, setLightbox] = useState(false)
+  const aspectRatio = width && height ? `${width} / ${height}` : undefined
 
   return (
     <EditorLabel name="DiagramZoom" id={editorId}>
@@ -487,7 +490,16 @@ export function DiagramZoom({ src, hdSrc, alt, caption, loading = 'lazy', width,
         className={`relative rounded-lg overflow-hidden border border-border shadow-lg mb-6 group cursor-zoom-in ${className ?? ''}`}
         onClick={() => setLightbox(true)}
       >
-        <img src={src} alt={alt} width={width} height={height} className="w-full h-auto min-h-[200px] object-contain bg-card" loading={loading} decoding="async" />
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          style={aspectRatio ? { aspectRatio } : undefined}
+          className="w-full h-auto object-contain bg-card"
+          loading={loading}
+          decoding="async"
+        />
         <span className="absolute top-3 right-3 p-1.5 rounded-md bg-black/40 text-white/50 group-hover:text-white/90 transition-colors">
           <ZoomIn className="w-4 h-4" />
         </span>
