@@ -126,6 +126,8 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         h1={t.header.h1}
         subtitle={t.header.subtitle}
         date={t.header.date}
+        dateISO="2026-03-11"
+        dateModifiedISO="2026-03-14"
         readingTime={t.readingTime}
       />
       <a href="#architecture" className="inline-flex items-center gap-2 -mt-4 mb-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors">

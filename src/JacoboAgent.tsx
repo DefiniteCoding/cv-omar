@@ -127,7 +127,7 @@ export default function JacoboAgent({ lang = 'en' }: { lang?: Lang }) {
   return (
     <ArticleLayout lang={lang}>
       <FloatingToc />
-      <ArticleHeader editorId="hero-header" lang={lang} kicker={t.header.kicker} h1={t.header.h1} subtitle={t.header.subtitle} date={t.header.date} readingTime={t.readingTime} />
+      <ArticleHeader editorId="hero-header" lang={lang} kicker={t.header.kicker} h1={t.header.h1} subtitle={t.header.subtitle} date={t.header.date} dateISO="2026-02-25" dateModifiedISO="2026-03-07" readingTime={t.readingTime} />
 
       {'badge' in t.header && (
         <StatusBadge editorId="exit-badge" text={(t.header as any).badge} />

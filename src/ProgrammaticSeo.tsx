@@ -268,6 +268,8 @@ export default function ProgrammaticSeo({ lang = 'en' }: { lang?: Lang }) {
         h1={t.header.h1}
         subtitle={t.header.subtitle}
         date={t.header.date}
+        dateISO="2026-02-25"
+        dateModifiedISO="2026-03-10"
         readingTime={t.readingTime}
       />
 

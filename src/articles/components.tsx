@@ -73,6 +73,8 @@ interface ArticleHeaderProps {
   date: string
   /** ISO 8601 date for <time> element (e.g. '2026-03-11') */
   dateISO?: string
+  /** ISO 8601 last-updated date. If set AND different from dateISO, renders a visible "Updated: …" line. */
+  dateModifiedISO?: string
   readingTime: string
   authorName?: string
   authorUrl?: string
@@ -82,6 +84,15 @@ interface ArticleHeaderProps {
   editorId?: string
 }
 
+const MONTHS_ES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+function formatDateHuman(iso: string, lang: 'es' | 'en'): string {
+  const [y, m, d] = iso.split('-').map(Number)
+  if (!y || !m || !d) return iso
+  const month = (lang === 'es' ? MONTHS_ES : MONTHS_EN)[m - 1]
+  return lang === 'es' ? `${d} ${month} ${y}` : `${month} ${d}, ${y}`
+}
+
 export function ArticleHeader({
   kicker,
   kickerLink,
@@ -89,6 +100,7 @@ export function ArticleHeader({
   subtitle,
   date,
   dateISO,
+  dateModifiedISO,
   readingTime,
   authorName = 'Santiago Fernández de Valderrama',
   authorUrl,
@@ -135,9 +147,14 @@ export function ArticleHeader({
             </a>
           </div>
           {authorBio && <p className="text-xs text-muted-foreground">{authorBio}</p>}
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
             {dateISO ? <time dateTime={dateISO}>{date}</time> : <span>{date}</span>}
             <span className="inline-flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{readingTime}</span>
+            {dateModifiedISO && dateModifiedISO !== dateISO && (
+              <span className="text-xs text-muted-foreground/80">
+                · {lang === 'es' ? 'Actualizado' : 'Updated'} <time dateTime={dateModifiedISO}>{formatDateHuman(dateModifiedISO, lang ?? 'es')}</time>
+              </span>
+            )}
           </div>
         </div>
       </div>

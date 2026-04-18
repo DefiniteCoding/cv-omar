@@ -470,6 +470,10 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'SocialMediaPosting', name: 'Han hackeado a mi chatbot — LinkedIn post (300+ reactions)', url: 'https://www.linkedin.com/feed/update/urn:li:activity:7421984735024816128/' },
         { '@type': 'WebPage', name: 'OWASP Top 10 for LLM Applications', url: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/' },
         { '@type': 'TechArticle', name: 'Anthropic Tool Use Documentation', url: 'https://docs.anthropic.com/en/docs/build-with-claude/tool-use' },
+        { '@type': 'TechArticle', name: 'Langfuse — Open Source LLM Engineering Platform', url: 'https://langfuse.com/docs' },
+        { '@type': 'TechArticle', name: 'Supabase pgvector — Vector Embeddings Documentation', url: 'https://supabase.com/docs/guides/ai/vector-embeddings' },
+        { '@type': 'TechArticle', name: 'Anthropic — Defending Against Prompt Injection', url: 'https://www.anthropic.com/news/prompt-injections' },
+        { '@type': 'WebPage', name: 'Prompt Injection (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Prompt_injection' },
       ],
       mentions: [
         { '@type': 'SoftwareApplication', name: 'Langfuse', url: 'https://langfuse.com' },
@@ -550,6 +554,9 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'WebPage', name: 'GitHub Trending Weekly 2026-04-08 — Shareuhack', url: 'https://www.shareuhack.com/en/posts/github-trending-weekly-2026-04-08' },
         { '@type': 'WebPage', name: 'Career-Ops — AI Job Search CLI Tool (EveryDev.ai)', url: 'https://www.everydev.ai/tools/career-ops' },
         { '@type': 'WebPage', name: 'HN Top Links — Popular Stories from Hacker News', url: 'http://hntoplinks.com/week?page=216&sort=upvotes' },
+        { '@type': 'TechArticle', name: 'Anthropic Claude Code — Agentic Coding', url: 'https://www.anthropic.com/claude-code' },
+        { '@type': 'WebPage', name: 'Multi-agent system (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Multi-agent_system' },
+        { '@type': 'TechArticle', name: 'Anthropic Building Effective Agents (engineering guide)', url: 'https://www.anthropic.com/engineering/building-effective-agents' },
       ],
       mentions: [
         { '@type': 'SoftwareSourceCode', name: 'career-ops', url: 'https://github.com/santifer/career-ops', codeRepository: 'https://github.com/santifer/career-ops', programmingLanguage: ['TypeScript', 'Go'], license: 'https://opensource.org/licenses/MIT', sameAs: 'https://www.wikidata.org/wiki/Q139007988', discussionUrl: 'https://discord.gg/8pRpHETxa4', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' } },

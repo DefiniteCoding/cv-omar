@@ -120,6 +120,14 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
           datePublished: '2014-06-19',
           url: 'https://www.diariodesevilla.es/vivirensevilla/Salir-compras-solucion-expres-telefono_0_817718799.html',
         },
+        worksFor: {
+          '@type': 'Organization',
+          '@id': 'https://zinkee.com/#org',
+          name: 'Zinkee',
+          url: 'https://zinkee.com',
+          description: 'B2B SaaS platform building a horizontal AI layer for SMBs.',
+        },
+        award: 'AI Product Academy Bootcamp — Winning Project 2025 (Maven, led by Dr. Marily Nika, Google)',
         address: { '@type': 'PostalAddress', addressLocality: 'Sevilla', addressCountry: 'ES' },
       },
     })

@@ -62,6 +62,8 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
           h1={t.header.h1}
           subtitle={t.header.subtitle}
           date={t.header.date}
+          dateISO="2026-02-24"
+          dateModifiedISO="2026-03-06"
           readingTime={t.readingTime}
         />
 
