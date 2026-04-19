@@ -1510,19 +1510,9 @@ function App() {
                 )}
                 {hydrated && <span className="inline-block w-[3px] h-[0.85em] bg-primary ml-1 rounded-sm translate-y-[2px]" style={{ animation: 'blink 1s step-end infinite' }} />}
                 <br />
-                {lang === 'es' ? (
-                  <>
-                    {t.greeting}
-                    <br />
-                    de IA con <BeamPill>HITL <span className="opacity-60">+</span> MCP <span className="opacity-60">+</span> RAG</BeamPill>
-                  </>
-                ) : (
-                  <>
-                    {t.greeting} {t.role}
-                    <br />
-                    with <BeamPill>HITL <span className="opacity-60">+</span> MCP <span className="opacity-60">+</span> RAG</BeamPill>
-                  </>
-                )}
+                {t.greeting}
+                <br />
+                {lang === 'es' ? 'con ' : 'with '}<BeamPill>HITL <span className="opacity-60">+</span> MCP <span className="opacity-60">+</span> RAG</BeamPill>
               </h1>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
@@ -1549,9 +1539,9 @@ function App() {
                   <Github className="w-3.5 h-3.5" />
                   <span>career-ops</span>
                   <Star className="w-3 h-3 text-yellow-500" />
-                  {/* hero-stats:career-ops:stars */}<span className="font-medium">35.8K</span>
+                  {/* hero-stats:career-ops:stars */}<span className="font-medium">36.2K</span>
                   <GitFork className="w-3 h-3" />
-                  {/* hero-stats:career-ops:forks */}<span>7.2K</span>
+                  {/* hero-stats:career-ops:forks */}<span>7.3K</span>
                 </Link>
               </div>
 

@@ -112,7 +112,7 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
       <Manifesto cite="https://santifer.io/career-ops">{t.manifesto}</Manifesto>
       <MetricsGrid items={t.heroMetrics} columns={5} compact />
 
-      <GitHubRepoBadge repo="santifer/career-ops" stars="35.8K" forks="7.2K" lang={lang} />
+      <GitHubRepoBadge repo="santifer/career-ops" stars="36.2K" forks="7.3K" lang={lang} />
 
       <Callout className="bg-accent/10 border-accent/40">{t.tldr}</Callout>
 
@@ -462,7 +462,7 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFDD00] text-black font-semibold shadow-md hover:bg-[#FFE433] hover:shadow-lg transition-all"
               >
-                <img src="/bmc-logo.svg" alt="" className="w-5 h-auto" width="27" height="39" />
+                <img src="/bmc-logo.svg" alt="" role="presentation" aria-hidden="true" className="w-5 h-auto" width="27" height="39" />
                 {s.cta.supportBmcLabel}
               </a>
             </div>

@@ -51,7 +51,7 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
     script.textContent = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'ProfilePage',
-      dateModified: '2026-04-18',
+      dateModified: '2026-04-19',
       mainEntity: {
         '@type': 'Person',
         '@id': 'https://santifer.io/#person',

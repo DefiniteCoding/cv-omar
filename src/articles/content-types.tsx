@@ -1258,7 +1258,7 @@ export function FloatingToc({ ctas }: { ctas?: TocCta[] } = {}) {
               rel="noopener noreferrer"
               className="flex items-center gap-2 w-full px-3 py-2 rounded-lg bg-[#FFDD00] text-black text-sm font-semibold hover:bg-[#FFE433] transition-colors shadow-sm"
             >
-              <img src="/bmc-logo.svg" alt="" className="w-3.5 h-auto flex-shrink-0" width="27" height="39" />
+              <img src="/bmc-logo.svg" alt="" role="presentation" aria-hidden="true" className="w-3.5 h-auto flex-shrink-0" width="27" height="39" />
               <span className="truncate">{cta.label}</span>
             </a>
           )
@@ -1487,8 +1487,11 @@ export function ArchitectureDiagram({ src, thumbnail, alt, label, subtitle, edit
           <img
             src={thumbnail}
             alt={alt}
+            width={1400}
+            height={900}
             className="w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity duration-300"
             loading="lazy"
+            decoding="async"
           />
           <div className="p-5 flex items-center justify-between">
             <div>
