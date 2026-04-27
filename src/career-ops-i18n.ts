@@ -188,13 +188,14 @@ export const careerOpsContent = {
         body: 'El resultado más importante: conseguí el trabajo. Ahora soy Head of Applied AI. Career-Ops evaluó 631 ofertas, generó 354 PDFs personalizados y filtró el ruido para que yo pudiera centrarme en las oportunidades que realmente encajaban.',
         metrics: [
           { value: '631', label: 'Reports generados' },
-          { value: '35K+', label: 'GitHub stars' },
+          { value: '40.1K+', label: 'GitHub stars' },
           { value: '354', label: 'PDFs generados' },
           { value: '2,600+', label: 'Upvotes r/ClaudeAI' },
         ],
         aftermath: {
           heading: '¿Qué Pasó Después?',
-          body: 'Cuando dejé de necesitar Career-Ops, lo publiqué en GitHub. En una semana pasó de repositorio privado a viral — 40.1K+ estrellas, 8.3K+ forks, y artículos en blogs de Francia, China y Corea que no me conocían de nada. Se formó una comunidad de más de 2.100 personas en Discord que se ayudan entre ellas a configurar y adaptar el sistema. El proyecto acabó demostrando más competencias que cualquier proceso de selección.',
+          // HISTORIC: numbers below are week-1 viral snapshot — do not auto-update with current totals.
+          body: 'Cuando dejé de necesitar Career-Ops, lo publiqué en GitHub. En una semana pasó de repositorio privado a viral — 35K estrellas, 5K forks, y artículos en blogs de Francia, China y Corea que no me conocían de nada. Hoy supera los 40K de estrellas y 2K personas en Discord se ayudan entre ellas a configurar y adaptar el sistema. El proyecto acabó demostrando más competencias que cualquier proceso de selección.',
           highlights: [
             { value: '35K+', label: 'GitHub stars en 1 semana' },
             { value: '5K+', label: 'Forks' },
@@ -497,13 +498,14 @@ export const careerOpsContent = {
         body: 'The most important result: I got the job. I am now Head of Applied AI. Career-Ops evaluated 631 offers, generated 354 personalized PDFs, and filtered the noise so I could focus on the opportunities that truly fit.',
         metrics: [
           { value: '631', label: 'Reports generated' },
-          { value: '35K+', label: 'GitHub stars' },
+          { value: '40.1K+', label: 'GitHub stars' },
           { value: '354', label: 'PDFs generated' },
           { value: '2,600+', label: 'Upvotes r/ClaudeAI' },
         ],
         aftermath: {
           heading: 'What Happened Next?',
-          body: 'When I no longer needed Career-Ops, I published it on GitHub. In one week it went from private repo to viral — 40.1K+ stars, 8.3K+ forks, and articles in blogs from France, China, and Korea by people who had never heard of me. A community of 2,100+ people formed on Discord, helping each other configure and adapt the system. The project ended up demonstrating more competencies than any hiring process could.',
+          // HISTORIC: numbers below are week-1 viral snapshot — do not auto-update with current totals.
+          body: 'When I no longer needed Career-Ops, I published it on GitHub. In one week it went from private repo to viral — 35K stars, 5K forks, and articles in blogs from France, China, and Korea by people who had never heard of me. Today it has crossed 40K stars and a community of 2K+ people on Discord helps each other configure and adapt the system. The project ended up demonstrating more competencies than any hiring process could.',
           highlights: [
             { value: '35K+', label: 'GitHub stars in 1 week' },
             { value: '5K+', label: 'Forks' },

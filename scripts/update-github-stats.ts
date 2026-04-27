@@ -282,6 +282,9 @@ async function main() {
       { re: /\b\d+[\d.]*K\+\s*forks/gi, replace: `${forkLabelPlus} forks` },
     ]
 
+    // Lines that include `// HISTORIC` are protected (week-1 viral snapshot, do not auto-bump).
+    // The marker can appear on the same line OR up to 2 lines above the protected content.
+    const HISTORIC_WINDOW = 3
     for (const filePath of sweepFiles) {
       let content: string
       try {
@@ -289,10 +292,24 @@ async function main() {
       } catch {
         continue // file doesn't exist, skip
       }
-      let newContent = content
-      for (const { re, replace } of patterns) {
-        newContent = newContent.replace(re, replace)
+      const lines = content.split('\n')
+      const protectedIdx = new Set<number>()
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].includes('HISTORIC')) {
+          for (let j = i; j < Math.min(i + HISTORIC_WINDOW, lines.length); j++) {
+            protectedIdx.add(j)
+          }
+        }
       }
+      const newLines = lines.map((line, i) => {
+        if (protectedIdx.has(i)) return line
+        let next = line
+        for (const { re, replace } of patterns) {
+          next = next.replace(re, replace)
+        }
+        return next
+      })
+      const newContent = newLines.join('\n')
       if (newContent !== content) {
         writeFileSync(filePath, newContent, 'utf-8')
         anyChanged = true

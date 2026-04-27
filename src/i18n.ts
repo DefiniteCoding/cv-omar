@@ -202,7 +202,7 @@ export const translations = {
           desc: 'CV interactivo con SDLC aumentado con IA. Construido con **Claudeable**, monitorizado con **Claude Pulse**, animaciones debuggeadas con **Claude Eye**. Prerender SSR, i18n bilingüe y SEO automatizado.',
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
-          stars: '479',
+          stars: '480',
           forks: '184',
         },
         {
@@ -542,7 +542,7 @@ export const translations = {
       quoteViews: '1.7M',
       quoteUrl: 'https://x.com/garrytan/status/2040891664617848993',
       replies: '99',
-      retweets: '487',
+      retweets: '488',
       likes: '3.9K',
       views: '537.9K',
       cta: 'Ver en X',
@@ -551,7 +551,7 @@ export const translations = {
     redditPosts: [
       {
         hook: 'Construí un sistema de búsqueda de empleo con Claude Code que puntuó 740+ ofertas y me consiguió trabajo. Acabo de hacerlo open source.',
-        upvotes: '2778',
+        upvotes: '2776',
         comments: '244',
         subreddit: 'r/ClaudeAI',
         cta: 'Leer en Reddit',
@@ -559,7 +559,7 @@ export const translations = {
       },
       {
         hook: 'Automaticé mi búsqueda de empleo con agentes IA — 516 evaluaciones, 66 aplicaciones, zero screening manual.',
-        upvotes: '570',
+        upvotes: '567',
         comments: '359',
         subreddit: 'r/SideProject',
         cta: 'Leer en Reddit',
@@ -567,7 +567,7 @@ export const translations = {
       },
       {
         hook: 'Construí un agente IA con WhatsApp + voz en n8n que gestiona el 90% de la atención al cliente. Vendí el negocio y el comprador lo mantuvo sin mí.',
-        upvotes: '311',
+        upvotes: '313',
         comments: '50',
         subreddit: 'r/n8n',
         cta: 'Leer en Reddit',
@@ -1027,7 +1027,7 @@ export const translations = {
           desc: 'Interactive CV with AI-augmented SDLC. Built with **Claudeable**, monitored with **Claude Pulse**, animations debugged with **Claude Eye**. SSR prerender, bilingual i18n, and automated SEO.',
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
-          stars: '479',
+          stars: '480',
           forks: '184',
         },
         {
@@ -1363,7 +1363,7 @@ export const translations = {
       quoteViews: '1.7M',
       quoteUrl: 'https://x.com/garrytan/status/2040891664617848993',
       replies: '99',
-      retweets: '487',
+      retweets: '488',
       likes: '3.9K',
       views: '537.9K',
       cta: 'View on X',
@@ -1372,7 +1372,7 @@ export const translations = {
     redditPosts: [
       {
         hook: 'I built an AI job search system with Claude Code that scored 740+ offers and landed me a job. Just open sourced it.',
-        upvotes: '2778',
+        upvotes: '2776',
         comments: '244',
         subreddit: 'r/ClaudeAI',
         cta: 'Read on Reddit',
@@ -1380,7 +1380,7 @@ export const translations = {
       },
       {
         hook: 'I automated my job search with AI agents — 516 evaluations, 66 applications, zero manual screening.',
-        upvotes: '570',
+        upvotes: '567',
         comments: '359',
         subreddit: 'r/SideProject',
         cta: 'Read on Reddit',
@@ -1388,7 +1388,7 @@ export const translations = {
       },
       {
         hook: 'I built a WhatsApp + voice AI agent in n8n that handles 90% of customer service. Sold the business, the buyer kept it running without me.',
-        upvotes: '311',
+        upvotes: '313',
         comments: '50',
         subreddit: 'r/n8n',
         cta: 'Read on Reddit',
