@@ -22,7 +22,7 @@ import Critters from 'critters';
 import App from '../src/App.tsx';
 import GlobalNav from '../src/GlobalNav.tsx';
 import { articleRegistry, type ArticleConfig } from '../src/articles/registry.ts';
-import { buildArticleJsonLd } from '../src/articles/json-ld.ts';
+import { buildArticleJsonLd, buildFaqPage } from '../src/articles/json-ld.ts';
 import AboutPage from '../src/AboutPage.tsx';
 import { aboutContent } from '../src/about-i18n.ts';
 import PrivacyPolicy from '../src/PrivacyPolicy.tsx';
@@ -156,10 +156,9 @@ let enPage = indexHtml
 // About / Entity Home — ES (/sobre-mi) + EN (/about)
 // ---------------------------------------------------------------------------
 
-const aboutJsonLd = {
-  '@context': 'https://schema.org',
+const aboutPersonProfile = {
   '@type': 'ProfilePage',
-  dateModified: '2026-04-08',
+  dateModified: '2026-04-28',
   mainEntity: {
     '@type': 'Person',
     '@id': 'https://santifer.io/#person',
@@ -232,7 +231,22 @@ const aboutJsonLd = {
   },
 };
 
-const aboutJsonLdScript = `<script type="application/ld+json">\n${JSON.stringify(aboutJsonLd, null, 2)}\n</script>`;
+/**
+ * Build the per-language @graph for /about + /sobre-mi.
+ * Includes ProfilePage + FAQPage so AI crawlers see FAQ schema in SSR'd HTML
+ * (no longer requires JS execution / useEffect).
+ */
+function buildAboutJsonLd(lang: 'es' | 'en', pageUrl: string, faq: readonly { q: string; a: string }[]) {
+  const profile = {
+    ...aboutPersonProfile,
+    '@id': `${pageUrl}#profilepage`,
+    inLanguage: lang,
+  };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [profile, buildFaqPage(faq, pageUrl, lang)],
+  };
+}
 
 interface AboutPageData {
   slug: string;
@@ -290,7 +304,11 @@ for (const lang of ['es', 'en'] as const) {
     .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(t.seo.title)}" />`)
     .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(t.seo.description)}" />`);
 
-  // Replace homepage JSON-LD with ProfilePage JSON-LD
+  // Build per-language @graph (ProfilePage + FAQPage) and inject as SSR JSON-LD
+  const aboutJsonLd = buildAboutJsonLd(lang, url, t.faq);
+  const aboutJsonLdScript = `<script type="application/ld+json">\n${JSON.stringify(aboutJsonLd, null, 2)}\n</script>`;
+
+  // Replace homepage JSON-LD with ProfilePage + FAQPage @graph
   result = result.replace(
     /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
     aboutJsonLdScript,

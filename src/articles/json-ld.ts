@@ -2,6 +2,29 @@ import { articleRegistry } from './registry'
 
 type Lang = 'es' | 'en'
 
+/**
+ * Shared FAQPage builder. Used by buildArticleJsonLd (case studies) and
+ * by prerender.tsx for /about + /sobre-mi. Centralizing here means any
+ * page with a `faq` array gets schema-compliant FAQPage SSR'd into the
+ * prerendered HTML — invisible-FAQ-on-pageload bugs cannot recur.
+ */
+export function buildFaqPage(
+  faq: readonly { q: string; a: string }[],
+  pageUrl: string,
+  lang: Lang,
+) {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${pageUrl.replace(/\/$/, '')}/#faq`,
+    inLanguage: lang,
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  }
+}
+
 interface JsonLdOptions {
   lang: Lang
   url: string
@@ -123,14 +146,7 @@ export function buildArticleJsonLd(opts: JsonLdOptions) {
   ]
 
   if (opts.faq && opts.faq.length > 0) {
-    graph.push({
-      '@type': 'FAQPage',
-      mainEntity: opts.faq.map((item) => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: { '@type': 'Answer', text: item.a },
-      })),
-    })
+    graph.push(buildFaqPage(opts.faq, opts.url, opts.lang))
   }
 
   // HowTo schema removed — deprecated by Google Sept 2023
