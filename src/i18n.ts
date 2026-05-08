@@ -545,14 +545,14 @@ export const translations = {
       replies: '101',
       retweets: '496',
       likes: '3.9K',
-      views: '542.2K',
+      views: '542.3K',
       cta: 'Ver en X',
       url: 'https://x.com/santifer/status/2041403685696053741',
     },
     redditPosts: [
       {
         hook: 'Construí un sistema de búsqueda de empleo con Claude Code que puntuó 740+ ofertas y me consiguió trabajo. Acabo de hacerlo open source.',
-        upvotes: '2804',
+        upvotes: '2810',
         comments: '249',
         subreddit: 'r/ClaudeAI',
         cta: 'Leer en Reddit',
@@ -560,7 +560,7 @@ export const translations = {
       },
       {
         hook: 'Automaticé mi búsqueda de empleo con agentes IA — 516 evaluaciones, 66 aplicaciones, zero screening manual.',
-        upvotes: '576',
+        upvotes: '572',
         comments: '359',
         subreddit: 'r/SideProject',
         cta: 'Leer en Reddit',
@@ -568,7 +568,7 @@ export const translations = {
       },
       {
         hook: 'Construí un agente IA con WhatsApp + voz en n8n que gestiona el 90% de la atención al cliente. Vendí el negocio y el comprador lo mantuvo sin mí.',
-        upvotes: '328',
+        upvotes: '332',
         comments: '68',
         subreddit: 'r/n8n',
         cta: 'Leer en Reddit',
@@ -1367,14 +1367,14 @@ export const translations = {
       replies: '101',
       retweets: '496',
       likes: '3.9K',
-      views: '542.2K',
+      views: '542.3K',
       cta: 'View on X',
       url: 'https://x.com/santifer/status/2041403685696053741',
     },
     redditPosts: [
       {
         hook: 'I built an AI job search system with Claude Code that scored 740+ offers and landed me a job. Just open sourced it.',
-        upvotes: '2804',
+        upvotes: '2810',
         comments: '249',
         subreddit: 'r/ClaudeAI',
         cta: 'Read on Reddit',
@@ -1382,7 +1382,7 @@ export const translations = {
       },
       {
         hook: 'I automated my job search with AI agents — 516 evaluations, 66 applications, zero manual screening.',
-        upvotes: '576',
+        upvotes: '572',
         comments: '359',
         subreddit: 'r/SideProject',
         cta: 'Read on Reddit',
@@ -1390,7 +1390,7 @@ export const translations = {
       },
       {
         hook: 'I built a WhatsApp + voice AI agent in n8n that handles 90% of customer service. Sold the business, the buyer kept it running without me.',
-        upvotes: '328',
+        upvotes: '332',
         comments: '68',
         subreddit: 'r/n8n',
         cta: 'Read on Reddit',

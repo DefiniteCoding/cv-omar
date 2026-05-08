@@ -13,7 +13,7 @@ interface PressFeaturesProps {
 export function PressFeatures({ lang }: PressFeaturesProps) {
   const caption = lang === 'es' ? 'Aparezco en' : 'As featured in'
   return (
-    <div className="mt-8 md:mt-10 flex flex-col items-center gap-3">
+    <div className="mt-12 md:mt-16 flex flex-col items-center gap-3">
       <span className="press-caption text-[10px] uppercase tracking-[0.35em] font-medium">
         {caption}
       </span>
