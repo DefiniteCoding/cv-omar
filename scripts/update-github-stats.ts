@@ -262,13 +262,14 @@ async function main() {
     const forkLabel = formatCount(careerOpsStats.forks)
     const forkLabelPlus = forkLabel + '+'
 
-    // Files to sweep — all i18n content + about + career-ops-i18n
+    // Files to sweep — all i18n content + about + career-ops-i18n + chatbot prompt
     const sweepFiles = [
       resolve(__dirname, '../src/i18n.ts'),
       resolve(__dirname, '../src/about-i18n.ts'),
       resolve(__dirname, '../src/career-ops-i18n.ts'),
       resolve(__dirname, '../public/llms.txt'),
       resolve(__dirname, '../public/humans.txt'),
+      resolve(__dirname, '../chatbot-prompt.txt'),
     ]
 
     // Patterns: careful NOT to match hero metrics entries (those already handled by section 2)

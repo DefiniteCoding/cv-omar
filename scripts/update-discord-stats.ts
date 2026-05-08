@@ -36,6 +36,7 @@ interface Target {
 const CAREER_OPS_I18N = resolve(__dirname, '../src/career-ops-i18n.ts')
 const I18N = resolve(__dirname, '../src/i18n.ts')
 const LLMS_TXT = resolve(__dirname, '../public/llms.txt')
+const CHATBOT_PROMPT = resolve(__dirname, '../chatbot-prompt.txt')
 
 const TARGETS: Target[] = [
   // ES — career-ops-i18n.ts
@@ -67,6 +68,10 @@ const TARGETS: Target[] = [
   // llms.txt — manifesto paragraph
   { file: LLMS_TXT, locale: 'en', format: 'full', description: 'llms.txt manifesto',
     pattern: /Discord community of (\d[\d.,]*)\+\s+builders/ },
+
+  // chatbot-prompt.txt — career-ops experience block
+  { file: CHATBOT_PROMPT, locale: 'es', format: 'full', description: 'chatbot-prompt career-ops',
+    pattern: /comunidad Discord de (\d[\d.,]*)\+\s*miembros/ },
 ]
 
 async function fetchMemberCount(): Promise<number | null> {

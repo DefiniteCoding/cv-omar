@@ -1594,7 +1594,7 @@ function App() {
 
           {/* Zinkee */}
           <AnimatedSection delay={0.1}>
-            <div className="mb-12">
+            <div className="mb-20">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <img src="/zinkee-logo.webp" alt="Zinkee" className="w-10 h-10 shrink-0" width={40} height={40} loading="lazy" decoding="async" />
@@ -1605,6 +1605,62 @@ function App() {
               <p className="text-primary font-medium mb-1">{t.experience.zinkee.role}</p>
               <p className="text-sm text-muted-foreground mb-2">{t.experience.zinkee.period}</p>
               <p className="text-muted-foreground whitespace-pre-line">{t.experience.zinkee.desc}</p>
+            </div>
+          </AnimatedSection>
+
+          {/* career-ops - Open Source */}
+          <AnimatedSection delay={0.1}>
+            <div className="mb-20">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
+                <div className="flex items-center gap-3">
+                  <img src={t.experience.careerOps.logo} alt="career-ops" className="w-10 h-10 shrink-0 rounded-lg" width={40} height={40} loading="lazy" decoding="async" />
+                  <h3 className="font-display text-2xl font-bold">{t.experience.careerOps.company}</h3>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-medium px-2 py-1 rounded-full border border-[#E8743B]/40 bg-[#E8743B]/10 text-[#E8743B]">{t.experience.careerOps.badge}</span>
+                </div>
+                <a
+                  href={t.experience.careerOps.url}
+                  target="_blank"
+                  rel="noopener"
+                  className="text-sm text-primary hover:underline flex items-center gap-1"
+                >
+                  {t.experience.careerOps.urlLabel}
+                </a>
+              </div>
+              <p className="text-primary font-medium mb-1">{t.experience.careerOps.role}</p>
+              <p className="text-sm text-muted-foreground mb-2">{t.experience.careerOps.period}</p>
+              <p className="text-muted-foreground whitespace-pre-line mb-6">{t.experience.careerOps.desc}</p>
+
+              {/* As Featured In - Press Logos */}
+              <div className="pt-4 border-t border-border/50">
+                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">{t.experience.careerOps.pressLabel}</p>
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-3 md:gap-x-10">
+                  {t.experience.careerOps.press.map((p) => (
+                    <a
+                      key={p.name}
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      aria-label={`${p.name} — featured article on career-ops`}
+                      className="group inline-flex items-center"
+                    >
+                      <img
+                        src={p.src}
+                        alt={p.name}
+                        width={p.width}
+                        height={p.height}
+                        style={{ height: `${p.height}px` }}
+                        className="press-logo w-auto opacity-55 group-hover:opacity-100 transition-opacity duration-300"
+                        loading="lazy"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Deep dive CTA */}
+              <Link to={lang === 'en' ? '/career-ops-system' : '/career-ops'} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
+                <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.careerOps.caseStudyLabel}</span>
+              </Link>
             </div>
           </AnimatedSection>
 

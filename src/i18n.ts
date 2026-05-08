@@ -203,7 +203,7 @@ export const translations = {
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
           stars: '548',
-          forks: '210',
+          forks: '211',
         },
         {
           title: 'Self-Healing Chatbot',
@@ -304,6 +304,36 @@ export const translations = {
         role: 'Head of Applied AI',
         period: '2026 - Presente',
         desc: 'Construyendo la capa de IA horizontal de la empresa.\nImpulsando la nueva generación de software para PYMEs.',
+      },
+      careerOps: {
+        company: 'career-ops',
+        logo: '/career-ops-logo.webp',
+        location: 'Open Source · Remoto',
+        role: 'Creador & Maintainer',
+        period: '2026 - Presente',
+        badge: 'Open Source',
+        url: 'https://career-ops.org?utm_source=santifer.io&utm_medium=experience&utm_campaign=link-juice',
+        urlLabel: 'career-ops.org',
+        desc: 'Sistema agéntico open-source para automatizar la búsqueda de empleo con IA.',
+        pressLabel: 'Mención en prensa',
+        press: [
+          {
+            name: 'WIRED',
+            src: '/press-logos/wired.svg',
+            url: 'https://wired.com.gr/article/to-ai-ergaleio-pou-fernei-epanastasi-ston-tropo-pou-psachnoume-douleia/',
+            height: 22,
+            width: 110,
+          },
+          {
+            name: 'Business Insider',
+            src: '/press-logos/business-insider.svg',
+            url: 'https://www.businessinsider.com/how-i-built-tool-filter-job-listings-landed-head-ai-2026-4',
+            height: 26,
+            width: 84,
+          },
+        ],
+        caseStudyUrl: '/career-ops',
+        caseStudyLabel: 'Leer: cómo construí career-ops',
       },
       santifer: {
         company: 'Santifer iRepair',
@@ -542,7 +572,7 @@ export const translations = {
       quoteLikes: '6.7K',
       quoteViews: '1.7M',
       quoteUrl: 'https://x.com/garrytan/status/2040891664617848993',
-      replies: '101',
+      replies: '102',
       retweets: '496',
       likes: '3.9K',
       views: '542.3K',
@@ -552,7 +582,7 @@ export const translations = {
     redditPosts: [
       {
         hook: 'Construí un sistema de búsqueda de empleo con Claude Code que puntuó 740+ ofertas y me consiguió trabajo. Acabo de hacerlo open source.',
-        upvotes: '2810',
+        upvotes: '2801',
         comments: '249',
         subreddit: 'r/ClaudeAI',
         cta: 'Leer en Reddit',
@@ -560,7 +590,7 @@ export const translations = {
       },
       {
         hook: 'Automaticé mi búsqueda de empleo con agentes IA — 516 evaluaciones, 66 aplicaciones, zero screening manual.',
-        upvotes: '572',
+        upvotes: '575',
         comments: '359',
         subreddit: 'r/SideProject',
         cta: 'Leer en Reddit',
@@ -568,7 +598,7 @@ export const translations = {
       },
       {
         hook: 'Construí un agente IA con WhatsApp + voz en n8n que gestiona el 90% de la atención al cliente. Vendí el negocio y el comprador lo mantuvo sin mí.',
-        upvotes: '332',
+        upvotes: '323',
         comments: '68',
         subreddit: 'r/n8n',
         cta: 'Leer en Reddit',
@@ -1029,7 +1059,7 @@ export const translations = {
           tech: ['React 19', 'TypeScript', 'Tailwind', 'Vite', 'Motion', 'Vercel'],
           link: 'github.com/santifer/cv-santiago',
           stars: '548',
-          forks: '210',
+          forks: '211',
         },
         {
           title: 'Self-Healing Chatbot',
@@ -1130,6 +1160,36 @@ export const translations = {
         role: 'Head of Applied AI',
         period: '2026 - Present',
         desc: 'Building the horizontal AI layer across the company.\nPowering the next generation of software for SMBs.',
+      },
+      careerOps: {
+        company: 'career-ops',
+        logo: '/career-ops-logo.webp',
+        location: 'Open Source · Remote',
+        role: 'Creator & Maintainer',
+        period: '2026 - Present',
+        badge: 'Open Source',
+        url: 'https://career-ops.org?utm_source=santifer.io&utm_medium=experience&utm_campaign=link-juice',
+        urlLabel: 'career-ops.org',
+        desc: 'Open-source agentic system to automate job hunting with AI.',
+        pressLabel: 'As featured in',
+        press: [
+          {
+            name: 'WIRED',
+            src: '/press-logos/wired.svg',
+            url: 'https://wired.com.gr/article/to-ai-ergaleio-pou-fernei-epanastasi-ston-tropo-pou-psachnoume-douleia/',
+            height: 22,
+            width: 110,
+          },
+          {
+            name: 'Business Insider',
+            src: '/press-logos/business-insider.svg',
+            url: 'https://www.businessinsider.com/how-i-built-tool-filter-job-listings-landed-head-ai-2026-4',
+            height: 26,
+            width: 84,
+          },
+        ],
+        caseStudyUrl: '/career-ops-system',
+        caseStudyLabel: 'Read: how I built career-ops',
       },
       santifer: {
         company: 'Santifer iRepair',
@@ -1364,7 +1424,7 @@ export const translations = {
       quoteLikes: '6.7K',
       quoteViews: '1.7M',
       quoteUrl: 'https://x.com/garrytan/status/2040891664617848993',
-      replies: '101',
+      replies: '102',
       retweets: '496',
       likes: '3.9K',
       views: '542.3K',
@@ -1374,7 +1434,7 @@ export const translations = {
     redditPosts: [
       {
         hook: 'I built an AI job search system with Claude Code that scored 740+ offers and landed me a job. Just open sourced it.',
-        upvotes: '2810',
+        upvotes: '2801',
         comments: '249',
         subreddit: 'r/ClaudeAI',
         cta: 'Read on Reddit',
@@ -1382,7 +1442,7 @@ export const translations = {
       },
       {
         hook: 'I automated my job search with AI agents — 516 evaluations, 66 applications, zero manual screening.',
-        upvotes: '572',
+        upvotes: '575',
         comments: '359',
         subreddit: 'r/SideProject',
         cta: 'Read on Reddit',
@@ -1390,7 +1450,7 @@ export const translations = {
       },
       {
         hook: 'I built a WhatsApp + voice AI agent in n8n that handles 90% of customer service. Sold the business, the buyer kept it running without me.',
-        upvotes: '332',
+        upvotes: '323',
         comments: '68',
         subreddit: 'r/n8n',
         cta: 'Read on Reddit',
