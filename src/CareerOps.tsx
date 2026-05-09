@@ -71,7 +71,7 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
     description: t.seo.description,
     image: 'https://santifer.io/career-ops/og-career-ops.webp',
     publishedTime: '2026-03-17',
-    modifiedTime: '2026-04-18',
+    modifiedTime: '2026-05-08',
     articleTags: 'multi-agent,job search,Claude Code,ATS,batch processing,HITL,automation',
     jsonLd: buildJsonLd(lang),
     xDefaultSlug: 'career-ops',
@@ -93,7 +93,7 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         subtitle={t.header.subtitle}
         date={t.header.date}
         dateISO="2026-03-17"
-        dateModifiedISO="2026-04-18"
+        dateModifiedISO="2026-05-08"
         readingTime={t.readingTime}
       />
 
@@ -117,7 +117,7 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <PressFeatures lang={lang} />
       </div>
 
-      <GitHubRepoBadge repo="santifer/career-ops" stars="43.5K" forks="9.1K" lang={lang} />
+      <GitHubRepoBadge repo="santifer/career-ops" stars="43.7K" forks="9.2K" lang={lang} />
 
       <Callout className="bg-accent/10 border-accent/40">{t.tldr}</Callout>
 

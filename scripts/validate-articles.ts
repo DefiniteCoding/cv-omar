@@ -35,6 +35,19 @@ const SOURCE_MAP: Record<string, string> = {
   'career-ops': 'src/CareerOps.tsx',
 }
 
+/** Map article id → i18n source file (relative to root). Content edits go here. */
+const I18N_MAP: Record<string, string> = {
+  'n8n-for-pms': 'src/n8n-i18n.ts',
+  'jacobo': 'src/jacobo-i18n.ts',
+  'business-os': 'src/business-os-i18n.ts',
+  'programmatic-seo': 'src/pseo-i18n.ts',
+  'santifer-irepair': 'src/santifer-irepair-i18n.ts',
+  'self-healing-chatbot': 'src/chatbot-i18n.ts',
+  'career-ops': 'src/career-ops-i18n.ts',
+}
+
+const REGISTRY_PATH = 'src/articles/registry.ts'
+
 // ---------------------------------------------------------------------------
 // Import registry (type-only reference — we read it as text too)
 // ---------------------------------------------------------------------------
@@ -160,14 +173,14 @@ function validateArticle(config: typeof articleRegistry[0]): { issues: Issue[]; 
 
   // --- Extract values ---
   const seoPublished = extractString(seoBlock, 'publishedTime')
-  const seoModified = extractString(seoBlock, 'modifiedTime')
+  let seoModified = extractString(seoBlock, 'modifiedTime')
   const seoImage = extractString(seoBlock, 'image')
   const seoXDefault = extractString(seoBlock, 'xDefaultSlug')
 
   // When using buildJsonLdFromRegistry, dates/keywords come from registry.seoMeta
   const isRegistryDriven = jsonLdBlock === 'REGISTRY_DRIVEN'
   const jsonPublished = isRegistryDriven ? config.seoMeta?.datePublished ?? null : extractString(jsonLdBlock, 'datePublished')
-  const jsonModified = isRegistryDriven ? config.seoMeta?.dateModified ?? null : extractString(jsonLdBlock, 'dateModified')
+  let jsonModified = isRegistryDriven ? config.seoMeta?.dateModified ?? null : extractString(jsonLdBlock, 'dateModified')
   const jsonKeywords = isRegistryDriven ? config.seoMeta?.keywords ?? null : extractArray(jsonLdBlock, 'keywords')
   const jsonArticleType = isRegistryDriven ? config.seoMeta?.articleType ?? null : extractString(jsonLdBlock, 'articleType')
   const aboutCount = isRegistryDriven ? config.seoMeta?.about?.length ?? 0 : countAboutEntries(jsonLdBlock)
@@ -219,55 +232,92 @@ function validateArticle(config: typeof articleRegistry[0]): { issues: Issue[]; 
     issues.push({ severity: 'warn', msg: `modifiedTime missing in useArticleSeo (${sourceRel})` })
   }
 
-  // 5. dateModified vs git log
-  const gitDate = gitLastModified(sourceRel)
+  // 5. dateModified vs git log — considers MAX(.tsx, i18n.ts) so content-only edits
+  // (changes to {slug}-i18n.ts without touching the .tsx) also bump the date.
+  // Auto-fix runs by default (no --fix flag needed) since the correct value is deterministic.
+  const i18nRel = I18N_MAP[config.id]
+  const tsxGit = gitLastModified(sourceRel)
+  const i18nGit = i18nRel ? gitLastModified(i18nRel) : null
+  const gitDate = [tsxGit, i18nGit].filter(Boolean).sort().reverse()[0] ?? null
   if (gitDate && jsonModified) {
     const gitDay = gitDate.slice(0, 10)
     const jsonDay = jsonModified.slice(0, 10)
     if (gitDay > jsonDay) {
-      issues.push({ severity: 'warn', msg: `dateModified outdated: source="${jsonDay}", git="${gitDay}" (${sourceRel})` })
-
-      if (FIX_MODE) {
-        // Auto-fix: update dateModified in buildArticleJsonLd and modifiedTime in useArticleSeo
-        let updated = source.replace(
-          new RegExp(`(dateModified:\\s*['"])${jsonModified}(['"])`),
+      // Auto-fix .tsx: dateModified (legacy buildArticleJsonLd) + modifiedTime (useArticleSeo) + dateModifiedISO (ArticleHeader prop)
+      let updated = source.replace(
+        new RegExp(`(dateModified:\\s*['"])${jsonModified}(['"])`),
+        `$1${gitDay}$2`
+      )
+      if (seoModified) {
+        updated = updated.replace(
+          new RegExp(`(modifiedTime:\\s*['"])${seoModified}(['"])`),
           `$1${gitDay}$2`
         )
-        if (seoModified) {
-          updated = updated.replace(
-            new RegExp(`(modifiedTime:\\s*['"])${seoModified}(['"])`),
-            `$1${gitDay}$2`
-          )
-        } else {
-          // Insert modifiedTime after publishedTime
-          updated = updated.replace(
-            /(publishedTime:\s*['"][^'"]+['"],?\s*\n)/,
-            `$1    modifiedTime: '${gitDay}',\n`
-          )
-        }
-        if (updated !== source) {
-          writeFileSync(sourcePath, updated, 'utf-8')
-          fixes.push(`Updated dateModified/modifiedTime to ${gitDay}`)
-          source = updated // re-read for subsequent checks
-        }
+        updated = updated.replace(
+          new RegExp(`(dateModifiedISO=["'])${seoModified}(["'])`),
+          `$1${gitDay}$2`
+        )
+      } else {
+        updated = updated.replace(
+          /(publishedTime:\s*['"][^'"]+['"],?\s*\n)/,
+          `$1    modifiedTime: '${gitDay}',\n`
+        )
+      }
+      let touched = false
+      if (updated !== source) {
+        writeFileSync(sourcePath, updated, 'utf-8')
+        source = updated
+        touched = true
+      }
+
+      // Auto-fix registry.ts when article is registry-driven (jsonModified came from registry.seoMeta)
+      if (isRegistryDriven) {
+        const registryPath = resolve(root, REGISTRY_PATH)
+        try {
+          const registrySource = readFileSync(registryPath, 'utf-8')
+          // Match the dateModified line within this article's seoMeta block.
+          // Strategy: find the article's id block, then replace the next dateModified line.
+          const idMarker = new RegExp(`id:\\s*['"]${config.id}['"]`)
+          const idMatch = registrySource.match(idMarker)
+          if (idMatch && idMatch.index !== undefined) {
+            const before = registrySource.slice(0, idMatch.index)
+            const after = registrySource.slice(idMatch.index)
+            const fixedAfter = after.replace(
+              new RegExp(`(dateModified:\\s*['"])${jsonModified}(['"])`),
+              `$1${gitDay}$2`
+            )
+            if (fixedAfter !== after) {
+              writeFileSync(registryPath, before + fixedAfter, 'utf-8')
+              touched = true
+            }
+          }
+        } catch { /* registry not found — skip */ }
+      }
+
+      if (touched) {
+        fixes.push(`Auto-bumped dateModified ${jsonDay} → ${gitDay}`)
+        // Reflect the post-fix values in local vars so subsequent checks read the new state
+        seoModified = gitDay
+        jsonModified = gitDay
+      } else {
+        // Couldn't apply fix — surface as warning so it doesn't go silent
+        issues.push({ severity: 'warn', msg: `dateModified outdated: source="${jsonDay}", git="${gitDay}" (${sourceRel}) — auto-fix could not match pattern` })
       }
     }
   }
 
-  // 6. Date consistency between seo modifiedTime and jsonLd dateModified
+  // 6. Date consistency between seo modifiedTime and jsonLd dateModified — auto-sync
   if (seoModified && jsonModified && seoModified !== jsonModified) {
-    issues.push({ severity: 'warn', msg: `modifiedTime mismatch: useArticleSeo="${seoModified}" vs buildArticleJsonLd="${jsonModified}"` })
-
-    if (FIX_MODE) {
-      // Sync jsonLd dateModified ← seo modifiedTime
-      const updated = source.replace(
-        new RegExp(`(dateModified:\\s*['"])${jsonModified}(['"])`),
-        `$1${seoModified}$2`
-      )
-      if (updated !== source) {
-        writeFileSync(sourcePath, updated, 'utf-8')
-        fixes.push(`Synced dateModified to match modifiedTime: ${seoModified}`)
-      }
+    // Sync jsonLd dateModified ← seo modifiedTime (seo block is the canonical source on the .tsx)
+    const updated = source.replace(
+      new RegExp(`(dateModified:\\s*['"])${jsonModified}(['"])`),
+      `$1${seoModified}$2`
+    )
+    if (updated !== source) {
+      writeFileSync(sourcePath, updated, 'utf-8')
+      fixes.push(`Synced jsonLd.dateModified ← modifiedTime: ${seoModified}`)
+    } else {
+      issues.push({ severity: 'warn', msg: `modifiedTime mismatch: useArticleSeo="${seoModified}" vs buildArticleJsonLd="${jsonModified}" — auto-fix could not match pattern` })
     }
   }
 
