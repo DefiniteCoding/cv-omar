@@ -109,13 +109,11 @@ export function buildArticleJsonLd(opts: JsonLdOptions) {
       alternativeHeadline: opts.alternativeHeadline,
       description: opts.description,
       author: { '@id': 'https://santifer.io/#person' },
-      ...(opts.publisher ? {
-        publisher: {
-          '@type': 'Organization',
-          name: opts.publisher.name,
-          url: opts.publisher.url,
-        },
-      } : {}),
+      // Publisher: Person-as-publisher is valid for CreativeWork on personal sites
+      // (Santiago publishes on his own domain). Override only for collabs (e.g. Marily).
+      publisher: opts.publisher
+        ? { '@type': 'Organization', name: opts.publisher.name, url: opts.publisher.url }
+        : { '@id': 'https://santifer.io/#person' },
       datePublished: opts.datePublished,
       dateModified: opts.dateModified,
       keywords: opts.keywords,
@@ -139,9 +137,10 @@ export function buildArticleJsonLd(opts: JsonLdOptions) {
     WEBSITE,
     {
       '@type': 'BreadcrumbList',
+      '@id': `${opts.url}/#breadcrumbs`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: opts.breadcrumbHome, item: 'https://santifer.io' },
-        { '@type': 'ListItem', position: 2, name: opts.breadcrumbCurrent, item: opts.url },
+        { '@type': 'ListItem', '@id': `${opts.url}/#breadcrumb-1`, position: 1, name: opts.breadcrumbHome, item: 'https://santifer.io' },
+        { '@type': 'ListItem', '@id': `${opts.url}/#breadcrumb-2`, position: 2, name: opts.breadcrumbCurrent, item: opts.url },
       ],
     },
   ]

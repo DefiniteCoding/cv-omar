@@ -224,32 +224,39 @@ const aboutPersonProfile = {
     subjectOf: [
       {
         '@type': 'NewsArticle',
+        '@id': 'https://www.businessinsider.com/how-i-built-tool-filter-job-listings-landed-head-ai-2026-4',
         headline: 'I built a tool to filter 700 listings for my job search. It got me a position as head of AI.',
         publisher: { '@type': 'NewsMediaOrganization', name: 'Business Insider', url: 'https://www.businessinsider.com' },
         author: { '@type': 'Person', name: 'Jordan Hart' },
         datePublished: '2026-04-28',
         url: 'https://www.businessinsider.com/how-i-built-tool-filter-job-listings-landed-head-ai-2026-4',
+        mainEntityOfPage: 'https://www.businessinsider.com/how-i-built-tool-filter-job-listings-landed-head-ai-2026-4',
         inLanguage: 'en',
       },
       {
         '@type': 'NewsArticle',
+        '@id': 'https://www.businessinsider.de/karriere/bewerbung/mein-ki-tool-scannt-700-job-anzeigen-so-half-es-mir-karriere-zu-machen/',
         headline: 'Mein KI-Tool scannt 700 Job-Anzeigen — so half es mir, Karriere zu machen',
         publisher: { '@type': 'NewsMediaOrganization', name: 'Business Insider Deutschland', url: 'https://www.businessinsider.de' },
         datePublished: '2026-04-28',
         url: 'https://www.businessinsider.de/karriere/bewerbung/mein-ki-tool-scannt-700-job-anzeigen-so-half-es-mir-karriere-zu-machen/',
+        mainEntityOfPage: 'https://www.businessinsider.de/karriere/bewerbung/mein-ki-tool-scannt-700-job-anzeigen-so-half-es-mir-karriere-zu-machen/',
         inLanguage: 'de',
         isBasedOn: 'https://www.businessinsider.com/how-i-built-tool-filter-job-listings-landed-head-ai-2026-4',
       },
       {
         '@type': 'NewsArticle',
+        '@id': 'https://www.diariodesevilla.es/vivirensevilla/Salir-compras-solucion-expres-telefono_0_817718799.html',
         headline: 'Salir de compras: Una solución exprés para el teléfono',
         publisher: { '@type': 'NewsMediaOrganization', name: 'Diario de Sevilla' },
         datePublished: '2014-06-19',
         url: 'https://www.diariodesevilla.es/vivirensevilla/Salir-compras-solucion-expres-telefono_0_817718799.html',
+        mainEntityOfPage: 'https://www.diariodesevilla.es/vivirensevilla/Salir-compras-solucion-expres-telefono_0_817718799.html',
         inLanguage: 'es',
       },
       {
         '@type': 'NewsArticle',
+        '@id': 'https://wired.com.gr/article/to-ai-ergaleio-pou-fernei-epanastasi-ston-tropo-pou-psachnoume-douleia/',
         headline: 'Το AI εργαλείο που φέρνει επανάσταση στον τρόπο που ψάχνουμε δουλειά',
         alternativeHeadline: 'The AI tool revolutionizing the way we search for jobs',
         publisher: { '@type': 'NewsMediaOrganization', name: 'WIRED Greece', url: 'https://wired.com.gr' },
@@ -257,6 +264,7 @@ const aboutPersonProfile = {
         datePublished: '2026-04-17',
         dateModified: '2026-04-27',
         url: 'https://wired.com.gr/article/to-ai-ergaleio-pou-fernei-epanastasi-ston-tropo-pou-psachnoume-douleia/',
+        mainEntityOfPage: 'https://wired.com.gr/article/to-ai-ergaleio-pou-fernei-epanastasi-ston-tropo-pou-psachnoume-douleia/',
         inLanguage: 'el',
       },
       {
@@ -282,14 +290,21 @@ const aboutPersonProfile = {
  * (no longer requires JS execution / useEffect).
  */
 function buildAboutJsonLd(lang: 'es' | 'en', pageUrl: string, faq: readonly { q: string; a: string }[]) {
+  // Split: ProfilePage references Person by @id (not inline) so KG crawlers
+  // dedupe cleanly against the canonical Person emitted on home and articles.
+  // The Person itself is emitted top-level in this @graph for ID resolution
+  // when /about is the canonical entity home crawled in isolation.
+  const personFull = aboutPersonProfile.mainEntity;
   const profile = {
-    ...aboutPersonProfile,
+    '@type': 'ProfilePage',
     '@id': `${pageUrl}#profilepage`,
+    dateModified: aboutPersonProfile.dateModified,
     inLanguage: lang,
+    mainEntity: { '@id': 'https://santifer.io/#person' },
   };
   return {
     '@context': 'https://schema.org',
-    '@graph': [profile, buildFaqPage(faq, pageUrl, lang)],
+    '@graph': [profile, personFull, buildFaqPage(faq, pageUrl, lang)],
   };
 }
 
