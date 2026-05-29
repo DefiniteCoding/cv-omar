@@ -9,7 +9,7 @@ import { getAltPaths, getPageTitles, getSectionLabels, getEsSlugs } from './arti
  *
  * The translucent bar is a "contextual message container" that appears
  * when there's something to communicate:
- * - Inner pages: permanent "← santifer.io" back link
+ * - Inner pages: permanent "← omarmostafa.org" back link
  * - Any page: temporary language suggestion when browser lang ≠ page lang
  *
  * Language suggestion is right-aligned, next to the lang pill, reinforcing
@@ -149,7 +149,7 @@ function useLanguageBanner(lang: Lang) {
     if (typeof navigator === 'undefined') return
     if (stored) return // already 'shown' or 'dismissed'
 
-    const browserPrefersEn = !navigator.language.toLowerCase().startsWith('es')
+    const browserPrefersEn = !navigator.language.toLowerCase().startsWith('ar')
     const mismatch = (lang === 'es' && browserPrefersEn) || (lang === 'en' && !browserPrefersEn)
     if (!mismatch) return
 
@@ -163,7 +163,7 @@ function useLanguageBanner(lang: Lang) {
   // Auto-dismiss if user switches language via toggle
   useEffect(() => {
     if (!visible) return
-    const browserPrefersEn = !navigator.language.toLowerCase().startsWith('es')
+    const browserPrefersEn = !navigator.language.toLowerCase().startsWith('ar')
     const mismatch = (lang === 'es' && browserPrefersEn) || (lang === 'en' && !browserPrefersEn)
     if (!mismatch) {
       sessionStorage.setItem(BANNER_DISMISSED_KEY, 'dismissed')
@@ -179,15 +179,15 @@ function useLanguageBanner(lang: Lang) {
   return { showBanner: visible, dismiss, animateBanner: visible && isFirstAppearance.current }
 }
 
-/** Circular flag icons — Spain (red-yellow-red) and UK (Union Jack simplified) */
-function FlagES({ className = "w-4 h-4" }: { className?: string }) {
+/** Circular flag icons — Egypt (red-white-black) and UK (Union Jack simplified) */
+function FlagAR({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 16 16" aria-hidden="true">
-      <clipPath id="flagCircleES"><circle cx="8" cy="8" r="8" /></clipPath>
-      <g clipPath="url(#flagCircleES)">
-        <rect y="0" width="16" height="4" fill="#c60b1e" />
-        <rect y="4" width="16" height="8" fill="#ffc400" />
-        <rect y="12" width="16" height="4" fill="#c60b1e" />
+      <clipPath id="flagCircleAR"><circle cx="8" cy="8" r="8" /></clipPath>
+      <g clipPath="url(#flagCircleAR)">
+        <rect y="0" width="16" height="5.33" fill="#CE1126" />
+        <rect y="5.33" width="16" height="5.34" fill="#FFFFFF" />
+        <rect y="10.67" width="16" height="5.33" fill="#000000" />
       </g>
     </svg>
   )
@@ -218,7 +218,7 @@ function NavControls({ altPath, altLabel, lang, isDark, toggleTheme }: {
         to={altPath}
         className="inline-flex items-center justify-center gap-1.5 w-[4.5rem] h-10 rounded-full bg-card border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
       >
-        {lang === 'es' ? <FlagES className="w-3.5 h-3.5" /> : <FlagEN className="w-3.5 h-3.5" />}
+        {lang === 'es' ? <FlagAR className="w-3.5 h-3.5" /> : <FlagEN className="w-3.5 h-3.5" />}
         {altLabel}
       </Link>
       <button
@@ -240,7 +240,7 @@ export default function GlobalNav() {
   const activeSection = useActiveSection(pathname, !isHome)
 
   const altPath = ALT_PATH[pathname] || (lang === 'es' ? '/en' : '/')
-  const altLabel = lang === 'es' ? 'ES' : 'EN'
+  const altLabel = lang === 'es' ? 'AR' : 'EN'
 
   const t = translations[lang]
   const hasBar = !isHome
@@ -282,7 +282,7 @@ export default function GlobalNav() {
         onClick={switchLang}
         className="inline-flex items-center gap-1 font-medium text-primary hover:text-primary/80 transition-colors"
       >
-        {t.ui.languageBannerSwitchPrefix}{lang === 'es' ? <FlagEN className="w-3.5 h-3.5 mx-0.5" /> : <FlagES className="w-3.5 h-3.5 mx-0.5" />}{t.ui.languageBannerSwitchLang}
+        {t.ui.languageBannerSwitchPrefix}{lang === 'es' ? <FlagEN className="w-3.5 h-3.5 mx-0.5" /> : <FlagAR className="w-3.5 h-3.5 mx-0.5" />}{t.ui.languageBannerSwitchLang}
       </button>
       <button
         onClick={dismiss}
@@ -316,7 +316,7 @@ export default function GlobalNav() {
                   className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors shrink-0"
                 >
                   <House className="w-4 h-4" />
-                  <span className="hidden sm:inline">santifer.io</span>
+                  <span className="hidden sm:inline">omarmostafa.org</span>
                 </Link>
                 {pageTitle && (
                   <>

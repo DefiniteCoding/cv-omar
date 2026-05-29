@@ -1,24 +1,24 @@
 export const seo = {
   es: {
     title:
-      'santifer | Applied AI Operator · Builder of Career-Ops',
+      'Omar Mostafa Mohaseb | Product Manager - Banking as a Service & Embedded Finance',
     description:
-      'Multi-agent systems builder. Applied AI Operator con 2 case studies en producción. Creador de Career-Ops (47.3K+ ⭐). 16 años llevando IA a producción.',
+      'Product Manager con 8+ años en finanzas embebidas, BaaS, programas de tarjetas e infraestructura financiera. Productos lanzados en NymCard, Compound y Tamara.',
   },
   en: {
     title:
-      'santifer | Applied AI Operator · Builder of Career-Ops',
+      'Omar Mostafa Mohaseb | Product Manager - Banking as a Service & Embedded Finance',
     description:
-      'Multi-agent systems builder. Applied AI Operator with 2 production case studies live. Creator of Career-Ops (47.3K+ ⭐). 16 years shipping AI at scale.',
+      'Product Manager with 8+ years across embedded finance, BaaS, card programs, and financial infrastructure. Shipped platforms at NymCard, Compound, and Tamara.',
   },
 };
 
 export const translations = {
   es: {
-    greeting: 'que lleva IA a producción',
-    greetingRoles: ['Multi-Agent Systems Builder', 'Applied AI Operator', 'Open Source Builder', 'Creador de career-ops'],
-    pillLabels: ['Builder', 'Applied AI Operator'],
-    email: 'hola@santifer.io',
+    greeting: 'que lidera productos BaaS y Finanzas Embebidas',
+    greetingRoles: ['Fintech Product Manager', 'BaaS Specialist', 'Embedded Finance Expert', 'AI-Assisted Builder'],
+    pillLabels: ['BaaS', 'Product Manager', 'Fintech'],
+    email: 'omarmostafapm@gmail.com',
     role: '',
     story: {
       context: '+15 años construyendo+ todo desde cero.',
@@ -53,18 +53,18 @@ export const translations = {
       skipButton: 'Saltar intro',
     },
     taglines: [] as readonly string[],
-    location: 'Sevilla, ES · EU / USA remoto',
+    location: 'Dubai, UAE',
     roles: [
-      'AI Product Manager',
-      'Solutions Architect (No / Low-Code & AI)',
-      'AI Forward Deployed Engineer',
+      'Product Manager - Banking as a Service',
+      'Fintech Product Manager',
+      'Embedded Finance Lead',
     ],
     summary: {
       title: 'Resumen Profesional',
-      p1: 'Fundador y constructor de productos enfocado en',
-      p1Highlight: 'automatización impulsada por IA',
+      p1: 'Product Manager con más de 8 años de experiencia en',
+      p1Highlight: 'BaaS, finanzas embebidas e infraestructura de pagos',
       p1End:
-        'y plataformas no / low-code. Tras escalar y vender mi negocio (venta en funcionamiento, 2025), me enfoco en roles donde el impacto se multiplica: convertir objetivos difusos en productos y workflows seguros, medibles y listos para producción.',
+        'liderando el diseño y lanzamiento de productos orientados a desarrolladores y comercios en Oriente Medio. Con una sólida trayectoria en el ecosistema fintech, me enfoco en simplificar procesos de pagos y card issuing.',
       p2: 'Propiedad end-to-end a través de',
       p2Highlight: 'descubrimiento → priorización → entrega → adopción',
       p2End: ', colaborando estrechamente con stakeholders e ingeniería.',
@@ -871,10 +871,10 @@ export const translations = {
     },
   },
   en: {
-    greeting: 'who ships AI at scale',
-    greetingRoles: ['Multi-Agent Systems Builder', 'Applied AI Operator', 'Open Source Builder', 'career-ops Creator'],
-    pillLabels: ['Builder', 'Applied AI Operator'],
-    email: 'hi@santifer.io',
+    greeting: 'who builds BaaS and Embedded Finance solutions',
+    greetingRoles: ['BaaS Product Manager', 'Fintech Specialist', 'Embedded Finance Lead', 'AI-Assisted Prototyper'],
+    pillLabels: ['BaaS', 'Product Manager', 'Fintech'],
+    email: 'omarmostafapm@gmail.com',
     role: '',
     story: {
       context: '+15 years building+ everything from scratch.',
@@ -909,18 +909,18 @@ export const translations = {
       skipButton: 'Skip intro',
     },
     taglines: [] as readonly string[],
-    location: 'Seville, ES · EU / USA remote',
+    location: 'Dubai, UAE',
     roles: [
-      'AI Product Manager',
-      'Solutions Architect (No / Low-Code & AI)',
-      'AI Forward Deployed Engineer',
+      'Product Manager - Banking as a Service',
+      'Fintech Product Manager',
+      'Embedded Finance Lead',
     ],
     summary: {
       title: 'Professional Summary',
-      p1: 'Founder and product builder focused on',
-      p1Highlight: 'AI-powered automation',
+      p1: 'Product Manager with 8+ years of experience across',
+      p1Highlight: 'BaaS, embedded finance, and payment infrastructure',
       p1End:
-        'and no / low-code platforms. After scaling and selling my business (going-concern sale, 2025), I focus on roles where impact compounds: turning ambiguous business goals into secure, measurable, enterprise-ready products and workflows.',
+        'leading the design and launch of developer-facing and merchant-facing products in the Middle East. With a strong track record in the fintech ecosystem, I specialize in simplifying card programs, money movement, and compliance-grade onboarding.',
       p2: 'End-to-end ownership across',
       p2Highlight: 'discovery → prioritization → delivery → adoption',
       p2End: ', collaborating closely with stakeholders and engineering.',

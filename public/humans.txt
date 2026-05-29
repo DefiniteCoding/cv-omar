@@ -1,11 +1,11 @@
 /* TEAM */
-Builder: Santiago Fernandez de Valderrama Aparicio
-Role: Head of Applied AI · AI Product Manager · Solutions Architect
-Contact: hi@santifer.io
-Site: https://santifer.io
-Location: Seville, Spain
-LinkedIn: https://linkedin.com/in/santifer
-GitHub: https://github.com/santifer
+Builder: Omar Mostafa Mohaseb
+Role: Product Manager - Banking as a Service & Embedded Finance
+Contact: omarmostafapm@gmail.com
+Site: https://omarmostafa.org
+Location: Dubai, UAE
+LinkedIn: https://linkedin.com/in/omar-mostafa-mohaseb
+GitHub: https://github.com/omarmostafa
 
 /* THANKS */
 AI Pair: Claude Code (Anthropic)
