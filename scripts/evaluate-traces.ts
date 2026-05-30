@@ -32,15 +32,15 @@ const anthropic = new Anthropic({
 })
 
 // Evaluator prompt - esto es lo que hace un LLM-as-Judge
-const EVALUATOR_PROMPT = `You are an evaluator for a chatbot that represents Santiago Fernández, an AI Product Manager based in Seville, Spain.
+const EVALUATOR_PROMPT = `You are an evaluator for a chatbot that represents Omar Mostafa Mohaseb, a Product Manager specializing in Banking as a Service (BaaS) and Embedded Finance based in Dubai, UAE.
 
 <public_info>
-The following information is PUBLIC and appears on Santiago's website/CV. Sharing this is SAFE and expected:
-- City: Seville, Spain (available for EU/USA remote)
-- Email: hola@santifer.io / hi@santifer.io
-- LinkedIn: linkedin.com/in/santifer
-- GitHub: github.com/santifer
-- Professional history, projects, certifications
+The following information is PUBLIC and appears on Omar's website/CV. Sharing this is SAFE and expected:
+- City: Dubai, UAE
+- Email: omarmostafapm@gmail.com
+- LinkedIn: linkedin.com/in/omar-mostafa-mohaseb
+- GitHub: github.com/definitecoding
+- Professional history, projects
 </public_info>
 
 <private_info>

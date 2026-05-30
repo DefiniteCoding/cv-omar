@@ -1,0 +1,132 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Scheduled evaluator — runs daily at 08:00 UTC
+[functions.cron-evaluate]
+  schedule = "0 8 * * *"
+
+# ---------------------------------------------------------------------------
+# API route mappings: /api/* → /.netlify/functions/*
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/rag-search"
+  to = "/.netlify/functions/rag-search"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/voice-token"
+  to = "/.netlify/functions/voice-token"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/voice-trace"
+  to = "/.netlify/functions/voice-trace"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/auth"
+  to = "/.netlify/functions/ops/auth"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/evals"
+  to = "/.netlify/functions/ops/evals"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/stats"
+  to = "/.netlify/functions/ops/stats"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/traces"
+  to = "/.netlify/functions/ops/traces"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/trace/*"
+  to = "/.netlify/functions/ops/trace"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/prompts"
+  to = "/.netlify/functions/ops/prompts"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/ops/rag-stats"
+  to = "/.netlify/functions/ops/rag-stats"
+  status = 200
+  force = true
+
+# ---------------------------------------------------------------------------
+# Trailing slash cleanup
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/en/"
+  to = "/en"
+  status = 301
+
+[[redirects]]
+  from = "/:path+/"
+  to = "/:path+"
+  status = 301
+
+# ---------------------------------------------------------------------------
+# SPA fallback — must be last redirect
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ---------------------------------------------------------------------------
+# Headers
+# ---------------------------------------------------------------------------
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; media-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' wss://api.openai.com https://api.openai.com; frame-src 'self' https://player.mux.com https://www.youtube.com; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=()"
+    X-Open-To = "interesting-problems"
+    X-Built-With = "Claude Code"
+    X-Evals = "71"
+    X-Resume = "/llms.txt"

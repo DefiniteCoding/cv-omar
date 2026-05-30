@@ -4,7 +4,7 @@ export const pseoContent = {
     altSlug: 'programmatic-seo',
     readingTime: '37 min de lectura',
     seo: {
-      title: 'SEO Programático: 4.000+ Páginas desde un ERP | santifer.io',
+      title: 'SEO Programático: 4.000+ Páginas desde un ERP | omarmostafa.org',
       description: 'Case study: cómo generé 4.730 landing pages estáticas con Airtable, DataForSEO y crawl budget optimization. 2M+ impresiones, 19K+ clicks.',
     },
     nav: {
@@ -1026,7 +1026,7 @@ return records.map(r => ({
     altSlug: 'seo-programatico',
     readingTime: '37 min read',
     seo: {
-      title: 'Programmatic SEO: 4,000+ Pages from an ERP | santifer.io',
+      title: 'Programmatic SEO: 4,000+ Pages from an ERP | omarmostafa.org',
       description: 'Case study: 4,730 static landing pages from Airtable as headless CMS with DataForSEO crawl budget optimization and Astro SSG. 2M+ impressions, 19K+ clicks.',
     },
     nav: {

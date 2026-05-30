@@ -4,7 +4,7 @@ export const jacoboContent = {
       altSlug: 'ai-agent-jacobo',
       readingTime: '35 min de lectura',
       seo: {
-        title: 'Jacobo: Agente IA Multi-Agente con Tool Calling y Voice AI · Case Study de Producción | santifer.io',
+        title: 'Jacobo: Agente IA Multi-Agente con Tool Calling y Voice AI · Case Study de Producción | omarmostafa.org',
         description: 'Case study: cómo un FDE construyó un agente IA omnicanal con sub-agentes, tool calling, HITL y Voice AI (n8n + ElevenLabs) que logra 90% de autoservicio. Workflows descargables.',
       },
       nav: {
@@ -1536,7 +1536,7 @@ Presupuesto reparándolo todo junto: \${totalConDescuento.toFixed(2)} €\`;`,
       altSlug: 'agente-ia-jacobo',
       readingTime: '35 min read',
       seo: {
-        title: 'Jacobo: Multi-Agent AI with Tool Calling & Voice AI — Production Case Study | santifer.io',
+        title: 'Jacobo: Multi-Agent AI with Tool Calling & Voice AI — Production Case Study | omarmostafa.org',
         description: 'Case study: how an FDE built an omnichannel AI agent with sub-agents, tool calling, HITL, and Voice AI (n8n + ElevenLabs) achieving 90% self-service. Downloadable workflows.',
       },
       nav: {

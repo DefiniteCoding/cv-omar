@@ -257,7 +257,7 @@ export const careerOpsContent = {
         heading: 'Tu turno',
         body: 'Career-Ops es open source bajo MIT. Clónalo, adáptalo, haz lo que necesites — es tuyo.',
         ctaLabel: 'Prueba career-ops',
-        ctaHref: 'https://career-ops.org?utm_source=santifer.io&utm_medium=case-study&utm_campaign=career-ops-deep-dive',
+        ctaHref: 'https://career-ops.org?utm_source=omarmostafa.org&utm_medium=case-study&utm_campaign=career-ops-deep-dive',
         ctaSecondaryLabel: 'Ver el código en GitHub',
         ctaSecondaryHref: 'https://github.com/santifer/career-ops',
         communityHeading: '¿Dudas? Pregunta a la comunidad',
@@ -279,7 +279,7 @@ export const careerOpsContent = {
         },
         {
           q: '¿Cuánto cuesta ejecutar esto?',
-          a: 'Cero coste marginal por evaluación. Career-Ops corre sobre mi plan Claude Max 20x ($200/mes), que uso para todo: portfolio santifer.io, chatbot LLMOps, artículos del blog, Life OS y Career-Ops. 631 evaluaciones de ofertas + 354 PDFs ATS-optimized generados sin un solo invoice extra. Con Claude Pro ($20/mes) también funciona para volumen menor — el límite real es la ventana de uso del plan, no el coste por llamada.',
+          a: 'Cero coste marginal por evaluación. Career-Ops corre sobre mi plan Claude Max 20x ($200/mes), que uso para todo: portfolio omarmostafa.org, chatbot LLMOps, artículos del blog, Life OS y Career-Ops. 631 evaluaciones de ofertas + 354 PDFs ATS-optimized generados sin un solo invoice extra. Con Claude Pro ($20/mes) también funciona para volumen menor — el límite real es la ventana de uso del plan, no el coste por llamada.',
         },
         {
           q: '¿El modo apply rellena formularios automáticamente?',
@@ -307,7 +307,7 @@ export const careerOpsContent = {
         },
         {
           q: '¿Quién creó Career-Ops?',
-          a: 'Lo creé yo, Santiago Fernández de Valderrama (santifer). Lo construí para mi propia búsqueda de empleo en IA — después de 16 años fundando y vendiendo un negocio de reparación de móviles. El sistema evaluó 631 ofertas y me ayudó a conseguir mi rol actual como Head of Applied AI. Cuando dejé de necesitarlo, lo publiqué como open source. En una semana llegó a 47.3K+ estrellas en GitHub. La comunidad en Discord ya supera las 3.200 personas: discord.gg/8pRpHETxa4',
+          a: 'Lo creé yo, Omar Mostafa Mohaseb (santifer). Lo construí para mi propia búsqueda de empleo en IA — después de 16 años fundando y vendiendo un negocio de reparación de móviles. El sistema evaluó 631 ofertas y me ayudó a conseguir mi rol actual como Head of Applied AI. Cuando dejé de necesitarlo, lo publiqué como open source. En una semana llegó a 47.3K+ estrellas en GitHub. La comunidad en Discord ya supera las 3.200 personas: discord.gg/8pRpHETxa4',
         },
       ],
     },
@@ -568,7 +568,7 @@ export const careerOpsContent = {
         heading: 'Your turn',
         body: 'Career-Ops is open source under MIT. Clone it, fork it, adapt it — it is yours.',
         ctaLabel: 'Try career-ops',
-        ctaHref: 'https://career-ops.org?utm_source=santifer.io&utm_medium=case-study&utm_campaign=career-ops-deep-dive',
+        ctaHref: 'https://career-ops.org?utm_source=omarmostafa.org&utm_medium=case-study&utm_campaign=career-ops-deep-dive',
         ctaSecondaryLabel: 'View source on GitHub',
         ctaSecondaryHref: 'https://github.com/santifer/career-ops',
         communityHeading: 'Got questions? Ask the community',
@@ -590,7 +590,7 @@ export const careerOpsContent = {
         },
         {
           q: 'What does it cost to run?',
-          a: 'Zero marginal cost per evaluation. Career-Ops runs on my Claude Max 20x plan ($200/mo), which I use for everything: portfolio santifer.io, LLMOps chatbot, blog articles, Life OS, and Career-Ops. 631 listing evaluations + 354 ATS-optimized PDFs generated without a single extra invoice. With Claude Pro ($20/mo) it also works for lower volume — the real limit is the plan usage window, not per-call cost.',
+          a: 'Zero marginal cost per evaluation. Career-Ops runs on my Claude Max 20x plan ($200/mo), which I use for everything: portfolio omarmostafa.org, LLMOps chatbot, blog articles, Life OS, and Career-Ops. 631 listing evaluations + 354 ATS-optimized PDFs generated without a single extra invoice. With Claude Pro ($20/mo) it also works for lower volume — the real limit is the plan usage window, not per-call cost.',
         },
         {
           q: 'Does the apply mode fill forms automatically?',
@@ -618,7 +618,7 @@ export const careerOpsContent = {
         },
         {
           q: 'Who created Career-Ops?',
-          a: 'I did — Santiago Fernández de Valderrama (santifer). I built it for my own AI job search after spending 16 years founding and selling a phone repair business. The system evaluated 631 offers and helped me land my current role as Head of Applied AI. When I no longer needed it, I published it as open source. In one week it reached 47.3K+ GitHub stars. The Discord community is now 3,200+ people: discord.gg/8pRpHETxa4',
+          a: 'I did — Omar Mostafa Mohaseb (santifer). I built it for my own AI job search after spending 16 years founding and selling a phone repair business. The system evaluated 631 offers and helped me land my current role as Head of Applied AI. When I no longer needed it, I published it as open source. In one week it reached 47.3K+ GitHub stars. The Discord community is now 3,200+ people: discord.gg/8pRpHETxa4',
         },
       ],
     },

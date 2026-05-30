@@ -7,7 +7,7 @@ import { aboutContent, type AboutLang } from './about-i18n'
 // Used here for cross-domain entity ownership signals (parsed by Mastodon, Bluesky, KG crawlers).
 const SOCIAL_LINKS: { name: string; url: string; rel?: string }[] = [
   { name: 'Career-Ops', url: 'https://career-ops.org', rel: 'me noopener noreferrer' },
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/santifer', rel: 'me noopener noreferrer' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/omar-mostafa-mohaseb', rel: 'me noopener noreferrer' },
   { name: 'GitHub', url: 'https://github.com/santifer', rel: 'me noopener noreferrer' },
   { name: 'YouTube', url: 'https://www.youtube.com/@santifer_io', rel: 'me noopener noreferrer' },
   { name: 'X / Twitter', url: 'https://x.com/santifer', rel: 'me noopener noreferrer' },
@@ -33,12 +33,12 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement
     if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical) }
-    canonical.href = `https://santifer.io/${t.slug}`
+    canonical.href = `https://omarmostafa.org/${t.slug}`
 
     const hreflangs = [
-      { lang: 'es', href: 'https://santifer.io/sobre-mi' },
-      { lang: 'en', href: 'https://santifer.io/about' },
-      { lang: 'x-default', href: 'https://santifer.io/sobre-mi' },
+      { lang: 'es', href: 'https://omarmostafa.org/sobre-mi' },
+      { lang: 'en', href: 'https://omarmostafa.org/about' },
+      { lang: 'x-default', href: 'https://omarmostafa.org/sobre-mi' },
     ]
     document.querySelectorAll('link[hreflang]').forEach(el => el.remove())
     for (const hl of hreflangs) {
@@ -69,7 +69,7 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
             src="/foto-avatar-sm.webp"
             srcSet="/foto-avatar-sm.webp 192w, /foto-avatar.webp 384w"
             sizes="96px"
-            alt="Santiago Fernández de Valderrama"
+            alt="Omar Mostafa Mohaseb"
             className="w-24 h-24 rounded-full border-2 border-border shadow-lg"
             width={96}
             height={96}
@@ -93,7 +93,7 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
         </header>
 
         {/* Manifesto */}
-        <blockquote cite="https://santifer.io/career-ops" className="mb-10 border-l-4 border-primary pl-6 pr-4 py-3 text-xl md:text-2xl italic font-display leading-snug text-foreground/90">
+        <blockquote cite="https://omarmostafa.org/career-ops" className="mb-10 border-l-4 border-primary pl-6 pr-4 py-3 text-xl md:text-2xl italic font-display leading-snug text-foreground/90">
           {t.manifesto}
         </blockquote>
 
@@ -303,7 +303,7 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
         {/* Footer */}
         <footer className="mt-8 text-center">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Santiago Fernández de Valderrama. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
+            &copy; {new Date().getFullYear()} Omar Mostafa Mohaseb. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
           </p>
         </footer>
       </main>

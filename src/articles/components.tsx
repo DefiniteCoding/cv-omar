@@ -102,7 +102,7 @@ export function ArticleHeader({
   dateISO,
   dateModifiedISO,
   readingTime,
-  authorName = 'Santiago Fernández de Valderrama',
+  authorName = 'Omar Mostafa Mohaseb',
   authorUrl,
   authorBio,
   avatarSrc = '/foto-avatar-sm.webp',
@@ -195,13 +195,13 @@ export function ArticleFooter({ lang, utmCampaign }: ArticleFooterProps) {
       <div className="flex items-start gap-3 mb-6">
         <img
           src="/foto-avatar-sm.webp"
-          alt="Santiago Fernández de Valderrama"
+          alt="Omar Mostafa Mohaseb"
           className="w-12 h-12 rounded-full shrink-0"
           width={48}
           height={48}
         />
         <div>
-          <p className="font-medium text-foreground">Santiago Fernández de Valderrama</p>
+          <p className="font-medium text-foreground">Omar Mostafa Mohaseb</p>
           <p className="text-sm text-muted-foreground">
             {f.role}
             {' · '}{f.fellowAt}{' '}
@@ -224,7 +224,7 @@ export function ArticleFooter({ lang, utmCampaign }: ArticleFooterProps) {
         {lang === 'es' ? 'Más sobre el autor →' : 'More about the author →'}
       </Link>
       <div className="flex gap-3 mb-8">
-        <a href="https://linkedin.com/in/santifer" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0A66C2]/10 border border-[#0A66C2]/20 text-sm font-medium text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors">
+        <a href="https://linkedin.com/in/omar-mostafa-mohaseb" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0A66C2]/10 border border-[#0A66C2]/20 text-sm font-medium text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors">
           <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
@@ -234,7 +234,7 @@ export function ArticleFooter({ lang, utmCampaign }: ArticleFooterProps) {
         </a>
       </div>
       <div className="flex items-center gap-3 text-xs text-muted-foreground">
-        <span>&copy; {new Date().getFullYear()} Santiago Fernández de Valderrama. {f.copyright}</span>
+        <span>&copy; {new Date().getFullYear()} Omar Mostafa Mohaseb. {f.copyright}</span>
         <span className="text-border">|</span>
         <Link to={lang === 'es' ? '/privacidad' : '/privacy'} className="hover:text-primary transition-colors">
           {lang === 'es' ? 'Privacidad' : 'Privacy'}

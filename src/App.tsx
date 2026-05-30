@@ -1479,7 +1479,7 @@ function App() {
                 {/* Inner border */}
                 <div className="absolute inset-2 rounded-full bg-gradient-theme-50 p-[2px]">
                   <div className="w-full h-full rounded-full overflow-hidden">
-                    <img src="/foto-avatar-sm.webp" srcSet="/foto-avatar-sm.webp 192w, /foto-avatar.webp 384w" sizes="(max-width: 768px) 160px, 192px" alt="Santiago Fernández de Valderrama" className="w-full h-full object-cover" width={192} height={192} fetchPriority="high" />
+                    <img src="/foto-avatar-sm.webp" srcSet="/foto-avatar-sm.webp 192w, /foto-avatar.webp 384w" sizes="(max-width: 768px) 160px, 192px" alt="Omar Mostafa Mohaseb" className="w-full h-full object-cover" width={192} height={192} fetchPriority="high" />
                   </div>
                 </div>
               </div>
@@ -1961,7 +1961,7 @@ function App() {
               <p className="text-muted-foreground">{t.experience.lico.desc}</p>
 
               {/* Testimonial */}
-              <a href="https://www.linkedin.com/in/santifer/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
+              <a href="https://www.linkedin.com/in/omar-mostafa-mohaseb/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
                 <blockquote className="mt-6 p-4 rounded-xl bg-accent/5 border border-accent/10 group-hover:border-[hsl(var(--linkedin)/0.3)] transition-colors">
                   <p className="text-sm text-muted-foreground italic mb-4">
                     "{t.experience.lico.testimonial.quote}"
@@ -2013,7 +2013,7 @@ function App() {
             </div>
 
             {/* Testimonial */}
-            <a href="https://www.linkedin.com/in/santifer/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
+            <a href="https://www.linkedin.com/in/omar-mostafa-mohaseb/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
               <blockquote className="mt-6 p-4 rounded-xl bg-primary/5 border border-primary/10 group-hover:border-[hsl(var(--linkedin)/0.3)] transition-colors">
                 <p className="text-sm text-muted-foreground italic mb-4">
                   "{t.experience.everis.testimonial.quote}"
@@ -2167,9 +2167,9 @@ function App() {
             const contentDigest = allProjects.find(p => p.title === 'Content Digest')!
             const lifeOS = allProjects.find(p => p.title === 'Life OS')!
             const careerOps = allProjects.find(p => p.title === 'Career Ops')!
-            const santiferIo = allProjects.find(p => p.title === 'santifer.io')!
+            const santiferIo = allProjects.find(p => p.title === 'omarmostafa.org')!
             const selfHealingChatbot = allProjects.find(p => p.title === 'Self-Healing Chatbot')!
-            // Tools que dependen de santifer.io
+            // Tools que dependen de omarmostafa.org
             const claudeEye = allProjects.find(p => p.title === 'Claude Eye')!
             const claudeable = allProjects.find(p => p.title === 'Claudeable')!
             // Fila 4: Claude Pulse + ProjectOS Predict
@@ -2248,10 +2248,10 @@ function App() {
                   // Desktop: grafo complejo
                   // Fila 1: Life OS ↔ Career Ops (horizontal)
                   { from: cardRefs.lifeOS, fromEdge: 'right', to: cardRefs.careerOps, toEdge: 'left' },
-                  // Fila 1 → Fila 2: diagonales hacia santifer.io + chatbot
+                  // Fila 1 → Fila 2: diagonales hacia omarmostafa.org + chatbot
                   { from: cardRefs.lifeOS, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
                   { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
-                  // Fila 2: santifer.io ↔ chatbot (horizontal)
+                  // Fila 2: omarmostafa.org ↔ chatbot (horizontal)
                   { from: cardRefs.santiferIo, fromEdge: 'right', to: cardRefs.selfHealingChatbot, toEdge: 'left' },
                   // Fila 2 → Fila 3: hacia tools
                   { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.claudeEye, toEdge: 'top' },
@@ -2446,7 +2446,7 @@ function App() {
                   </AnimatedSection>
                 </div>
 
-                {/* Fila 2: santifer.io + Self-Healing Chatbot (highlight) */}
+                {/* Fila 2: omarmostafa.org + Self-Healing Chatbot (highlight) */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
                   <AnimatedSection delay={0.2}>
                     <ProjectCard project={santiferIo} variant="highlight" cardRef={cardRefs.santiferIo} />
@@ -2880,7 +2880,7 @@ function App() {
                       </div>
                       {/* Testimonial if exists */}
                       {'testimonial' in item && item.testimonial && (
-                        <a href="https://www.linkedin.com/in/santifer/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
+                        <a href="https://www.linkedin.com/in/omar-mostafa-mohaseb/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
                           <blockquote className="mt-4 p-4 rounded-xl bg-primary/5 border border-primary/10 group-hover:border-[hsl(var(--linkedin)/0.3)] transition-colors">
                             <p className="text-sm text-muted-foreground italic mb-4">
                               "{item.testimonial.quote}"
@@ -3041,7 +3041,7 @@ function App() {
                 {t.cta.contact}
               </a>
               <a
-                href="https://linkedin.com/in/santifer/"
+                href="https://linkedin.com/in/omar-mostafa-mohaseb/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:border-primary/50 transition-colors duration-200 hover:bg-primary/5"
@@ -3053,7 +3053,7 @@ function App() {
             </div>
           </AnimatedSection>
           <p className="mt-12 text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Santiago Fernández de Valderrama
+            &copy; {new Date().getFullYear()} Omar Mostafa Mohaseb
             <span className="mx-2 text-border">|</span>
             <Link to={lang === 'es' ? '/privacidad' : '/privacy'} className="hover:text-primary transition-colors">
               {lang === 'es' ? 'Privacidad' : 'Privacy'}

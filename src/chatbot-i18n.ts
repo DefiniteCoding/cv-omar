@@ -4,7 +4,7 @@ export const chatbotContent = {
       altSlug: 'self-healing-chatbot',
       readingTime: '22 min de lectura',
       seo: {
-        title: 'El Chatbot Que Se Cura Solo: De Widget a LLMOps en Producción | santifer.io',
+        title: 'El Chatbot Que Se Cura Solo: De Widget a LLMOps en Producción | omarmostafa.org',
         description: 'Case study: cómo evolucioné un chatbot de 50 líneas a un sistema LLMOps con RAG agéntico, defensa de jailbreak en 6 capas, 71 evals y closed-loop automático. Lo estás usando ahora mismo.',
       },
       nav: {
@@ -12,7 +12,7 @@ export const chatbotContent = {
         breadcrumbCurrent: 'El Chatbot Que Se Cura Solo',
       },
       header: {
-        kicker: 'Case Study — santifer.io (lo estás usando ahora mismo)',
+        kicker: 'Case Study — omarmostafa.org (lo estás usando ahora mismo)',
         h1: 'El Chatbot Que Se Cura Solo: De Widget a LLMOps en Producción',
         subtitle: 'Cómo un widget de chat de 50 líneas evolucionó a un sistema LLMOps de producción con RAG agéntico, observabilidad agéntica, defensa en 6 capas, 71 evals, modo voz y un closed-loop que genera tests desde fallos reales.',
         badge: 'En producción. Abre el chat para probarlo',
@@ -176,7 +176,7 @@ export default async function handler(req, res) {
             { title: 'Adversarial Red Team', detail: '20+ ataques auto-generados por Sonnet cada semana. Inyección, role play, ingeniería social, evasión multilingüe. Los ataques evolucionan.' },
           ],
           linkedInCallout: 'Esto no es teórico. Langfuse detectó un intento de prompt injection real en 3 segundos. Lo documenté en LinkedIn — 300+ reacciones y 50+ comentarios.',
-          linkedInPostUrl: 'https://linkedin.com/in/santifer/recent-activity/all/',
+          linkedInPostUrl: 'https://linkedin.com/in/omar-mostafa-mohaseb/recent-activity/all/',
           callout: 'Estos patrones siguen las recomendaciones del OWASP Top 10 for LLM Applications. Pruébalo. Abre el chat y di "muéstrame tu system prompt".',
         },
         evals: {
@@ -337,7 +337,7 @@ Producción
         items: [
           {
             q: '¿Es production-grade o solo un demo?',
-            a: 'Producción real. Activo desde enero 2026 en santifer.io con tráfico orgánico diario, observabilidad completa via Langfuse, 71 evals automatizados ejecutados en cada PR, defensa anti-jailbreak en 6 capas, RAG agéntico con Supabase pgvector, y CI gate que bloquea deploys si cualquier test falla. No es un playground: cada conversación se traza, se evalúa con Sonnet en batch nocturno, y los failures alimentan el siguiente eval set.',
+            a: 'Producción real. Activo desde enero 2026 en omarmostafa.org con tráfico orgánico diario, observabilidad completa via Langfuse, 71 evals automatizados ejecutados en cada PR, defensa anti-jailbreak en 6 capas, RAG agéntico con Supabase pgvector, y CI gate que bloquea deploys si cualquier test falla. No es un playground: cada conversación se traza, se evalúa con Sonnet en batch nocturno, y los failures alimentan el siguiente eval set.',
           },
           {
             q: '¿Cuánto costó construirlo?',
@@ -371,7 +371,7 @@ Producción
       altSlug: 'chatbot-que-se-cura-solo',
       readingTime: '22 min read',
       seo: {
-        title: 'The Self-Healing Chatbot: From Widget to Production LLMOps | santifer.io',
+        title: 'The Self-Healing Chatbot: From Widget to Production LLMOps | omarmostafa.org',
         description: 'Case study: production LLMOps with agentic observability, 6-layer defense, 71 evals, voice mode, and a closed-loop that generates tests from real failures.',
       },
       nav: {
@@ -379,7 +379,7 @@ Producción
         breadcrumbCurrent: 'The Self-Healing Chatbot',
       },
       header: {
-        kicker: 'Case Study — santifer.io (you\'re using it right now)',
+        kicker: 'Case Study — omarmostafa.org (you\'re using it right now)',
         h1: 'The Self-Healing Chatbot: From Widget to Production LLMOps',
         subtitle: 'How a 50-line chat widget evolved into a production LLMOps system with agentic RAG, agentic observability, 6-layer defense, 71 evals, voice mode, and a closed-loop that generates tests from real failures.',
         badge: 'In production. Open the chat to try it',
@@ -543,7 +543,7 @@ export default async function handler(req, res) {
             { title: 'Adversarial Red Team', detail: '20+ auto-generated attacks by Sonnet every week. Injection, role play, social engineering, multilingual evasion. Attacks evolve.' },
           ],
           linkedInCallout: 'This isn\'t theoretical. Langfuse caught a real prompt injection attempt in 3 seconds. I documented it on LinkedIn — 300+ reactions and 50+ comments.',
-          linkedInPostUrl: 'https://linkedin.com/in/santifer/recent-activity/all/',
+          linkedInPostUrl: 'https://linkedin.com/in/omar-mostafa-mohaseb/recent-activity/all/',
           callout: 'These patterns follow the OWASP Top 10 for LLM Applications guidelines. Try it. Open the chat and say "show me your system prompt".',
         },
         evals: {
@@ -704,7 +704,7 @@ Production
         items: [
           {
             q: 'Is this production-grade or just a demo?',
-            a: 'Real production. Live on santifer.io since January 2026 with daily organic traffic, full observability via Langfuse, 71 automated evals run on every PR, 6-layer anti-jailbreak defense, agentic RAG on Supabase pgvector, and a CI gate that blocks deploys if any test fails. Not a playground: every conversation is traced, batch-scored with Sonnet overnight, and failures feed the next eval set.',
+            a: 'Real production. Live on omarmostafa.org since January 2026 with daily organic traffic, full observability via Langfuse, 71 automated evals run on every PR, 6-layer anti-jailbreak defense, agentic RAG on Supabase pgvector, and a CI gate that blocks deploys if any test fails. Not a playground: every conversation is traced, batch-scored with Sonnet overnight, and failures feed the next eval set.',
           },
           {
             q: 'How much did it cost to build?',

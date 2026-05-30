@@ -40,7 +40,7 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
     altSlug: t.altSlug,
     title: t.seo.title,
     description: t.seo.description,
-    image: 'https://santifer.io/workflows/n8n-ai-feedback-classification-workflow.webp',
+    image: 'https://omarmostafa.org/workflows/n8n-ai-feedback-classification-workflow.webp',
     publishedTime: '2026-02-24',
     modifiedTime: '2026-05-10',
     articleTags: 'n8n,product manager,automation,AI,workflow,no-code',

@@ -115,7 +115,7 @@ export default function JacoboAgent({ lang = 'en' }: { lang?: Lang }) {
     altSlug: t.altSlug,
     title: t.seo.title,
     description: t.seo.description,
-    image: 'https://santifer.io/jacobo/og-jacobo-agent.webp',
+    image: 'https://omarmostafa.org/jacobo/og-jacobo-agent.webp',
     publishedTime: '2026-02-25',
     modifiedTime: '2026-05-10',
     articleTags: 'AI agent,multi-agent,n8n,ElevenLabs,HITL,tool calling,WhatsApp,voice AI',
@@ -148,7 +148,7 @@ export default function JacoboAgent({ lang = 'en' }: { lang?: Lang }) {
 
       {/* Hero images */}
       <Photo2 editorId="hero-photos" items={[
-        { src: '/jacobo/santiago-headphones-thinking.webp', alt: 'Santiago Fernández de Valderrama', loading: 'eager', width: 360, height: 480 },
+        { src: '/jacobo/santiago-headphones-thinking.webp', alt: 'Omar Mostafa Mohaseb', loading: 'eager', width: 360, height: 480 },
         { src: '/jacobo/shop-microsoldering-station.webp', alt: lang === 'es' ? 'Estación de microsoldadura en Santifer iRepair' : 'Microsoldering station at Santifer iRepair', loading: 'eager', width: 540, height: 720 },
       ]} caption={lang === 'es' ? 'Cada llamada interrumpe una reparación en curso: el técnico deja la microsoldadura para atender al teléfono' : 'Every call interrupts a repair in progress: the technician leaves the microsoldering station to answer the phone'} />
 
@@ -685,10 +685,10 @@ export default function JacoboAgent({ lang = 'en' }: { lang?: Lang }) {
           heading={t.cta.heading}
           body={t.cta.body}
           ctaLabel={`${t.cta.label} →`}
-          ctaHref="https://linkedin.com/in/santifer"
+          ctaHref="https://linkedin.com/in/omar-mostafa-mohaseb"
           external
           secondaryLabel={`${(t.cta as any).labelSecondary} →`}
-          secondaryHref="mailto:hola@santifer.io"
+          secondaryHref="mailto:hola@omarmostafa.org"
         />
 
         {/* ================================================================ */}
@@ -777,10 +777,10 @@ export default function JacoboAgent({ lang = 'en' }: { lang?: Lang }) {
           heading={(t as any).ctaAfterEnterprise.heading}
           body={t.cta.body}
           ctaLabel={`${t.cta.label} →`}
-          ctaHref="https://linkedin.com/in/santifer"
+          ctaHref="https://linkedin.com/in/omar-mostafa-mohaseb"
           external
           secondaryLabel={`${(t.cta as any).labelSecondary} →`}
-          secondaryHref="mailto:hola@santifer.io"
+          secondaryHref="mailto:hola@omarmostafa.org"
         />
 
         {/* ================================================================ */}
@@ -829,10 +829,10 @@ export default function JacoboAgent({ lang = 'en' }: { lang?: Lang }) {
           heading={(t as any).ctaAfterDownloads.heading}
           body=""
           ctaLabel={`${t.cta.label} →`}
-          ctaHref="https://linkedin.com/in/santifer"
+          ctaHref="https://linkedin.com/in/omar-mostafa-mohaseb"
           external
           secondaryLabel={`${(t.cta as any).labelSecondary} →`}
-          secondaryHref="mailto:hola@santifer.io"
+          secondaryHref="mailto:hola@omarmostafa.org"
         />
 
         {/* ================================================================ */}

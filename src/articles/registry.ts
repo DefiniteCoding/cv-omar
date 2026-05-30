@@ -53,11 +53,11 @@ export const articleRegistry: ArticleConfig[] = [
     titles: { es: 'n8n para PMs', en: 'n8n for PMs' },
     seo: {
       es: {
-        title: 'n8n para PMs: Cheat Sheet + Templates IA Gratis | santifer.io',
+        title: 'n8n para PMs: Cheat Sheet + Templates IA Gratis | omarmostafa.org',
         description: 'Cheat sheet de n8n para Product Managers: automatiza sprint reports y clasifica feedback con IA. 2 templates importables gratis. Tutorial paso a paso.',
       },
       en: {
-        title: 'n8n for PMs: Cheat Sheet + Free AI Templates | santifer.io',
+        title: 'n8n for PMs: Cheat Sheet + Free AI Templates | omarmostafa.org',
         description: 'n8n cheat sheet for Product Managers: automate sprint reports and classify feedback with AI. 2 free importable workflow templates. Step-by-step tutorial.',
       },
     },
@@ -88,8 +88,8 @@ export const articleRegistry: ArticleConfig[] = [
     type: 'collab',
     ragReady: true,
     i18nFile: 'src/n8n-i18n.ts',
-    ogImage: 'https://santifer.io/workflows/n8n-ai-feedback-classification-workflow.webp',
-    heroImage: 'https://santifer.io/workflows/n8n-sprint-report-automation-workflow.webp',
+    ogImage: 'https://omarmostafa.org/workflows/n8n-ai-feedback-classification-workflow.webp',
+    heroImage: 'https://omarmostafa.org/workflows/n8n-sprint-report-automation-workflow.webp',
     component: () => import('../N8nForPMs.tsx'),
     seoMeta: {
       datePublished: '2026-02-24',
@@ -97,7 +97,7 @@ export const articleRegistry: ArticleConfig[] = [
       keywords: ['n8n', 'n8n tutorial', 'n8n templates', 'n8n AI', 'n8n workflow', 'n8n automation', 'n8n cheat sheet', 'product manager', 'AI workflow automation', 'sprint report automation', 'feedback classification AI', 'no-code automation', 'n8n for product managers', 'workflow templates free'],
       articleType: 'TechArticle',
       articleTags: 'n8n,product manager,automation,AI,workflow,no-code',
-      images: ['https://santifer.io/workflows/n8n-sprint-report-automation-workflow.webp', 'https://santifer.io/workflows/n8n-ai-feedback-classification-workflow.webp'],
+      images: ['https://omarmostafa.org/workflows/n8n-sprint-report-automation-workflow.webp', 'https://omarmostafa.org/workflows/n8n-ai-feedback-classification-workflow.webp'],
       about: [
         { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io', applicationCategory: 'Workflow Automation' },
         { '@type': 'Thing', name: 'Product Management Automation' },
@@ -125,7 +125,7 @@ export const articleRegistry: ArticleConfig[] = [
         contentUrl: 'https://maven.com/p/52fc7d/masterclass-n8n-for-p-ms',
         uploadDate: '2026-03-10',
         duration: 'PT60M',
-        performer: { '@id': 'https://santifer.io/#person' },
+        performer: { '@id': 'https://omarmostafa.org/#person' },
         publisher: { '@type': 'Organization', name: 'AI Product Academy', url: 'https://maven.com/marily-nika' },
       },
       subjectOf: {
@@ -135,7 +135,7 @@ export const articleRegistry: ArticleConfig[] = [
         startDate: '2026-03-10',
         location: { '@type': 'VirtualLocation', url: 'https://maven.com/p/52fc7d/masterclass-n8n-for-p-ms' },
         organizer: { '@type': 'Organization', name: 'AI Product Academy', url: 'https://maven.com/marily-nika', founder: { '@type': 'Person', name: 'Dr. Marily Nika', sameAs: 'https://www.wikidata.org/wiki/Q107463356' } },
-        performer: { '@id': 'https://santifer.io/#person' },
+        performer: { '@id': 'https://omarmostafa.org/#person' },
         eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
         eventStatus: 'https://schema.org/EventScheduled',
       },
@@ -194,8 +194,8 @@ export const articleRegistry: ArticleConfig[] = [
     type: 'case-study',
     ragReady: true,
     i18nFile: 'src/jacobo-i18n.ts',
-    ogImage: 'https://santifer.io/jacobo/og-jacobo-agent.webp',
-    heroImage: 'https://santifer.io/jacobo/santiago-headphones-thinking.webp',
+    ogImage: 'https://omarmostafa.org/jacobo/og-jacobo-agent.webp',
+    heroImage: 'https://omarmostafa.org/jacobo/santiago-headphones-thinking.webp',
     component: () => import('../JacoboAgent.tsx'),
     seoMeta: {
       datePublished: '2026-02-25',
@@ -203,7 +203,7 @@ export const articleRegistry: ArticleConfig[] = [
       keywords: ['multi-agent AI', 'multi agent orchestration', 'AI agent', 'sub-agent architecture', 'tool calling production', 'n8n workflows', 'n8n ai agent', 'ai agent case study', 'customer service AI', 'WhatsApp AI agent', 'ElevenLabs voice agent', 'voice AI', 'HITL', 'human in the loop', 'ia para pymes', 'agente ia whatsapp', 'multi-model orchestration', 'OpenRouter', 'FDE portfolio', 'solutions architect AI', 'AI production manager', 'enterprise AI patterns', 'voice AI platform', 'conversational AI case study', 'agentic workflows'],
       articleType: 'TechArticle',
       articleTags: 'AI agent,multi-agent,n8n,ElevenLabs,HITL,tool calling,WhatsApp,voice AI',
-      images: ['https://santifer.io/jacobo/og-jacobo-agent.webp'],
+      images: ['https://omarmostafa.org/jacobo/og-jacobo-agent.webp'],
       about: [
         { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io', applicationCategory: 'Workflow Automation' },
         { '@type': 'SoftwareApplication', name: 'ElevenLabs', url: 'https://elevenlabs.io', applicationCategory: 'Voice AI' },
@@ -275,8 +275,8 @@ export const articleRegistry: ArticleConfig[] = [
     type: 'case-study',
     ragReady: true,
     i18nFile: 'src/business-os-i18n.ts',
-    ogImage: 'https://santifer.io/business-os/og-business-os.webp',
-    heroImage: 'https://santifer.io/business-os/web-landing-hero.webp',
+    ogImage: 'https://omarmostafa.org/business-os/og-business-os.webp',
+    heroImage: 'https://omarmostafa.org/business-os/web-landing-hero.webp',
     component: () => import('../BusinessOS.tsx'),
     seoMeta: {
       datePublished: '2026-02-25',
@@ -284,7 +284,7 @@ export const articleRegistry: ArticleConfig[] = [
       keywords: ['Business OS', 'Airtable ERP', 'Airtable as ERP', 'no-code ERP', 'Airtable automation', 'CRM gamification', 'phone repair', 'inventory management', 'custom ERP case study', 'repair shop management', 'programmatic SEO', 'Airtable CRM', 'single source of truth', 'business operating system', 'multi-base architecture'],
       articleType: 'TechArticle',
       articleTags: 'Business OS,Airtable,n8n,ERP,CRM,automation,phone repair',
-      images: ['https://santifer.io/business-os/og-business-os.webp'],
+      images: ['https://omarmostafa.org/business-os/og-business-os.webp'],
       about: [
         { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com', applicationCategory: 'Database Platform' },
         { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io', applicationCategory: 'Workflow Automation' },
@@ -311,11 +311,11 @@ export const articleRegistry: ArticleConfig[] = [
     titles: { es: 'SEO Programático', en: 'Programmatic SEO' },
     seo: {
       es: {
-        title: 'SEO Programático: 4.000+ Páginas desde un ERP | santifer.io',
+        title: 'SEO Programático: 4.000+ Páginas desde un ERP | omarmostafa.org',
         description: 'Case study: cómo generé 4.730 landing pages estáticas con Airtable, DataForSEO y crawl budget optimization. 2M+ impresiones, 19K+ clicks.',
       },
       en: {
-        title: 'Programmatic SEO: 4,000+ Pages from an ERP | santifer.io',
+        title: 'Programmatic SEO: 4,000+ Pages from an ERP | omarmostafa.org',
         description: 'Case study: 4,730 static landing pages from Airtable as headless CMS with DataForSEO crawl budget optimization and Astro SSG. 2M+ impressions, 19K+ clicks.',
       },
     },
@@ -370,8 +370,8 @@ export const articleRegistry: ArticleConfig[] = [
     type: 'case-study',
     ragReady: true,
     i18nFile: 'src/pseo-i18n.ts',
-    ogImage: 'https://santifer.io/pseo/og-programmatic-seo.webp',
-    heroImage: 'https://santifer.io/pseo/ss-repair-page-hero.webp',
+    ogImage: 'https://omarmostafa.org/pseo/og-programmatic-seo.webp',
+    heroImage: 'https://omarmostafa.org/pseo/ss-repair-page-hero.webp',
     component: () => import('../ProgrammaticSeo.tsx'),
     seoMeta: {
       datePublished: '2026-02-25',
@@ -379,7 +379,7 @@ export const articleRegistry: ArticleConfig[] = [
       keywords: ['programmatic SEO', 'Airtable', 'headless CMS', 'Astro', 'DataForSEO', 'crawl budget', 'phone repair', 'static site generation', 'local SEO', 'ERP'],
       articleType: 'TechArticle',
       articleTags: 'programmatic SEO,Airtable,Astro,DataForSEO,crawl budget,phone repair,ERP,local SEO',
-      images: ['https://santifer.io/pseo/og-programmatic-seo.png'],
+      images: ['https://omarmostafa.org/pseo/og-programmatic-seo.png'],
       about: [
         { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com', applicationCategory: 'Database Platform' },
         { '@type': 'SoftwareApplication', name: 'Astro', url: 'https://astro.build', applicationCategory: 'Static Site Generator' },
@@ -449,8 +449,8 @@ export const articleRegistry: ArticleConfig[] = [
     type: 'case-study',
     ragReady: true,
     i18nFile: 'src/chatbot-i18n.ts',
-    ogImage: 'https://santifer.io/chatbot/og-self-healing-chatbot.webp',
-    heroImage: 'https://santifer.io/chatbot/hero-self-healing-chatbot.webp',
+    ogImage: 'https://omarmostafa.org/chatbot/og-self-healing-chatbot.webp',
+    heroImage: 'https://omarmostafa.org/chatbot/hero-self-healing-chatbot.webp',
     component: () => import('../SelfHealingChatbot.tsx'),
     seoMeta: {
       datePublished: '2026-03-11',
@@ -458,7 +458,7 @@ export const articleRegistry: ArticleConfig[] = [
       keywords: ['LLMOps', 'self-healing chatbot', 'agentic RAG', 'jailbreak defense', 'prompt injection', 'LLM evaluation', 'closed loop LLM', 'Langfuse', 'prompt versioning', 'adversarial testing', 'trace-to-eval', 'hybrid search pgvector', 'AI portfolio', 'chatbot evals', 'CI gate LLM', 'voice mode chatbot', 'OpenAI Realtime API', 'speech-to-speech AI', 'agentic observability', 'developer feedback loop', 'AI maintaining AI'],
       articleType: 'TechArticle',
       articleTags: 'LLMOps,self-healing chatbot,agentic RAG,jailbreak defense,Langfuse,evals,closed-loop,prompt injection',
-      images: ['https://santifer.io/chatbot/og-self-healing-chatbot.webp'],
+      images: ['https://omarmostafa.org/chatbot/og-self-healing-chatbot.webp'],
       about: [
         { '@type': 'SoftwareApplication', name: 'Langfuse', url: 'https://langfuse.com', applicationCategory: 'LLM Observability' },
         { '@type': 'SoftwareApplication', name: 'Supabase', url: 'https://supabase.com', applicationCategory: 'Database' },
@@ -527,8 +527,8 @@ export const articleRegistry: ArticleConfig[] = [
     type: 'case-study',
     ragReady: true,
     i18nFile: 'src/career-ops-i18n.ts',
-    ogImage: 'https://santifer.io/career-ops/og-career-ops.webp',
-    heroImage: 'https://santifer.io/career-ops/hero-career-ops.webp',
+    ogImage: 'https://omarmostafa.org/career-ops/og-career-ops.webp',
+    heroImage: 'https://omarmostafa.org/career-ops/hero-career-ops.webp',
     component: () => import('../CareerOps.tsx'),
     seoMeta: {
       datePublished: '2026-03-17',
@@ -536,7 +536,7 @@ export const articleRegistry: ArticleConfig[] = [
       keywords: ['ai job search', 'ai job search tool', 'ai powered job search', 'ai resume builder', 'ai resume', 'multi agent system', 'multi agent orchestration', 'automated job application', 'ATS-optimized resume', 'Claude Code', 'batch processing', 'HITL', 'job search automation', 'career-ops', 'ai auto apply', 'agente ia', 'crear cv con ia', 'automatizacion con ia', 'sistema multiagente', 'busqueda de empleo ia'],
       articleType: 'TechArticle',
       articleTags: 'multi-agent,job search,Claude Code,ATS,batch processing,HITL,automation,Playwright',
-      images: ['https://santifer.io/career-ops/og-career-ops.webp'],
+      images: ['https://omarmostafa.org/career-ops/og-career-ops.webp'],
       about: [
         { '@type': 'SoftwareApplication', name: 'Claude Code', url: 'https://claude.ai', applicationCategory: 'AI Agent' },
         { '@type': 'SoftwareApplication', name: 'Playwright', url: 'https://playwright.dev', applicationCategory: 'Browser Automation' },

@@ -78,7 +78,7 @@ export default function BusinessOS({ lang = 'en' }: { lang?: Lang }) {
     altSlug: t.altSlug,
     title: t.seo.title,
     description: t.seo.description,
-    image: 'https://santifer.io/business-os/og-business-os.webp',
+    image: 'https://omarmostafa.org/business-os/og-business-os.webp',
     publishedTime: '2026-02-25',
     modifiedTime: '2026-05-10',
     articleTags: 'Business OS,Airtable,n8n,ERP,CRM,automation,phone repair',
@@ -411,7 +411,7 @@ export default function BusinessOS({ lang = 'en' }: { lang?: Lang }) {
           heading={t.sections.dayInLife.pseoCta.heading}
           body={t.sections.dayInLife.pseoCta.body}
           ctaLabel={t.sections.dayInLife.pseoCta.label}
-          ctaHref={lang === 'es' ? 'mailto:hola@santifer.io?subject=Programmatic SEO' : 'mailto:hi@santifer.io?subject=Programmatic SEO'}
+          ctaHref={lang === 'es' ? 'mailto:hola@omarmostafa.org?subject=Programmatic SEO' : 'mailto:hi@omarmostafa.org?subject=Programmatic SEO'}
         />
 
         {/* Cross-Cutting Capabilities */}
@@ -657,7 +657,7 @@ export default function BusinessOS({ lang = 'en' }: { lang?: Lang }) {
           heading={t.cta.heading}
           body={t.cta.body}
           ctaLabel={t.cta.label}
-          ctaHref="mailto:hola@santifer.io?subject=Business OS Architecture"
+          ctaHref="mailto:hola@omarmostafa.org?subject=Business OS Architecture"
         />
 
         {/* FAQ */}

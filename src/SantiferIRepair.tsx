@@ -11,29 +11,29 @@ export default function SantiferIRepair({ lang }: { lang: IRepairLang }) {
   const jsonLd = useMemo(() => ({
     '@context': 'https://schema.org',
     '@graph': [
-      { '@id': 'https://santifer.io/#person' },
+      { '@id': 'https://omarmostafa.org/#person' },
       {
         '@type': 'WebSite',
-        '@id': 'https://santifer.io/#website',
-        url: 'https://santifer.io',
-        name: 'santifer.io',
-        publisher: { '@id': 'https://santifer.io/#person' },
+        '@id': 'https://omarmostafa.org/#website',
+        url: 'https://omarmostafa.org',
+        name: 'omarmostafa.org',
+        publisher: { '@id': 'https://omarmostafa.org/#person' },
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: t.nav.breadcrumbHome, item: `https://santifer.io${lang === 'en' ? '/en' : '/'}` },
-          { '@type': 'ListItem', position: 2, name: t.nav.breadcrumbCurrent, item: `https://santifer.io/${t.slug}` },
+          { '@type': 'ListItem', position: 1, name: t.nav.breadcrumbHome, item: `https://omarmostafa.org${lang === 'en' ? '/en' : '/'}` },
+          { '@type': 'ListItem', position: 2, name: t.nav.breadcrumbCurrent, item: `https://omarmostafa.org/${t.slug}` },
         ],
       },
       {
         '@type': 'WebPage',
-        '@id': `https://santifer.io/${t.slug}#webpage`,
-        url: `https://santifer.io/${t.slug}`,
+        '@id': `https://omarmostafa.org/${t.slug}#webpage`,
+        url: `https://omarmostafa.org/${t.slug}`,
         name: t.seo.title,
         description: t.seo.description,
-        about: { '@id': 'https://santifer.io/#person' },
-        isPartOf: { '@id': 'https://santifer.io/#website' },
+        about: { '@id': 'https://omarmostafa.org/#person' },
+        isPartOf: { '@id': 'https://omarmostafa.org/#website' },
         inLanguage: ['es', 'en'],
       },
     ],
@@ -45,7 +45,7 @@ export default function SantiferIRepair({ lang }: { lang: IRepairLang }) {
     altSlug: t.altSlug,
     title: t.seo.title,
     description: t.seo.description,
-    image: 'https://santifer.io/business-os/og-business-os.webp',
+    image: 'https://omarmostafa.org/business-os/og-business-os.webp',
     publishedTime: '2026-03-08',
     articleTags: 'Santifer iRepair, phone repair, Seville, exit, founder',
     jsonLd,
@@ -132,7 +132,7 @@ export default function SantiferIRepair({ lang }: { lang: IRepairLang }) {
           <div className="flex items-center gap-4 p-6 pb-0">
             <img
               src="/foto-avatar-sm.webp"
-              alt="Santiago Fernández de Valderrama"
+              alt="Omar Mostafa Mohaseb"
               className="w-16 h-16 rounded-full border-2 border-primary/20 shrink-0"
               width={64}
               height={64}

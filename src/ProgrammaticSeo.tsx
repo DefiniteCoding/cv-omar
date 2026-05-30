@@ -249,7 +249,7 @@ export default function ProgrammaticSeo({ lang = 'en' }: { lang?: Lang }) {
     altSlug: t.altSlug,
     title: t.seo.title,
     description: t.seo.description,
-    image: 'https://santifer.io/pseo/og-programmatic-seo.png',
+    image: 'https://omarmostafa.org/pseo/og-programmatic-seo.png',
     publishedTime: '2026-02-25',
     modifiedTime: '2026-05-10',
     articleTags: 'programmatic SEO,Airtable,Astro,DataForSEO,crawl budget,phone repair,ERP,local SEO',
@@ -1036,7 +1036,7 @@ export default function ProgrammaticSeo({ lang = 'en' }: { lang?: Lang }) {
           heading={t.cta.heading}
           body={t.cta.body}
           ctaLabel={t.cta.label}
-          ctaHref="mailto:hola@santifer.io?subject=Programmatic SEO"
+          ctaHref="mailto:hola@omarmostafa.org?subject=Programmatic SEO"
         />
 
         {/* FAQ */}

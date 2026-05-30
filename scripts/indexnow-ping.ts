@@ -1,7 +1,7 @@
 /**
  * Pings IndexNow API with all URLs from dist/sitemap.xml after build.
  *
- * Only runs when INDEXNOW_ENABLED=true (Vercel CI, not local).
+ * Only runs when INDEXNOW_ENABLED=true (Netlify CI, not local).
  *
  * Usage:
  *   INDEXNOW_ENABLED=true npx tsx --tsconfig tsconfig.app.json scripts/indexnow-ping.ts
@@ -66,7 +66,7 @@ console.log(`[indexnow] Pinging ${urls.length} URLs...`)
 // POST to IndexNow API
 // ---------------------------------------------------------------------------
 
-const host = 'santifer.io'
+const host = 'omarmostafa.org'
 const keyLocation = `https://${host}/indexnow-key.txt`
 
 const body = {
