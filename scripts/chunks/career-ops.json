@@ -1,0 +1,156 @@
+[
+  {
+    "content": "Case Study: From side project to 47.3K+ stars\nCareer-Ops: How I Built an AI Job Search System That Got Me Hired\nI built a multi-agent system to automate my job search. It worked — I am now Head of Applied AI. Then I open-sourced it and it went viral — 47.3K+ GitHub stars.\nA multi-agent system built with Claude Code that automates the job search: scores offers multi-dimensional (A-F), generates ATS-optimized PDFs per offer, fills forms via Playwright, and batch-processes with parallel workers. HITL design: AI analyzes, I decide. Open source under MIT — 47.3K+ stars, 3,200+ on Discord.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "Evaluations\nApps processed\nModes\nGrade scoring\nURLs deduped",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "metrics",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "Why Did I Need to Automate My Job Search?\nSearching for senior AI engineering roles is a full-time job in itself. Each offer requires reading the JD, mapping your skills against requirements, adapting the CV, writing personalized responses, and filling 15-field forms. Multiply that by 10 offers per day.\nRepetitive reading.\n70% of offers are a poor fit. You find out after reading 800 words of JD.\nGeneric CVs.\nA static PDF cannot highlight the proof points relevant to each specific offer.\nManual forms.\nEvery platform asks the same questions in different formats. Copy-paste 15 times per application.\nNo tracking.\nWithout a system, you forget where you applied. Duplicate effort or lose follow-up entirely.\nZero feedback.\nApply, wait, and never know if the problem was fit, the CV, or timing.\nGlobal market.\nThe AI sector moves internationally. Local referrals do not scale when you apply to companies across 6 different countries.\nThe work is not hard. It is repetitive. And repetitive work gets automated.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "theProblem",
+      "section_anchor": "#the-problem"
+    }
+  },
+  {
+    "content": "How Does the Multi-Agent System Work?\nCareer-Ops is not a script or an auto-apply bot. It is a multi-agent system with 12 operational modes, each a Claude Code skill file with its own context, rules, and tools. An agent that reasons about the problem domain and executes the right action.\nWhy Modes, Not One Prompt\nPrecise context.\nEach mode loads only the information it needs. auto-pipeline skips contact rules. apply skips scoring logic.\nTestability.\nOne mode gets tested in isolation. Changing PDF logic never touches evaluation.\nIndependent evolution.\nAdding a new mode never breaks existing ones. Training mode shipped 3 weeks after first deploy.\nauto-pipeline\nFull pipeline: extract JD, evaluate A-F, generate report, PDF, and tracker entry.\noferta\nSingle-offer evaluation with 6 blocks: summary, CV match, level, compensation, personalization, interview.\nofertas\nMulti-offer comparison and ranking.\npdf\nATS-optimized PDF personalized per offer with proof points and keywords.\npipeline\nBatch URL processing from inbox.\nscan\nOffer discovery: navigates job boards and careers pages of target companies. Many offers never appear on aggregators.\nbatch\nParallel processing with conductor + workers. 122 simultaneous URLs in queue.\napply\nInteractive form-filling with Playwright. Reads the page, retrieves cached evaluation, generates responses.\ncontacto\nLinkedIn outreach helper.\ndeep\nDeep company research.\ntracker\nApplication status dashboard.\ntraining\nEvaluates courses and certifications against the North Star.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "architecture",
+      "section_anchor": "#architecture"
+    }
+  },
+  {
+    "content": "How Does Career-Ops Evaluate Each Job Offer?\nMy private pre-launch rubric had 10 weighted sub-axes (shown in the table). When I open-sourced career-ops on April 4, 2026, I consolidated these into **6 categorical dimensions** for the public tool. This page documents the framework I used to evaluate 631 offers in March 2026 — the canonical current rubric lives at [career-ops.org/methodology](https://career-ops.org/methodology). Output is always a numeric score (1-5) and an A-F grade.\nSub-axis (private rubric)\nWhat It Measured\nWeight\nRole Match\nAlignment between requirements and CV proof points\nGate-pass\nSkills Alignment\nTech stack overlap\nGate-pass\nSeniority\nStretch level and negotiability\nHigh\nCompensation\nMarket rate vs target\nHigh\nGeographic\nRemote/hybrid/onsite feasibility\nMedium\nCompany Stage\nStartup/growth/enterprise fit\nMedium\nProduct-Market Fit\nProblem domain resonance\nMedium\nGrowth Trajectory\nCareer ladder visibility\nMedium\nInterview Likelihood\nCallback probability\nHigh\nTimeline\nClosing speed and hiring urgency\nLow\nScore Distribution\nScore >= 4.5 (A)\nScore 4.0-4.4 (B)\nScore 3.0-3.9 (C)\nScore < 3.0 (D-F)\n74% of evaluated offers score below 4.0. Without the system, I would have spent hours reading JDs that never fit.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "scoring",
+      "section_anchor": "#scoring"
+    }
+  },
+  {
+    "content": "What Happens From URL Input to Generated Resume?\nauto-pipeline is the flagship mode. A URL goes in, and out comes an evaluation report, a personalized PDF, and a tracker entry. Zero manual intervention until final review.\nExtract JD.\nPlaywright navigates to the URL, extracts structured content from the offer.\nEvaluate A-F.\nClaude reads JD + CV + portfolio and generates multi-dimensional scoring with grade.\nGenerate report.\nMarkdown with 6 blocks: executive summary, CV match, level, compensation, personalization, and interview probability.\nGenerate PDF.\nHTML template + keyword injection + adaptive framing. Puppeteer renders to PDF.\nRegister tracker.\nTSV with company, role, score, grade, URL. Auto-merge via Node.js script.\nDedup.\nChecks scan-history.tsv (680 URLs) and applications.md. Zero re-evaluations.\nBatch Processing\nFor high volume, batch mode launches a conductor that orchestrates parallel workers. Each worker is an independent Claude Code process with 200K context. The conductor manages the queue, tracks progress, and merges results.\nURLs in queue\nContext/worker\nRetries per failure\nFault-tolerant: a worker failure never blocks the rest. Lock file prevents double execution. Batch is resumable — reads state and skips completed items.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "pipeline",
+      "section_anchor": "#pipeline"
+    }
+  },
+  {
+    "content": "How Does Career-Ops Generate a Personalized Resume?\nA generic CV loses. Career-Ops works as an AI resume builder that generates a different ATS-optimized resume for each offer, injecting JD keywords and reordering experience by relevance. Not a template: a resume built from real CV proof points.\nExtract 15-20 keywords from the JD.\nKeywords land in the summary, first bullet of each role, and skills section.\nDetect language.\nEnglish JD generates English CV. Spanish JD generates Spanish CV.\nDetect region.\nUS company generates Letter format. Europe generates A4.\nDetect archetype.\n6 North Star archetypes. The summary shifts based on the profile.\nSelect projects.\nTop 3-4 by relevance. Jacobo for agent roles. Business OS for ERP/automation.\nReorder bullets.\nThe most relevant experience moves up. The rest moves down — nothing disappears.\nRender PDF.\nPuppeteer converts HTML to PDF. Self-hosted fonts, single-column ATS-safe.\n6 Archetypes\nArchetype\nPrimary Proof Point\nAI Platform / LLMOps\nSelf-Healing Chatbot (71 evals, closed-loop)\n/self-healing-chatbot\nAgentic Workflows\nJacobo (4 agents, 80h/mo automated)\n/ai-agent-jacobo\nTechnical AI PM\nBusiness OS (2,100 fields, 50 automations)\n/business-os-for-airtable\nAI Solutions Architect\npSEO (4,730 pages, 10.8x traffic)\n/programmatic-seo\nAI FDE\nJacobo (sold, running in production)\n/ai-agent-jacobo\nAI Transformation Lead\nExit 2025 (16 years, buyer kept all systems)\nSame CV. 6 different framings. All real — keywords get reformulated, never fabricated.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "pdf",
+      "section_anchor": "#pdf"
+    }
+  },
+  {
+    "content": "Before and After\nDimension\nManual\nCareer-Ops\nEvaluation\nRead JD, mental mapping\nA-F automated scoring, multi-dimensional\nCV\nGeneric PDF\nPersonalized PDF, ATS-optimized\nApplication\nManual form\nPlaywright auto-fill\nTracking\nSpreadsheet or nothing\nTSV + automated dedup\nDiscovery\nLinkedIn alerts\nScanner: job boards + target company careers pages\nBatch\nOne at a time\n122 URLs in parallel\nDedup\nHuman memory\n680 URLs deduplicated",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "beforeAfter",
+      "section_anchor": "#before-after"
+    }
+  },
+  {
+    "content": "What Results Has Career-Ops Achieved?\nThe most important result: I got the job. I am now Head of Applied AI. Career-Ops evaluated 631 offers, generated 354 personalized PDFs, and filtered the noise so I could focus on the opportunities that truly fit.\nReports generated\nGitHub stars\nPDFs generated\nUpvotes r/ClaudeAI\nWhat Happened Next?\nWhen I no longer needed Career-Ops, I published it on GitHub. In one week it went from private repo to viral — 35K stars, 5K forks, and articles in blogs from France, China, and Korea by people who had never heard of me. Today it has crossed 40K stars and a community of 2K+ people on Discord helps each other configure and adapt the system. The project ended up demonstrating more competencies than any hiring process could.\nGitHub stars in 1 week\nForks\nLanguages (EN, FR, ZH, KO)\nCountries with coverage",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "results",
+      "section_anchor": "#results"
+    }
+  },
+  {
+    "content": "Lessons\nAutomate analysis, not decisions\nCareer-Ops evaluates 631 offers. I decide which ones get my time. HITL is not a limitation — it is the design. AI filters noise, humans provide judgment.\nModes beat a long prompt\n12 modes with precise context outperform a 10,000-token system prompt. Each mode loads only what it needs. Less context means better decisions.\nDedup is more valuable than scoring\n680 deduplicated URLs mean 680 evaluations I never had to repeat. Dedup saves more time than any scoring optimization.\nA CV is an argument, not a document\nA generic PDF convinces nobody. A CV that reorganizes proof points by relevance, injects the right keywords, and adapts framing to the archetype — that CV converts.\nBatch over sequential, always\nBatch mode with parallel workers processes 122 URLs while I do something else. The investment in parallel orchestration pays off on the first run.\nThe system IS the portfolio\nBuilding a multi-agent system to search for multi-agent roles is the most direct proof of competence. I do not need to explain that I can do this — I am using it.\nOpen-source it when you no longer need it\nCareer-Ops was private while I was using it. When I got the job, I published it. One week later it had 47.3K stars. The lesson: the best time to open-source a project is when it has already proven its value in real production.\nWhy I keep it MIT\nMIT license. No dark patterns, no upsell inside the CLI, no feature gating. If it works for you, it works. If you want to support the maintenance or join the community, you can. But the tool does not depend on it.",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "lessons",
+      "section_anchor": "#lessons"
+    }
+  },
+  {
+    "content": "FAQ\nIs this gaming the system?\nCareer-Ops automates analysis, not decisions. Real funnel from my March 2026 search: 631 listings evaluated → 66 applications sent → 12 interview processes → 1 offer signed (Head of Applied AI). The system discarded the 565 that did not fit; the 66 that did, I read one by one before applying and reviewed every PDF before sending. Same philosophy as a CRM or an IDE: the system organizes, the human decides.\nWhy Claude Code and not a script pipeline?\nA script cannot reason. Career-Ops adapts scoring based on company context (size, stack mentioned in the JD, AI maturity signals), reformulates CV keywords for each offer without fabricating experience, and generates narrative reports with inline justification instead of tables with filled cells. The logic of each of the 12 modes lives in its own Claude Code skill file with isolated context and rules; adding a new mode does not require rewriting the rest of the pipeline.\nWhat does it cost to run?\nZero marginal cost per evaluation. Career-Ops runs on my Claude Max 20x plan ($200/mo), which I use for everything: portfolio santifer.io, LLMOps chatbot, blog articles, Life OS, and Career-Ops. 631 listing evaluations + 354 ATS-optimized PDFs generated without a single extra invoice. With Claude Pro ($20/mo) it also works for lower volume — the real limit is the plan usage window, not per-call cost.\nDoes the apply mode fill forms automatically?\nIt reads the page with Playwright, retrieves the cached evaluation, and generates coherent responses matching the scoring. I review before submitting — always.\nWhat happens when the scanner finds a duplicate?\nscan-history.tsv stores 680 seen URLs. Dedup by exact URL match plus normalized company+role match against applications.md. Zero re-evaluations.\nIs it replicable?\nYes — it is open source. The official landing is career-ops.org (docs, AI chat and guides) and the code lives at github.com/santifer/career-ops. Requires Claude Code with Playwright access. Skill files define the logic for each mode. 37K+ people have already seen, forked, or adapted it.\nHow do I use Career-Ops?\nCareer-Ops is a local tool that runs from your terminal with Claude Code. Clone the repository, configure your resume and preferences, and launch modes as needed: auto-pipeline to evaluate an offer end-to-end, scan to discover offers on job boards, batch to process many URLs in parallel, or pdf to generate a personalized resume. Everything runs on your machine — your resume and personal data never leave your computer. If you need help, a community of 1,000+ people is on Discord: discord.gg/8pRpHETxa4\nWhat do I need to run Career-Ops?\nClaude Code with a plan that includes tool access (Claude Max or Claude Pro). Playwright for web navigation. Node.js for utility scripts like tracker merging and PDF generation with Puppeteer. A working directory with your resume in markdown and your search preferences. No servers, databases, or external APIs needed — everything runs locally. The Discord community (discord.gg/8pRpHETxa4) can help with setup.\nWhat kind of AI does Career-Ops use?\nCareer-Ops is not a chatbot or an API wrapper. It is a multi-agent system where Claude Code acts as the brain: it reasons about each offer, evaluates fit against your profile multi-dimensional (canonical rubric at career-ops.org/methodology), and makes filtering decisions. Each of the 12 modes is a skill file with its own context and rules. Web navigation uses Playwright. PDFs use Puppeteer. Batch processing launches parallel workers in tmux. No fine-tuning or custom models — standard Claude with very precise context.\nWho created Career-Ops?\nI did — Santiago Fernández de Valderrama (santifer). I built it for my own AI job search after spending 16 years founding and selling a phone repair business. The system evaluated 631 offers and helped me land my current role as Head of Applied AI. When I no longer needed it, I published it as open source. In one week it reached 47.3K+ GitHub stars. The Discord community is now 3,200+ people: discord.gg/8pRpHETxa4",
+    "metadata": {
+      "article_id": "career-ops",
+      "article_slug_en": "/career-ops-system",
+      "article_slug_es": "/career-ops",
+      "page_path_en": "/career-ops-system",
+      "page_path_es": "/career-ops",
+      "source_file": "src/career-ops-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
+  }
+]

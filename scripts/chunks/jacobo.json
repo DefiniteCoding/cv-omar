@@ -1,0 +1,198 @@
+[
+  {
+    "content": "Case Study: Santifer iRepair (Google it — still operating today)\nJacobo: Multi-Agent AI with Sub-Agent Orchestration & Tool Calling\nHow I built an AI agent that handles WhatsApp and landline calls, orchestrates specialized sub-agents via webhooks, and achieves ~90% self-service at a phone repair business.\n~15 interruptions per day. Each one, a repair on hold. Every unanswered WhatsApp, a customer walking to the competition. I built an AI agent that handles both — ~90% of interactions, 24/7, for less than €200/month.\nNot a chatbot with canned responses. An agent that checks real prices, verifies stock, books appointments, and knows when to loop in a human with full context. That's what Jacobo became. In this article I share the complete architecture and the production workflows so you can replicate it.\nA multi-agent AI system that handles ~90% of customer queries without human intervention, 24/7, for <€200/month. 4 agents + 3 tools, dual-channel (WhatsApp + landline). Built in <1 month on top of a 5-year Business OS. Sold with the business in 2025. All 7 n8n workflows are downloadable at the end.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "Self-service\nAutomated\nResponse\nCost/mo\nAvailable",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "metrics",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "The Problem\nWith 30,000+ repairs completed and multiple support channels (phone, WhatsApp, web), the bottleneck was clear:\n80% of inquiries were repetitive: prices, appointments, repair status\nEvery inquiry pulled the technician away from active repairs\nResponse times swung wildly depending on the day's workload\nData lived in three places: Airtable, the calendar, and inventory\nAvailability stopped at store closing time\nHiring part-time support didn't pencil out\nCustomers reached out via WhatsApp and landline. The solution had to cover both with shared logic, not duplicate the work\nThe constraints were fixed: Airtable was the brain (the Business OS had been the SSOT for years), I needed real tool calling against live data, and the agent had to cover voice + chat from the same backend. The only open question was which orchestration layer to use:\nTidio / Intercom\nGeneralist chatbots with decision trees. Can't check stock in real time or calculate dynamic pricing against Airtable. For a repair business, they're little more than an interactive FAQ.\nManyChat (WhatsApp)\nGood for marketing flows, but no tool calling capability against an existing ERP. Can't verify stock, create work orders, or do context-rich handoff.\nVertical solution (RepairDesk chat)\nNo repair SaaS offered a conversational agent with natural language and tool calling against real-time data. The ones with chat were essentially forms in disguise.\nn8n was the natural fit: workflow orchestration with webhooks, native LLM agent support with tool calling, and the ability to deploy each sub-agent as an independent, testable workflow. All wired into the Business OS already running in Airtable.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "theProblem",
+      "section_anchor": "#the-problem"
+    }
+  },
+  {
+    "content": "The Architecture\nJacobo isn't a chatbot with a long prompt. It's a system of specialized sub-agents, each deployed as an independent webhook in n8n, orchestrated via tool calling from a central router. Every workflow in this article is importable directly into n8n — grab them at the end.\nWhy sub-agents instead of a monolithic prompt?\nTestability\nEach sub-agent has its own webhook. I can test it in isolation with an HTTP call, without spinning up the entire system.\nIndependent evolution\nChanging discount logic can't break appointments. I can iterate on one domain without risking another.\nCost efficiency\nNot every sub-agent needs the same model. Appointments runs on MiniMax M2.5 (fast and cheap for parsing time preferences). Quotes runs on GPT-4.1 mini (precision for structured output). Right-sized models per task.\nPlatform-agnostic\nSub-agents are just webhooks. They don't know whether n8n (WhatsApp) or ElevenLabs (voice) is calling them. Any orchestrator can reuse them without duplicating logic.\n4 Agents & 3 Tools to Rule Them All\n4 agents with their own LLM make decisions. 3 tools with no LLM execute pure business logic. All connected via webhooks.\nTools (no LLM)\nMain Router (n8n)\nThe brain of the WhatsApp channel. Classifies intent, picks the right sub-agent, and keeps track of the conversation with a 20-message memory window.\nGPT-4.1 via OpenRouter · 37 nodes\nLangChain Agent pattern with 7 tools as HTTP endpoints\nThink tool for internal reasoning before complex chains\nPseudo-streaming: splits responses into sentences, sends them one by one via WhatsApp\nVoice Router (ElevenLabs)\nThe brain of the voice channel. Receives calls via Aircall → Twilio → ElevenLabs Conversational AI, with its own system prompt optimized for spoken conversation.\nElevenLabs Conversational AI · GPT-4o\nSame sub-agents as the Main Router, connected as HTTP tools\nNative RAG out-of-the-box: knowledge base with repair catalog, pricing and FAQs\nVoice-optimized latency: short, direct responses\nBusiness hours detection to transfer to a human outside hours\nAppointments Sub-agent\nTurns \"tomorrow morning\" into a confirmed booking. Parses natural language time preferences, checks YouCanBookMe for available slots, and sends a WhatsApp confirmation template.\nMiniMax M2.5 via OpenRouter · 18 nodes\n15 temporal parsing rules: from \"after lunch\" to \"any day except Monday\"\nThe most sophisticated sub-agent in the system\nQuotes Sub-agent\nEvery price inquiry flows through here. Looks up the exact model and repair in Airtable, returns real pricing with stock status, and decides the next step.\nGPT-4.1 mini via OpenRouter · 11 nodes\nStock available? → offer appointment\nOut of stock? → offer order\nNo listing? → link to the quote form\nOrders\nCreates repair orders in Airtable when a part is out of stock.\n3 nodes: webhook → create record → respond\nSimple by design: all validation happened upstream in Quotes\nDiscount Calculator\nPure business logic, no LLM. Calculates combo discounts when customers bundle multiple repairs.\n3 nodes · no LLM\nBattery + screen + back glass = automatic multi-repair pricing\nDiscount rules live here, not scattered across prompts\nHITL Handoff\nThe escape valve. Escalates to a human via Slack with a deep-link straight into the WATI conversation.\n5 nodes · posts to #chat\nIncludes conversation summary, detected intent, and customer history\nHuman gets full context before opening the chat\nConversational Memory\nJacobo holds no state between messages. On every new message, it rebuilds context by reading the actual conversation history from WATI:\nAlready served?\nA switch checks whether an active session exists for this phone number. If not, it triggers a memory reload.\nWATI fetch\nHTTP call to getMessages/{waId} with pageSize=80. Retrieves the last 80 messages from the full conversation: customer messages, Jacobo responses, templates, broadcasts, and human operator messages.\n3-phase parsing\nThree code nodes transform raw WATI events into {human, ai} pairs compatible with LangChain. Filters out broadcasts, confirmation templates, and system events. A __reloadFlag__ allows manual memory resets.\nBuffer Window\nThe last 20 messages are loaded into the LangChain BufferWindow, keyed by phone number. The agent \"remembers\" past conversations: if you confirmed an appointment yesterday, Jacobo knows today.\nThis is what lets Jacobo pick up interrupted conversations, recognize returning customers, and know when a human stepped in earlier.\nProduction debug tools\nTwo hidden commands to debug memory in production without touching n8n. \"Borrar memoria\" reset the customer's buffer, useful when a conversation got corrupted or the LLM entered a loop. \"HISTORIAL\" dumped the raw buffer JSON — and that's what taught us to sanitize responses: the LLM returned the full JSON to the customer if left unfiltered.\nPseudo-Streaming on WhatsApp\nWhatsApp doesn't support streaming. A wall of text feels like a bot; sequential messages feel like someone typing. The router splits each response on line breaks and sends each chunk with a 1-second delay via the WATI API. Result: the \"typing...\" experience with zero streaming infrastructure.\nJacobo runs on 8 services, end-to-end from first contact to human handoff. Every one is load-bearing — swap any of them and you're rearchitecting.\nWATI\nWhatsApp Business API — primary inbound channel\nAircall\nCloud PBX — Jacobo as a teammate on the phone system\nn8n\nWorkflow orchestration and sub-agents (7 workflows, ~80 nodes)\nOpenRouter\nModel-agnostic LLM gateway (MiniMax M2.5 + GPT-4.1)\nElevenLabs\nConversational voice agent (eleven_flash_v2_5, temp 0.0)\nAirtable\nCRM, inventory, customer history (source of truth)\nYouCanBookMe\nAppointment scheduling and availability\nSlack\nHITL escalation channel (#chat)",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "architecture",
+      "section_anchor": "#architecture"
+    }
+  },
+  {
+    "content": "Results\nProduction metrics after 6 months live:\nSelf-service\nInquiries resolved without human intervention\nAvailability\nNo longer limited to store hours\nResponse time\nVs. minutes when it depended on a person\nMonthly cost\nTotal infrastructure (n8n + WATI + Aircall + LLMs)\nBefore vs After\nPrice/stock inquiries\n~15 interruptions/day to the technician\nJacobo responds with real Airtable data in <30s\nAppointment booking\nManual via phone, frequent scheduling errors\nAutomatic via YouCanBookMe, parts auto-reserved\nAfter hours\nLost inquiries, customers going to competitors\nJacobo handles 24/7 via WhatsApp and landline\nHuman escalations\nHuman started from scratch, repeating questions\nHandoff with full context, resolution in seconds\nCustomer support cost\nPart-time employee ~€800-1,000/mo\n<€200/mo total infrastructure\nThe real return isn't just the cost saving. It's the technician who's actually repairing phones instead of answering them, and the appointment that used to fall through the cracks at 10pm — now confirmed automatically.\nIndustry benchmark: enterprise contact centers average 20-30% AI resolution rate (Gartner, 2025 AI Customer Service Report). The most advanced virtual assistants achieve 15% (Gartner, 2025 Hype Cycle for Customer Service & Support Technologies). Jacobo hit ~90% in a specialized domain. The difference: domain-specific sub-agents with real-time data access vs generic chatbots.\nJacobo is still running 24/7 under new ownership since September 2025. The buyer acquired it operating — the best proof of a system: it runs without its creator. The architecture patterns documented here are the same ones I'd bring to your team.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "results",
+      "section_anchor": "#results"
+    }
+  },
+  {
+    "content": "Architecture Decision Records (ADRs)\nThe decisions that shaped the system — and why I made each one:\nMulti-model (GPT-4.1 + MiniMax + GPT-4.1 mini) vs single LLM\nEach component with the right model: GPT-4.1 for the main router and voice agent (precise tool calling), GPT-4.1 mini for quotes (structured output), MiniMax M2.5 for appointments (fast and cheap for parsing time preferences). OpenRouter as gateway allows switching between models without rewriting workflows.\nOpenRouter as model-agnostic gateway\nSwitch between models without rewriting workflows, automatic fallback if a model is down. We evaluated Claude, GPT-4, MiniMax: chose by use case, not by brand.\nn8n vs Make for orchestration\nEach sub-agent is an independent workflow with its own webhook. Make doesn't allow this modularity. n8n supports LangChain agent patterns, memory management and native tool calling.\nSub-agents as webhook microservices\nDecoupled, individually testable, independently deployable. The same sub-agent serves WhatsApp (via n8n) and phone (via ElevenLabs) without duplicating code.\nAirtable as brain vs database\nThe complete Business OS already existed in Airtable (12 bases, 2,100+ fields). Single source of truth for stock, prices and customer history. Build on what already exists, don't duplicate.\nMemory window: 20 messages per session\nBalance between context and token cost. Sufficient for a repair conversation (95% resolve in <10 messages). Keyed by phone number for continuity.\nThink tool for internal reasoning\nExplicit reasoning before multi-tool chains. Reduces errors because the LLM plans the sequence (check price → verify stock → offer appointment) before executing.\nHITL via Slack with escalation reason\nThe LLM generates the escalation reason and includes it in the Slack message: why human intervention is needed, what it has tried, and what the customer needs. Works identically from WhatsApp (deep-link to WATI) and phone calls. The human knows why they're needed before opening the conversation.\nWhatsApp first, voice second\n70% of volume came through WhatsApp. Starting there maximized impact before expanding to voice. Voice (ElevenLabs + Aircall) reused existing sub-agents without duplicating logic.\nDual-orchestrator with shared sub-agents\nn8n for WhatsApp/web, ElevenLabs for voice. Sub-agents are platform-agnostic webhooks. Reusable by any orchestrator without duplicating logic. A real microservices pattern.\nElevenLabs as \"teammate\" on Aircall\nJacobo integrated into PBX with routing rules: picks up on overflow or after hours. The customer calls a landline, transparent experience. eleven_flash_v2_5 with temp 0.0 for maximum consistency.\nAircall → Twilio → ElevenLabs (and the latency trade-off)\nThe Aircall PBX → Twilio (phone bridge) → ElevenLabs chain worked, but each hop added latency: ~950-1,500ms mouth-to-ear. Twilio uses G.711 at 8kHz when STT models are optimized for 16kHz, forcing resampling with accuracy loss. Today I'd choose a direct SIP trunk (Telnyx offers G.722 wideband at native 16kHz and co-located infrastructure with sub-200ms RTT) eliminating the intermediate hop. The platform-agnostic sub-agent design would make this migration straightforward: only the transport changes, not the logic.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "decisions",
+      "section_anchor": "#decisions"
+    }
+  },
+  {
+    "content": "Platform Evolution\nJacobo wasn't a weekend hack. It was the inevitable result of 5 years building a proper Business OS underneath.\n2019-2024\nBusiness OS as foundation\nFive years building a complete business operating system in Airtable: 12 bases, 2,100+ fields, real-time inventory, CRM with full customer history. Without this clean data layer, any AI agent would just be a generic chatbot making things up.\nJan 2025\nTraining and deliberate design\nBefore writing a line of code, I studied AI agent architectures. I knew I needed tool calling, that Airtable was the SSOT, and that the same backend had to serve both voice and chat.\nFeb 2025\nFirst test version (monolithic)\nTried the single-prompt-with-everything approach. Confirmed what I suspected: a monolithic prompt doesn't scale across multiple domains. This test validated the sub-agent-as-webhooks architecture, platform-agnostic by design.\nFeb 2025\nDefinitive multi-agent version\nMy first AI agent, shipped to production in under a month. Full sub-agent architecture: each domain in its own workflow with independent webhook, central router with tool calling, multi-model per use case. The speed came from the Business OS already running underneath. Built alongside all other business responsibilities.\nMar 2025\nVoice channel (Aircall + Twilio + ElevenLabs)\nJacobo as a teammate on the Aircall phone system, connected via Twilio to ElevenLabs. Reused existing sub-agents without duplicating logic. Validation of the platform-agnostic design: the webhooks served a second orchestrator without touching a single line.\nSep 2025\nGoing-concern sale\nJacobo has been running 24/7 since launch. It was part of the business sale as an operational asset: the buyer acquired it operating. Five years of clean architecture made this exit possible.\nJacobo wasn't an experiment.\n16 years building a business with my own hands.\nSystematize it until it runs {without me}.\nJacobo was the piece that {closed the loop}.\nI sold the business as a going concern.\nThe systems I built still run today — under {new ownership}.\nJacobo was built on top of the Business OS I designed over 5 years — read the full case study →",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "platformEvolution",
+      "section_anchor": "#platform-evolution"
+    }
+  },
+  {
+    "content": "What I'd Do Differently\nJacobo ran in production for months. Here's what I'd change:\nStructured evaluation from day 1\nI bolted on evals after the system was already in production. Starting over, I'd define response quality metrics, intent classification accuracy, and HITL rate before v1. Retrofitting observability costs more than building it in from day one.\nDirect SIP trunk instead of Aircall → Twilio → ElevenLabs\nThe 3-hop chain added ~950-1,500ms mouth-to-ear latency and forced G.711 (8kHz) → 16kHz resampling. A Telnyx SIP trunk direct to ElevenLabs would give native G.722 wideband and sub-200ms RTT. I went with the long chain because Aircall was already contracted. Today I'd prioritize latency over convenience.\nVector store for memory instead of raw WATI fetch\nFetching 80 messages from WATI works, but doesn't scale for customers with long histories and can't do semantic search. A vector store (Pinecone, Qdrant) with conversation embeddings would unlock \"remember when you brought the iPhone 12\" without loading the full thread.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "whatIdDoDifferently",
+      "section_anchor": "#what-id-do-differently"
+    }
+  },
+  {
+    "content": "Transferable Enterprise Patterns\nJacobo was built for an SMB. The patterns scale. Here's what I shipped vs. what I'd add at enterprise scale:\nSub-agent routing with tool calling\nRouter + 7 webhook sub-agents with intent classification and delegation\nAdd circuit breakers, retry policies and per-sub-agent model fallback\nMulti-model orchestration\nGPT-4.1 (router/voice) + GPT-4.1 mini (quotes) + MiniMax (appointments) via OpenRouter\nA/B testing models per sub-agent, canary deployments for new prompt versions\nHITL framework\nEscalation via Slack with full context and deep-link to the conversation\nQueue management, SLAs per customer tier, escalation reason analytics\nPlatform-agnostic sub-agents\nShared webhooks between n8n (WhatsApp) and ElevenLabs (voice)\nAPI gateway, rate limiting, authentication, endpoint versioning\nObservability\nn8n logs + Slack alerts\nLangfuse/Datadog for traces, latency and per-conversation cost tracking\nVoice infrastructure\nAircall → Twilio → ElevenLabs: functional, but each hop adds latency (~950-1,500ms mouth-to-ear). Twilio uses G.711 at 8kHz, requiring resampling to 16kHz for STT models, degrading accuracy\nDirect SIP trunk (Telnyx/Plivo) → ElevenLabs via SIP, eliminating the Twilio hop. Telnyx offers G.722 wideband at native 16kHz (no resampling) and co-located infrastructure (GPU + telephony in the same PoP) with sub-200ms RTT. For apps/web: direct WebRTC (Opus 16-48kHz) via LiveKit, no PSTN, achieving 300-600ms mouth-to-ear\nIndustry applicability\nTravel (Hopper, Booking)\nSub-agents for flights, hotels, insurance. HITL for complex changes. Tool calling against availability APIs.\nFintech\nSub-agents for transactions, balance queries, support. Stock-aware routing → balance-aware routing.\nHealthcare\nSub-agents for appointments, results, triage. HITL as critical feature for specialist referral.\nE-commerce\nSub-agents for tracking, returns, recommendations. Same inventory lookup and booking patterns.\nVoice AI Platforms\nConversational agent orchestration with optimized latency. The cross-channel (voice → text) and HITL patterns apply directly to any voice platform.\nData/AI Platforms\nTool calling against internal APIs, intent-based sub-agent routing, memory management. The same architecture scales to any agent orchestrator.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "enterprisePatterns",
+      "section_anchor": "#enterprise-patterns"
+    }
+  },
+  {
+    "content": "The Two Brains\nJacobo has two independent routers sharing the same tools and sub-agents. One orchestrates WhatsApp, the other handles voice calls. Same business logic, two completely different interfaces.\nWhatsApp Router (n8n)\nThe text brain: an n8n workflow with 37 nodes that classifies every message, decides which sub-agent to invoke, and orchestrates the response. Tool calling, prompt engineering, and all routing logic live here.\nVoice Router (ElevenLabs)\nThe voice brain: a conversational agent on ElevenLabs powered by Gemini 2.5 Flash, knowledge bases with business documentation, and the same tools exposed as webhooks. The customer talks on the phone and Jacobo responds in real time, checking prices, availability and managing appointments — exactly the same as WhatsApp.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "mainRouter",
+      "section_anchor": "#main-router"
+    }
+  },
+  {
+    "content": "Deep Dive: Quotes Sub-agent\nThe quotes sub-agent is the most critical in the system: every price inquiry flows through it. It uses GPT-4.1 mini via OpenRouter for structured output precision. Its response determines the entire flow's next step.\nThe challenge: from free text to structured quote\nThe customer writes \"how much to replace the screen on an iPhone 15 Pro Max\". The router needs a JSON with price, stock status, appointment and part URLs. The sub-agent bridges natural language with the Airtable database in real time.\nCleanModel — Encoding tacit knowledge\nCustomers don't type model names like a database. They write \"iphone 15\", \"iPhone15 pro max\", \"ip 15 pro\", \"I-Phone 15Pro Max\". A human technician solved this with experience — they knew \"the big black one\" was probably a Pro Max. That tacit knowledge gets lost if you don't design for it.\nCleanModel normalizes the input: strips spaces, parentheses, hyphens, and lowercases. \"iPhone 15 Pro Max\" → \"iphone15promax\". This feeds a SEARCH() lookup in Airtable on the modeloLimpio field (also normalized), enabling fuzzy matching without relying on exact spelling.\nThis node encodes tacit business knowledge. Without it, the agent would fail on most real inputs — because customers don't talk like databases. It's an example of why building agents requires domain understanding, not just connecting APIs.\nAI Agent — GPT-4.1 mini via OpenRouter\nThe sub-agent's brain. System prompt with an ultra-scoped ROLE: \"agent specialized in looking up prices\". Includes Think tool for explicit reasoning before each tool call and Simple Memory (buffer window) with a static sessionKey.\nBuscarModelo\nSearches by modeloLimpio field in the Models table → returns RECORD_ID, Name, URLSantiferNueva, Cita diagnóstico.\nBuscarReparacionesModelo\nSearches by RECORD_ID → returns 20 repair types with \"Price, stock & appointment\" (original screen, compatible, battery, microphone, speaker, charging port, rear/front camera, etc.).\nStructured Output Parser\nFormats to JSON with schema: modelo, reparación, precio, stock, urlSantifer, urlCita, urlPresupuesto, urlDiagnostico, idPiezaAirtable, idModeloAirtable.\nIf no match is found, the system prompt instructs: \"you must keep narrowing the model to get more results, until you find the right one\" — replicating a seasoned technician's reasoning.\nFiltrarRespuesta — Deterministic post-processing\nCode node that validates and cleans the AI Agent's response before returning it to the router. Validates that urlSantifer points to the correct domain (if it doesn't contain \"santiferirepair.es\" → \"NOT AVAILABLE ON WEB YET\"). Then applies 3 field-stripping paths based on state:\nstock === true\nStrips urlPresupuesto, idPieza, idModelo — customer can book an appointment directly.\nstock === false\nStrips urlCita and urlPresupuesto — part needs to be ordered before repair.\nprecio === \"PRESUPUESTO\"\nStrips urlCita and idPieza — repair not catalogued, requires manual assessment.\nThe result: a customer asks \"how much to fix my iPhone screen\" and in 4 seconds gets a real price, stock availability, and a direct link to book an appointment or place an order. No forms, no \"let me transfer you\". The sub-agent queries only the essential Airtable fields and returns exactly what the router needs to close the conversion.\nQuotes sub-agent system prompt (n8n)\nThe prompt defines three tools (BuscarModelo, BuscarReparacionesModelo, Structured Output Parser) and a 4-step flow to return structured quotes with stock status.\n## ROL\nEres un sub-agente de presupuestos para Santifer iRepair.\nTu trabajo: recibir un modelo y una reparación, buscarlos en Airtable\ny devolver un presupuesto estructurado.\nScoped sub-agent role\nNot a general assistant: a sub-agent with a single responsibility. The ultra-narrow scope eliminates the LLM's temptation to chat, suggest alternatives, or add unsolicited context.\n## OBJETIVO\nBuscar el modelo exacto y la reparación solicitada en la base de datos.\nDevolver precio, disponibilidad de stock y siguiente paso recomendado.\nSingle-responsibility objective\nOne job: look up + return quote. The \"recommended next step\" (appointment, order, manual quote) lets the main router decide without another LLM call.\n## HERRAMIENTAS\n- \"BuscarModelo\": busca el modelo del dispositivo en Airtable\n- \"BuscarReparacionesModelo\": busca reparaciones disponibles para ese modelo\n- \"Structured Output Parser\": formatea la respuesta en JSON estructurado\nTool chain pipeline\nThe 3 tools form a sequential pipeline: find model → find repairs → format. The Structured Output Parser at the end guarantees the JSON is consumable by the router without post-processing.\n## PASOS\n1. Recibir modeloInput y reparacionInput del router\n2. Llamar a BuscarModelo con modeloLimpio\n3. Si encuentra el modelo → llamar a BuscarReparacionesModelo\n4. Devolver JSON: precio, stock, tiempo estimado, urlCita, urlPresupuesto\nExplicit step sequencing\nDeterministic step-by-step order. Without this, the LLM would sometimes skip BuscarModelo and try to guess the price. Each step conditions the next: zero ambiguity about what to do.\n// User message template (n8n injects the variables)\nModelo: {{ $json.modeloInput }}\nModelo limpio: {{ $json.modeloLimpio }}\nReparación: {{ $json.reparacionInput }}\nVariable injection via template\nn8n injects modeloInput (what the customer said), modeloLimpio (normalized by the router), and reparacionInput. Separating raw/clean input lets the sub-agent search with the normalized name without losing the customer's original context.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "deepDiveQuotes",
+      "section_anchor": "#deep-dive-quotes"
+    }
+  },
+  {
+    "content": "Deep Dive: Tools\nNot every piece of the system needs an LLM. These three tools are lightweight workflows that each execute a single operation, simple by design: decision logic lives in the router.\nhacerPedido: Rush Orders\nWhen the quotes sub-agent detects the part is out of stock, the router invokes hacerPedido. The workflow creates a record in the Airtable \"Pedidos\" table with everything the team needs to order from the supplier.\nWebhook → Airtable Create (Pedidos table) → Respond to Webhook\nAutomatically flags \"Rush? = YES\" because the customer is waiting\nLinks idPieza and idModelo for full traceability in the Business OS\nAdds note \"Automated order by Jacobo\" + customer comment\nThe team receives the order in their Airtable view with zero manual intervention\nDiscount Calculator\nPure business logic, zero LLM. When the customer needs multiple repairs (e.g., screen + battery + back glass), the router sends a price array and the calculator applies tiered discounts automatically.\nWebhook → Code (discount logic) → Response\nSorts prices high-to-low: the most expensive repair gets no discount\nPosition-based discount: ≤€50 → €15 off, ≤€100 → €20 off, >€100 → €25 off\nReturns formatted summary: price without discount, discount applied, final price\nThe customer instantly sees how much they save by bundling repairs in one visit\nconst precios = item.json.body.precios;\n\n// Validaciones básicas\nif (!Array.isArray(precios) || precios.length < 2) {\n    throw new Error('Debes enviar un array \"precios\" con al menos 2 números.');\n}\nDefensive validation\nThe sub-agent doesn't trust the router: validates the array exists and has at least 2 prices. If the LLM sent malformed data, it fails fast with a descriptive error instead of returning NaN.\n// 1) Ordenamos de mayor a menor\nconst ordenados = [...precios].sort((a, b) => b - a);\n\n// 2) Calculamos descuento por posición (el primero no tiene)\nconst descuentos = ordenados.map((precio, idx) => {\n    if (idx === 0) return 0;        // sin descuento para el más caro\n    if (precio 100 €\n});\nBusiness rules as code, not as prompt\nDiscounts live in a Code node, not a prompt. This guarantees determinism: a €189 screen + €45 battery always yields the exact same discount. Zero hallucinations possible.\n// 3) Totales\nconst totalSinDescuento = ordenados.reduce((s, p) => s + p, 0);\nconst descuentoTotal    = descuentos.reduce((s, d) => s + d, 0);\nconst totalConDescuento = totalSinDescuento - descuentoTotal;\n\n// 4) Preparar respuesta\nconst resumen =\n    `Presupuesto total sin descuento: ${totalSinDescuento.toFixed(2)} €\nDescuento aplicado: ${descuentoTotal.toFixed(2)} €\nPresupuesto reparándolo todo junto: ${totalConDescuento.toFixed(2)} €`;\nPre-formatted response for the router\nThe plain-text summary goes to the router and is passed directly to the customer. The LLM doesn't rephrase: it copies the text verbatim. The price the customer sees is exactly what the code calculated.\nHITL Handoff: Human Escalation\nThe system's escape valve. When Jacobo detects it can't resolve (frustrated customer, complex case, out-of-scope request), it escalates to a human via Slack with full context.\nWebhook → Slack (#chat) → Respond to Webhook\nPosts to #chat channel with 🤖 emoji as avatar\nMessage includes: conversation summary, detected intent, and customer history\nDeep-link directly to the WATI conversation: the human opens it with full context already loaded\nJacobo confirms to the customer that a human will reach out, without cutting the conversation\nEnviarMensajeWati: Cross-Channel\nThe bridge between channels. When the customer is on the phone with Jacobo (ElevenLabs), this workflow sends links and confirmations via WhatsApp in parallel. The customer gets the info in writing while still talking.\nWebhook → HTTP Request (WATI API) → Respond to Webhook\nSends \"urlreparacion2\" template with the personalized appointment URL\nEnables the voice agent to say \"I just sent you the link on WhatsApp\"\nThe customer doesn't need to write anything down: when they hang up, the info is already on their phone",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "deepDiveOthers",
+      "section_anchor": "#deep-dive-others"
+    }
+  },
+  {
+    "content": "FAQ\nHow much does it cost to build an AI agent for WhatsApp?\nThe tools (n8n cloud, WATI, Aircall, LLMs via OpenRouter) cost less than €200/month total. The main cost is the time to design and develop the architecture. For a business this size, it's a fraction of the cost of a part-time customer service employee.\nWhat happens if the AI gets a price wrong?\nPrices don't come from the LLM: they come from Airtable. Jacobo queries inventory in real time. If a price changes in Airtable, Jacobo gives the correct price automatically. No hallucination possible on structured data.\nHow does the voice agent on a landline work?\nJacobo is integrated into the Aircall PBX as another \"teammate\". It picks up when no one else can or after hours. The customer calls a landline and talks to Jacobo with natural voice (ElevenLabs). It uses the same sub-agent webhooks as WhatsApp: same logic, different interface.\nWhy n8n and not LangChain/LangGraph directly?\nn8n lets each sub-agent be a visual workflow with its own webhook, testable with an HTTP call. The maintenance barrier is lower than a Python repo. For this system's complexity (7 workflows, ~80 nodes), n8n's visualization is an advantage, not a limitation.\nHow long did it take to build Jacobo?\nLess than a month from design to production. And it was my first AI agent, built in parallel with all other business responsibilities. The speed came from the Business OS already existing: clean, accessible data in Airtable, real-time inventory, CRM with history. Without that 5-year foundation, it would have been much slower. Jacobo was the inevitable consequence of a robust business operating system.\nCan you build something like this for my company?\nYes. Jacobo's patterns (sub-agents, tool calling, HITL, cross-channel) are industry-agnostic. What changes is the data and integrations, not the architecture. If your business has structured data and repetitive processes, I can design a similar system.\nIs Jacobo still running?\nYes. I sold the business in 2025 and Jacobo was sold with it — it's still in production serving customers today. That's the best validation possible: the buyer kept the system because it works.\nHow do these patterns apply to an enterprise team?\nJacobo was built for an SMB, but the patterns (sub-agents, tool calling, HITL, cross-channel) are enterprise-grade. At scale you add: circuit breakers, A/B testing per sub-agent, queue management for HITL handoff, per-sub-agent observability. What does not change: the architecture.",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
+  },
+  {
+    "content": "Resources\nn8n — Workflow Automation\nhttps://n8n.io\nOpenRouter — Model Gateway\nhttps://openrouter.ai\nElevenLabs — Conversational AI\nhttps://elevenlabs.io\nWATI — WhatsApp Business API\nhttps://www.wati.io\nAircall — Cloud PBX\nhttps://aircall.io\nAirtable — Database Platform\nhttps://airtable.com",
+    "metadata": {
+      "article_id": "jacobo",
+      "article_slug_en": "/ai-agent-jacobo",
+      "article_slug_es": "/agente-ia-jacobo",
+      "page_path_en": "/ai-agent-jacobo",
+      "page_path_es": "/agente-ia-jacobo",
+      "source_file": "src/jacobo-i18n.ts",
+      "format": "i18n",
+      "section_id": "resources",
+      "section_anchor": "#resources"
+    }
+  }
+]

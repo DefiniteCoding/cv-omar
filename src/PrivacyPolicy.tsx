@@ -3,51 +3,51 @@ import { Link } from 'react-router-dom'
 import { ArticleLayout } from './articles/components'
 
 const content = {
-  es: {
-    title: 'Politica de Privacidad',
-    lastUpdated: 'Ultima actualizacion: 15 de marzo de 2026',
-    intro: 'Esta politica describe como se recopilan y utilizan los datos cuando visitas omarmostafa.org.',
+  ar: {
+    title: 'سياسة الخصوصية',
+    lastUpdated: 'آخر تحديث: 15 مارس 2026',
+    intro: 'تصف هذه السياسة كيفية جمع البيانات واستخدامها عند زيارتك لموقع omarmostafa.org.',
     sections: [
       {
-        heading: 'Que datos se recopilan',
+        heading: 'البيانات التي يتم جمعها',
         items: [
-          'Mensajes del chatbot: cuando interactuas con el chatbot "Santi", los mensajes se procesan para generar respuestas. No se solicita ni almacena informacion personal identificable.',
-          'Audio del modo voz: si activas el modo voz, el audio se procesa en tiempo real para la conversacion y no se almacena de forma permanente.',
-          'Analiticas de uso: se recopilan datos anonimos de navegacion (paginas visitadas, duracion, dispositivo) para mejorar el sitio.',
+          'رسائل الدردشة: عند تفاعلك مع المساعد الذكي، تُعالَج الرسائل لتوليد الردود. لا يُطلب أو يُخزَّن أي معلومات شخصية.',
+          'صوت الوضع الصوتي: عند تفعيل الوضع الصوتي، يُعالَج الصوت في الوقت الفعلي ولا يُحفظ بشكل دائم.',
+          'تحليلات الاستخدام: تُجمع بيانات تصفح مجهولة الهوية (الصفحات المزارة، المدة، الجهاز) لتحسين الموقع.',
         ],
       },
       {
-        heading: 'Como se utilizan los datos',
+        heading: 'كيفية استخدام البيانات',
         items: [
-          'Los mensajes del chatbot se utilizan exclusivamente para generar respuestas contextuales sobre la experiencia profesional de Santiago.',
-          'Las trazas de conversacion se almacenan de forma anonimizada para mejorar la calidad de las respuestas y detectar intentos de uso indebido.',
-          'Los datos de analiticas se utilizan para entender patrones de uso y mejorar el rendimiento del sitio.',
+          'تُستخدم رسائل الدردشة حصراً لتوليد ردود سياقية حول الخبرة المهنية لعمر مصطفى.',
+          'تُخزَّن سجلات المحادثات بشكل مجهول لتحسين جودة الردود ورصد محاولات الاستخدام غير المشروع.',
+          'تُستخدم بيانات التحليلات لفهم أنماط الاستخدام وتحسين أداء الموقع.',
         ],
       },
       {
-        heading: 'Terceros',
+        heading: 'الأطراف الثالثة',
         items: [
-          'Anthropic (Claude): procesa los mensajes del chatbot para generar respuestas.',
-          'OpenAI (Realtime API): procesa el audio del modo voz para la conversacion en tiempo real.',
-          'Langfuse: almacena trazas anonimizadas de conversaciones para observabilidad y mejora de calidad.',
-          'Vercel: aloja el sitio web y recopila analiticas anonimas de uso.',
+          'Anthropic (Claude): يعالج رسائل الدردشة لتوليد الردود.',
+          'OpenAI (Realtime API): يعالج صوت الوضع الصوتي للمحادثة الفورية.',
+          'Langfuse: يخزن سجلات المحادثات المجهولة للمراقبة وتحسين الجودة.',
+          'Netlify: يستضيف الموقع ويجمع تحليلات الاستخدام المجهولة.',
         ],
       },
       {
-        heading: 'Cookies y almacenamiento local',
-        body: 'Este sitio no utiliza cookies de seguimiento ni de terceros. Solo se utiliza localStorage del navegador para preferencias de interfaz (tema visual). No se almacena informacion personal.',
+        heading: 'ملفات تعريف الارتباط والتخزين المحلي',
+        body: 'لا يستخدم هذا الموقع ملفات تعريف ارتباط للتتبع أو لأطراف ثالثة. يُستخدم localStorage فقط لتفضيلات الواجهة (الثيم). لا تُخزَّن معلومات شخصية.',
       },
       {
-        heading: 'No hay cuentas de usuario',
-        body: 'Este sitio no requiere registro ni inicio de sesion. No se recopilan nombres, emails ni contrasenas a traves del sitio web.',
+        heading: 'لا توجد حسابات مستخدمين',
+        body: 'لا يتطلب هذا الموقع تسجيلاً أو تسجيل دخول. لا يتم جمع أسماء أو بريد إلكتروني أو كلمات مرور.',
       },
       {
-        heading: 'Contacto',
-        body: 'Para cualquier consulta sobre privacidad, puedes escribir a:',
-        email: 'hola@omarmostafa.org',
+        heading: 'التواصل',
+        body: 'لأي استفسار متعلق بالخصوصية، يمكنك التواصل عبر:',
+        email: 'omar.mostafa.zaki@gmail.com',
       },
     ],
-    backHome: 'Volver al inicio',
+    backHome: 'العودة للرئيسية',
   },
   en: {
     title: 'Privacy Policy',
@@ -57,7 +57,7 @@ const content = {
       {
         heading: 'What data is collected',
         items: [
-          'Chatbot messages: when you interact with the "Santi" chatbot, messages are processed to generate responses. No personally identifiable information is requested or stored.',
+          'Chatbot messages: when you interact with the AI assistant, messages are processed to generate responses. No personally identifiable information is requested or stored.',
           'Voice mode audio: if you activate voice mode, audio is processed in real time for conversation and is not permanently stored.',
           'Usage analytics: anonymous browsing data (pages visited, duration, device) is collected to improve the site.',
         ],
@@ -65,7 +65,7 @@ const content = {
       {
         heading: 'How data is used',
         items: [
-          "Chatbot messages are used exclusively to generate contextual responses about Santiago's professional experience.",
+          "Chatbot messages are used exclusively to generate contextual responses about Omar Mostafa's professional experience.",
           'Conversation traces are stored in anonymized form to improve response quality and detect misuse attempts.',
           'Analytics data is used to understand usage patterns and improve site performance.',
         ],
@@ -76,7 +76,7 @@ const content = {
           'Anthropic (Claude): processes chatbot messages to generate responses.',
           'OpenAI (Realtime API): processes voice mode audio for real-time conversation.',
           'Langfuse: stores anonymized conversation traces for observability and quality improvement.',
-          'Vercel: hosts the website and collects anonymous usage analytics.',
+          'Netlify: hosts the website and collects anonymous usage analytics.',
         ],
       },
       {
@@ -90,7 +90,7 @@ const content = {
       {
         heading: 'Contact',
         body: 'For any privacy-related inquiries, you can write to:',
-        email: 'hola@omarmostafa.org',
+        email: 'omar.mostafa.zaki@gmail.com',
       },
     ],
     backHome: 'Back to home',
@@ -104,7 +104,7 @@ interface PrivacySection {
   email?: string
 }
 
-export default function PrivacyPolicy({ lang = 'es' }: { lang?: 'es' | 'en' }) {
+export default function PrivacyPolicy({ lang = 'ar' }: { lang?: 'ar' | 'en' }) {
   const t = content[lang]
 
   useEffect(() => {
@@ -121,12 +121,12 @@ export default function PrivacyPolicy({ lang = 'es' }: { lang?: 'es' | 'en' }) {
 
     // Fix canonical (SPA fallback serves homepage canonical — override it)
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement
-    if (canonical) canonical.href = `https://omarmostafa.org/${lang === 'es' ? 'privacidad' : 'privacy'}`
+    if (canonical) canonical.href = `https://omarmostafa.org/${lang === 'ar' ? 'ar-privacy' : 'privacy'}`
 
     // Fix meta description
     let desc = document.querySelector('meta[name="description"]') as HTMLMetaElement
-    if (desc) desc.content = lang === 'es'
-      ? 'Politica de privacidad de omarmostafa.org. Como se recopilan y utilizan los datos del chatbot y la web.'
+    if (desc) desc.content = lang === 'ar'
+      ? 'سياسة الخصوصية لموقع omarmostafa.org. كيفية جمع بيانات الدردشة والموقع واستخدامها.'
       : 'Privacy policy for omarmostafa.org. How chatbot and website data is collected and used.'
 
     return () => {
@@ -186,7 +186,7 @@ export default function PrivacyPolicy({ lang = 'es' }: { lang?: 'es' | 'en' }) {
 
         <div className="mt-12 pt-8 border-t border-border">
           <Link
-            to={lang === 'es' ? '/' : '/en'}
+            to={lang === 'ar' ? '/' : '/en'}
             className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
           >
             {'← '}{t.backHome}

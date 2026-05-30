@@ -1,0 +1,198 @@
+[
+  {
+    "content": "Case Study — Santifer iRepair\nBusiness OS for 30,000+ Repairs\nHow I built a complete business operating system with Airtable — 12 interconnected bases, 2,100+ fields and 50+ automations saving 170h/month.\n30,000+ repairs. 12 bases. 2,100 fields. Zero off-the-shelf ERPs. All built on Airtable.\nA multi-service repair business doesn't fit in a generic ERP. In 2019, I evaluated RepairDesk ($99/mo), Orderry and RepairShopr: all existed, but none covered the multi-service model (repairs + accessories), nor offered CRM with gamification, complex automations or programmatic SEO. I needed a system that was the single source of truth for everything: orders, inventory, customers, bookings, billing and automations. So I built it.\nI built a 12-base Airtable operating system that ran a 16-year business: ERP, CRM, appointment scheduling, AI agents, and a programmatic website, all from a single source of truth. 170+ hours/month automated. Then I sold the company and the buyer kept everything running. This is what I'd design for your customers.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "Automated\nAirtable bases\nFields\nAutomations\nRepairs",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "metrics",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "A Day in the Life of the System\nHere's what happens when a customer texts \"I want to repair my iPhone 14 Pro\":\nJacobo (omnichannel AI agent) detects the repair intent, identifies the model and checks screen stock in Airtable in real time.\nStock available → Jacobo replies with an estimated price and asks when they'd like to come. The customer states their preference in natural language, and a Jacobo sub-agent checks YouCanBookMe availability to offer the closest slots. Zero friction, without leaving the conversation.\nCustomer confirms the time → the appointment is created in YouCanBookMe, the work order is generated in Airtable and the parts are auto-reserved from inventory — locked for that repair.\nThe technician sees the work order on their tablet with full detail: model, repair, reserved parts and exact warehouse location.\nRepair completed → invoice auto-generated → loyalty points added to CRM → customer receives a satisfaction survey via WhatsApp.\nWant to know more about Jacobo?\nOmnichannel AI agent that handles customers via WhatsApp and voice, checks stock in real time, and manages appointments autonomously.\nRead the full case study\nHow did we generate web content for every model and repair?\nThe Airtable CMS powered a programmatic website with unique pages per model and repair type — all automated with keyword research.\nRead the Programmatic SEO case study",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "dayInLife",
+      "section_anchor": "#day-in-life"
+    }
+  },
+  {
+    "content": "Why I Didn't Use RepairDesk or Odoo\nBefore building, I researched the alternatives. None fit:\nRepairDesk ($99/mo)\nAlready existed in 2019. Covers ticketing and inventory, but designed for pure repair shops. Didn't support the multi-service model (repairs + accessories), CRM with tiers/gamification, or complex automations.\nRepairShopr / Orderry\nAlso available in 2019. RepairShopr had basic email marketing (\"Marketr\") and Zapier, but rigid flows. Orderry, good foundation but no real automation capability. Neither offered programmatic SEO or AI agent integration.\nTraditional ERP (Odoo, SAP B1)\nOverkill, slow to implement, and without the flexibility to iterate weekly. Customization cost far exceeded building something custom.\nThe key decision: I needed full control over data flows and the ability to automate any process in hours, not weeks.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "whyCustom",
+      "section_anchor": "#why-custom"
+    }
+  },
+  {
+    "content": "12 Airtable Bases as a No-Code Business OS\nThe Business OS is an ecosystem of 12 interconnected Airtable bases. Each base owns a bounded domain, and 50+ native automations orchestrate data flows between them via linked records — no duplication, just linking what's needed.\nAirtable Bases\nTotal Fields\nAutomations\nMonthly Savings\nCentral ERP\nBusiness operations hub: work orders (496 fields in the OTS table), inventory, purchasing, bookings and warranties.\nCRM\nCustomers, lead scoring, loyalty tiers, complete history and automated communications.\nAccounting\nAutomatic bank reconciliation, invoice generation, expense tracking and financial reports.\nParts Catalog\nRepair parts pricing and stock from suppliers, synced with the ERP inventory.\nAccessories Catalog\nCases, screen protectors, chargers. Supplier catalog synced with inventory.\nWeb CMS\nHeadless CMS with 1,534 fields and 647 formulas powering the programmatic website by model and repair.\nCustomer Feedback\nSatisfaction surveys, NPS and automated post-service follow-up.\nReviews\nInternal and external (Google) reviews automatically extracted and aggregated.\nAutomated KWR\nKeyword research per model and repair via DataForSEO for programmatic SEO decisions.\nGBP Posts\nBefore/after success stories generated for Google Business Profile.\nShort Content\nPer-repair-type content for social media and communications.\nCustom GPT\nConfiguration and prompts for internal stock and pricing query GPTs.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "overview",
+      "section_anchor": "#overview"
+    }
+  },
+  {
+    "content": "Cross-Cutting Capabilities\nThese capabilities don't belong to a single flow — they operate across all of them.\nData Guardrails — 50+ Business Rules\nGuardrails block incorrect data at the source — cheaper than fixing downstream. The system guides employees through every process: if they miss a step, it tells them what's missing.\nCan't close a repair without logging the parts used\nCan't invoice without customer-signed quote\nCan't add a product without cost price and minimum margin\nAutomatic alert if a technician has more than 5 open repairs simultaneously\nDuplicate IMEI validation: if a device is already in the system, it links to existing history\nConsistency check: if the quote says \"screen\" but logged parts are \"battery\", it blocks\nEvent-Driven Notifications\nEvery business event (appointment confirmed, repair completed, invoice issued) triggers a notification through the appropriate channel. The communication layer is decoupled from business logic.\nAutomated notifications per event: appointment confirmed, repair completed, invoice issued\nMeta-approved WhatsApp templates with dynamic variables (name, model, price)\nNative integration with the booking system: customer receives instant confirmation upon booking\nIf the part isn't in stock, an internal urgent order notification fires to the team for quick resolution\nAI-Powered Query Layer\nTwo internal GPTs use Airtable as source of truth — natural language interface over operational data, no hallucinations.\nStock GPT: \"Do we have iPhone 14 Pro screens?\" → queries Airtable in real time and responds with stock, supplier, cost price, and exactly which cabinet and drawer the part is in. It also flags if other in-progress repairs are using that same part\nPricing GPT: \"How much do we charge for a Samsung S23 repair?\" → calculates final price considering part cost + configured margin + customer tier\nBoth GPTs use Airtable as source of truth, eliminating hallucinated answers\nGenerative AI Applied\nAirtable as source of truth, GenAI as creative engine. From the product catalog and business data, visual assets were generated for storefront displays, social media and campaigns, with no manual content intervention.\nAI-generated digital signage for storefront: product images and promotions deployed on in-store screens, fed from the Airtable catalog\nInstagram Reels with Sora-generated video (OpenAI) and original songs with Suno (AI): emotional storytelling, humor and branding, edited with DaVinci Resolve\nFull pipeline: Airtable data → prompt → visual generation → channel deployment (storefront, Instagram, WhatsApp)",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "crossCutting",
+      "section_anchor": "#cross-cutting"
+    }
+  },
+  {
+    "content": "The 170h/Month Breakdown\nThis isn't a made-up number. Each saving is calculated based on task frequency and the manual time it used to require (measured with before/after time tracking over 3 months):\nAutomatic purchase orders\n45 min/day\n0 (automatic)\n~22h\nPrice/stock inquiry responses\n2h/day\n5 min (GPT)\n~58h\nRepair tracking\n30 min/day\nAutomatic\n~15h\nAppointment management & confirmations\n45 min/day\nAutomatic\n~22h\nBilling & quotes\n1h/day\n10 min\n~25h\nInactive customer reactivation\n3h/week\nAutomatic\n~12h\nReports & KPIs\n4h/week\nAutomatic\n~16h\n~170h/mo\nThat's more than one full-time employee. And the system doesn't get sick, doesn't take vacations, and doesn't make copy-paste mistakes. This system was a key asset in the 2025 business sale (going-concern) — robust enough for the buyer to acquire it as a running operation.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "impact",
+      "section_anchor": "#impact"
+    }
+  },
+  {
+    "content": "Before vs After\nData management\nBasic Checkout POS, data fragmented across disconnected systems\nAirtable as single source of truth (SSOT) — one data point, one place\nCustomer communication\nWhatsApp groups, manual one-by-one messages\nAutomated triggers per event: confirmation, reminder, completed\nBilling\nManual invoices from Checkout POS, frequent data errors\nAuto-generated on repair completion, with correct tax data\nStock control\nVisual check, \"I think we have 2 left\"\nReal-time alerts, automatic purchase orders when minimum is reached\nHuman errors\nCopy-paste between systems, inconsistent data\n0 errors with 50+ automatic validations that block inconsistencies",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "beforeAfter",
+      "section_anchor": "#before-after"
+    }
+  },
+  {
+    "content": "Architecture Decision Records (ADRs)\nEvery technical decision has a reason. Here are the most important ones:\nWhy Airtable as SSOT?\nAirtable combines spreadsheet flexibility with relational database structure. For a business that iterates weekly, speed of change is critical. Adding a new field or view takes minutes, not days of development.\nWhy custom over SaaS?\nSaaS imposes its data model. When your business is multi-service (repairs + accessories), no vertical SaaS covers everything. The adaptation cost exceeds the build cost.\nWhen NOT to build custom?\nIf your business fits a standard vertical (repairs only, no multi-service), use RepairDesk or similar. Building custom makes sense when your business differentiator is in the processes, not the product.\nWhy native Airtable automations over Zapier/Make?\nAirtable automations live inside the base itself, access data directly, and have no per-execution cost. For day-to-day business logic (50+ automations), that's unbeatable. Make is used as glue for specific SaaS integrations: new Google My Business review notifications (official integration), supplier webhooks and payment gateway syncs. n8n is used for Jacobo (the AI agent), where complex orchestration with language models and tool calling is needed.\nHow do you manage 2,100+ fields without chaos?\nBy separating concerns: each base owns a clear domain and only syncs strictly necessary data with other bases via linked records. No duplicating everything — just linking what's needed. Combined with role-filtered views (technicians see their stuff, sales sees theirs), each user interacts with a manageable subset of the system.\nLogic placement: where each rule lives\nSimple → native Airtable automations (zero cost per execution, but capped at 100,000 runs/month on the Business plan; hit the limit and they stop cold). SaaS glue → Make, fast and robust for integrations with external APIs (Google My Business, suppliers, payments), with purchasable credits if you need more capacity. AI orchestration → n8n for agents with LLMs and tool calling. Heavy computation → custom code. Rule: push logic as close to the data as possible.\nID strategy: record IDs + sequential codes\nAirtable generates recXXXXX for internal linking. Employees and customers use readable codes: OT-2024-04521, FAC-2024-01234. The separation prevents human errors without sacrificing referential integrity.\nAudit trail: revision history + formula timestamps\nLAST_MODIFIED_TIME() on critical fields creates a queryable audit trail without external logging. Every change to a work order, invoice or quote is recorded with date and user.\nBase sync strategy: linked records, no duplication\nEach base syncs only the necessary fields with other bases. Known trade-off: cross-base reporting requires intermediate views, but the alternative (duplicating data) creates inconsistencies that cost more than the workaround.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "decisions",
+      "section_anchor": "#decisions"
+    }
+  },
+  {
+    "content": "Lessons Learned\nStart with the bottleneck, not the shiniest module.\nInventory was chaotic. Starting there unblocked everything else: purchase orders, pricing, and quotes all depend on reliable inventory.\nValidations are more valuable than automations.\nAutomating tasks saves time. But validations that prevent errors save money. A wrongly logged part can cost more than an hour of manual work.\nThe CRM isn't a contact list — it's a retention machine.\nTier gamification multiplied the return rate. Customers actively ask \"How many points do I have?\". That doesn't happen with a basic CRM.\nDocument the business rules, not the code.\nAirtable automations are visual and self-explanatory. What needs documentation are the rules: \"Why is the minimum margin 30%?\" and \"When does an inactive customer get reactivated?\".",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "lessons",
+      "section_anchor": "#lessons"
+    }
+  },
+  {
+    "content": "Platform Evolution\nBuild with the best available tool. Refactor when the platform allows it.\nThese systems still operate under the Santifer iRepair brand.\nJust {without me}.\nBuilding this system showed me what I could do at scale.\nSo I sold the business and went to {find out}.\n2019\nSingle base + Zapier\nWork orders, inventory, customers, and billing in one base. Zapier connected external flows.\n2021\nBase syncing → bounded domains\nDomains separated into independent bases (ERP, CRM, Parts, CMS). Only sync what's needed.\n2022\nNative automations replace Make\nMigrated from Make to Airtable native automations. 50+ internal flows with zero external dependencies.\n2023\nInterface Designer → goodbye raw tables\nThe whole team works with role-based designed interfaces, not tables. Faster, fewer errors.\n2024\nDynamic filtering → compatible parts only\nSelecting a model on a work order filters parts to compatible ones only — not the full 1,000+ catalog.\n2025\nJacobo AI Agent → the payoff\nOmnichannel voice + WhatsApp agent. Shipped in weeks, not months.\nFive years of clean architecture made it {inevitable}.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "platformEvolution",
+      "section_anchor": "#platform-evolution"
+    }
+  },
+  {
+    "content": "Transferable Patterns\nThe architecture patterns behind this Business OS — bounded domains, SSOT, event-driven notifications, business rule guardrails — are transferable to any service business. The specific modules change; the design principles don't.\nClinic / dental practice\nReplace repair lifecycle with patient journey. Parts catalog becomes treatment catalog. Same inventory logic, different domain.\nAgency / consultancy\nReplace work orders with project delivery. CRM tiers become client account levels. Automated reporting stays identical.\nRetail / e-commerce\nReplace repair intake with order fulfillment. Supply chain logic transfers directly. Customer lifecycle and retention flows are plug-and-play.\nAny business with complex operations can benefit from this approach — whether services, retail or e-commerce. The patterns are proven; what changes is the domain.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "replicability",
+      "section_anchor": "#replicability"
+    }
+  },
+  {
+    "content": "FAQ\nDoes Airtable scale to 30,000+ records?\nYes, with caveats. On the Business plan (125K records per base), Airtable handles tens of thousands of records well. The key is designing bases with filtered views and not loading everything in a single view. As you approach the limit, consider periodic archiving or migration to Postgres.\nHow much does this cost vs. SaaS like RepairDesk?\nAirtable Business (~$45/mo per user, 125K records/base plan) + integrations (YouCanBookMe, WATI, Make) ≈ $120-170/mo. RepairDesk is $99/mo but doesn't cover advanced CRM, complex automations, or the multi-service model. The real savings are in the 170h/month of eliminated manual work.\nWhat if Airtable changes its pricing or API?\nIt's a real risk. The mitigation: periodic data backups and, most importantly, having the complete data schema documented. If migration were ever needed, the relational structure of the 12 bases is the real asset — it can be replicated on any platform.\nHow long did it take to build all of this?\nYears of trial and error. But with a key pattern: each new module took half the time of the previous one, because accumulated learning accelerated everything. The system grew organically while the business operated — there was never a \"stop everything and build\" moment.\nWho maintains the system now?\nThe buyer. I sold the business in 2025 as a going concern: brand, systems, and workflows included. The fact that the buyer acquired it as a running operation — without needing to rebuild anything — is the ultimate validation of the architecture.\nCan this be replicated for another business?\nThe architecture (Airtable as SSOT with native automations) is replicable for any service business: workshops, clinics, agencies. What changes are the specific business rules and required modules.\nCan Airtable be used as an ERP?\nYes, with design discipline. Airtable isn't an out-of-the-box ERP, but its relational flexibility lets you build a custom one. The key is treating each base as an independent module with clean interfaces (linked records) and using native automations to orchestrate the flows. With 12 bases and 2,100+ fields, this Business OS handles everything a traditional ERP would — but with weekly iteration instead of monthly.\nWhat are the disadvantages of Airtable?\nThe main ones: 125K record limit per base on the Business plan (requires archiving if you grow significantly), pricing that scales fast with users, and vendor lock-in. The mitigation: intelligent data design with separate bases per domain, syncing only the necessary information between them, not everything at once. For this Business OS, the advantages (iteration speed, flexibility, friendly UI) far outweigh the disadvantages.\nWhy native Airtable automations instead of Zapier?\nAirtable automations live inside the base itself, have no per-execution cost, and access data directly without intermediate APIs. For day-to-day business logic (50+ automations), it's the most efficient option. The limit is 100,000 runs/month on the Business plan: hit it and they stop, with no option to buy more. That's why external system integrations (Google My Business reviews, supplier webhooks) go through Make, where you can purchase additional credits if you need more capacity. n8n is used for Jacobo (the AI agent), where complex orchestration with language models is needed.",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
+  },
+  {
+    "content": "Resources\nAirtable — Database Platform\nhttps://airtable.com\nn8n — Workflow Automation\nhttps://n8n.io\nYouCanBookMe — Appointment Scheduling\nhttps://youcanbook.me\nWATI — WhatsApp Business API\nhttps://www.wati.io",
+    "metadata": {
+      "article_id": "business-os",
+      "article_slug_en": "/business-os-for-airtable",
+      "article_slug_es": "/business-os-para-airtable",
+      "page_path_en": "/business-os-for-airtable",
+      "page_path_es": "/business-os-para-airtable",
+      "source_file": "src/business-os-i18n.ts",
+      "format": "i18n",
+      "section_id": "resources",
+      "section_anchor": "#resources"
+    }
+  }
+]

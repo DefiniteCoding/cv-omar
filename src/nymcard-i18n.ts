@@ -1,4 +1,4 @@
-export type NymCardLang = 'es' | 'en'
+export type NymCardLang = 'ar' | 'en'
 
 const content = {
   slug: 'nymcard-baas',
@@ -170,5 +170,5 @@ const content = {
 export type NymCardContent = typeof content
 export const nymcardContent: Record<NymCardLang, NymCardContent> = {
   en: content,
-  es: content,
+  ar: content,
 }

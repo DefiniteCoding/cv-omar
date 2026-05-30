@@ -29,7 +29,7 @@ interface Issue { severity: Severity; msg: string; skill?: string }
 // Per-article HTML checks
 // ---------------------------------------------------------------------------
 
-function validatePrerenderHtml(id: string, slug: string, lang: 'es' | 'en'): Issue[] {
+function validatePrerenderHtml(id: string, slug: string, lang: 'ar' | 'en'): Issue[] {
   const issues: Issue[] = []
   const htmlPath = resolve(dist, slug, 'index.html')
 
@@ -278,7 +278,7 @@ function validateRegistryConfig(config: ArticleConfig): Issue[] {
     issues.push({ severity: 'warn', msg: 'Fewer than 3 article tags', skill: '/seo content' })
   }
 
-  for (const lang of ['es', 'en'] as const) {
+  for (const lang of ['ar', 'en'] as const) {
     if (!config.seo[lang]?.description) {
       issues.push({ severity: 'error', msg: `SEO description missing [${lang}]`, skill: '/seo content' })
     }
@@ -453,7 +453,7 @@ const wordCounts: Map<string, { es: number; en: number }> = new Map()
 
 for (const article of articleRegistry) {
   if (article.type === 'bridge') continue
-  for (const [lang, slug] of Object.entries(article.slugs) as ['es' | 'en', string][]) {
+  for (const [lang, slug] of Object.entries(article.slugs) as ['ar' | 'en', string][]) {
     const issues = validatePrerenderHtml(article.id, slug, lang)
     if (issues.length > 0) {
       printIssues(issues, `${article.id} [${lang}]`)
@@ -497,13 +497,13 @@ for (const [desc, labels] of metaDescriptions) {
 for (const article of articleRegistry) {
   if (article.type === 'bridge') continue
   const counts = wordCounts.get(article.id)
-  if (!counts || counts.es === 0 || counts.en === 0) continue
-  const ratio = Math.min(counts.es, counts.en) / Math.max(counts.es, counts.en)
+  if (!counts || counts.ar === 0 || counts.en === 0) continue
+  const ratio = Math.min(counts.ar, counts.en) / Math.max(counts.ar, counts.en)
   if (ratio < 0.7) {
-    const shorter = counts.es < counts.en ? 'ES' : 'EN'
+    const shorter = counts.ar < counts.en ? 'AR' : 'EN'
     crossIssues.push({
       severity: 'warn',
-      msg: `${article.id}: ${shorter} version has ${Math.round(ratio * 100)}% of the other's word count (ES: ${counts.es}, EN: ${counts.en}).`,
+      msg: `${article.id}: ${shorter} version has ${Math.round(ratio * 100)}% of the other's word count (ES: ${counts.ar}, EN: ${counts.en}).`,
       skill: '/seo hreflang',
     })
   }
@@ -565,7 +565,7 @@ function validateStructural(): Issue[] {
   // S3. FAQ answers >= 100 words
   for (const article of articleRegistry) {
     if (article.type === 'bridge' || !article.seoMeta) continue
-    for (const [lang, slug] of Object.entries(article.slugs) as ['es' | 'en', string][]) {
+    for (const [lang, slug] of Object.entries(article.slugs) as ['ar' | 'en', string][]) {
       const htmlPath = resolve(dist, slug, 'index.html')
       if (!existsSync(htmlPath)) continue
       const html = readFileSync(htmlPath, 'utf-8')
@@ -621,7 +621,7 @@ function validateStructural(): Issue[] {
     const vjData = JSON.parse(vj)
     const rewriteSources = new Set((vjData.rewrites || []).map((r: { source: string }) => r.source))
     for (const article of articleRegistry) {
-      for (const [lang, slug] of Object.entries(article.slugs) as ['es' | 'en', string][]) {
+      for (const [lang, slug] of Object.entries(article.slugs) as ['ar' | 'en', string][]) {
         if (!rewriteSources.has(`/${slug}`)) {
           issues.push({
             severity: 'warn',

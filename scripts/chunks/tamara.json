@@ -1,32 +1,100 @@
 [
   {
-    "article_id": "tamara",
-    "section": "overview",
-    "content": "Tamara Partners Portal 2.0 — Case Study\nOmar Mostafa Mohaseb was Product Manager at Tamara (Jan 2024 – Jan 2025), leading product on the Partners Portal — the merchant-facing operating platform for Tamara's BNPL network. Merchants use it to manage orders (capture, refund, cancel), view settlements and tax invoices, configure webhooks and API tokens, manage team access and roles, and generate reports.\n\nPartners Portal 2.0 was a major merchant experience uplift with three pillars: (1) Global Search across all portal modules, (2) a guided product tour for new merchants built with GuideSail instead of Pendo or Appcues, and (3) coordinated delivery of 15+ merchant-requested features. Outcomes: 30% fewer merchant support queries, 25% improvement in merchant satisfaction scores."
+    "content": "Case Study — Tamara · Partners Portal 2.0\nFrom Navigation Sprawl to Merchant Self-Service\nHow I led product on Tamara's Partners Portal 2.0: Global Search, an onboarding tour co-built with GuideSail's developer, 15+ merchant features, and two self-initiated wins — 30% fewer support queries, 25% satisfaction uplift, and 57% off the portal's email bill.\nAs PM for Tamara's Partners Portal, I led the 2.0 uplift: Global Search, a product tour co-built with GuideSail's developer (after negotiating trigger-logic requirements and a custom pricing tier), and 15+ merchant features. Beyond product: self-initiated a pricing model fix that cut the portal's email bill 57%. Outcomes: 30% fewer support queries, 25% satisfaction uplift.",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
   },
   {
-    "article_id": "tamara",
-    "section": "the-problem",
-    "content": "The Problem: Portal Navigation Sprawl\nTamara's Partners Portal grew organically as Tamara's merchant offering expanded — features landed where they fit at the time, not where merchants would intuitively look. Key pain points:\n\n1. Merchants couldn't find things — navigation required you to already know where to look\n2. Support teams became search engines — 'Where do I refund?', 'Where is my settlement?', 'How do I add a user?' filled the partner success queue\n3. First-login drop-off — new merchants arrived with no orientation to BNPL-specific terminology (captures, settlement cycles, refund windows)\n4. Merchant-requested features hadn't shipped — a growing backlog of reasonable, well-understood feature requests had accumulated without coordinated delivery\n\nA support ticket asking 'where do I find X' is a navigation problem. Navigation problems are solvable."
+    "content": "Fewer Support Queries\nSatisfaction Uplift\nFeatures Shipped\nEmail Cost Savings\nEng Days for Tour Setup",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "metrics",
+      "section_anchor": ""
+    }
   },
   {
-    "article_id": "tamara",
-    "section": "global-search",
-    "content": "Global Search\nGlobal Search indexed the portal's core operational objects and made them searchable from a single bar, available from any screen. Search covered: orders (by order ID, merchant order ID, customer name, customer phone), settlements, tax invoices, reports, users, and webhooks.\n\nThe insight: every key operational object already existed in the portal. Merchants knew what they were looking for. What was missing was a unified entry point. Global Search replaced module-by-module navigation with a single entry point. Merchants could find a specific order or settlement without knowing which section of the portal to visit first.\n\nImpact: navigation-related support queries dropped significantly after Global Search shipped."
+    "content": "The Problem: A Portal That Required a Map\nTamara's Partners Portal covered significant operational ground. Merchants used it to capture and refund orders, download settlement reports, manage team members and roles, configure webhooks and API tokens, and generate tax invoices. The feature surface was genuinely useful. The problem was navigation.\nMerchants couldn't find things.\nAs the portal grew, the navigation did too — but it grew by addition, not by redesign. Features landed where they fit at the time, not where merchants would intuitively look for them.\nSupport teams became search engines.\n\"How do I download a settlement report?\" \"Where do I add a user?\" \"How do I issue a refund?\" These questions filled the partner success queue — not because the portal couldn't do these things, but because merchants couldn't find where.\nFirst-login drop-off was real.\nNew merchants arrived at the portal and encountered a full-featured platform with no guidance. BNPL terminology (captures, settlements, refund windows) isn't universal. Merchants who couldn't orient themselves quickly leaned on support rather than self-serving.\nMerchant-requested features had no coordinated delivery.\nThere was a growing backlog of specific, well-understood requests from merchants — filtering improvements, bulk actions, reporting enhancements. Each was reasonable. None had been shipped at pace.\nA support ticket is a product failure. Not always — some questions are genuinely complex. But when the ticket says \"where do I find X\", that's a navigation problem, and navigation problems are solvable.",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "theProblem",
+      "section_anchor": "#the-problem"
+    }
   },
   {
-    "article_id": "tamara",
-    "section": "product-tour-guidesail",
-    "content": "Product Tour, GuideSail, and the Vendor Negotiation\nNew merchants arrived at the Partners Portal with no orientation. Tamara's BNPL model has specific terminology — captures, settlement cycles, refund windows — that isn't universal.\n\nOmar evaluated: Pendo, Appcues, and Intercom Product Tours. All rejected — digital adoption platforms priced for enterprises with complex analytics needs. The use case was specific: a six-step onboarding tour for new merchants on first login.\n\nGuideSail (getguidesail.com) matched the scope — but it lacked the trigger logic needed: show the tour only on first login, skip it on subsequent sessions. Without this, the tour would fire every session, becoming friction instead of guidance.\n\nOmar reached out directly to GuideSail's developer, Hassan Siddiqui, and described the requirement as a condition for Tamara committing. Hassan built it. Then, because the feature was useful beyond Tamara, he created a new pricing tier specifically for Tamara's scope. Result: GuideSail got a paying enterprise customer and a product improvement. Tamara got the feature it needed at a price matched to the actual use case — no engineering days required, fast to implement.\n\nThe tour covered: Welcome → Orders → Captures → Settlements → User Management → Reports → Completion.\n\nPM lesson: Not every vendor relationship is a take-it-or-leave-it evaluation. When the gap is specific and the developer is reachable, describing the problem can lead to a co-development outcome better than any off-the-shelf purchase."
+    "content": "The Vision: From Operations Tool to Self-Service Platform\nThe framing for Partners Portal 2.0 was a shift in what the portal was designed to do. Version 1.x was an operations tool: it gave merchants the ability to perform tasks. Version 2.0 was designed around self-service: merchants should be able to discover functionality, learn the platform, and complete workflows without requiring partner success team involvement.\nDiscoverability\nAny merchant should be able to find any object or workflow within seconds, regardless of where they enter the portal.\nGuided Adoption\nNew merchants should understand the platform enough to be operationally independent after their first session.\nFeature Completeness\nThe backlog of merchant-requested enhancements should ship coherently, not in isolation.",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "vision",
+      "section_anchor": "#vision"
+    }
   },
   {
-    "article_id": "tamara",
-    "section": "email-cost-savings",
-    "content": "Self-Initiated: 57% Reduction in Portal Email Costs\nOmar noticed that Tamara's merchant portal email costs through Mailchimp were running higher than they should. The account was on an auto-renewal pricing model — when the send limit was reached, the plan auto-bumped to the next tier at peak-usage pricing. No one had flagged it because it wasn't obviously wrong, just quietly wasteful.\n\nFixes:\n1. Email authentication and list hygiene: SPF and DKIM configuration for partners@tamara.co wasn't clean, and the list contained stale addresses generating bounces. Bounces trigger retries. Retries consume send quota. Fixing email authentication and cleaning the list reduced retry volume significantly.\n2. Pricing model restructure: Switched from auto-renewal-on-limit to an upfront plan sized to forecasted volume (calculated from historical send data plus a growth buffer). Set a quarterly calendar review to compare actuals to forecast and adjust before the next period.\n\nOutcome: 57% reduction in what Tamara paid for portal emails. The fix took hours of investigation. The ongoing cadence — a quarterly review — was a five-minute calendar event that prevented cost drift.\n\nPM lesson: PMs who own a product own its economics too. If you're responsible for a feature that sends emails or bills by usage, you're responsible for what that service costs. Understand the pricing model, match it to actual usage, forecast, and review."
+    "content": "Outcomes\n30%\nreduction in merchant support queries\nDriven primarily by Global Search eliminating navigation friction and the product tour reducing first-session confusion. Partner success teams spent less time answering \"where is X\" questions.\n25%\nimprovement in merchant satisfaction scores\nMeasured through Tamara's merchant satisfaction tracking. The combination of faster task completion (search), better onboarding (tour), and resolved feature requests moved the needle across the merchant base.\n15+\nmerchant-requested features shipped\nA coordinated push through the existing backlog. Individual features ranged from filtering improvements to workflow optimizations — none were large standalone bets, but collectively they represented meaningful coverage of merchant operational needs.\n57%\nreduction in portal email costs\nSelf-initiated. Fixed email authentication and list hygiene to reduce retries, then restructured the Mailchimp pricing model from auto-renewal-on-limit to an upfront plan sized to forecasted volume, with a quarterly review cadence.",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "outcomes",
+      "section_anchor": "#outcomes"
+    }
   },
   {
-    "article_id": "tamara",
-    "section": "outcomes-lessons",
-    "content": "Outcomes and Lessons from Partners Portal 2.0\n\nOutcomes:\n- 30% reduction in merchant support queries (driven by Global Search eliminating navigation friction and the product tour reducing first-session confusion)\n- 25% improvement in merchant satisfaction scores\n- 15+ merchant-requested features shipped in a coordinated delivery\n\nLessons:\n1. A support ticket is a design signal. The 30% reduction didn't come from better support — it came from better product. Track what your partner success teams field and treat it as product research.\n\n2. Right-size the solution. Pendo exists for specific enterprise use cases. When you need a six-step product tour, you need a six-step tour tool. GuideSail solved the problem without the overhead.\n\n3. Discoverability unlocks existing value. Global Search didn't add new capabilities — it made existing ones accessible. Feature value that exists but can't be found is effectively zero.\n\n4. Backlog coordination is unglamorous and high-impact. The 15+ features weren't individually exciting, but shipping them together created a perceptibly improved portal. The PM work was coordination and sequencing."
+    "content": "Lessons\nA support ticket is a design signal, not just an ops problem.\nThe 30% reduction in support queries didn't come from better support — it came from better product. When support volume drops after a product change, you've fixed something that was genuinely broken. Track what your partner success teams are fielding and treat it as a product research input.\nRight-size the solution to the problem.\nPendo and Appcues exist for specific use cases: multi-product platforms with complex user segmentation needs and enterprise analytics requirements. When you need a six-step onboarding tour for a B2B portal, you need a six-step onboarding tour tool. GuideSail solved the problem without the overhead. The PM judgment call was recognizing that the problem was bounded.\nDiscoverability unlocks existing value.\nGlobal Search didn't add any new capabilities to the portal. Every order, settlement, and invoice was already there. What changed was the ease of access. Feature value that exists but can't be found is effectively zero. Discoverability is a product investment, not just a UX nicety.\nBacklog coordination is unglamorous and high-impact.\nThe 15+ merchant features weren't individually exciting. None of them were bet-the-company features. But merchants had asked for them, they were buildable, and shipping them together created a perceptible improvement. The PM work was coordination and sequencing — not the most visible product moment, but a meaningful one.\nSome vendor relationships are worth negotiating, not just evaluating.\nGuideSail didn't have the trigger logic we needed. Rather than ruling it out, I described the requirement to the developer. He built it, then created a new pricing tier for Tamara's scope. The result was better than any off-the-shelf purchase: a tool shaped to our needs, at a price matched to our use case, with a vendor who had commercial skin in the game.\nPMs who own a product own its economics too.\nThe 57% email cost saving wasn't on any roadmap. It came from noticing something that wasn't obviously wrong — just quietly wasteful. If you're responsible for a feature that sends emails or bills by usage, you're responsible for what that service costs. Understand the pricing model, match it to your actual usage pattern, and review it periodically.",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "lessons",
+      "section_anchor": "#lessons"
+    }
+  },
+  {
+    "content": "What is Tamara Partners Portal?\nThe Partners Portal is the merchant-facing operating platform for Tamara's BNPL network. Merchants use it to manage orders (capture, refund, cancel), view settlements and tax invoices, configure webhooks and API tokens, manage team access and roles, and generate reports. It is the primary operational interface between Tamara and its merchant base across MENA.\nWhat is Partners Portal 2.0?\nPartners Portal 2.0 was a major product investment in the merchant experience — not a full rebuild, but a coherent uplift. Three pillars: Global Search (find anything across all portal modules instantly), a guided onboarding tour for new merchants, and a structured delivery of 15+ merchant-requested features. The goal: reduce merchants' dependence on partner success teams for navigation and routine tasks.\nWhy GuideSail instead of Pendo or Appcues?\nPendo and Appcues are digital adoption platforms priced for enterprises that need deep analytics, segmentation, and multi-product orchestration. We needed a focused product tour: step-by-step guidance for new merchants on their first login. GuideSail matched the scope — but it didn't have the trigger logic we needed (show only on first login, skip thereafter). I reached out to the developer, Hassan Siddiqui, described the requirement, and he built it. He then created a new pricing tier specifically for Tamara's scope. We got the feature, the right price, and a vendor who was invested in our success.\nWhat was the email cost saving about?\nTamara's merchant portal used Mailchimp for transactional emails. The account was on an auto-renewal pricing model — when we hit our send limit, the plan auto-bumped to the next tier at peak-usage pricing. I self-initiated a fix: cleaned up email authentication (SPF/DKIM) and the partners@tamara.co sender reputation, reduced retry volume by improving list hygiene, and switched to an upfront plan sized to forecasted volume with a quarterly review cadence. Combined, this cut the email bill 57%.\nWhat does Global Search cover in the portal?\nGlobal Search covers the core operational objects merchants work with: orders (by order ID, merchant order ID, customer name, customer phone), settlements, tax invoices, reports, users, and webhooks. The goal was to replace module-by-module navigation with a single entry point. Merchants could find a specific order or settlement without knowing which section of the portal to look in first.\nWhat were the outcomes of Partners Portal 2.0?\nSupport queries from merchants dropped 30%, driven primarily by Global Search reducing navigation friction and the product tour reducing first-session confusion. Merchant satisfaction scores improved 25%. And over 15 merchant-requested features were shipped, deepening the portal's coverage of common operational workflows.",
+    "metadata": {
+      "article_id": "tamara",
+      "article_slug_en": "/tamara-partners-portal-2",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/tamara-partners-portal-2",
+      "page_path_es": "/undefined",
+      "source_file": "src/tamara-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
   }
 ]

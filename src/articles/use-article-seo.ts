@@ -54,8 +54,8 @@ export function useArticleSeo(opts: ArticleSeoOpts) {
 
     const url = `https://omarmostafa.org/${slug}`
     const altUrl = `https://omarmostafa.org/${altSlug}`
-    const altLang = lang === 'es' ? 'en' : 'es'
-    const defaultSlug = xDefaultSlug ?? (lang === 'es' ? slug : altSlug)
+    const altLang = lang === 'ar' ? 'en' : 'ar'
+    const defaultSlug = xDefaultSlug ?? (lang === 'ar' ? slug : altSlug)
 
     document.title = title
 
@@ -70,8 +70,8 @@ export function useArticleSeo(opts: ArticleSeoOpts) {
     upsertMeta('property', 'og:title', title)
     upsertMeta('property', 'og:description', description)
     upsertMeta('property', 'og:site_name', 'omarmostafa.org')
-    upsertMeta('property', 'og:locale', lang === 'es' ? 'es_ES' : 'en_US')
-    upsertMeta('property', 'og:locale:alternate', lang === 'es' ? 'en_US' : 'es_ES')
+    upsertMeta('property', 'og:locale', lang === 'ar' ? 'ar_AE' : 'en_US')
+    upsertMeta('property', 'og:locale:alternate', lang === 'ar' ? 'en_US' : 'ar_AE')
     upsertMeta('property', 'article:published_time', publishedTime)
     if (modifiedTime) upsertMeta('property', 'article:modified_time', modifiedTime)
     upsertMeta('property', 'article:author', 'https://www.linkedin.com/in/omar-mostafa-mohaseb')

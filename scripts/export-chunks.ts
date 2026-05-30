@@ -214,7 +214,7 @@ function parseI18n(source: I18nSource): Chunk[] {
   }
 
   // Extract top-level content keys — only those with a real page anchor
-  const skipKeys = new Set(['en', 'es', 'header', 'intro', 'tldr', 'heroMetrics', 'sections'])
+  const skipKeys = new Set(['en', 'ar', 'header', 'intro', 'tldr', 'heroMetrics', 'sections'])
   for (const [key, value] of Object.entries(en)) {
     if (skipKeys.has(key)) continue
     if (sections && key in sections) continue

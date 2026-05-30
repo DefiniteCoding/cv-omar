@@ -1,4 +1,4 @@
-export type CompoundLang = 'es' | 'en'
+export type CompoundLang = 'ar' | 'en'
 
 const content = {
   slug: 'compound-snbl',
@@ -147,5 +147,5 @@ const content = {
 export type CompoundContent = typeof content
 export const compoundContent: Record<CompoundLang, CompoundContent> = {
   en: content,
-  es: content,
+  ar: content,
 }

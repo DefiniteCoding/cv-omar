@@ -5,7 +5,6 @@ import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Users, Globe
 import { translations, seo, type Lang } from './i18n'
 import { useHomeSeo } from './articles/use-article-seo'
 import { getTechIcon } from './tech-icons'
-import { PressFeatures } from './PressFeatures'
 
 
 function LinkedInLogo({ className = "w-4 h-4" }: { className?: string }) {
@@ -274,12 +273,12 @@ function useTypewriterRotation(roles: readonly string[], { typeSpeed = 80, delet
 }
 
 const HOME_TOC_SECTIONS = [
-  { id: 'experience', es: 'Experiencia', en: 'Experience' },
-  { id: 'projects', es: 'Proyectos', en: 'Projects' },
-  { id: 'speaking', es: 'Compartiendo', en: 'Sharing' },
-  { id: 'education', es: 'Formación', en: 'Education' },
-  { id: 'tech', es: 'Skills & Stack', en: 'Skills & Stack' },
-  { id: 'contact', es: 'Contacto', en: 'Contact' },
+  { id: 'experience', ar: 'الخبرة', en: 'Experience' },
+  { id: 'projects', ar: 'المشاريع', en: 'Projects' },
+  { id: 'speaking', ar: 'المشاركات', en: 'Sharing' },
+  { id: 'education', ar: 'التعليم', en: 'Education' },
+  { id: 'tech', ar: 'المهارات', en: 'Skills & Stack' },
+  { id: 'contact', ar: 'التواصل', en: 'Contact' },
 ] as const
 
 function HomeToc({ lang }: { lang: Lang }) {
@@ -1432,7 +1431,7 @@ function CertLogo({ logo }: { logo: string }) {
 
 function App() {
   const location = useLocation()
-  const lang: Lang = location.pathname === '/en' ? 'en' : 'es'
+  const lang: Lang = location.pathname === '/en' ? 'en' : 'ar'
   const t = translations[lang]
   const hydrated = useHydrated()
   useHeroStyles()
@@ -1443,6 +1442,12 @@ function App() {
   const seoData = seo[lang]
   useHomeSeo({ lang, title: seoData.title, description: seoData.description })
 
+  useEffect(() => {
+    document.documentElement.lang = lang
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
+    return () => { document.documentElement.dir = 'ltr' }
+  }, [lang])
+
   return (
     <main className="min-h-screen bg-background bg-[length:24px_24px] [background-image:radial-gradient(circle,hsl(var(--dot-grid))_1px,transparent_1px)]">
       {/* Skip navigation — accessible keyboard shortcut */}
@@ -1450,7 +1455,7 @@ function App() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:font-medium focus:shadow-lg"
       >
-        {lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}
+        {lang === 'en' ? 'Skip to content' : 'تخطي إلى المحتوى'}
       </a>
 
       <HomeToc lang={lang} />
@@ -1536,7 +1541,7 @@ function App() {
                   </span>
                 ))}
                 <Link
-                  to={lang === 'es' ? '/career-ops' : '/career-ops-system'}
+                  to={lang === 'en' ? '/compound-save-now-buy-later' : '/compound-snbl'}
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${
                     hydrated && (roleIndex === 2 || roleIndex === 3)
                       ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
@@ -1548,14 +1553,12 @@ function App() {
                   <Star className="w-3 h-3 text-yellow-500" />
                   {/* hero-stats:career-ops:stars */}<span className="font-medium">47.9K</span>
                   <GitFork className="w-3 h-3" />
-                  {/* hero-stats:career-ops:forks */}<span>9.9K</span>
+                  {/* hero-stats:career-ops:forks */}<span>10.0K</span>
                 </Link>
               </div>
 
             </motion.div>
           </div>
-
-          <PressFeatures lang={lang} />
 
         </div>
       </header>
@@ -1664,7 +1667,7 @@ function App() {
               </div>
 
               {/* Deep dive CTA */}
-              <Link to={lang === 'en' ? '/career-ops-system' : '/career-ops'} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
+              <Link to={lang === 'en' ? '/compound-save-now-buy-later' : '/compound-snbl'} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
                 <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.careerOps.caseStudyLabel}</span>
               </Link>
             </div>
@@ -1810,7 +1813,7 @@ function App() {
                 <div className="flex items-center gap-3 pt-4">
                   <a href={`https://github.com/${t.experience.santifer.jacobo.github}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline">
                     <Github className="w-4 h-4" />
-                    {lang === 'es' ? 'Ver código' : 'View code'}
+                    {lang === 'en' ? 'View code' : 'عرض الكود'}
                   </a>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground"><Star className="w-3.5 h-3.5 text-yellow-500" />{t.experience.santifer.jacobo.stars}</span>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground"><GitFork className="w-3.5 h-3.5" />{t.experience.santifer.jacobo.forks}</span>
@@ -1853,7 +1856,7 @@ function App() {
                 <div className="flex items-center gap-3 pt-4">
                   <a href={`https://github.com/${t.experience.santifer.webSeo.github}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-accent hover:underline">
                     <Github className="w-4 h-4" />
-                    {lang === 'es' ? 'Ver código' : 'View code'}
+                    {lang === 'en' ? 'View code' : 'عرض الكود'}
                   </a>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground"><Star className="w-3.5 h-3.5 text-yellow-500" />{t.experience.santifer.webSeo.stars}</span>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground"><GitFork className="w-3.5 h-3.5" />{t.experience.santifer.webSeo.forks}</span>
@@ -3023,8 +3026,8 @@ function App() {
           <p className="mt-12 text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Omar Mostafa Mohaseb
             <span className="mx-2 text-border">|</span>
-            <Link to={lang === 'es' ? '/privacidad' : '/privacy'} className="hover:text-primary transition-colors">
-              {lang === 'es' ? 'Privacidad' : 'Privacy'}
+            <Link to={lang === 'en' ? '/privacy' : '/ar-privacy'} className="hover:text-primary transition-colors">
+              {lang === 'en' ? 'Privacy' : 'الخصوصية'}
             </Link>
           </p>
         </div>

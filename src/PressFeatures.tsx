@@ -1,5 +1,5 @@
 interface PressFeaturesProps {
-  lang: 'es' | 'en'
+  lang: 'ar' | 'en'
 }
 
 /**
@@ -11,7 +11,7 @@ interface PressFeaturesProps {
  * WIRED first per editorial preference (first interview, better article).
  */
 export function PressFeatures({ lang }: PressFeaturesProps) {
-  const caption = lang === 'es' ? 'Aparezco en' : 'As featured in'
+  const caption = lang === 'ar' ? 'كما ظهرت في' : 'As featured in'
   return (
     <div className="mt-12 md:mt-16 flex flex-col items-center gap-3">
       <span className="press-caption text-[10px] uppercase tracking-[0.35em] font-medium">

@@ -1,27 +1,100 @@
 [
   {
-    "article_id": "nymcard",
-    "section": "overview",
-    "content": "NymCard BaaS — Case Study: Building a Financial OS for SMEs\nOmar Mostafa Mohaseb is PM for Nym4Business (N4B) at NymCard, a white-label Financial Operating System for SMEs. N4B is sold to regulated financial institutions (banks, licensed FIs) who offer it to their SME clients under their own brand. This is B2B2C: the FI is the direct customer, the SME is the end user.\n\nN4B covers the full SME financial operations surface: KYB/IDV/KYC onboarding, corporate card issuance (virtual + physical), expense management and reimbursements, accounts payable and vendor payouts, accounts receivable and digital invoicing, cross-border beneficiary payments, embedded lending, RBAC with hierarchical entity structures, an approval rule engine (maker-checker), MFA, and OCR.\n\nLynq, launched May 2026 by Mawarid Finance (a CBUAE-regulated UAE Islamic finance institution), is the first public N4B deployment. It runs on NymCard's card processing infrastructure with Mastercard as the card network. Lynq launched with the core feature set: virtual and physical corporate cards, global supplier payments, real-time financial dashboard, dedicated virtual IBAN per business, and self-serve digital onboarding."
+    "content": "Case Study — NymCard · Corporate BaaS\nBuilding a Financial OS for SMEs\nHow I led product on N4B, a white-label Banking-as-a-Service platform that collapses fragmented SME financial operations into one unified system — and what it looks like when a regulated UAE financial institution deploys it.\nN4B is NymCard's white-label Financial OS for SMEs — sold to financial institutions who offer it to their business customers. I led product end-to-end: self-serve KYB onboarding with staged compliance, corporate hierarchy and RBAC, an approval rule engine adapted for informal SME governance, and the requests listing redesign. Lynq, launched May 2026 with Mawarid Finance, is N4B's first public deployment.",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
   },
   {
-    "article_id": "nymcard",
-    "section": "the-problem",
-    "content": "The SME Financial Operations Problem\nSMEs in MENA run financial operations across 4-6 disconnected tools: one for corporate cards, another for expense claims, a third for vendor payments, a fourth for cross-border, accounting software that doesn't connect to anything else. The finance team — often one person who also does operations — spends their day reconciling instead of managing.\n\nThe problems: fragmented tooling where data doesn't flow between systems; manual reconciliation that requires someone to match card statements to expense reports to the AP ledger; compliance exposure where each new financial provider requires its own KYB onboarding; no real-time cash visibility; and informal approval processes living in WhatsApp threads.\n\nThe fix isn't another point solution. It's a platform. N4B is NymCard's answer: a unified Financial OS that collapses all of these tools into one white-labeled platform distributed through regulated FIs."
+    "content": "Platform Modules\nDistribution Model\nCustomers Per Deal\nTarget Market\nLynq Live",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "metrics",
+      "section_anchor": ""
+    }
   },
   {
-    "article_id": "nymcard",
-    "section": "pm-decisions",
-    "content": "Key PM Decisions on N4B\n\n1. Staged KYB Onboarding\nTraditional KYB front-loads all compliance requirements before the user sees any product value. The staged approach splits onboarding into two phases: Phase 1 captures enough for account creation and product exploration. Phase 2 collects full KYB/IDV requirements before activation. The compliance requirements are legally identical — the sequence changes. SME founders are time-poor; staged onboarding lets them experience the product before investing time in compliance forms.\n\n2. Approval Rule Engine\nMaker-checker workflows assume clear organizational hierarchies. SMEs have flat, informal governance — the CEO approves everything personally, or the finance 'team' is one person. The solution: rules instead of roles. Administrators define conditions ('any payment over AED 10,000 requires approval from X') rather than fixed org charts. The rule engine handles routing and escalation. The UX challenge: making abstract condition-action pairs feel concrete for non-finance-trained SME operators.\n\n3. Building for Two Customers (B2B2C)\nN4B has two customers with different priorities. FIs want white-labeling depth, feature toggles, and configurability they can sell. SMEs want clean interfaces, guided setup, and consistency. The tension: maximum FI configurability = minimum product opinionatedness. Resolution: be opinionated about UX defaults, flexible about configuration. FIs configure and brand within N4B's opinionated structure but can't break the core experience.\n\n4. Requests Listing Redesign\nOmar led the overhaul of the requests management experience: filtering, sorting, bulk actions, and SLA-driven 'due soon' logic so finance teams can triage approval queues without missing time-sensitive requests."
+    "content": "The SME Financial Operations Problem\nAsk a UAE SME founder how they manage their company's finances and you'll hear the same story every time. Corporate cards from one provider. Expense reports on spreadsheets. Wire transfers from internet banking. International supplier payments through a foreign exchange broker. Digital invoices out of accounting software that doesn't connect to anything else.\nFragmented tooling.\nEach point solution solves one problem and creates three integration gaps. Data doesn't flow between them.\nManual reconciliation.\nSomeone has to match the card statement to the expense report to the AP ledger. That someone is usually the CEO or a part-time bookkeeper.\nCompliance exposure.\nKYB, KYC, AML screening — each new financial provider requires its own onboarding. The compliance burden multiplies with every tool added.\nNo financial visibility.\nReal-time cash position is a manual calculation. Spend by department is a question that requires someone to stop what they're doing and export a report.\nPoor controls.\nApproval processes live in WhatsApp threads. Card limits are set once and forgotten. Vendor payment authorization is informal.\nThe problem isn't that any one of these tools is bad. The problem is the architecture: point solutions, stitched together, operated manually. The fix isn't another point solution. It's a platform.",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "theProblem",
+      "section_anchor": "#the-problem"
+    }
   },
   {
-    "article_id": "nymcard",
-    "section": "lynq",
-    "content": "Lynq: N4B in Production\nLynq launched May 2026 — an all-in-one financial operating system for SMEs, brought to market by Mawarid Finance, a UAE-based Islamic finance and investment group regulated by the Central Bank of the UAE (CBUAE). Lynq runs on NymCard's card processing infrastructure with Mastercard as the card network.\n\nLynq's launch features: virtual and physical Mastercard corporate cards, global supplier payments (cross-border), real-time financial visibility dashboard, dedicated virtual IBAN per business account, and self-serve digital onboarding with compliance checks before activation. First cohort of UAE registered businesses can sign up at no cost.\n\nMawarid Finance CEO Rashid AlQubaisi: 'Lynq is our answer to a gap we consistently saw, where businesses were managing fragmented systems instead of focusing on growth.'\nNymCard CBO Shiraz Ali: 'NymCard exists to give financial institutions the infrastructure they need to build and launch modern card and payment products, without compromise on compliance, speed, or scale.'\n\nLynq is N4B white-labeled — effectively what N4B looks like in the market. The phased feature rollout is deliberate: cards, cross-border, and centralized visibility first, with deeper modules (lending, invoicing, full RBAC depth) in subsequent releases."
+    "content": "My Role\nI lead N4B product end-to-end. Three areas I've driven specifically:\nSME Self-Signup Portal\nDesigned and shipped the self-serve onboarding experience with staged KYB/KYC compliance flow. SMEs can start the onboarding process and explore the platform without hitting the full compliance wall upfront.\nCorporate Hierarchy + RBAC + Approval Flows\nDefined the entity model (company → department → user), permission inheritance, and the approval rule engine. The challenge: making abstract financial governance feel concrete and manageable for non-finance-trained SME administrators.\nRequests Listing Redesign\nOverhauled the requests management experience: filtering, sorting, bulk actions, and SLA-driven \"due soon\" logic so finance teams can triage approval queues without missing time-sensitive requests.",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "myRole",
+      "section_anchor": "#my-role"
+    }
   },
   {
-    "article_id": "nymcard",
-    "section": "lessons",
-    "content": "Lessons from Building N4B\n\n1. B2B2C means two success metrics, not one. FI success: deployment completeness, compliance coverage, time-to-market. SME success: tasks completed, reconciliation time saved, financial errors avoided. Optimizing for one at the expense of the other produces a product an FI buys once and doesn't renew.\n\n2. Compliance-aware design is sequencing, not reduction. In regulated financial products, compliance requirements are fixed. The design lever is when you ask and how you frame it. Staged onboarding isn't a way to skip KYB — it's a way to get users to complete it by letting them see value first.\n\n3. Abstract governance needs concrete UX. Approval rule engines and RBAC hierarchies are backend concepts. SME administrators think in outcomes and trust, not conditions and roles. The spec and the UX both have to translate between these frames. If the configuration UI exposes the data model, administrators will misconfigure it.\n\n4. Deployment reveals what planning obscures. Lynq's launch surfaced edge cases and prioritization questions that internal product development hadn't. A real FI deploying to real SMEs creates a different quality of feedback than stakeholder reviews and UAT sessions."
+    "content": "Lynq: N4B in Production\nLynq launched in May 2026 — an all-in-one financial operating system for SMEs, brought to market by Mawarid Finance, a UAE-based Islamic finance and investment group regulated by the Central Bank of the UAE. Lynq runs on NymCard's card processing and program management infrastructure.\nLynq is our answer to a gap we consistently saw, where businesses were managing fragmented systems instead of focusing on growth.\nRashid AlQubaisi, CEO, Mawarid Finance\nLynq launched with the core financial OS feature set: virtual and physical Mastercard corporate cards, global supplier payments, real-time financial visibility across all company activity, a dedicated virtual IBAN per business, and self-serve digital onboarding. The first cohort of UAE registered businesses can sign up at no cost.\nLynq is N4B white-labeled. Mawarid Finance chose Mastercard as the card network, built on NymCard's processing infrastructure. The phased feature rollout is deliberate — starting with the highest-value modules (cards, cross-border, centralized visibility) before expanding to the full platform surface.\nLynq is the public proof point. Every product decision made during N4B development shows up in how Lynq works — the staged onboarding, the spend controls, the real-time visibility. Seeing a regulated FI take it to market forces prioritization clarity that internal planning discussions don't.",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "lynq",
+      "section_anchor": "#lynq"
+    }
+  },
+  {
+    "content": "Lessons\nB2B2C means two success metrics, not one.\nFI success is measured in deployment completeness, compliance coverage, and time-to-market. SME success is measured in tasks completed, reconciliation time saved, and financial errors avoided. Optimizing for one at the expense of the other produces a product that an FI will buy once and not renew.\nCompliance-aware design is sequencing, not reduction.\nIn regulated financial products, the compliance requirements are fixed. The design lever is sequence and framing — when do you ask, how do you explain why, and what does the user get before and after. Staged onboarding isn't a way to skip KYB. It's a way to get users to complete it.\nAbstract governance needs concrete UX.\nApproval rule engines, RBAC hierarchies, permission inheritance — these are backend concepts. SME administrators think in terms of outcomes and trust, not conditions and roles. The spec and the UX both have to translate between these two frames of reference. If the configuration UI exposes the data model, administrators will configure it wrong.\nDeployment reveals what planning obscures.\nLynq's launch surfaced edge cases and prioritization questions that eighteen months of internal product development hadn't. A real FI deploying to real SMEs creates a different quality of feedback than stakeholder reviews and UAT sessions. The earlier you can get a live deployment, the better your product decisions become.",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "lessons",
+      "section_anchor": "#lessons"
+    }
+  },
+  {
+    "content": "What is N4B and how does it differ from regular banking?\nN4B (Nym4Business) is a white-label Financial Operating System built by NymCard. Unlike a bank, N4B is infrastructure: NymCard builds and maintains the platform, regulated financial institutions brand it and offer it to their SME clients. The FI handles the regulatory relationship with the SME. NymCard handles the technology.\nWhat is Lynq and how does it relate to N4B?\nLynq is the first public deployment of N4B. Launched in May 2026 by Mawarid Finance (a CBUAE-regulated UAE FI), Lynq is N4B white-labeled under Mawarid's brand, running on NymCard's processing infrastructure with Mastercard as the card network. Lynq is what N4B looks like in the market.\nWhat does \"staged KYB onboarding\" mean in practice?\nInstead of presenting the full compliance requirement upfront (trade license, UBO details, regulatory screening), staged onboarding splits the process into two phases. Phase 1: enough to create an account and explore the product. Phase 2: full compliance collection before account activation. The regulatory requirements are the same — the sequence changes.\nHow does the approval rule engine work?\nAdministrators define conditions and assign approvers: \"payments over AED 10,000 require approval from the finance lead.\" The rule engine handles routing and escalation logic. This replaces fixed org-chart-based approval hierarchies with configurable policy rules — better suited to SME governance structures where authority is informal and flat.\nWhat makes this B2B2C and why does it matter for product decisions?\nN4B has two customers: the financial institution (direct buyer, distribution partner, compliance owner) and the SME (end user, daily operator). Every product decision has to work for both. FI needs: white-labeling, compliance coverage, configurability. SME needs: simplicity, speed, consistency. The tensions between these shape the product architecture.",
+    "metadata": {
+      "article_id": "nymcard",
+      "article_slug_en": "/nymcard-corporate-baas",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/nymcard-corporate-baas",
+      "page_path_es": "/undefined",
+      "source_file": "src/nymcard-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
   }
 ]

@@ -1,4 +1,4 @@
-export type N8nLang = 'es' | 'en'
+export type N8nLang = 'ar' | 'en'
 
 /**
  * Classification prompt used in Workflow 2.
@@ -28,7 +28,7 @@ Rules:
 Feedback: {{ $json.Feedback }}`
 
 export const n8nContent = {
-  es: {
+  ar: {
     slug: 'n8n-para-pms',
     altSlug: 'n8n-for-pms',
     readingTime: '5 min de lectura',

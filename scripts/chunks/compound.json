@@ -1,22 +1,114 @@
 [
   {
-    "article_id": "compound",
-    "section": "overview",
-    "content": "Compound SNBL — Case Study: Building the Product Behind Save Now, Buy Later\nOmar Mostafa Mohaseb was Product Lead & Consultant at Compound (part-time, remote, Mar–Dec 2025). Compound is a UAE/MENA fintech built on Save Now, Buy Later (SNBL) — the structural opposite of BNPL.\n\nInstead of: buy now → pay later → debt\nCompound: save first → earn merchant-funded rewards → purchase debt-free\n\nOmar joined after the initial concept was defined. His scope covered execution: consumer savings journey (goal creation through redemption), customer dashboard, embeddable merchant widget and merchant onboarding, admin backoffice portal, API documentation, and a mobile app prototype built using Claude Code and Cursor.\n\nFour core surfaces shipped: consumer mobile app, embeddable checkout widget, admin backoffice portal, API documentation."
+    "content": "Case Study — Compound · Save Now, Buy Later\nBuilding the Product Behind Save Now, Buy Later\nHow I led product execution at Compound — a UAE fintech built on the thesis that the market wants the outcome of BNPL without the debt — defining consumer and merchant journeys, designing an embedded widget as a distribution strategy, and prototyping a mobile app using AI tools.\nCompound is a UAE fintech built on the thesis that consumers want the outcome of BNPL (large purchases they can't immediately afford) without the debt. I joined as Product Lead to own execution: consumer savings journey, merchant onboarding, an embeddable widget as a distribution strategy, and a mobile app prototyped using Claude Code. Zero-to-one product delivery across consumer, merchant, and operator surfaces.",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
   },
   {
-    "article_id": "compound",
-    "section": "snbl-thesis",
-    "content": "The SNBL Thesis and Market Position\nCompound's thesis: consumers want the outcome of BNPL (large purchases they can't immediately afford) without the debt mechanism. The market segment is consumers motivated by financial discipline rather than deferred payment.\n\nFour hypotheses:\n1. People want the outcome of BNPL, not the debt — the desire for the purchase is real; the resistance is to the repayment obligation\n2. Many purchases are planned — travel, electronics, furniture, education, car down payments have natural 3-6 month purchase timelines that map onto savings plans\n3. Brands will fund rewards if it lowers CAC — a customer who saves for 3 months before purchasing is more committed than one who clicks an ad; merchant-funded rewards make the economics work\n4. Commitment before purchase predicts retention — pre-purchase saving creates an engagement period with the brand before the transaction\n\nUnique market position: most fintech competes on credit (better, faster, cheaper). Compound competes on the absence of credit. Compound's tagline: 'Save now. Shop smarter.'"
+    "content": "Model\nCore Surfaces Shipped\nUser Types (Consumer + Merchant)\nStage\nBuild Method",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "metrics",
+      "section_anchor": ""
+    }
   },
   {
-    "article_id": "compound",
-    "section": "widget-distribution",
-    "content": "The Embedded Widget as Distribution Strategy\nCompound's highest-leverage product decision: not a consumer app feature, but a distribution strategy.\n\nTwo options evaluated:\nOption A — Drive consumers to the Compound app: acquire through marketing, let them discover merchants from inside the platform. Problem: requires owning the discovery moment before purchase intent exists. High marketing cost.\nOption B — Bring Compound to merchants: embeddable JavaScript widget that merchants install on their landing pages, e-commerce sites, clinic sites, travel agency booking flows. Consumers encounter SNBL at the point where purchase intent already exists.\n\nDecision: Option B. The widget is the distribution mechanism.\n\nWidget flow: Consumer lands on merchant site → sees Compound widget → starts a savings goal for that product → deposits over time → returns to merchant to redeem.\n\nThe widget turns merchant traffic into savings commitments, and savings commitments into high-intent future purchases. Distribution was embedded at the point of purchase intent, not at the point of Compound discovery."
+    "content": "Decision 2: The Consumer Savings Journey\nThe consumer experience had to solve a problem that BNPL doesn't face: BNPL converts immediately. SNBL asks consumers to start a relationship with a brand before the purchase, maintain it over weeks or months, and trust that the reward will be worth the wait. The journey design had to make the saving period feel like progress, not delay.\nGoal creation.\nConsumer selects a merchant and sets a target amount and timeline. The key UX challenge: making an abstract future purchase feel concrete and achievable. Goal creation had to feel like a commitment, not a form.\nFunding the goal.\nConsumer makes an initial deposit and sets up a recurring contribution. The contribution model needed to be flexible enough for different income patterns while being structured enough to keep savers on track.\nProgress tracking.\nThe customer dashboard shows savings progress, rewards earned, and purchase readiness — the percentage toward goal completion. The design principle: every dashboard interaction should reinforce that saving is working.\nRewards accumulation.\nMerchant-funded rewards accumulate as the consumer saves. This is the mechanism that makes the saving period valuable rather than just a waiting period. Rewards aren't a discount — they're a return on financial discipline.\nGoal completion and redemption.\nConsumer reaches the target → receives a redemption code or voucher → completes the purchase with the merchant. The completion moment needed to feel like a milestone, not a transaction.\nThe customer dashboard covered: savings overview (total saved, active goals, progress indicators), rewards overview (earned and upcoming rewards), goal management (pause, edit, top-up), and purchase readiness (percentage complete, remaining amount, estimated completion).",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "consumerJourney",
+      "section_anchor": "#consumer-journey"
+    }
   },
   {
-    "article_id": "compound",
-    "section": "journeys-and-delivery",
-    "content": "Consumer Journey, Merchant Journey, and AI Prototyping\n\nConsumer journey (5 steps): Goal creation (select merchant, set target and timeline) → Funding (initial deposit + recurring contributions) → Progress tracking (dashboard: savings, rewards, purchase readiness %) → Rewards accumulation (merchant-funded, earned while saving) → Redemption (goal reached → voucher/code → purchase)\n\nMerchant journey: Signup and verification → Merchant dashboard (campaign management, savings activity, conversion tracking) → Reward configuration (how much merchants fund per goal, at what milestones) → Widget installation (zero-friction JS snippet) → Campaign monitoring (active savers, goal completion, redemptions, revenue)\n\nAI-Assisted Mobile App Prototyping:\nOmar used Claude Code and Cursor to prototype the Compound customer mobile app before handoff to engineering. The prototype covered core flows: goal creation, funding, progress tracking, dashboard. Benefits: compressed iteration from weeks to days, engineering alignment via interactive reference rather than static spec, resource efficiency (validate decisions before consuming engineering cycles).\n\nPM lesson: AI-assisted prototyping produces decision-quality artifacts that make engineering conversations more precise. It's a PM workflow, not just a developer tool."
+    "content": "Decision 3: The Merchant Journey\nCompound's value to merchants is specific: a customer who saves toward your product for three months is a fundamentally different acquisition than one who clicks an ad. But merchants need to believe that before they install the widget, configure rewards, and integrate with their existing stack.\nMerchant signup and verification.\nBusiness details, account verification, compliance checks. The merchant onboarding had to be self-serve enough for smaller merchants (clinics, travel agencies) while being structured enough to support enterprise integrations.\nMerchant dashboard.\nCampaign management, widget configuration, savings activity overview, conversion tracking. Merchants needed visibility into how many customers were saving toward their products and what the conversion pipeline looked like.\nReward configuration.\nMerchants set the reward structure: how much they fund per goal, at what milestones, in what form (percentage discount, voucher, cashback). This is the business model lever — the reward level determines Compound's CAC reduction proposition for each merchant.\nWidget generation and installation.\nGenerate an embeddable JavaScript snippet, install on the merchant's site. Zero friction for installation was a product requirement — if widget integration required a developer sprint, adoption would stall at small merchants.\nCampaign monitoring.\nOngoing visibility into active savers, goal completion rates, redemptions, and revenue generated through Compound. Merchants needed to see the CAC reduction argument validated in their own data.",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "merchantJourney",
+      "section_anchor": "#merchant-journey"
+    }
+  },
+  {
+    "content": "Decision 4: AI-Assisted Mobile App Prototyping\nCompound's consumer experience needed a mobile app. The conventional path: PM writes specs, designer produces mockups, engineers build. The gap between spec and testable prototype is weeks. By the time engineering builds something, the product decisions embedded in the spec may already be wrong.\nI used Claude Code and Cursor to prototype the Compound customer mobile app before handoff to engineering. Not a static mockup — a working prototype with the core flows: goal creation, funding, progress tracking, and dashboard. The prototype served as a reference implementation: something the engineering team could interact with, not just read about.\nAI-assisted prototyping is a PM workflow, not just a developer tool. The output isn't production code — it's a decision-quality artifact that makes the next engineering conversation more precise.",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "aiPrototyping",
+      "section_anchor": "#ai-prototyping"
+    }
+  },
+  {
+    "content": "What Was Delivered\nAcross the Compound engagement, four core surfaces were defined and shipped:\nConsumer Mobile App\nFull savings journey: goal creation, funding, progress tracking, rewards, dashboard. Prototyped with AI tools, handed off to engineering with a working reference.\nEmbeddable Checkout Widget\nJavaScript widget installable on merchant sites. The distribution mechanism: SNBL at the point of purchase intent, not at the point of Compound discovery.\nAdmin Backoffice Portal\nOperator tooling for managing merchants, reviewing savings plans, handling compliance workflows, and monitoring platform health. The internal surface that makes the consumer and merchant experiences operationally viable.\nAPI Documentation\nDeveloper-facing documentation for merchant integration. Self-serve integration is a distribution multiplier — a merchant who can integrate without a dedicated onboarding call scales differently than one who can't.",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "delivered",
+      "section_anchor": "#delivered"
+    }
+  },
+  {
+    "content": "Lessons\nDistribution is a product decision, not a marketing one.\nThe embedded widget was the most important product decision in the Compound engagement — not a feature on the consumer app. Where consumers discover your product shapes who discovers it and under what conditions. Embedding at the point of purchase intent is a fundamentally different distribution model than acquiring users through campaigns.\nAt zero-to-one, what you choose not to build matters as much as what you build.\nEarly-stage scope is ruthless. The consumer journey, merchant journey, widget, backoffice, and API docs are the minimum viable surface for a two-sided marketplace. Every additional feature in that period is capacity stolen from the core loops. Getting the core loops right is the job.\nAI-assisted prototyping changes the speed of product decisions.\nBuilding a working mobile app prototype before engineering engagement compressed the feedback loop from weeks to days. Product decisions that are wrong are cheaper to fix in a prototype than in production code. PMs who can prototype accelerate their team without consuming engineering cycles.\nThe reward mechanism is the business model.\nSNBL's unit economics rest on merchants funding rewards to acquire committed customers. The reward configuration UX wasn't just a merchant portal feature — it was the mechanism that made the whole model viable. How merchants set rewards determines Compound's CAC reduction proposition. Product decisions about that surface are business model decisions.",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "lessons",
+      "section_anchor": "#lessons"
+    }
+  },
+  {
+    "content": "What is Save Now, Buy Later (SNBL)?\nSNBL is the structural opposite of Buy Now, Pay Later (BNPL). Instead of enabling a purchase on credit and repaying later, SNBL lets consumers save toward a purchase goal, earn merchant-funded rewards while saving, and buy debt-free when the goal is reached. Compound's positioning: \"Save now. Shop smarter.\" The model benefits both sides — consumers build financial discipline, merchants acquire customers who have already committed before purchase.\nWhat did Omar build at Compound?\nOmar joined as Product Lead & Consultant (part-time, remote) after Compound's initial concept was defined. His scope covered execution and delivery: the consumer savings journey (goal creation through redemption), the customer dashboard, the embeddable merchant widget and merchant onboarding journey, an admin backoffice portal, API documentation, and a mobile app prototype built using AI tools (Claude Code, Cursor).\nWhat is the embedded merchant widget?\nAn embeddable JavaScript widget that merchants install on their landing pages, e-commerce sites, or booking flows. Instead of requiring consumers to leave a merchant's site to discover Compound, the widget brings SNBL directly into the merchant's existing experience — at the point where purchase intent already exists. It's a distribution strategy disguised as a product feature.\nHow was the mobile app prototyped?\nOmar used Claude Code and Cursor to prototype the Compound customer mobile app before handing off to the engineering team. This compressed the time between product definition and testable prototype, enabled faster iteration on UX flows without requiring full engineering resources, and produced a working reference for the development team. AI-assisted prototyping as a PM workflow, not just a developer tool.\nWhy is SNBL a different market position than BNPL?\nMost fintech competes on credit: better rates, faster approval, lower fees. Compound doesn't compete on credit — it competes on the absence of credit. The market segment is consumers who want large purchases but don't want repayment obligations. This is a behaviorally different customer: someone motivated by financial discipline rather than deferred payment. Merchant-funded rewards make the savings period valuable rather than just a waiting period.",
+    "metadata": {
+      "article_id": "compound",
+      "article_slug_en": "/compound-save-now-buy-later",
+      "article_slug_es": "/undefined",
+      "page_path_en": "/compound-save-now-buy-later",
+      "page_path_es": "/undefined",
+      "source_file": "src/compound-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
   }
 ]

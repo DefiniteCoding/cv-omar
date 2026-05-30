@@ -5,7 +5,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import App from './App.tsx'
 import GlobalNav from './GlobalNav.tsx'
-import { articleRegistry, getEsSlugs } from './articles/registry'
+import { articleRegistry, getArSlugs } from './articles/registry'
 
 const FloatingChat = lazy(() => import('./FloatingChat'))
 const MusicToggle = lazy(() => import('./MusicToggle'))
@@ -14,7 +14,7 @@ const PrivacyPolicy = lazy(() => import('./PrivacyPolicy'))
 const AboutPage = lazy(() => import('./AboutPage'))
 
 // Lazy-load article components from registry
-const articleComponents: Record<string, React.LazyExoticComponent<ComponentType<{ lang: 'es' | 'en' }>>> = {}
+const articleComponents: Record<string, React.LazyExoticComponent<ComponentType<{ lang: 'ar' | 'en' }>>> = {}
 for (const article of articleRegistry) {
   articleComponents[article.id] = lazy(article.component)
 }
@@ -74,8 +74,8 @@ function GlobalChat() {
 
   if (!hydrated || pathname.startsWith('/ops')) return null
 
-  const esSlugs = getEsSlugs()
-  const lang = esSlugs.has(pathname) ? 'es' : 'en'
+  const arSlugs = getArSlugs()
+  const lang = arSlugs.has(pathname) ? 'ar' : 'en'
 
   return (
     <ChatErrorBoundary>
@@ -129,7 +129,7 @@ Object.defineProperty(window, '__omar', {
 
 function NotFound() {
   const { pathname } = useLocation()
-  const isEn = pathname.startsWith('/en') || /^\/[a-z]+-[a-z]+-[a-z]+/.test(pathname)
+  const isEn = !pathname.startsWith('/ar') && pathname !== '/'
 
   useEffect(() => {
     let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement
@@ -143,18 +143,18 @@ function NotFound() {
     <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
       <p className="text-8xl font-display font-bold text-primary mb-4">404</p>
       <h1 className="text-2xl font-display font-semibold text-foreground mb-2">
-        {isEn ? 'Page not found' : 'Página no encontrada'}
+        {isEn ? 'Page not found' : 'الصفحة غير موجودة'}
       </h1>
       <p className="text-muted-foreground mb-8 max-w-md">
         {isEn
           ? "The page you're looking for doesn't exist or has been moved."
-          : 'La página que buscas no existe o ha sido movida.'}
+          : 'الصفحة التي تبحث عنها غير موجودة أو تم نقلها.'}
       </p>
       <Link
         to={isEn ? '/en' : '/'}
         className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
       >
-        {isEn ? '← Back to home' : '← Volver al inicio'}
+        {isEn ? '← Back to home' : 'العودة للرئيسية →'}
       </Link>
     </div>
   )
@@ -171,14 +171,14 @@ const app = (
             <Route path="/" element={<App />} />
             <Route path="/en" element={<App />} />
             <Route path="/ops" element={<OpsDashboard />} />
-            <Route path="/sobre-mi" element={<AboutPage lang="es" />} />
+            <Route path="/ar-about" element={<AboutPage lang="ar" />} />
             <Route path="/about" element={<AboutPage lang="en" />} />
-            <Route path="/privacidad" element={<PrivacyPolicy lang="es" />} />
+            <Route path="/ar-privacy" element={<PrivacyPolicy lang="ar" />} />
             <Route path="/privacy" element={<PrivacyPolicy lang="en" />} />
             {articleRegistry.map((article) => {
               const ArticleComponent = articleComponents[article.id]
               return [
-                <Route key={`${article.id}-es`} path={`/${article.slugs.es}`} element={<ArticleComponent lang="es" />} />,
+                <Route key={`${article.id}-ar`} path={`/${article.slugs.ar}`} element={<ArticleComponent lang="ar" />} />,
                 <Route key={`${article.id}-en`} path={`/${article.slugs.en}`} element={<ArticleComponent lang="en" />} />,
               ]
             })}

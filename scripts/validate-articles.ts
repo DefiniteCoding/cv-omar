@@ -216,13 +216,13 @@ function validateArticle(config: typeof articleRegistry[0]): { issues: Issue[]; 
   }
 
   // 2. xDefaultSlug vs registry ES slug
-  if (seoXDefault && seoXDefault !== config.slugs.es) {
-    issues.push({ severity: 'error', msg: `xDefaultSlug mismatch: useArticleSeo="${seoXDefault}" vs registry.slugs.es="${config.slugs.es}"` })
+  if (seoXDefault && seoXDefault !== config.slugs.ar) {
+    issues.push({ severity: 'error', msg: `xDefaultSlug mismatch: useArticleSeo="${seoXDefault}" vs registry.slugs.es="${config.slugs.ar}"` })
   }
 
   // 3. Hreflang paired: both ES and EN slugs defined
-  if (!config.slugs.es || !config.slugs.en) {
-    issues.push({ severity: 'error', msg: `Missing hreflang slug pair: es="${config.slugs.es}", en="${config.slugs.en}"` })
+  if (!config.slugs.ar || !config.slugs.en) {
+    issues.push({ severity: 'error', msg: `Missing hreflang slug pair: es="${config.slugs.ar}", en="${config.slugs.en}"` })
   }
 
   // ===== WARNINGS =====
@@ -332,7 +332,7 @@ function validateArticle(config: typeof articleRegistry[0]): { issues: Issue[]; 
   }
 
   // 9. SEO title/description length (per language)
-  for (const lang of ['es', 'en'] as const) {
+  for (const lang of ['ar', 'en'] as const) {
     const seo = config.seo[lang]
     if (seo.title.length > 60) {
       issues.push({ severity: 'warn', msg: `SEO title too long [${lang}]: ${seo.title.length} chars (max: 60)` })

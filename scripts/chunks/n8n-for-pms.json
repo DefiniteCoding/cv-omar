@@ -1,0 +1,128 @@
+[
+  {
+    "content": "Lightning Session — Marily Nika's AI Product Academy\nn8n for Product Managers: Cheat Sheet with Templates\nPractical cheat sheet: automate your sprint reports and classify feedback with AI using n8n workflows — no code required. 2 free importable templates.\nHow many hours a week do you spend on work that has nothing to do with product?\nI tracked mine. It was twenty. Some weeks, thirty. Sprint reports that take a full day. Feedback scattered across five tools that I had to read, classify, and turn into tickets one by one. Status updates typed from scratch every Monday.\nI wasn't a product manager. I was a very expensive data router. Moving information between tools that should have been talking to each other. I spent 170 hours a month on this at my own company before I automated all of it. Both workflows are free, importable as JSON, and run on n8n Cloud's free tier. No infrastructure, no permission from engineering. Today I'll show you how to build them in an afternoon.",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "intro",
+      "section_anchor": ""
+    }
+  },
+  {
+    "content": "The 5 PM Time Sinks (20-30 hours/week)\nTime Sink\nHours/Week\nAutomation Pattern\nSprint reports\n8-12/sprint\nSchedule → Query → Format → Send\nClassifying feedback\n5-10\nTrigger → AI Classify → Route\nMoving data between tools\n3-5\nTrigger → Extract → Create → Notify\nKeeping team in sync\n2-4\nSchedule → Aggregate → Summarize → Post\nPreparing for decisions\n1-2/meeting\nSchedule → Multi-query → Compile → Send",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "timeSinks",
+      "section_anchor": "#time-sinks"
+    }
+  },
+  {
+    "content": "Workflow 1: The Automatable Friday\nAutomated sprint report that posts to Slack every Friday at 9am.\nSchedule\n(Fri 9am)\nAirtable\n(read sprint)\nCode\n(format)\nSlack\n(post)\nKey nodes:\nSchedule Trigger:\nEvery week, Friday, 9:00 AM\nAirtable:\nFilter by Sprint = Current, Status = Done\nCode node:\nGroup by assignee, count story points, format as Slack markdown\nSlack:\nPost to #sprint-updates\nYour sprint report arrives every Friday at 9:05am. You did nothing.\nDownload Workflow 1 JSON",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "workflow1",
+      "section_anchor": "#workflow-1"
+    }
+  },
+  {
+    "content": "Workflow 2: The Intelligent Router\nAI-powered feedback classification that routes bugs, features, and questions to the right Slack channel. One AI node turns a dumb pipe into a smart pipe.\nForm Trigger\nAI Classify\n(LLM)\nSwitch\n(Bug/Feature/Question)\nSlack\n+ Airtable\nKey nodes:\nn8n Form Trigger:\nName, Email, Feedback Text, Product Area\nBasic LLM Chain:\nClassify feedback using AI\nSwitch:\nRoute based on LLM output (BUG / FEATURE / QUESTION)\nSlack:\nDifferent channel per category\nAirtable:\nLog every classified feedback\nThe Classification Prompt\nCopy prompt\nCopied!\nWhy this prompt works:\nRole\nsets context (\"product feedback classifier\")\nSignal words\nper category guide the LLM's pattern matching\nTiebreaker rule\nhandles ambiguous cases (bugs > features > questions)\nSafe default\nensures nothing gets lost\nStrict output\nmakes the Switch node reliable\nOne AI node turned a dumb pipe into a smart pipe.\nThe Ambiguous Test\n\"It would be really nice if the export could handle more than 100 rows without crashing.\"\nIs this a feature request (\"it would be nice\") or a bug (\"crashing\")? The tiebreaker rule in the prompt handles it: if feedback contains both a bug and a feature request, classify as BUG — broken things take priority.\nIf you disagree with that classification, you change one line of the prompt. Not a model retrain. Not a ticket to data science. One line of text. You wrote acceptance criteria, not code — and that's a product decision, not an engineering decision.\nDownload Workflow 2 JSON",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "workflow2",
+      "section_anchor": "#workflow-2"
+    }
+  },
+  {
+    "content": "Get Started\nn8n Cloud (14-day free trial) — sign up and start building\nPick your most boring Friday task\nBuild one workflow this week\nWant to learn AI Product Management end-to-end? Check out the AI PM Bootcamp by Dr. Marily Nika — where I trained and now teach as a Fellow.\nThe first automation is the hardest. The second takes half the time.",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "getStarted",
+      "section_anchor": "#get-started"
+    }
+  },
+  {
+    "content": "What I Learned Automating 170 Hours a Month\nAutomate the boring task first.\nThe flashy use case is tempting. But sprint reports won me 12 hours back every two weeks — more than any clever integration I built.\nYour database is the brain.\nDon't build a separate \"automation database.\" Jira, Airtable, and Sheets already contain 90% of the data your workflows need.\nAutomate the trigger, not just the task.\nA workflow that runs \"when I click a button\" saves time. A workflow that runs \"when a deal closes\" saves time AND removes you from the loop entirely. The second kind is worth 10x more.\nStart with one.\nI tried to automate everything at once and ended up with 14 half-broken workflows and zero time savings. One workflow running reliably beats five in draft mode.",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "lessons",
+      "section_anchor": "#lessons"
+    }
+  },
+  {
+    "content": "Common Questions\nCan n8n connect to Jira / Salesforce / my tool?\nYes. Over 400 integrations — Jira, Salesforce, Notion, Linear, HubSpot, Zendesk, Google Sheets. If you use it, n8n probably connects to it.\nIs n8n free?\nYes, self-hosted is free forever under the Sustainable Use license (open core, no workflow or execution limits). The only thing you pay for is the VPS where you deploy it. The cloud version includes a 14-day free trial without a credit card and plans starting at €24/month. The trial is more than enough for the workflows in this article; for continuous use in an SMB, self-hosted usually pays off from month two.\nWhat LLM should I use for the classifier?\nWhatever your company already pays for. The prompt works the same with Claude, GPT-4, or Gemini. The classification pattern doesn't change with the model.\nHow is this different from Zapier or Make?\nOpen source, self-hostable, AI nodes built in, and a visual canvas that lets you see the branching logic. Zapier is great for simple triggers. n8n is for when you need branching, AI, loops, and full control.\nWhat if the AI classifies something wrong?\nYou change the prompt. Add a new signal word, adjust the tiebreaker rule, add a category. You iterate in plain English, not in code. And the Airtable log lets you review and correct.\nCan I download the n8n templates from this article?\nYes. Both workflows are available as JSON files you can import directly into n8n Cloud (free tier). Download them from the \"Import Workflows\" section and they'll be running in 5 minutes.",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "faq",
+      "section_anchor": "#faq"
+    }
+  },
+  {
+    "content": "Import the Workflows\nDownload the JSON files and import them directly into your n8n instance:\nWorkflow 1 — The Automatable Friday\nWorkflow 2 — The Intelligent Router\nHow to import:\nIn n8n, click the + button, select \"Import from File\", and choose the JSON. Then connect your own Slack, Airtable, and AI credentials.",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "import",
+      "section_anchor": "#import"
+    }
+  },
+  {
+    "content": "Resources\nn8n Documentation\nhttps://docs.n8n.io\nAirtable node docs\nhttps://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.airtable/\nAI nodes guide\nhttps://docs.n8n.io/integrations/builtin/cluster-nodes/",
+    "metadata": {
+      "article_id": "n8n-for-pms",
+      "article_slug_en": "/n8n-for-pms",
+      "article_slug_es": "/n8n-para-pms",
+      "page_path_en": "/n8n-for-pms",
+      "page_path_es": "/n8n-para-pms",
+      "source_file": "src/n8n-i18n.ts",
+      "format": "i18n",
+      "section_id": "resources",
+      "section_anchor": "#resources"
+    }
+  }
+]

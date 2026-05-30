@@ -19,12 +19,13 @@ const SOCIAL_LINKS: { name: string; url: string; rel?: string }[] = [
   { name: 'Wikidata', url: 'https://www.wikidata.org/wiki/Q138710224' },
 ]
 
-export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
+export default function AboutPage({ lang = 'ar' }: { lang?: AboutLang }) {
   const t = aboutContent[lang]
   const altSlug = t.altSlug
 
   useEffect(() => {
     document.documentElement.lang = lang
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
     document.title = t.seo.title
 
     let desc = document.querySelector('meta[name="description"]') as HTMLMetaElement
@@ -36,9 +37,9 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
     canonical.href = `https://omarmostafa.org/${t.slug}`
 
     const hreflangs = [
-      { lang: 'es', href: 'https://omarmostafa.org/sobre-mi' },
+      { lang: 'ar', href: 'https://omarmostafa.org/ar-about' },
       { lang: 'en', href: 'https://omarmostafa.org/about' },
-      { lang: 'x-default', href: 'https://omarmostafa.org/sobre-mi' },
+      { lang: 'x-default', href: 'https://omarmostafa.org/ar-about' },
     ]
     document.querySelectorAll('link[hreflang]').forEach(el => el.remove())
     for (const hl of hreflangs) {
@@ -296,14 +297,14 @@ export default function AboutPage({ lang = 'es' }: { lang?: AboutLang }) {
             to={`/${altSlug}`}
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
-            {lang === 'es' ? 'Read in English →' : 'Leer en Español →'}
+            {lang === 'ar' ? 'Read in English →' : 'اقرأ بالعربية →'}
           </Link>
         </div>
 
         {/* Footer */}
         <footer className="mt-8 text-center">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Omar Mostafa Mohaseb. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
+            &copy; {new Date().getFullYear()} Omar Mostafa Mohaseb. {lang === 'ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
           </p>
         </footer>
       </main>

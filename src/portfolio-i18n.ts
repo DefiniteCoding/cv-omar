@@ -1,4 +1,4 @@
-export type PortfolioLang = 'es' | 'en'
+export type PortfolioLang = 'ar' | 'en'
 
 const content = {
   slug: 'portfolio-ai-pm',
@@ -129,5 +129,5 @@ const content = {
 export type PortfolioContent = typeof content
 export const portfolioContent: Record<PortfolioLang, PortfolioContent> = {
   en: content,
-  es: content,
+  ar: content,
 }

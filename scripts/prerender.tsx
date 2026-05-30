@@ -51,7 +51,7 @@ function stripReactSSRTags(html: string): string {
 // ---------------------------------------------------------------------------
 // SSR render per language (home page)
 // ---------------------------------------------------------------------------
-function renderApp(lang: 'es' | 'en'): string {
+function renderApp(lang: 'ar' | 'en'): string {
   const path = lang === 'en' ? '/en' : '/';
   return stripReactSSRTags(renderToString(
     <StaticRouter location={path}>
@@ -67,7 +67,7 @@ function renderApp(lang: 'es' | 'en'): string {
   ));
 }
 
-function renderArticlePage(slug: string, ArticleComponent: ComponentType<{ lang: 'es' | 'en' }>, lang: 'es' | 'en'): string {
+function renderArticlePage(slug: string, ArticleComponent: ComponentType<{ lang: 'ar' | 'en' }>, lang: 'ar' | 'en'): string {
   return stripReactSSRTags(renderToString(
     <StaticRouter location={`/${slug}`}>
       <GlobalNav />
@@ -100,26 +100,29 @@ try {
   process.exit(1);
 }
 
-// --- ES version (inject into existing index.html) ---
-let esHtml: string;
+// --- AR version (inject into existing index.html) ---
+let arHtml: string;
 try {
-  esHtml = renderApp('es');
+  arHtml = renderApp('ar');
 } catch (err) {
-  console.error('[prerender] SSR failed for ES, falling back to empty root:', err);
-  esHtml = '';
+  console.error('[prerender] SSR failed for AR, falling back to empty root:', err);
+  arHtml = '';
 }
 
-const esSeo = seo.es;
+const arSeo = seo.ar;
 
 const injectedEs = indexHtml
-  .replace('<div id="root"></div>', `<div id="root">${esHtml}</div>`)
-  .replace(/<title>[^<]*<\/title>/, `<title>${esc(esSeo.title)}</title>`)
-  .replace(/<meta name="title" content="[^"]*" \/>/, `<meta name="title" content="${esc(esSeo.title)}" />`)
-  .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(esSeo.description)}" />`)
-  .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(esSeo.title)}" />`)
-  .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(esSeo.description)}" />`)
-  .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(esSeo.title)}" />`)
-  .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(esSeo.description)}" />`);
+  .replace('<div id="root"></div>', `<div id="root">${arHtml}</div>`)
+  .replace('<html lang="en" class="dark">', '<html lang="ar" dir="rtl" class="dark">')
+  .replace(/<title>[^<]*<\/title>/, `<title>${esc(arSeo.title)}</title>`)
+  .replace(/<meta name="title" content="[^"]*" \/>/, `<meta name="title" content="${esc(arSeo.title)}" />`)
+  .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(arSeo.description)}" />`)
+  .replace(/<meta property="og:locale" content="en_US" \/>/, '<meta property="og:locale" content="ar_AE" />')
+  .replace(/<meta property="og:locale:alternate" content="ar_AE" \/>/, '<meta property="og:locale:alternate" content="en_US" />')
+  .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(arSeo.title)}" />`)
+  .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(arSeo.description)}" />`)
+  .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(arSeo.title)}" />`)
+  .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(arSeo.description)}" />`);
 
 // --- EN version ---
 let enHtml: string;
@@ -134,7 +137,6 @@ const enSeo = seo.en;
 
 let enPage = indexHtml
   .replace('<div id="root"></div>', `<div id="root">${enHtml}</div>`)
-  .replace('<html lang="es" class="dark">', '<html lang="en" class="dark">')
   .replace(/<title>[^<]*<\/title>/, `<title>${esc(enSeo.title)}</title>`)
   .replace(/<meta name="title" content="[^"]*" \/>/, `<meta name="title" content="${esc(enSeo.title)}" />`)
   .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(enSeo.description)}" />`)
@@ -142,14 +144,13 @@ let enPage = indexHtml
   .replace(/<meta property="og:url" content="[^"]*" \/>/, '<meta property="og:url" content="https://omarmostafa.org/en" />')
   .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(enSeo.title)}" />`)
   .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(enSeo.description)}" />`)
-  .replace(/<meta property="og:locale" content="es_ES" \/>/, '<meta property="og:locale" content="en_US" />')
-  .replace(/<meta property="og:locale:alternate" content="en_US" \/>/, '<meta property="og:locale:alternate" content="es_ES" />')
+  .replace(/<meta property="og:locale:alternate" content="ar_AE" \/>/, '<meta property="og:locale:alternate" content="ar_AE" />')
   .replace(/<meta name="twitter:url" content="[^"]*" \/>/, '<meta name="twitter:url" content="https://omarmostafa.org/en" />')
   .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(enSeo.title)}" />`)
   .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(enSeo.description)}" />`);
 
 // ---------------------------------------------------------------------------
-// About / Entity Home — ES (/sobre-mi) + EN (/about)
+// About / Entity Home — ES (/ar-about) + EN (/about)
 // ---------------------------------------------------------------------------
 
 const aboutPersonProfile = {
@@ -187,11 +188,11 @@ const aboutPersonProfile = {
 };
 
 /**
- * Build the per-language @graph for /about + /sobre-mi.
+ * Build the per-language @graph for /about + /ar-about.
  * Includes ProfilePage + FAQPage so AI crawlers see FAQ schema in SSR'd HTML
  * (no longer requires JS execution / useEffect).
  */
-function buildAboutJsonLd(lang: 'es' | 'en', pageUrl: string, faq: readonly { q: string; a: string }[]) {
+function buildAboutJsonLd(lang: 'ar' | 'en', pageUrl: string, faq: readonly { q: string; a: string }[]) {
   // Split: ProfilePage references Person by @id (not inline) so KG crawlers
   // dedupe cleanly against the canonical Person emitted on home and articles.
   // The Person itself is emitted top-level in this @graph for ID resolution
@@ -217,15 +218,15 @@ interface AboutPageData {
 
 const aboutPages: AboutPageData[] = [];
 
-for (const lang of ['es', 'en'] as const) {
+for (const lang of ['ar', 'en'] as const) {
   const t = aboutContent[lang];
   const slug = t.slug;
   const altSlug = t.altSlug;
   const url = `https://omarmostafa.org/${slug}`;
   const altUrl = `https://omarmostafa.org/${altSlug}`;
-  const altLang = lang === 'es' ? 'en' : 'es';
-  const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
-  const ogLocaleAlt = lang === 'es' ? 'en_US' : 'es_ES';
+  const altLang = lang === 'ar' ? 'en' : 'ar';
+  const ogLocale = lang === 'ar' ? 'ar_AE' : 'en_US';
+  const ogLocaleAlt = lang === 'ar' ? 'en_US' : 'ar_AE';
 
   let renderedHtml: string;
   try {
@@ -246,11 +247,11 @@ for (const lang of ['es', 'en'] as const) {
     renderedHtml = '';
   }
 
-  const hreflangLinks = `<link rel="alternate" hreflang="${lang}" href="${url}" /><link rel="alternate" hreflang="${altLang}" href="${altUrl}" /><link rel="alternate" hreflang="x-default" href="https://omarmostafa.org/sobre-mi" />`;
+  const hreflangLinks = `<link rel="alternate" hreflang="${lang}" href="${url}" /><link rel="alternate" hreflang="${altLang}" href="${altUrl}" /><link rel="alternate" hreflang="x-default" href="https://omarmostafa.org/ar-about" />`;
 
   let result = indexHtml
     .replace('<div id="root"></div>', `<div id="root">${renderedHtml}</div>`)
-    .replace('<html lang="es" class="dark">', `<html lang="${lang}" class="dark">`)
+    .replace('<html lang="en" class="dark">', `<html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''} class="dark">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(t.seo.title)}</title>`)
     .replace(/<meta name="title" content="[^"]*" \/>/, `<meta name="title" content="${esc(t.seo.title)}" />`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(t.seo.description)}" />`)
@@ -260,8 +261,8 @@ for (const lang of ['es', 'en'] as const) {
     .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
     .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(t.seo.title)}" />`)
     .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(t.seo.description)}" />`)
-    .replace(/<meta property="og:locale" content="es_ES" \/>/, `<meta property="og:locale" content="${ogLocale}" />`)
-    .replace(/<meta property="og:locale:alternate" content="en_US" \/>/, `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`)
+    .replace(/<meta property="og:locale" content="en_US" \/>/, `<meta property="og:locale" content="${ogLocale}" />`)
+    .replace(/<meta property="og:locale:alternate" content="ar_AE" \/>/, `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`)
     .replace(/<meta name="twitter:url" content="[^"]*" \/>/, `<meta name="twitter:url" content="${url}" />`)
     .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(t.seo.title)}" />`)
     .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(t.seo.description)}" />`);
@@ -289,19 +290,19 @@ interface ArticlePage {
 
 function buildArticlePage(
   config: ArticleConfig,
-  lang: 'es' | 'en',
-  ArticleComponent: ComponentType<{ lang: 'es' | 'en' }>,
+  lang: 'ar' | 'en',
+  ArticleComponent: ComponentType<{ lang: 'ar' | 'en' }>,
 ): string {
   const slug = config.slugs[lang];
-  const altSlug = config.slugs[lang === 'es' ? 'en' : 'es'];
+  const altSlug = config.slugs[lang === 'ar' ? 'en' : 'ar'];
   const url = `https://omarmostafa.org/${slug}`;
   const altUrl = `https://omarmostafa.org/${altSlug}`;
-  const altLang = lang === 'es' ? 'en' : 'es';
+  const altLang = lang === 'ar' ? 'en' : 'ar';
   const htmlLang = lang;
-  const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
-  const ogLocaleAlt = lang === 'es' ? 'en_US' : 'es_ES';
+  const ogLocale = lang === 'ar' ? 'ar_AE' : 'en_US';
+  const ogLocaleAlt = lang === 'ar' ? 'en_US' : 'ar_AE';
   const articleSeo = config.seo[lang];
-  const xDefaultHref = `https://omarmostafa.org/${config.xDefaultSlug || config.slugs.es}`;
+  const xDefaultHref = `https://omarmostafa.org/${config.xDefaultSlug || config.slugs.ar}`;
 
   let renderedHtml: string;
   try {
@@ -315,7 +316,7 @@ function buildArticlePage(
 
   let result = indexHtml
     .replace('<div id="root"></div>', `<div id="root">${renderedHtml}</div>`)
-    .replace('<html lang="es" class="dark">', `<html lang="${htmlLang}" class="dark">`)
+    .replace('<html lang="en" class="dark">', `<html lang="${htmlLang}"${htmlLang === 'ar' ? ' dir="rtl"' : ''} class="dark">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(articleSeo.title)}</title>`)
     .replace(/<meta name="title" content="[^"]*" \/>/, `<meta name="title" content="${esc(articleSeo.title)}" />`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(articleSeo.description)}" />`)
@@ -326,8 +327,8 @@ function buildArticlePage(
     .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
     .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(articleSeo.title)}" />`)
     .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(articleSeo.description)}" />`)
-    .replace(/<meta property="og:locale" content="es_ES" \/>/, `<meta property="og:locale" content="${ogLocale}" />`)
-    .replace(/<meta property="og:locale:alternate" content="en_US" \/>/, `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`)
+    .replace(/<meta property="og:locale" content="en_US" \/>/, `<meta property="og:locale" content="${ogLocale}" />`)
+    .replace(/<meta property="og:locale:alternate" content="ar_AE" \/>/, `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`)
     .replace(/<meta name="twitter:url" content="[^"]*" \/>/, `<meta name="twitter:url" content="${url}" />`)
     .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(articleSeo.title)}" />`)
     .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(articleSeo.description)}" />`)
@@ -394,7 +395,7 @@ function buildArticlePage(
 const articlePages: ArticlePage[] = [];
 
 for (const config of articleRegistry) {
-  let ArticleComponent: ComponentType<{ lang: 'es' | 'en' }>;
+  let ArticleComponent: ComponentType<{ lang: 'ar' | 'en' }>;
   try {
     const mod = await config.component();
     ArticleComponent = mod.default;
@@ -404,7 +405,7 @@ for (const config of articleRegistry) {
   }
 
   const seen = new Set<string>();
-  for (const lang of ['es', 'en'] as const) {
+  for (const lang of ['ar', 'en'] as const) {
     const slug = config.slugs[lang];
     if (seen.has(slug)) continue; // same slug for both languages
     seen.add(slug);
@@ -465,7 +466,7 @@ async function writePage(html: string, outputPath: string, label: string) {
   mkdirSync(dir, { recursive: true });
   // Article pages live in dist/<slug>/index.html, NOT dist/index.html or dist/en/index.html
   const isArticle = /\/dist\/[^/]+\/index\.html$/.test(outputPath)
-    && !/\/dist\/(en|privacy|privacidad)\/index\.html$/.test(outputPath);
+    && !/\/dist\/(en|privacy|ar-privacy)\/index\.html$/.test(outputPath);
   const pre = swapLcpPreload(html, isArticle);
   try {
     const processed = dedupePreloads(await critters.process(pre));
@@ -482,13 +483,13 @@ async function writePage(html: string, outputPath: string, label: string) {
 // ---------------------------------------------------------------------------
 const privacyPages: { slug: string; html: string }[] = [];
 
-for (const [lang, slug, altSlug] of [['es', 'privacidad', 'privacy'], ['en', 'privacy', 'privacidad']] as const) {
+for (const [lang, slug, altSlug] of [['ar', 'ar-privacy', 'privacy'], ['en', 'privacy', 'ar-privacy']] as const) {
   const url = `https://omarmostafa.org/${slug}`;
   const altUrl = `https://omarmostafa.org/${altSlug}`;
-  const altLang = lang === 'es' ? 'en' : 'es';
-  const title = lang === 'es' ? 'Política de Privacidad | omarmostafa.org' : 'Privacy Policy | omarmostafa.org';
-  const description = lang === 'es'
-    ? 'Política de privacidad de omarmostafa.org. Cómo se recopilan y utilizan los datos del chatbot y la web.'
+  const altLang = lang === 'ar' ? 'en' : 'ar';
+  const title = lang === 'ar' ? 'سياسة الخصوصية | omarmostafa.org' : 'Privacy Policy | omarmostafa.org';
+  const description = lang === 'ar'
+    ? 'سياسة الخصوصية لموقع omarmostafa.org. كيفية جمع بيانات الدردشة والموقع واستخدامها.'
     : 'Privacy policy for omarmostafa.org. How chatbot and website data is collected and used.';
 
   let renderedHtml: string;
@@ -510,11 +511,11 @@ for (const [lang, slug, altSlug] of [['es', 'privacidad', 'privacy'], ['en', 'pr
     renderedHtml = '';
   }
 
-  const hreflangLinks = `<link rel="alternate" hreflang="${lang}" href="${url}" /><link rel="alternate" hreflang="${altLang}" href="${altUrl}" /><link rel="alternate" hreflang="x-default" href="https://omarmostafa.org/privacidad" />`;
+  const hreflangLinks = `<link rel="alternate" hreflang="${lang}" href="${url}" /><link rel="alternate" hreflang="${altLang}" href="${altUrl}" /><link rel="alternate" hreflang="x-default" href="https://omarmostafa.org/ar-privacy" />`;
 
   let result = indexHtml
     .replace('<div id="root"></div>', `<div id="root">${renderedHtml}</div>`)
-    .replace('<html lang="es" class="dark">', `<html lang="${lang}" class="dark">`)
+    .replace('<html lang="en" class="dark">', `<html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''} class="dark">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
     .replace(/<meta name="title" content="[^"]*" \/>/, `<meta name="title" content="${esc(title)}" />`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(description)}" />`)
@@ -524,8 +525,8 @@ for (const [lang, slug, altSlug] of [['es', 'privacidad', 'privacy'], ['en', 'pr
     .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
     .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(title)}" />`)
     .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(description)}" />`)
-    .replace(/<meta property="og:locale" content="es_ES" \/>/, `<meta property="og:locale" content="${lang === 'es' ? 'es_ES' : 'en_US'}" />`)
-    .replace(/<meta property="og:locale:alternate" content="en_US" \/>/, `<meta property="og:locale:alternate" content="${lang === 'es' ? 'en_US' : 'es_ES'}" />`)
+    .replace(/<meta property="og:locale" content="en_US" \/>/, `<meta property="og:locale" content="${lang === 'ar' ? 'ar_AE' : 'en_US'}" />`)
+    .replace(/<meta property="og:locale:alternate" content="ar_AE" \/>/, `<meta property="og:locale:alternate" content="${lang === 'ar' ? 'en_US' : 'ar_AE'}" />`)
     .replace(/<meta name="twitter:url" content="[^"]*" \/>/, `<meta name="twitter:url" content="${url}" />`)
     .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(title)}" />`)
     .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(description)}" />`);

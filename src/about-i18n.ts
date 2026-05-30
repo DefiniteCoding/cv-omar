@@ -1,4 +1,4 @@
-export type AboutLang = 'es' | 'en'
+export type AboutLang = 'ar' | 'en'
 
 const omAbout = {
   slug: 'about',
@@ -30,11 +30,11 @@ const omAbout = {
   ],
   projectsHeading: 'Key Deliverables',
   projects: [
-    { name: 'Nym4Business (N4B) & Lynq', desc: 'White-label Corporate BaaS platform with card programs, Visa Direct, and KYB/KYC onboarding', href: '/business-os' },
-    { name: 'Compound SNBL', desc: 'Save Now, Buy Later product — customer app, checkout widget, admin portal, API docs', href: '/jacobo' },
-    { name: 'Tamara Partners Portal 2.0', desc: 'Merchant-facing portal — -30% support queries, +25% satisfaction, 15+ features', href: '/business-os' },
-    { name: 'Tamara API Reference Portal', desc: 'Developer docs revamp — -25% integration GTM time, 100M+ SAR GMV enabled', href: '/business-os' },
-    { name: 'Mondia Pay API Documentation', desc: '100+ merchant integrations across MENA, Europe, and Africa', href: '/business-os' },
+    { name: 'Nym4Business (N4B) & Lynq', desc: 'White-label Corporate BaaS platform with card programs, Visa Direct, and KYB/KYC onboarding', href: '/tamara-partners-portal-2' },
+    { name: 'Compound SNBL', desc: 'Save Now, Buy Later product — customer app, checkout widget, admin portal, API docs', href: '/compound-save-now-buy-later' },
+    { name: 'Tamara Partners Portal 2.0', desc: 'Merchant-facing portal — -30% support queries, +25% satisfaction, 15+ features', href: '/tamara-partners-portal-2' },
+    { name: 'Tamara API Reference Portal', desc: 'Developer docs revamp — -25% integration GTM time, 100M+ SAR GMV enabled', href: '/tamara-partners-portal-2' },
+    { name: 'Mondia Pay API Documentation', desc: '100+ merchant integrations across MENA, Europe, and Africa', href: '/tamara-partners-portal-2' },
   ],
   certificationsHeading: 'Certifications',
   certifications: [] as { org: string; items: string[] }[],
@@ -68,6 +68,6 @@ const omAbout = {
 }
 
 export const aboutContent = {
-  es: omAbout,
+  ar: omAbout,
   en: omAbout,
 } as const

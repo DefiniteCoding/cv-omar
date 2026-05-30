@@ -1,4 +1,4 @@
-export type TamaraLang = 'es' | 'en'
+export type TamaraLang = 'ar' | 'en'
 
 const content = {
   slug: 'tamara-partners-portal',
@@ -158,5 +158,5 @@ const content = {
 export type TamaraContent = typeof content
 export const tamaraContent: Record<TamaraLang, TamaraContent> = {
   en: content,
-  es: content,
+  ar: content,
 }

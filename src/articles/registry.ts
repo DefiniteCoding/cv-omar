@@ -26,16 +26,16 @@ export interface ArticleSeoMeta {
 
 export interface ArticleConfig {
   id: string
-  slugs: { es: string; en: string }
-  titles: { es: string; en: string }
-  seo: { es: ArticleSeo; en: ArticleSeo }
-  sectionLabels: { es: Record<string, string>; en: Record<string, string> }
+  slugs: { ar: string; en: string }
+  titles: { ar: string; en: string }
+  seo: { ar: ArticleSeo; en: ArticleSeo }
+  sectionLabels: { ar: Record<string, string>; en: Record<string, string> }
   type: 'collab' | 'case-study' | 'bridge'
   /** Absolute OG image URL for prerender (social cards: LinkedIn, Twitter) */
   ogImage?: string
   /** Hero image path for JSON-LD / GEO (what AI search engines see). Falls back to ogImage if not set. */
   heroImage?: string
-  component: () => Promise<{ default: ComponentType<{ lang: 'es' | 'en' }> }>
+  component: () => Promise<{ default: ComponentType<{ lang: 'ar' | 'en' }> }>
   /** x-default hreflang slug (defaults to ES slug) */
   xDefaultSlug?: string
   /** Whether this article is ready for RAG indexing (default: false) */
@@ -49,10 +49,10 @@ export interface ArticleConfig {
 export const articleRegistry: ArticleConfig[] = [
   {
     id: 'compound',
-    slugs: { es: 'compound-snbl', en: 'compound-save-now-buy-later' },
-    titles: { es: 'Compound SNBL', en: 'Compound SNBL' },
+    slugs: { ar: 'compound-snbl', en: 'compound-save-now-buy-later' },
+    titles: { ar: 'Compound SNBL', en: 'Compound SNBL' },
     seo: {
-      es: {
+      ar: {
         title: 'Compound SNBL: Building the Product Behind Save Now, Buy Later | Omar Mostafa',
         description: 'Case study: how I led product execution at Compound — SNBL consumer journey, embeddable merchant widget as distribution strategy, and AI-assisted mobile app prototyping.',
       },
@@ -62,7 +62,7 @@ export const articleRegistry: ArticleConfig[] = [
       },
     },
     sectionLabels: {
-      es: {
+      ar: {
         'the-thesis': 'The Thesis',
         'widget-distribution': 'Widget Distribution',
         'consumer-journey': 'Consumer Journey',
@@ -110,10 +110,10 @@ export const articleRegistry: ArticleConfig[] = [
   },
   {
     id: 'tamara',
-    slugs: { es: 'tamara-partners-portal', en: 'tamara-partners-portal-2' },
-    titles: { es: 'Tamara Partners Portal 2.0', en: 'Tamara Partners Portal 2.0' },
+    slugs: { ar: 'tamara-partners-portal', en: 'tamara-partners-portal-2' },
+    titles: { ar: 'Tamara Partners Portal 2.0', en: 'Tamara Partners Portal 2.0' },
     seo: {
-      es: {
+      ar: {
         title: 'Tamara Partners Portal 2.0: From Navigation Sprawl to Merchant Self-Service | Omar Mostafa',
         description: 'Case study: how I led product on Tamara\'s Partners Portal 2.0 — delivering Global Search, a GuideSail-powered onboarding tour, and 15+ merchant features that cut support queries 30% and lifted satisfaction 25%.',
       },
@@ -123,7 +123,7 @@ export const articleRegistry: ArticleConfig[] = [
       },
     },
     sectionLabels: {
-      es: {
+      ar: {
         'the-problem': 'The Problem',
         'vision': 'Vision',
         'global-search': 'Global Search',
@@ -169,10 +169,10 @@ export const articleRegistry: ArticleConfig[] = [
   },
   {
     id: 'portfolio',
-    slugs: { es: 'portfolio-ai-pm', en: 'ai-assisted-pm-portfolio' },
-    titles: { es: 'This Portfolio', en: 'This Portfolio' },
+    slugs: { ar: 'portfolio-ai-pm', en: 'ai-assisted-pm-portfolio' },
+    titles: { ar: 'This Portfolio', en: 'This Portfolio' },
     seo: {
-      es: {
+      ar: {
         title: 'Why I Built an AI Portfolio Instead of Updating My LinkedIn | Omar Mostafa',
         description: 'Case study: why LinkedIn wasn\'t enough — and how I built an interactive portfolio with an AI chatbot, voice mode, agentic RAG, and 71 automated evals in 3 days using Claude Code.',
       },
@@ -182,7 +182,7 @@ export const articleRegistry: ArticleConfig[] = [
       },
     },
     sectionLabels: {
-      es: {
+      ar: {
         'linkedin-gaps': 'LinkedIn Gaps',
         'the-build': 'The Build',
         'the-system': 'The System',
@@ -229,10 +229,10 @@ export const articleRegistry: ArticleConfig[] = [
   },
   {
     id: 'nymcard',
-    slugs: { es: 'nymcard-baas', en: 'nymcard-corporate-baas' },
-    titles: { es: 'NymCard BaaS', en: 'NymCard BaaS' },
+    slugs: { ar: 'nymcard-baas', en: 'nymcard-corporate-baas' },
+    titles: { ar: 'NymCard BaaS', en: 'NymCard BaaS' },
     seo: {
-      es: {
+      ar: {
         title: 'Building a Financial OS for SMEs: Inside N4B and Lynq | Omar Mostafa',
         description: 'Case study: how I led product on Nym4Business (N4B), a white-label Banking-as-a-Service platform for SMEs in MENA, and the PM decisions behind staged KYB, approval rules, and B2B2C design.',
       },
@@ -242,7 +242,7 @@ export const articleRegistry: ArticleConfig[] = [
       },
     },
     sectionLabels: {
-      es: {
+      ar: {
         'the-problem': 'The Problem',
         'what-n4b-is': 'What N4B Is',
         'my-role': 'My Role',
@@ -295,14 +295,14 @@ export function getAltPaths(): Record<string, string> {
   const map: Record<string, string> = {
     '/': '/en',
     '/en': '/',
-    '/sobre-mi': '/about',
-    '/about': '/sobre-mi',
-    '/privacidad': '/privacy',
-    '/privacy': '/privacidad',
+    '/ar-about': '/about',
+    '/about': '/ar-about',
+    '/ar-privacy': '/privacy',
+    '/privacy': '/ar-privacy',
   }
   for (const article of articleRegistry) {
-    map[`/${article.slugs.es}`] = `/${article.slugs.en}`
-    map[`/${article.slugs.en}`] = `/${article.slugs.es}`
+    map[`/${article.slugs.ar}`] = `/${article.slugs.en}`
+    map[`/${article.slugs.en}`] = `/${article.slugs.ar}`
   }
   return map
 }
@@ -311,11 +311,11 @@ export function getPageTitles(): Record<string, string> {
   const map: Record<string, string> = {
     '/': "Omar Mostafa's Portfolio",
     '/en': "Omar Mostafa's Portfolio",
-    '/sobre-mi': 'Sobre Mí',
+    '/ar-about': 'عني',
     '/about': 'About',
   }
   for (const article of articleRegistry) {
-    map[`/${article.slugs.es}`] = article.titles.es
+    map[`/${article.slugs.ar}`] = article.titles.ar
     map[`/${article.slugs.en}`] = article.titles.en
   }
   return map
@@ -324,17 +324,17 @@ export function getPageTitles(): Record<string, string> {
 export function getSectionLabels(): Record<string, Record<string, string>> {
   const map: Record<string, Record<string, string>> = {}
   for (const article of articleRegistry) {
-    map[`/${article.slugs.es}`] = article.sectionLabels.es
+    map[`/${article.slugs.ar}`] = article.sectionLabels.ar
     map[`/${article.slugs.en}`] = article.sectionLabels.en
   }
   return map
 }
 
-/** All ES slugs (for lang detection: if pathname matches an ES slug → lang is 'es') */
-export function getEsSlugs(): Set<string> {
-  const slugs = new Set<string>(['/', '/privacidad', '/sobre-mi'])
+/** All AR slugs (for lang detection: if pathname matches an AR slug → lang is 'ar') */
+export function getArSlugs(): Set<string> {
+  const slugs = new Set<string>(['/', '/ar-privacy', '/ar-about'])
   for (const article of articleRegistry) {
-    slugs.add(`/${article.slugs.es}`)
+    slugs.add(`/${article.slugs.ar}`)
   }
   return slugs
 }
