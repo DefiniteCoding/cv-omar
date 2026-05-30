@@ -1,0 +1,27 @@
+[
+  {
+    "article_id": "tamara",
+    "section": "overview",
+    "content": "Tamara Partners Portal 2.0 — Case Study\nOmar Mostafa Mohaseb was Product Manager at Tamara (Jan 2024 – Jan 2025), leading product on the Partners Portal — the merchant-facing operating platform for Tamara's BNPL network. Merchants use it to manage orders (capture, refund, cancel), view settlements and tax invoices, configure webhooks and API tokens, manage team access and roles, and generate reports.\n\nPartners Portal 2.0 was a major merchant experience uplift with three pillars: (1) Global Search across all portal modules, (2) a guided product tour for new merchants built with GuideSail instead of Pendo or Appcues, and (3) coordinated delivery of 15+ merchant-requested features. Outcomes: 30% fewer merchant support queries, 25% improvement in merchant satisfaction scores."
+  },
+  {
+    "article_id": "tamara",
+    "section": "the-problem",
+    "content": "The Problem: Portal Navigation Sprawl\nTamara's Partners Portal grew organically as Tamara's merchant offering expanded — features landed where they fit at the time, not where merchants would intuitively look. Key pain points:\n\n1. Merchants couldn't find things — navigation required you to already know where to look\n2. Support teams became search engines — 'Where do I refund?', 'Where is my settlement?', 'How do I add a user?' filled the partner success queue\n3. First-login drop-off — new merchants arrived with no orientation to BNPL-specific terminology (captures, settlement cycles, refund windows)\n4. Merchant-requested features hadn't shipped — a growing backlog of reasonable, well-understood feature requests had accumulated without coordinated delivery\n\nA support ticket asking 'where do I find X' is a navigation problem. Navigation problems are solvable."
+  },
+  {
+    "article_id": "tamara",
+    "section": "global-search",
+    "content": "Global Search\nGlobal Search indexed the portal's core operational objects and made them searchable from a single bar, available from any screen. Search covered: orders (by order ID, merchant order ID, customer name, customer phone), settlements, tax invoices, reports, users, and webhooks.\n\nThe insight: every key operational object already existed in the portal. Merchants knew what they were looking for. What was missing was a unified entry point. Global Search replaced module-by-module navigation with a single entry point. Merchants could find a specific order or settlement without knowing which section of the portal to visit first.\n\nImpact: navigation-related support queries dropped significantly after Global Search shipped."
+  },
+  {
+    "article_id": "tamara",
+    "section": "product-tour-guidesail",
+    "content": "Product Tour and GuideSail — The Build vs Buy Decision\nNew merchants arrived at the Partners Portal with no orientation. Tamara's BNPL model has specific terminology — captures, settlement cycles, refund windows, order statuses — that isn't universal. Merchants unfamiliar with BNPL had to learn both the product and the portal simultaneously.\n\nOmar evaluated: Pendo, Appcues, and Intercom Product Tours. All were rejected — they're digital adoption platforms priced for enterprises managing multiple products with complex analytics needs. The use case was specific and bounded: a six-step onboarding tour for new merchants on first login.\n\nChosen solution: GuideSail (getguidesail.com). Why: zero engineering days required for setup, fast to implement, sufficient feature set (step-by-step modals and tooltips, triggered on first login), and priced for the actual scope rather than for an enterprise use case that didn't exist.\n\nThe tour covered: Welcome → Orders → Captures (how merchant disbursement triggers) → Settlements → User Management → Reports → Completion.\n\nKey PM lesson: The right tool for a bounded problem isn't the market leader. Paying for enterprise digital adoption infrastructure to ship a six-step product tour is a waste of budget and engineering time. Right-sizing the solution is a PM decision, not just a procurement one."
+  },
+  {
+    "article_id": "tamara",
+    "section": "outcomes-lessons",
+    "content": "Outcomes and Lessons from Partners Portal 2.0\n\nOutcomes:\n- 30% reduction in merchant support queries (driven by Global Search eliminating navigation friction and the product tour reducing first-session confusion)\n- 25% improvement in merchant satisfaction scores\n- 15+ merchant-requested features shipped in a coordinated delivery\n\nLessons:\n1. A support ticket is a design signal. The 30% reduction didn't come from better support — it came from better product. Track what your partner success teams field and treat it as product research.\n\n2. Right-size the solution. Pendo exists for specific enterprise use cases. When you need a six-step product tour, you need a six-step tour tool. GuideSail solved the problem without the overhead.\n\n3. Discoverability unlocks existing value. Global Search didn't add new capabilities — it made existing ones accessible. Feature value that exists but can't be found is effectively zero.\n\n4. Backlog coordination is unglamorous and high-impact. The 15+ features weren't individually exciting, but shipping them together created a perceptibly improved portal. The PM work was coordination and sequencing."
+  }
+]
