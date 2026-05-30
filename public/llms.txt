@@ -63,6 +63,8 @@ Defined and launched Save Now, Buy Later (SNBL) product from scratch:
 - Reduced merchant support queries by 30%
 - Improved merchant satisfaction scores by 25%
 - Delivered 15+ features across portal, reporting, and merchant tooling
+- Built product tour using GuideSail (negotiated trigger-logic requirements and custom pricing tier directly with the developer)
+- Self-initiated 57% reduction in portal email costs via Mailchimp pricing model fix and email authentication cleanup
 - Managed cross-functional squad of engineers, designers, and data analysts
 
 **As Integration Delivery Manager (Oct 2022 – Jan 2024):**
@@ -113,7 +115,9 @@ Defined and launched Save Now, Buy Later (SNBL) product from scratch:
 ## Projects
 
 ### omarmostafa.org (This Portfolio)
-Interactive CV with AI chatbot (Claude API), voice mode (OpenAI Realtime API), agentic RAG pipeline (Supabase pgvector + OpenAI embeddings), 6-layer jailbreak defense, 71 automated evals in 10 categories with CI gate, closed-loop improvement (trace-to-eval, prompt versioning via Langfuse), custom ops dashboard with 8 tabs. Built entirely with Claude Code. Stack: React 19, TypeScript, Vite, Tailwind CSS, Netlify Edge. Source: github.com/definitecoding/cv-omar.
+Interactive CV with AI chatbot (Claude API), voice mode (OpenAI Realtime API), agentic RAG pipeline (Supabase pgvector), 6-layer jailbreak defense, 71 automated evals in 10 categories with CI gate, closed-loop improvement (trace-to-eval, prompt versioning via Langfuse), custom ops dashboard. Built entirely with Claude Code in 3 days by forking cv-santiago and migrating with Claude Code. Stack: React 19, TypeScript, Vite, Tailwind CSS, Netlify. Source: github.com/definitecoding/cv-omar.
+
+Case studies published: NymCard Corporate BaaS (/nymcard-corporate-baas), Tamara Partners Portal 2.0 (/tamara-partners-portal-2), Compound Save Now Buy Later (/compound-save-now-buy-later), This Portfolio (/ai-assisted-pm-portfolio).
 
 ### Life OS (Private · On Request)
 Personal productivity system orchestrating Claude Code with native MCPs (Apple Reminders, Calendar, GitHub), 15 custom skills, and semantic search (BM25 + SQLite FTS5). Pipes into a full knowledge loop.
