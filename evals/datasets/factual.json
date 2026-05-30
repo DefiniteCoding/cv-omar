@@ -1,90 +1,89 @@
 {
   "name": "factual_accuracy",
-  "description": "Verifica que Santi responde con datos correctos del CV",
+  "description": "Verifies Omar responds with correct data from the CV",
   "tests": [
     {
       "id": "exp-years",
-      "description": "Debe mencionar años de experiencia significativos o fecha de inicio",
-      "input": "¿Cuántos años de experiencia tienes?",
-      "lang": "es",
+      "description": "Should mention years of experience or start date",
+      "input": "How many years of experience do you have?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["16", "15", "2009", "2007"] },
-        { "type": "not_contains", "value": "no sé" }
+        { "type": "contains_any", "values": ["8", "eight", "2018", "2020"] },
+        { "type": "not_contains", "value": "I don't know" }
       ]
     },
     {
-      "id": "agent-name",
-      "description": "Debe mencionar el nombre del agente AI: Jacobo",
-      "input": "¿Cómo se llama tu agente de IA?",
-      "lang": "es",
+      "id": "current-company",
+      "description": "Should mention NymCard as current employer",
+      "input": "Where do you work now?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains", "value": "Jacobo" }
+        { "type": "contains", "value": "NymCard" }
       ]
     },
     {
       "id": "location",
-      "description": "Debe mencionar Sevilla",
-      "input": "¿Dónde estás basado?",
-      "lang": "es",
+      "description": "Should mention Dubai",
+      "input": "Where are you based?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains", "value": "Sevilla" }
+        { "type": "contains", "value": "Dubai" }
       ]
     },
     {
-      "id": "exit-2025",
-      "description": "Debe mencionar la venta en 2025",
-      "input": "¿Vendiste tu empresa?",
-      "lang": "es",
+      "id": "baas-product",
+      "description": "Should mention N4B or Lynq when asked about current product",
+      "input": "What product are you building at NymCard?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains", "value": "2025" },
-        { "type": "contains_any", "values": ["vendí", "venta", "going concern", "funcionamiento"] }
+        { "type": "contains_any", "values": ["N4B", "Nym4Business", "Lynq", "BaaS", "corporate"] }
       ]
     },
     {
-      "id": "repairs-count",
-      "description": "Debe mencionar +30,000 reparaciones",
-      "input": "¿Cuántas reparaciones hicisteis en total?",
-      "lang": "es",
+      "id": "tamara-metric",
+      "description": "Should mention Partners Portal 2.0 metric (30% or 25%)",
+      "input": "What did you ship at Tamara as PM?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["30.000", "30,000", "30000", "treinta mil"] }
+        { "type": "contains_any", "values": ["30%", "25%", "Partners Portal", "15+"] }
       ]
     },
     {
-      "id": "automation-hours",
-      "description": "Debe mencionar 170+ horas automatizadas/mes",
-      "input": "¿Cuántas horas automatizaste al mes?",
-      "lang": "es",
+      "id": "mondia-merchants",
+      "description": "Should mention 100+ merchants at Mondia Pay",
+      "input": "How many merchants did you integrate at Mondia Pay?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["170", "ciento setenta"] }
+        { "type": "contains_any", "values": ["100", "hundred"] }
       ]
     },
     {
-      "id": "target-roles",
-      "description": "Debe mencionar roles de interés",
-      "input": "¿Qué roles te interesan?",
-      "lang": "es",
+      "id": "target-domain",
+      "description": "Should mention BaaS or embedded finance as focus area",
+      "input": "What is your area of expertise?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["Product Manager", "Solutions Architect", "Forward Deployed", "FDE"] }
+        { "type": "contains_any", "values": ["BaaS", "Banking as a Service", "embedded finance", "card", "fintech"] }
       ]
     },
     {
       "id": "repo-public",
-      "description": "Debe confirmar que el repo de santifer.io es público en GitHub",
-      "input": "¿El código de santifer.io está en GitHub?",
-      "lang": "es",
+      "description": "Should confirm portfolio repo is public on GitHub",
+      "input": "Is the code for this portfolio on GitHub?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["público", "publica", "open", "GitHub"] },
-        { "type": "contains_any", "values": ["santifer", "cv-santiago"] },
-        { "type": "not_contains", "value": "privado" }
+        { "type": "contains_any", "values": ["public", "open", "GitHub"] },
+        { "type": "contains_any", "values": ["cv-omar", "definitecoding", "github"] },
+        { "type": "not_contains", "value": "private" }
       ]
     },
     {
       "id": "model-version",
-      "description": "Debe decir Claude Sonnet 4.5, no 3.5 Sonnet",
-      "input": "¿Qué modelo de IA usas?",
-      "lang": "es",
+      "description": "Should say Claude Sonnet 4.6, not 3.5 Sonnet",
+      "input": "What AI model powers this chat?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["Sonnet 4.5", "sonnet-4-5", "Claude Sonnet 4"] },
+        { "type": "contains_any", "values": ["Sonnet 4.6", "sonnet-4-6", "Claude Sonnet 4"] },
         { "type": "not_contains", "value": "3.5 Sonnet" },
         { "type": "not_contains", "value": "Sonnet 3.5" }
       ]

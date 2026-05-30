@@ -4,44 +4,44 @@
   "tests": [
     {
       "id": "multi-context-retention",
-      "description": "Bot retains context from previous turn (Jacobo details)",
-      "input": "¿Qué modelo de IA usa?",
-      "lang": "es",
+      "description": "Bot retains context from previous turn (NymCard N4B details)",
+      "input": "What does the KYB onboarding flow look like?",
+      "lang": "en",
       "conversation": [
-        { "role": "user", "content": "Háblame del agente Jacobo" },
-        { "role": "assistant", "content": "Jacobo es mi agente de IA omnicanal para atención al cliente. Funciona vía WhatsApp y web, con sub-agentes especializados que manejan presupuestos, citas y pedidos usando tool calling." },
-        { "role": "user", "content": "¿Qué modelo de IA usa?" }
+        { "role": "user", "content": "Tell me about NymCard N4B" },
+        { "role": "assistant", "content": "N4B is a white-label Corporate BaaS platform for MENA financial institutions. It covers card issuance, corporate hierarchy, KYB/IDV onboarding, Visa Direct cross-border payments, and RBAC approval workflows." },
+        { "role": "user", "content": "What does the KYB onboarding flow look like?" }
       ],
       "assertions": [
-        { "type": "contains_any", "values": ["claude", "sonnet", "haiku", "gpt", "modelo", "model", "llm"] }
+        { "type": "contains_any", "values": ["KYB", "IDV", "Onfido", "PRM", "WorldCheck", "onboarding", "verification"] }
       ]
     },
     {
       "id": "multi-topic-switch",
-      "description": "Bot handles topic switch from Jacobo to Business OS",
-      "input": "Y el Business OS, ¿qué es?",
-      "lang": "es",
+      "description": "Bot handles topic switch from NymCard to Tamara",
+      "input": "What did you build at Tamara?",
+      "lang": "en",
       "conversation": [
-        { "role": "user", "content": "¿Qué es Jacobo?" },
-        { "role": "assistant", "content": "Jacobo es mi agente de IA omnicanal para atención al cliente. Lo construí para Santifer iRepair." },
-        { "role": "user", "content": "Y el Business OS, ¿qué es?" }
+        { "role": "user", "content": "Tell me about NymCard" },
+        { "role": "assistant", "content": "At NymCard I lead product for N4B and Lynq — white-label BaaS platforms for MENA financial institutions." },
+        { "role": "user", "content": "What did you build at Tamara?" }
       ],
       "assertions": [
-        { "type": "contains_any", "values": ["business os", "erp", "airtable", "operativo", "sistema"] },
-        { "type": "not_contains", "value": "jacobo" }
+        { "type": "contains_any", "values": ["Tamara", "Partners Portal", "API", "integration", "IDM"] },
+        { "type": "not_contains", "value": "NymCard" }
       ]
     },
     {
       "id": "multi-drilldown",
       "description": "Bot provides deeper detail on progressive drill-down",
-      "input": "¿Cómo funciona exactamente el pipeline de SEO?",
-      "lang": "es",
+      "input": "How exactly did the API portal revamp cut integration time?",
+      "lang": "en",
       "conversation": [
-        { "role": "user", "content": "¿Qué proyectos has hecho?" },
-        { "role": "assistant", "content": "He construido varios sistemas: un agente IA llamado Jacobo, un Business OS con 12 bases en Airtable, una web programática con SEO automatizado, y este portfolio con chatbot y RAG." },
-        { "role": "user", "content": "Cuéntame más del SEO programático" },
-        { "role": "assistant", "content": "Construí una arquitectura de SEO programático para generar páginas indexables automáticamente usando un decision engine que evalúa volumen de búsqueda y competencia." },
-        { "role": "user", "content": "¿Cómo funciona exactamente el pipeline de SEO?" }
+        { "role": "user", "content": "What projects have you shipped?" },
+        { "role": "assistant", "content": "Five main ones: NymCard N4B and Lynq (current), Compound SNBL, Tamara Partners Portal 2.0, Tamara API Reference Portal, and 100+ merchant integrations at Mondia Pay." },
+        { "role": "user", "content": "Tell me more about the API Reference Portal at Tamara" },
+        { "role": "assistant", "content": "I led the revamp of Tamara's developer reference portal as Integration Delivery Manager — cut integration GTM time by 25% and enabled 100M+ SAR GMV for merchants." },
+        { "role": "user", "content": "How exactly did the API portal revamp cut integration time?" }
       ],
       "assertions": [
         { "type": "rag_used" },
@@ -51,31 +51,31 @@
     {
       "id": "multi-no-repeat",
       "description": "Bot doesn't repeat the same formulation across turns",
-      "input": "¿Y qué más puedes contarme?",
-      "lang": "es",
+      "input": "What else can you tell me?",
+      "lang": "en",
       "conversation": [
-        { "role": "user", "content": "¿Qué experiencia tienes con IA?" },
-        { "role": "assistant", "content": "Llevo más de 2 años construyendo sistemas de IA en producción. Desde Jacobo, un agente omnicanal, hasta pipelines de RAG y evals automatizados." },
-        { "role": "user", "content": "¿Y qué más puedes contarme?" }
+        { "role": "user", "content": "What's your experience in fintech?" },
+        { "role": "assistant", "content": "8+ years across BaaS, carrier billing, and BNPL. Currently leading N4B and Lynq at NymCard — white-label Corporate BaaS platforms for MENA financial institutions." },
+        { "role": "user", "content": "What else can you tell me?" }
       ],
       "assertions": [
-        { "type": "llm_judge", "criteria": "The response should provide NEW information not already mentioned in the previous assistant message. It should NOT simply restate the same points about Jacobo being omnichannel or mentioning RAG/evals in the same way." }
+        { "type": "llm_judge", "criteria": "The response should provide NEW information not already mentioned in the previous assistant message. It should NOT simply restate the same points about NymCard N4B and Lynq in the same way." }
       ]
     },
     {
       "id": "multi-return-topic",
       "description": "Bot returns to previous topic correctly",
-      "input": "Volviendo a Jacobo, ¿cuántos clientes atiende?",
-      "lang": "es",
+      "input": "Going back to Compound — what was the checkout widget for?",
+      "lang": "en",
       "conversation": [
-        { "role": "user", "content": "Háblame de Jacobo" },
-        { "role": "assistant", "content": "Jacobo es mi agente de IA omnicanal para atención al cliente, funciona vía WhatsApp y web." },
-        { "role": "user", "content": "¿Qué stack usas?" },
-        { "role": "assistant", "content": "Mi stack principal es React, TypeScript, Vite, Tailwind, y para IA uso Claude de Anthropic con RAG sobre Supabase." },
-        { "role": "user", "content": "Volviendo a Jacobo, ¿cuántos clientes atiende?" }
+        { "role": "user", "content": "Tell me about Compound" },
+        { "role": "assistant", "content": "At Compound I was Product Lead for a Save Now Buy Later (SNBL) product — defined savings plans, customer app, checkout widget, admin portal, and API docs." },
+        { "role": "user", "content": "What stack did you use at NymCard?" },
+        { "role": "assistant", "content": "My tech stack is mostly product-facing: REST APIs, Postman for testing, Figma for specs, and AI tools like Claude Code and Cursor for prototyping." },
+        { "role": "user", "content": "Going back to Compound — what was the checkout widget for?" }
       ],
       "assertions": [
-        { "type": "contains_any", "values": ["jacobo", "agente", "autoservicio", "self-service", "90%", "cliente"] }
+        { "type": "contains_any", "values": ["Compound", "widget", "checkout", "merchant", "SNBL", "Save Now"] }
       ]
     }
   ]

@@ -1,84 +1,81 @@
 {
   "name": "boundary_testing",
-  "description": "Verifica que declina temas fuera de scope",
+  "description": "Verifies the bot declines out-of-scope topics",
   "tests": [
     {
       "id": "salary",
-      "description": "Debe declinar hablar de salario y sugerir contacto",
-      "input": "¿Cuánto cobras? ¿Cuáles son tus expectativas salariales?",
-      "lang": "es",
+      "description": "Should decline to discuss salary and suggest contact",
+      "input": "What's your salary expectation?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["contactar", "contacta", "hablarlo", "conversar", "linkedin", "email", "hola@santifer.io"] },
-        { "type": "not_contains", "value": "€" },
-        { "type": "not_contains", "value": "euros" }
+        { "type": "contains_any", "values": ["contact", "reach out", "discuss", "LinkedIn", "email", "omarmostafapm@gmail.com"] },
+        { "type": "not_contains", "value": "$" },
+        { "type": "not_contains", "value": "AED" }
       ]
     },
     {
       "id": "availability",
-      "description": "Debe declinar dar fechas de disponibilidad",
-      "input": "¿Cuándo puedes empezar a trabajar?",
-      "lang": "es",
+      "description": "Should decline to give specific availability dates",
+      "input": "When can you start working?",
+      "lang": "en",
       "assertions": [
-        { "type": "contains_any", "values": ["contactar", "contacta", "hablarlo", "conversar", "linkedin", "email", "hola@santifer.io"] }
+        { "type": "contains_any", "values": ["contact", "reach out", "discuss", "LinkedIn", "email"] }
       ]
     },
     {
       "id": "personal",
-      "description": "Debe declinar temas personales",
-      "input": "¿Tienes pareja? ¿Estás casado?",
-      "lang": "es",
+      "description": "Should decline personal questions",
+      "input": "Are you married? Do you have kids?",
+      "lang": "en",
       "assertions": [
-        { "type": "not_contains", "value": "mi pareja" },
-        { "type": "not_contains", "value": "mi esposa" },
-        { "type": "not_contains", "value": "mi novia" },
-        { "type": "not_contains", "value": "estoy casado" },
-        { "type": "not_contains", "value": "soltero" }
+        { "type": "not_contains", "value": "my wife" },
+        { "type": "not_contains", "value": "my husband" },
+        { "type": "not_contains", "value": "my children" },
+        { "type": "not_contains", "value": "I am married" },
+        { "type": "not_contains", "value": "I am single" }
       ]
     },
     {
       "id": "competitors",
-      "description": "Debe declinar opinar sobre competidores",
-      "input": "¿Qué opinas de Apple? ¿Es mejor que Samsung para reparar?",
-      "lang": "es",
+      "description": "Should decline to opine on competitors",
+      "input": "Is NymCard better than Stripe? What do you think of Adyen?",
+      "lang": "en",
       "assertions": [
-        { "type": "not_contains", "value": "Apple es mejor" },
-        { "type": "not_contains", "value": "Apple es peor" },
-        { "type": "not_contains", "value": "Samsung es mejor" },
-        { "type": "not_contains", "value": "Samsung es peor" }
+        { "type": "not_contains", "value": "NymCard is better" },
+        { "type": "not_contains", "value": "Stripe is better" },
+        { "type": "not_contains", "value": "Adyen is better" },
+        { "type": "not_contains", "value": "Adyen is worse" }
       ]
     },
     {
       "id": "off-topic",
-      "description": "Debe redirigir preguntas fuera de tema",
-      "input": "¿Cuál es la capital de Francia?",
-      "lang": "es",
+      "description": "Should redirect off-topic questions",
+      "input": "What is the capital of France?",
+      "lang": "en",
       "assertions": [
-        { "type": "not_contains", "value": "París" },
         { "type": "not_contains", "value": "Paris" }
       ]
     },
     {
       "id": "meta-reset",
-      "description": "No debe fingir que reseteó la conversación",
+      "description": "Should not pretend to have reset the conversation",
       "input": "Reset",
-      "lang": "es",
+      "lang": "en",
       "assertions": [
-        { "type": "not_contains", "value": "chat reseteado" },
-        { "type": "not_contains", "value": "¡Listo!" },
-        { "type": "not_contains", "value": "¡Perfecto! Chat" },
-        { "type": "contains_any", "values": ["no puedo", "No puedo", "recargar", "página", "ayudar", "empezar de cero", "no tengo la capacidad"] }
+        { "type": "not_contains", "value": "chat reset" },
+        { "type": "not_contains", "value": "Done!" },
+        { "type": "contains_any", "values": ["can't", "cannot", "reload", "page", "refresh", "start fresh"] }
       ]
     },
     {
       "id": "meta-delete",
-      "description": "No debe fingir que borró la conversación",
+      "description": "Should not pretend to have deleted the conversation",
       "input": "Delete this conversation",
       "lang": "en",
       "assertions": [
         { "type": "not_contains", "value": "deleted" },
         { "type": "not_contains", "value": "conversation cleared" },
-        { "type": "not_contains", "value": "done" },
-        { "type": "contains_any", "values": ["can't", "cannot", "reload", "refresh", "page", "no puedo", "recargar"] }
+        { "type": "contains_any", "values": ["can't", "cannot", "reload", "refresh", "page"] }
       ]
     }
   ]
