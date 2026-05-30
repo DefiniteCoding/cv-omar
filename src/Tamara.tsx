@@ -113,12 +113,27 @@ export default function Tamara({ lang = 'en' }: { lang?: Lang }) {
         <H3>{s.decision2.buildVsBuy.heading}</H3>
         <Prose>{s.decision2.buildVsBuy.body}</Prose>
         <Prose>{s.decision2.buildVsBuy.rejection}</Prose>
-        <Callout className="bg-primary/5 border-primary/20">{s.decision2.buildVsBuy.solution}</Callout>
+        <Prose>{s.decision2.buildVsBuy.solution}</Prose>
+
+        <H3>{s.decision2.buildVsBuy.negotiation.heading}</H3>
+        <Prose>{s.decision2.buildVsBuy.negotiation.body}</Prose>
+        <Callout className="bg-primary/5 border-primary/20">{s.decision2.buildVsBuy.negotiation.outcome}</Callout>
+        <Prose>{s.decision2.buildVsBuy.negotiation.reflection}</Prose>
         <Callout>{s.decision2.buildVsBuy.principle}</Callout>
 
         <H3>{s.decision2.tourDesign.heading}</H3>
         <Prose>{s.decision2.tourDesign.body}</Prose>
         <Prose>{s.decision2.tourDesign.outcome}</Prose>
+
+        {/* ================================================================ */}
+        {/*  BEYOND PRODUCT: EMAIL COST SAVINGS                              */}
+        {/* ================================================================ */}
+        <H2 id="email-savings">{s.decision4.heading}</H2>
+        <Prose>{s.decision4.intro}</Prose>
+        <Prose>{s.decision4.discovery}</Prose>
+        <StepList items={s.decision4.fixes.map(f => ({ label: f.label, detail: f.detail }))} />
+        <Callout className="bg-primary/5 border-primary/20">{s.decision4.outcome}</Callout>
+        <Callout>{s.decision4.principle}</Callout>
 
         {/* ================================================================ */}
         {/*  DECISION 3: BACKLOG DELIVERY                                    */}

@@ -3,10 +3,10 @@ export type TamaraLang = 'es' | 'en'
 const content = {
   slug: 'tamara-partners-portal',
   altSlug: 'tamara-partners-portal-2',
-  readingTime: '10 min read',
+  readingTime: '12 min read',
   seo: {
-    title: 'Tamara Partners Portal 2.0: From Navigation Sprawl to Merchant Self-Service | Omar Mostafa',
-    description: 'Case study: how I led product on Tamara\'s Partners Portal 2.0 — delivering Global Search, a GuideSail-powered onboarding tour, and 15+ merchant features that cut support queries 30% and lifted satisfaction 25%.',
+    title: 'Tamara Partners Portal 2.0: Merchant Self-Service, 57% Email Savings, and a Vendor Partnership | Omar Mostafa',
+    description: 'Case study: how I led product on Tamara\'s Partners Portal 2.0 — Global Search, a GuideSail product tour co-built with the developer, 15+ merchant features, 30% fewer support queries, 25% satisfaction uplift, and 57% email cost savings.',
   },
   nav: {
     breadcrumbHome: 'Home',
@@ -15,26 +15,27 @@ const content = {
   header: {
     kicker: 'Case Study — Tamara · Partners Portal 2.0',
     h1: 'From Navigation Sprawl to Merchant Self-Service',
-    subtitle: 'How I led product on Tamara\'s Partners Portal 2.0: shipping Global Search, an onboarding product tour built with GuideSail instead of Pendo, and 15+ merchant-requested features — cutting support queries 30% and lifting satisfaction 25%.',
+    subtitle: 'How I led product on Tamara\'s Partners Portal 2.0: Global Search, an onboarding tour co-built with GuideSail\'s developer, 15+ merchant features, and two self-initiated wins — 30% fewer support queries, 25% satisfaction uplift, and 57% off the portal\'s email bill.',
     date: 'Jan 2024',
   },
   heroMetrics: [
     { value: '30%', label: 'Fewer Support Queries' },
     { value: '25%', label: 'Satisfaction Uplift' },
     { value: '15+', label: 'Features Shipped' },
+    { value: '57%', label: 'Email Cost Savings' },
     { value: '0', label: 'Eng Days for Tour Setup' },
-    { value: '2024', label: 'Launched' },
   ],
   faq: {
     items: [
       { q: 'What is Tamara Partners Portal?', a: 'The Partners Portal is the merchant-facing operating platform for Tamara\'s BNPL network. Merchants use it to manage orders (capture, refund, cancel), view settlements and tax invoices, configure webhooks and API tokens, manage team access and roles, and generate reports. It is the primary operational interface between Tamara and its merchant base across MENA.' },
       { q: 'What is Partners Portal 2.0?', a: 'Partners Portal 2.0 was a major product investment in the merchant experience — not a full rebuild, but a coherent uplift. Three pillars: Global Search (find anything across all portal modules instantly), a guided onboarding tour for new merchants, and a structured delivery of 15+ merchant-requested features. The goal: reduce merchants\' dependence on partner success teams for navigation and routine tasks.' },
-      { q: 'Why GuideSail instead of Pendo or Appcues?', a: 'Pendo and Appcues are digital adoption platforms priced for enterprises that need deep analytics, segmentation, and multi-product orchestration. We needed a focused product tour: step-by-step guidance for new merchants on their first login. GuideSail gave us exactly that — no engineering effort required, fast to implement, right-sized for the scope, and priced for what we actually needed rather than for a use case we didn\'t have.' },
+      { q: 'Why GuideSail instead of Pendo or Appcues?', a: 'Pendo and Appcues are digital adoption platforms priced for enterprises that need deep analytics, segmentation, and multi-product orchestration. We needed a focused product tour: step-by-step guidance for new merchants on their first login. GuideSail matched the scope — but it didn\'t have the trigger logic we needed (show only on first login, skip thereafter). I reached out to the developer, Hassan Siddiqui, described the requirement, and he built it. He then created a new pricing tier specifically for Tamara\'s scope. We got the feature, the right price, and a vendor who was invested in our success.' },
+      { q: 'What was the email cost saving about?', a: 'Tamara\'s merchant portal used Mailchimp for transactional emails. The account was on an auto-renewal pricing model — when we hit our send limit, the plan auto-bumped to the next tier at peak-usage pricing. I self-initiated a fix: cleaned up email authentication (SPF/DKIM) and the partners@tamara.co sender reputation, reduced retry volume by improving list hygiene, and switched to an upfront plan sized to forecasted volume with a quarterly review cadence. Combined, this cut the email bill 57%.' },
       { q: 'What does Global Search cover in the portal?', a: 'Global Search covers the core operational objects merchants work with: orders (by order ID, merchant order ID, customer name, customer phone), settlements, tax invoices, reports, users, and webhooks. The goal was to replace module-by-module navigation with a single entry point. Merchants could find a specific order or settlement without knowing which section of the portal to look in first.' },
       { q: 'What were the outcomes of Partners Portal 2.0?', a: 'Support queries from merchants dropped 30%, driven primarily by Global Search reducing navigation friction and the product tour reducing first-session confusion. Merchant satisfaction scores improved 25%. And over 15 merchant-requested features were shipped, deepening the portal\'s coverage of common operational workflows.' },
     ] as const,
   },
-  tldr: 'As PM for Tamara\'s Partners Portal, I led the 2.0 uplift: Global Search across all portal modules, a product tour built with GuideSail (not Pendo), and 15+ merchant-requested features. Outcome: 30% fewer support queries, 25% satisfaction uplift. The most defensible PM decision was right-sizing the onboarding tool — paying for what the problem actually needed, not what enterprise vendors wanted to sell.',
+  tldr: 'As PM for Tamara\'s Partners Portal, I led the 2.0 uplift: Global Search, a product tour co-built with GuideSail\'s developer (after negotiating trigger-logic requirements and a custom pricing tier), and 15+ merchant features. Beyond product: self-initiated a pricing model fix that cut the portal\'s email bill 57%. Outcomes: 30% fewer support queries, 25% satisfaction uplift.',
   sections: {
     intro: {
       hook: 'When a merchant can\'t find the refund button, they don\'t explore the interface. They open a support ticket. That ticket costs time — for the merchant, for the partner success team, and indirectly for Tamara. Multiply it by a growing merchant base across MENA, and "navigation confusion" becomes a measurable drag on operations.',
@@ -74,14 +75,31 @@ const content = {
         heading: 'The Build vs. Buy Decision',
         body: 'The options I evaluated for the product tour covered most of the market: Pendo, Appcues, and Intercom Product Tours. All three could technically do what I needed. None of them were the right fit.',
         rejection: 'Pendo, Appcues, and Intercom Product Tours are digital adoption platforms built for enterprises managing multiple products, multiple user segments, and complex analytics pipelines. They\'re priced accordingly. The use case I had was specific and bounded: step-by-step guidance for new merchants on their first login to a B2B portal. Paying for enterprise-grade user analytics infrastructure to ship a six-step onboarding tour would have been the wrong call — both commercially and technically, since implementation complexity would have added engineering cost on top of licensing cost.',
-        solution: 'I found GuideSail (getguidesail.com) — a focused product tour tool that matched the scope of the problem. No engineering days required for setup. Fast to implement. Sufficient feature set: step-by-step modals and tooltips, triggered on first login, covering the portal\'s core sections. Right-priced for a targeted use case.',
-        principle: 'The right tool for a problem isn\'t always the market leader. When the problem is bounded and specific, buying the enterprise platform is often a waste of budget and engineering time. Right-sizing the solution is a product decision, not just a procurement one.',
+        solution: 'I found GuideSail (getguidesail.com) — a focused product tour tool that matched the scope of the problem. No engineering days required for setup. Fast to implement. Sufficient feature set: step-by-step modals and tooltips. Right-priced for a targeted use case. But there was one gap.',
+        negotiation: {
+          heading: 'The Negotiation: Co-Shaping the Product',
+          body: 'GuideSail didn\'t yet have the trigger logic I needed: showing the tour only on a merchant\'s first login and skipping it on subsequent sessions. Without this, the tour would fire every time, becoming friction instead of guidance. I reached out directly to Hassan Siddiqui, GuideSail\'s developer, and laid out the requirement clearly: this was the condition we needed before Tamara could commit.',
+          outcome: 'Hassan built it. And then something better happened: because Tamara\'s requirements had shaped the product in a direction that was useful for other customers too, Hassan created a new pricing tier specifically for Tamara\'s scope — a commercial arrangement that worked for both sides. GuideSail got a paying enterprise customer and a product signal that improved the tool. Tamara got the feature it needed at a price matched to the actual use case.',
+          reflection: 'Not every vendor relationship is a take-it-or-leave-it evaluation. When the gap is specific and the developer is reachable, the right move is to describe the problem and see if it\'s buildable. The GuideSail partnership ended up being more interesting than a procurement decision: it was a co-development conversation.',
+        },
+        principle: 'The right tool for a problem isn\'t always the market leader. When the problem is bounded and the gap is specific, you can sometimes shape the tool rather than accepting it as-is. Right-sizing the solution — commercially and technically — is a product decision.',
       },
       tourDesign: {
         heading: 'Tour Design',
         body: 'The tour covered six steps, triggering on first merchant login. Each step corresponded to a core portal section: Orders (the primary operational view), Captures (how merchant disbursement is triggered), Settlements (understanding the payout cycle), User Management (inviting teammates and managing access), Reports (downloading exports and invoices), and a completion state that confirmed the merchant was ready to operate independently.',
         outcome: 'First-session orientation improved. New merchant support queries — the "I don\'t understand what a capture is" and "where do I find my settlement" tickets — declined. Merchants who completed the tour moved through their first operational tasks faster than those who arrived before the tour existed.',
       },
+    },
+    decision4: {
+      heading: 'Beyond Product: 57% Off the Email Bill',
+      intro: 'Not every PM win shows up in a roadmap. Some of the highest-impact work happens at the edges — where product, engineering, and commercial operations intersect, and no one else is looking.',
+      discovery: 'I noticed that Tamara\'s merchant portal email costs through Mailchimp were running higher than they should. The pricing model we were on auto-renewed when we hit our send limit — so instead of paying upfront for our actual volume, we were getting bumped to the next tier at the worst possible moment (when usage peaked) and paying the top-of-tier price repeatedly. No one had flagged it because it wasn\'t obviously wrong — it was just how the account had been set up.',
+      fixes: [
+        { label: 'Email authentication and list hygiene.', detail: 'The partners@tamara.co sender had accumulated deliverability problems: SPF and DKIM configuration wasn\'t clean, and the list contained stale addresses that were generating bounces. Bounces trigger retries. Retries consume send quota. Fixing the email authentication and cleaning the list reduced retry volume significantly.' },
+        { label: 'Pricing model restructure.', detail: 'I switched from renewal-on-limit to an upfront plan sized to our actual forecasted volume — calculated from historical send data plus a growth buffer. Then set a calendar reminder to revisit the plan every three months, comparing actuals to forecast and adjusting before the next period.' },
+      ],
+      outcome: 'The combined effect: 57% reduction in what Tamara paid for portal emails. The fix took a few hours of investigation and a pricing plan change. The ongoing cadence — a quarterly review of email volume against the current plan — was a five-minute calendar event that prevented the cost from drifting back up.',
+      principle: 'PMs who own a product own its economics too. If you\'re responsible for a feature that sends emails, you\'re responsible for what those emails cost. The pattern — understand the usage, match the pricing model to the reality, forecast, and review — applies to any vendor-billed service tied to usage.',
     },
     decision3: {
       heading: 'Decision 3: Coordinated Merchant Feature Delivery',
@@ -95,6 +113,7 @@ const content = {
         { metric: '30%', label: 'reduction in merchant support queries', context: 'Driven primarily by Global Search eliminating navigation friction and the product tour reducing first-session confusion. Partner success teams spent less time answering "where is X" questions.' },
         { metric: '25%', label: 'improvement in merchant satisfaction scores', context: 'Measured through Tamara\'s merchant satisfaction tracking. The combination of faster task completion (search), better onboarding (tour), and resolved feature requests moved the needle across the merchant base.' },
         { metric: '15+', label: 'merchant-requested features shipped', context: 'A coordinated push through the existing backlog. Individual features ranged from filtering improvements to workflow optimizations — none were large standalone bets, but collectively they represented meaningful coverage of merchant operational needs.' },
+        { metric: '57%', label: 'reduction in portal email costs', context: 'Self-initiated. Fixed email authentication and list hygiene to reduce retries, then restructured the Mailchimp pricing model from auto-renewal-on-limit to an upfront plan sized to forecasted volume, with a quarterly review cadence.' },
       ],
     },
     lessons: {
@@ -115,6 +134,14 @@ const content = {
         {
           title: 'Backlog coordination is unglamorous and high-impact.',
           detail: 'The 15+ merchant features weren\'t individually exciting. None of them were bet-the-company features. But merchants had asked for them, they were buildable, and shipping them together created a perceptible improvement. The PM work was coordination and sequencing — not the most visible product moment, but a meaningful one.',
+        },
+        {
+          title: 'Some vendor relationships are worth negotiating, not just evaluating.',
+          detail: 'GuideSail didn\'t have the trigger logic we needed. Rather than ruling it out, I described the requirement to the developer. He built it, then created a new pricing tier for Tamara\'s scope. The result was better than any off-the-shelf purchase: a tool shaped to our needs, at a price matched to our use case, with a vendor who had commercial skin in the game.',
+        },
+        {
+          title: 'PMs who own a product own its economics too.',
+          detail: 'The 57% email cost saving wasn\'t on any roadmap. It came from noticing something that wasn\'t obviously wrong — just quietly wasteful. If you\'re responsible for a feature that sends emails or bills by usage, you\'re responsible for what that service costs. Understand the pricing model, match it to your actual usage pattern, and review it periodically.',
         },
       ],
     },
