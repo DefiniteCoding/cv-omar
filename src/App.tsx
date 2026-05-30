@@ -1500,20 +1500,18 @@ function App() {
               className="text-center md:text-left"
             >
               <p className="text-lg text-muted-foreground mb-2">
-                {lang === 'es' ? 'Hola, soy' : "Hi, I'm"} <Link to={lang === 'es' ? '/sobre-mi' : '/about'} className="text-gradient-theme font-semibold hover:opacity-80 transition-opacity">@santifer</Link>,
+                {"Hi, I'm"} <Link to={'/about'} className="text-gradient-theme font-semibold hover:opacity-80 transition-opacity">Omar Mostafa</Link>,
               </p>
               <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-tight">
                 <span className="text-gradient-theme">{hydrated ? roleText : t.greetingRoles[0]}</span>
                 <a
-                  href="https://career-ops.org?utm_source=santifer.io&utm_medium=hero&utm_campaign=persona"
+                  href="https://www.linkedin.com/in/omar-mostafa-mohaseb"
                   target="_blank"
                   rel="me noopener noreferrer"
-                  aria-label="career-ops official site"
-                  className={`inline-flex items-center ml-2 text-primary hover:opacity-80 transition-opacity align-middle ${
-                    hydrated && roleIndex === 3 && roleText.includes('career-ops') ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                  }`}
-                  aria-hidden={!(hydrated && roleIndex === 3 && roleText.includes('career-ops'))}
-                  tabIndex={hydrated && roleIndex === 3 && roleText.includes('career-ops') ? 0 : -1}
+                  aria-label="Omar Mostafa LinkedIn"
+                  className="inline-flex items-center ml-2 text-primary hover:opacity-80 transition-opacity align-middle opacity-0 pointer-events-none"
+                  aria-hidden={true}
+                  tabIndex={-1}
                 >
                   <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-7 md:h-7" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 </a>
@@ -1521,7 +1519,7 @@ function App() {
                 <br />
                 {t.greeting}
                 <br />
-                {lang === 'es' ? 'con ' : 'with '}<BeamPill>Evals <span className="opacity-60">+</span> LLMOps <span className="opacity-60">+</span> HITL</BeamPill>
+                {'in '}<BeamPill>BaaS <span className="opacity-60">+</span> Embedded Finance <span className="opacity-60">+</span> MENA</BeamPill>
               </h1>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
@@ -1605,7 +1603,7 @@ function App() {
             <div className="mb-20">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
-                  <img src="/zinkee-logo.webp" alt="Zinkee" className="w-10 h-10 shrink-0" width={40} height={40} loading="lazy" decoding="async" />
+                  <img src="/nymcard-logo.webp" alt="NymCard" className="w-10 h-10 shrink-0" width={40} height={40} loading="lazy" decoding="async" />
                   <h3 className="font-display text-2xl font-bold">{t.experience.zinkee.company}</h3>
                 </div>
                 <span className="text-sm text-muted-foreground">{t.experience.zinkee.location}</span>
@@ -1677,17 +1675,14 @@ function App() {
             <div className="mb-12">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#888] shrink-0">
-                    <picture>
-                      <source srcSet="/logo-santifer.webp" type="image/webp" />
-                      <img src="/logo-santifer.jpg" alt={t.experience.santifer.company} className="w-full h-full object-cover" width={40} height={40} loading="lazy" decoding="async" />
-                    </picture>
+                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#1D3D6F] shrink-0">
+                    <img src="/tamara-logo.webp" alt={t.experience.santifer.company} className="w-full h-full object-cover" width={40} height={40} loading="lazy" decoding="async" />
                   </div>
                   <h3 className="font-display text-2xl font-bold">{t.experience.santifer.company}</h3>
                 </div>
-                <Link to={lang === 'en' ? '/santifer-irepair-founder' : '/santifer-irepair'} className="text-sm text-primary hover:underline flex items-center gap-1">
-                  santifer irepair
-                </Link>
+                <a href="https://tamara.co" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
+                  tamara.co
+                </a>
                 <span className="text-sm text-muted-foreground">{t.experience.santifer.location}</span>
               </div>
               <p className="text-primary font-medium mb-1">{t.experience.santifer.role}</p>
@@ -1950,14 +1945,14 @@ function App() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#F5F3EE] flex items-center justify-center shrink-0">
                     <picture>
-                      <source srcSet="/logo-lico.webp" type="image/webp" />
-                      <img src="/logo-lico.png" alt={t.experience.lico.company} className="w-full h-full object-contain p-1" width={40} height={40} loading="lazy" decoding="async" />
+                      <source srcSet="/mondia-logo.webp" type="image/webp" />
+                      <img src="/mondia-logo.png" alt={t.experience.lico.company} className="w-full h-full object-contain p-1" width={40} height={40} loading="lazy" decoding="async" />
                     </picture>
                   </div>
                   <h3 className="font-display text-2xl font-bold">{t.experience.lico.company}</h3>
                 </div>
-                <a href="https://licocosmetics.es" target="_blank" rel="noopener noreferrer nofollow" className="text-sm text-accent hover:underline flex items-center gap-1">
-                  licocosmetics.es <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                <a href="https://mondia.com" target="_blank" rel="noopener noreferrer nofollow" className="text-sm text-accent hover:underline flex items-center gap-1">
+                  mondia.com <ExternalLink className="w-3 h-3" aria-hidden="true" />
                 </a>
                 <span className="text-sm text-muted-foreground">{t.experience.lico.location}</span>
               </div>
@@ -1994,8 +1989,8 @@ function App() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-white flex items-center justify-center shrink-0 p-1.5">
                     <picture>
-                      <source srcSet="/logo-everis.webp" type="image/webp" />
-                      <img src="/logo-everis.jpg" alt={t.experience.everis.company} className="w-full h-full object-contain" width={40} height={40} loading="lazy" decoding="async" />
+                      <source srcSet="/dell-logo.webp" type="image/webp" />
+                      <img src="/dell-logo.png" alt={t.experience.everis.company} className="w-full h-full object-contain" width={40} height={40} loading="lazy" decoding="async" />
                     </picture>
                   </div>
                   <h3 className="font-display text-2xl font-bold">{t.experience.everis.company}</h3>
