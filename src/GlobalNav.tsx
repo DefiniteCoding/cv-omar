@@ -80,8 +80,8 @@ function useActiveSection(pathname: string, enabled: boolean) {
 
 function useLang() {
   const { pathname } = useLocation()
-  const isHome = pathname === '/' || pathname === '/en'
-  const lang: 'ar' | 'en' = pathname === '/en' || (!AR_SLUGS.has(pathname) && pathname !== '/') ? 'en' : 'ar'
+  const isHome = pathname === '/' || pathname === '/ar' || pathname === '/en'
+  const lang: 'ar' | 'en' = AR_SLUGS.has(pathname) ? 'ar' : 'en'
   const pageTitle = PAGE_TITLE[pathname] ?? null
   return { pathname, isHome, lang, pageTitle }
 }
@@ -218,7 +218,7 @@ function NavControls({ altPath, altLabel, lang, isDark, toggleTheme }: {
         to={altPath}
         className="inline-flex items-center justify-center gap-1.5 w-[4.5rem] h-10 rounded-full bg-card border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
       >
-        {lang === 'ar' ? <FlagAR className="w-3.5 h-3.5" /> : <FlagEN className="w-3.5 h-3.5" />}
+        {lang === 'ar' ? <FlagEN className="w-3.5 h-3.5" /> : <FlagAR className="w-3.5 h-3.5" />}
         {altLabel}
       </Link>
       <button
@@ -239,8 +239,8 @@ export default function GlobalNav() {
   const navigate = useNavigate()
   const activeSection = useActiveSection(pathname, !isHome)
 
-  const altPath = ALT_PATH[pathname] || (lang === 'ar' ? '/en' : '/')
-  const altLabel = lang === 'ar' ? 'AR' : 'EN'
+  const altPath = ALT_PATH[pathname] || (lang === 'ar' ? '/' : '/ar')
+  const altLabel = lang === 'ar' ? 'EN' : 'AR'
 
   const t = translations[lang]
   const hasBar = !isHome
@@ -312,7 +312,7 @@ export default function GlobalNav() {
                 style={animateBackLink ? fade('0.4s') : undefined}
               >
                 <Link
-                  to={lang === 'en' ? '/en' : '/'}
+                  to={lang === 'ar' ? '/ar' : '/'}
                   className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors shrink-0"
                 >
                   <House className="w-4 h-4" />
@@ -363,7 +363,7 @@ export default function GlobalNav() {
         />
       )}
       {/* Controls + banner — always at same fixed position */}
-      <div className="fixed top-4 right-6 z-50 flex items-center gap-3">
+      <div className={`fixed top-4 z-50 flex items-center gap-3 ${lang === 'ar' ? 'left-6' : 'right-6'}`}>
         {bannerMessage}
         {controls}
       </div>

@@ -293,8 +293,9 @@ export const articleRegistry: ArticleConfig[] = [
 // Derived maps for GlobalNav and routing
 export function getAltPaths(): Record<string, string> {
   const map: Record<string, string> = {
-    '/': '/en',
-    '/en': '/',
+    '/': '/ar',
+    '/ar': '/',
+    '/en': '/ar',
     '/ar-about': '/about',
     '/about': '/ar-about',
     '/ar-privacy': '/privacy',
@@ -332,7 +333,7 @@ export function getSectionLabels(): Record<string, Record<string, string>> {
 
 /** All AR slugs (for lang detection: if pathname matches an AR slug → lang is 'ar') */
 export function getArSlugs(): Set<string> {
-  const slugs = new Set<string>(['/', '/ar-privacy', '/ar-about'])
+  const slugs = new Set<string>(['/ar', '/ar-privacy', '/ar-about'])
   for (const article of articleRegistry) {
     slugs.add(`/${article.slugs.ar}`)
   }

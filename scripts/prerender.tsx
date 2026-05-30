@@ -52,7 +52,7 @@ function stripReactSSRTags(html: string): string {
 // SSR render per language (home page)
 // ---------------------------------------------------------------------------
 function renderApp(lang: 'ar' | 'en'): string {
-  const path = lang === 'en' ? '/en' : '/';
+  const path = lang === 'ar' ? '/ar' : '/';
   return stripReactSSRTags(renderToString(
     <StaticRouter location={path}>
       <div>
@@ -466,7 +466,7 @@ async function writePage(html: string, outputPath: string, label: string) {
   mkdirSync(dir, { recursive: true });
   // Article pages live in dist/<slug>/index.html, NOT dist/index.html or dist/en/index.html
   const isArticle = /\/dist\/[^/]+\/index\.html$/.test(outputPath)
-    && !/\/dist\/(en|privacy|ar-privacy)\/index\.html$/.test(outputPath);
+    && !/\/dist\/(en|ar|privacy|ar-privacy)\/index\.html$/.test(outputPath);
   const pre = swapLcpPreload(html, isArticle);
   try {
     const processed = dedupePreloads(await critters.process(pre));
@@ -538,8 +538,9 @@ for (const [lang, slug, altSlug] of [['ar', 'ar-privacy', 'privacy'], ['en', 'pr
 }
 
 async function inlineCriticalCSS() {
-  // Home pages
-  await writePage(injectedEs, indexPath, 'ES: dist/index.html updated');
+  // Home pages — EN is default (dist/index.html), AR at /ar
+  await writePage(enPage, indexPath, 'EN: dist/index.html updated');
+  await writePage(injectedEs, resolve(distDir, 'ar', 'index.html'), 'AR: dist/ar/index.html created');
   await writePage(enPage, resolve(distDir, 'en', 'index.html'), 'EN: dist/en/index.html created');
 
   // About pages

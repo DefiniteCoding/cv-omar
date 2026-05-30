@@ -1431,7 +1431,7 @@ function CertLogo({ logo }: { logo: string }) {
 
 function App() {
   const location = useLocation()
-  const lang: Lang = location.pathname === '/en' ? 'en' : 'ar'
+  const lang: Lang = location.pathname === '/ar' ? 'ar' : 'en'
   const t = translations[lang]
   const hydrated = useHydrated()
   useHeroStyles()
@@ -1505,7 +1505,10 @@ function App() {
               className="text-center md:text-left"
             >
               <p className="text-lg text-muted-foreground mb-2">
-                {"Hi, I'm"} <Link to={'/about'} className="text-gradient-theme font-semibold hover:opacity-80 transition-opacity">Omar Mostafa</Link>,
+                {lang === 'en' ? "Hi, I'm" : 'مرحباً، أنا'}{' '}
+                <Link to={lang === 'en' ? '/about' : '/ar-about'} className="text-gradient-theme font-semibold hover:opacity-80 transition-opacity">
+                  {lang === 'en' ? 'Omar Mostafa' : 'عمر مصطفي محسب'}
+                </Link>,
               </p>
               <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-tight">
                 <span className="text-gradient-theme">{hydrated ? roleText : t.greetingRoles[0]}</span>
@@ -1523,8 +1526,12 @@ function App() {
                 {hydrated && <span className="inline-block w-[3px] h-[0.85em] bg-primary ml-1 rounded-sm translate-y-[2px]" style={{ animation: 'blink 1s step-end infinite' }} />}
                 <br />
                 {t.greeting}
-                <br />
-                {'in '}<BeamPill>BaaS <span className="opacity-60">+</span> Embedded Finance <span className="opacity-60">+</span> MENA</BeamPill>
+                {lang === 'en' && (
+                  <>
+                    <br />
+                    {'in '}<BeamPill>BaaS <span className="opacity-60">+</span> Embedded Finance <span className="opacity-60">+</span> MENA</BeamPill>
+                  </>
+                )}
               </h1>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
