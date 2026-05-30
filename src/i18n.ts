@@ -231,7 +231,7 @@ const omContent = {
     title: 'Work Experience',
     zinkee: {
       company: 'NymCard',
-      logo: '/nymcard-logo.webp',
+      logo: '/nymcard-logo.png',
       location: 'Dubai, UAE',
       role: 'Product Manager – Corporate Banking as a Service',
       period: 'Jun 2025 – Present',
@@ -239,7 +239,7 @@ const omContent = {
     },
     careerOps: {
       company: 'Compound',
-      logo: '/compound-logo.webp',
+      logo: '/compound-logo.png',
       location: 'Remote · Part-Time',
       role: 'Product Lead & Consultant',
       period: 'Mar 2025 – Dec 2025',
@@ -718,6 +718,15 @@ const arContent = {
           { value: '25%', label: 'ارتفاع في رضا التجار' },
           { value: '+15', label: 'ميزة مُشحونة للتجار' },
         ],
+        modules: [
+          { icon: 'layout', text: 'جولة منتج تفاعلية لإعداد التجار الجدد' },
+          { icon: 'users', text: 'سير عمل دعم متكامل يقلل حجم التذاكر' },
+          { icon: 'zap', text: 'لوحة تحليلات التجار مع رؤية GMV الفورية' },
+          { icon: 'package', text: 'تهيئة ذاتية الخدمة لخطط الدفع والحدود' },
+          { icon: 'fileText', text: 'إدارة مفاتيح API وواجهة إعداد webhooks' },
+          { icon: 'gitBranch', text: 'أدوات feature flagging والطرح التدريجي' },
+          { icon: 'calendarCheck', text: 'نظام مؤشر صحة التاجر والتصعيد الاستباقي' },
+        ],
         footer: 'اقرأ دراسة حالة Tamara Partners Portal',
       },
       jacobo: {
@@ -726,6 +735,14 @@ const arContent = {
         badge: 'تسليم مدير التكامل · تم الإطلاق',
         desc: 'إعادة تصميم توثيق API وتجربة المطورين في Tamara. خفّض وقت الوصول للسوق 25% ومكّن أكثر من 100 مليون ريال GMV.',
         soldWith: 'اقرأ دراسة حالة بوابة API',
+        caseStudyUrl: '/tamara-partners-portal',
+        items: [
+          { icon: 'fileText', text: 'مرجع API شامل مع نماذج كود بـ 4 لغات' },
+          { icon: 'package', text: 'أدلة إعداد بيئة sandbox وتدفقات بيانات الاعتماد التجريبية' },
+          { icon: 'gitBranch', text: 'أدلة تكامل webhooks مع توثيق منطق إعادة المحاولة' },
+          { icon: 'package', text: 'quickstarts للـ SDK: JS وPHP وPython وRuby' },
+          { icon: 'userCheck', text: 'استشارات تقنية لتكاملات التجار المؤسسيين' },
+        ],
       },
       webSeo: {
         ...omContent.experience.santifer.webSeo,
@@ -733,6 +750,14 @@ const arContent = {
         badge: 'تسليم مدير التكامل · تجار منطقة الشرق الأوسط',
         desc: 'نشر إضافات التجارة الإلكترونية الخاصة بـ Tamara عبر Magento وWooCommerce وShopify لتجار منطقة الشرق الأوسط.',
         codeAvailable: 'اقرأ دراسة حالة تسليم التكامل',
+        caseStudyUrl: '/tamara-partners-portal',
+        items: [
+          { icon: 'package', text: 'إضافة Magento 2 — دفع بالتقسيط عند مستوى السلة' },
+          { icon: 'layout', text: 'إضافة WooCommerce — توليد آلي لخطط الدفع' },
+          { icon: 'gitBranch', text: 'تطبيق Shopify — تدفقات الدفع المقسّم لمتاجر الشرق الأوسط' },
+          { icon: 'users', text: 'استشارات تقنية للتجار المؤسسيين (السعودية والإمارات والبحرين)' },
+          { icon: 'bot', text: 'مراقبة صحة التكامل وسير عمل الدعم الاستباقي' },
+        ],
       },
       erp: {
         ...omContent.experience.santifer.erp,

@@ -1547,21 +1547,6 @@ function App() {
                     {label}
                   </span>
                 ))}
-                <Link
-                  to={lang === 'en' ? '/compound-save-now-buy-later' : '/compound-snbl'}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${
-                    hydrated && (roleIndex === 2 || roleIndex === 3)
-                      ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
-                      : 'border border-[#20d6ee]/30 bg-background/80 text-muted-foreground'
-                  }`}
-                >
-                  <Github className="w-3.5 h-3.5" />
-                  <span>career-ops</span>
-                  <Star className="w-3 h-3 text-yellow-500" />
-                  {/* hero-stats:career-ops:stars */}<span className="font-medium">47.9K</span>
-                  <GitFork className="w-3 h-3" />
-                  {/* hero-stats:career-ops:forks */}<span>10.0K</span>
-                </Link>
               </div>
 
             </motion.div>
@@ -1686,7 +1671,7 @@ function App() {
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#1D3D6F] shrink-0">
-                    <img src="/tamara-logo.webp" alt={t.experience.santifer.company} className="w-full h-full object-cover" width={40} height={40} loading="lazy" decoding="async" />
+                    <img src="/tamara-logo.png" alt={t.experience.santifer.company} className="w-full h-full object-cover" width={40} height={40} loading="lazy" decoding="async" />
                   </div>
                   <h3 className="font-display text-2xl font-bold">{t.experience.santifer.company}</h3>
                 </div>
@@ -1743,7 +1728,7 @@ function App() {
                         <path fill="#F82B60" d="m88.078 91.846-21.904 10.576-2.224 1.075-46.238 22.155c-2.93 1.414-6.672-.722-6.672-3.978V60.088c0-1.178.604-2.195 1.414-2.96a5 5 0 0 1 1.12-.84c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087"/>
                       </svg>
                     </div>
-                    <span className="badge px-3 py-1 bg-gold/20 text-gold">Source of Truth</span>
+                    <span className="badge px-3 py-1 bg-gold/20 text-gold">{lang === 'en' ? 'Source of Truth' : 'مصدر الحقيقة'}</span>
                   </div>
                   <h4 className="font-display text-2xl font-bold mb-4">{t.experience.santifer.businessOS.title}</h4>
                   <p className="text-muted-foreground mb-6">{t.experience.santifer.businessOS.desc}</p>
@@ -1817,14 +1802,6 @@ function App() {
                   <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.santifer.jacobo.soldWith}</span>
                   <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
                 </Link>
-                <div className="flex items-center gap-3 pt-4">
-                  <a href={`https://github.com/${t.experience.santifer.jacobo.github}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline">
-                    <Github className="w-4 h-4" />
-                    {lang === 'en' ? 'View code' : 'عرض الكود'}
-                  </a>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground"><Star className="w-3.5 h-3.5 text-yellow-500" />{t.experience.santifer.jacobo.stars}</span>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground"><GitFork className="w-3.5 h-3.5" />{t.experience.santifer.jacobo.forks}</span>
-                </div>
               </div>
             </AnimatedSection>
 
@@ -1860,27 +1837,21 @@ function App() {
                   <span className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 group-hover/cta:bg-accent/20 group-hover/cta:border-accent/50 transition-all duration-200">{t.experience.santifer.webSeo.codeAvailable}</span>
                   <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
                 </Link>
-                <div className="flex items-center gap-3 pt-4">
-                  <a href={`https://github.com/${t.experience.santifer.webSeo.github}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-accent hover:underline">
-                    <Github className="w-4 h-4" />
-                    {lang === 'en' ? 'View code' : 'عرض الكود'}
-                  </a>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground"><Star className="w-3.5 h-3.5 text-yellow-500" />{t.experience.santifer.webSeo.stars}</span>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground"><GitFork className="w-3.5 h-3.5" />{t.experience.santifer.webSeo.forks}</span>
-                </div>
               </div>
             </AnimatedSection>
 
-            {/* EXIT 2025 - Verde Success para destacar logro/credibilidad */}
-            <AnimatedSection delay={0.25} className="col-span-2">
-              <div className="h-full p-5 rounded-2xl bg-gradient-to-r from-success/10 to-success/5 border border-success/30 hover:border-success/50 transition-colors duration-200">
-                <div className="flex items-center gap-3 mb-2">
-                  <Zap className="w-5 h-5 text-success" />
-                  <span className="font-display font-bold text-success">{t.experience.santifer.exit}</span>
+            {/* EXIT milestone — only render when content exists */}
+            {t.experience.santifer.exit && (
+              <AnimatedSection delay={0.25} className="col-span-2">
+                <div className="h-full p-5 rounded-2xl bg-gradient-to-r from-success/10 to-success/5 border border-success/30 hover:border-success/50 transition-colors duration-200">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Zap className="w-5 h-5 text-success" />
+                    <span className="font-display font-bold text-success">{t.experience.santifer.exit}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{t.experience.santifer.exitDesc}</p>
                 </div>
-                <p className="text-sm text-muted-foreground">{t.experience.santifer.exitDesc}</p>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            )}
 
             {/* ERP card */}
             <AnimatedSection delay={0.3}>
@@ -1955,7 +1926,6 @@ function App() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#F5F3EE] flex items-center justify-center shrink-0">
                     <picture>
-                      <source srcSet="/mondia-logo.webp" type="image/webp" />
                       <img src="/mondia-logo.png" alt={t.experience.lico.company} className="w-full h-full object-contain p-1" width={40} height={40} loading="lazy" decoding="async" />
                     </picture>
                   </div>
@@ -1999,7 +1969,6 @@ function App() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-white flex items-center justify-center shrink-0 p-1.5">
                     <picture>
-                      <source srcSet="/dell-logo.webp" type="image/webp" />
                       <img src="/dell-logo.png" alt={t.experience.everis.company} className="w-full h-full object-contain" width={40} height={40} loading="lazy" decoding="async" />
                     </picture>
                   </div>
