@@ -1598,7 +1598,7 @@ function App() {
             <div className="mb-20">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
-                  <img src="/nymcard-logo.webp" alt="NymCard" className="w-10 h-10 shrink-0" width={40} height={40} loading="lazy" decoding="async" />
+                  <img src="/nymcard-logo.png" alt="NymCard" className="w-10 h-10 shrink-0 rounded-lg" width={40} height={40} loading="lazy" decoding="async" />
                   <h3 className="font-display text-2xl font-bold">{t.experience.zinkee.company}</h3>
                 </div>
                 <span className="text-sm text-muted-foreground">{t.experience.zinkee.location}</span>
@@ -1606,6 +1606,12 @@ function App() {
               <p className="text-primary font-medium mb-1">{t.experience.zinkee.role}</p>
               <p className="text-sm text-muted-foreground mb-2">{t.experience.zinkee.period}</p>
               <p className="text-muted-foreground whitespace-pre-line">{t.experience.zinkee.desc}</p>
+              {t.experience.zinkee.caseStudyUrl && (
+                <Link to={t.experience.zinkee.caseStudyUrl} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
+                  <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.zinkee.caseStudyLabel}</span>
+                  <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
+                </Link>
+              )}
             </div>
           </AnimatedSection>
 

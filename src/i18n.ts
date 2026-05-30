@@ -236,6 +236,8 @@ const omContent = {
       role: 'Product Manager – Corporate Banking as a Service',
       period: 'Jun 2025 – Present',
       desc: "Leading product for Nym4Business (N4B) and Lynq (getlynq.ae) — NymCard's white-label BaaS platforms.\nDriving SME onboarding, corporate card programs, expense tracking, and cross-border payments via Visa Direct.",
+      caseStudyUrl: '/nymcard-corporate-baas',
+      caseStudyLabel: 'View NymCard Case Study',
     },
     careerOps: {
       company: 'Compound',
@@ -685,6 +687,8 @@ const arContent = {
       location: 'دبي، الإمارات',
       role: 'مدير منتج – الخدمات المصرفية المؤسسية كخدمة',
       desc: 'قيادة منتج Nym4Business (N4B) و Lynq (getlynq.ae) — منصات BaaS البيضاء العلامة التجارية من NymCard.\nقيادة إعداد الشركات الصغيرة والمتوسطة وبرامج البطاقات المؤسسية وتتبع المصروفات والمدفوعات عبر الحدود عبر Visa Direct.',
+      caseStudyUrl: '/nymcard-baas',
+      caseStudyLabel: 'اقرأ دراسة حالة NymCard',
     },
     careerOps: {
       ...omContent.experience.careerOps,
