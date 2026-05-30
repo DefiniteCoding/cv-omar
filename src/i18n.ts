@@ -152,6 +152,14 @@ const omContent = {
     },
     items: [
       {
+        title: 'Life OS',
+        badge: 'Private · On Request',
+        badgeBuilding: '',
+        desc: 'Personal productivity system orchestrating Claude Code with native MCPs (Apple Reminders, Calendar, GitHub), 15 custom skills, and semantic search (BM25 + SQLite FTS5). Pipes into a full knowledge loop.',
+        tech: ['Claude Code', 'MCPs', 'SQLite FTS5', 'BM25', 'Custom Skills'],
+        link: '',
+      },
+      {
         title: 'Nym4Business (N4B)',
         badge: 'NymCard · In Production',
         badgeBuilding: 'Shipping',

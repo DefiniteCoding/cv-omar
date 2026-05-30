@@ -1546,7 +1546,7 @@ function App() {
                   <Github className="w-3.5 h-3.5" />
                   <span>career-ops</span>
                   <Star className="w-3 h-3 text-yellow-500" />
-                  {/* hero-stats:career-ops:stars */}<span className="font-medium">47.3K</span>
+                  {/* hero-stats:career-ops:stars */}<span className="font-medium">47.9K</span>
                   <GitFork className="w-3 h-3" />
                   {/* hero-stats:career-ops:forks */}<span>9.9K</span>
                 </Link>
@@ -2164,17 +2164,12 @@ function App() {
 
             // Separar proyectos
             const allProjects = t.projects.items as readonly Project[]
-            const contentDigest = allProjects.find(p => p.title === 'Content Digest')!
             const lifeOS = allProjects.find(p => p.title === 'Life OS')!
-            const careerOps = allProjects.find(p => p.title === 'Career Ops')!
+            const careerOps = allProjects.find(p => p.title === 'Compound SNBL')!
             const santiferIo = allProjects.find(p => p.title === 'omarmostafa.org')!
-            const selfHealingChatbot = allProjects.find(p => p.title === 'Self-Healing Chatbot')!
-            // Tools que dependen de omarmostafa.org
-            const claudeEye = allProjects.find(p => p.title === 'Claude Eye')!
-            const claudeable = allProjects.find(p => p.title === 'Claudeable')!
-            // Fila 4: Claude Pulse + ProjectOS Predict
-            const claudePulse = allProjects.find(p => p.title === 'Claude Pulse')!
-            const projectOSPredict = allProjects.find(p => p.title === 'ProjectOS Predict')!
+            const selfHealingChatbot = allProjects.find(p => p.title === 'Tamara Partners Portal 2.0')!
+            const claudeEye = allProjects.find(p => p.title === 'Nym4Business (N4B)')!
+            const claudeable = allProjects.find(p => p.title === 'Lynq')!
 
             // Helper para parsear **bold** a elementos con estilo
             const parseBold = (text: string): React.ReactNode[] => {
@@ -2186,15 +2181,12 @@ function App() {
             // Refs para cada tarjeta (para calcular posiciones de conexiones)
             const containerRef = useRef<HTMLDivElement>(null)
             const cardRefs = {
-              contentDigest: useRef<HTMLDivElement>(null),
               lifeOS: useRef<HTMLDivElement>(null),
               careerOps: useRef<HTMLDivElement>(null),
               santiferIo: useRef<HTMLDivElement>(null),
               selfHealingChatbot: useRef<HTMLDivElement>(null),
               claudeEye: useRef<HTMLDivElement>(null),
               claudeable: useRef<HTMLDivElement>(null),
-              claudePulse: useRef<HTMLDivElement>(null),
-              projectOSPredict: useRef<HTMLDivElement>(null),
             }
 
             // Hook para calcular líneas de conexión SVG
@@ -2235,33 +2227,26 @@ function App() {
                 // En móvil: conexiones verticales simples (tarjetas apiladas)
                 // En desktop: grafo complejo con conexiones horizontales y diagonales
                 const connections: Connection[] = isMobile ? [
-                  // Móvil: flujo vertical simple
-                  { from: cardRefs.lifeOS, fromEdge: 'bottom', to: cardRefs.careerOps, toEdge: 'top' },
+                  // Mobile: simple vertical flow
+                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.careerOps, toEdge: 'top' },
                   { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
                   { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
-                  { from: cardRefs.selfHealingChatbot, fromEdge: 'bottom', to: cardRefs.claudeEye, toEdge: 'top' },
-                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
-                  { from: cardRefs.claudeable, fromEdge: 'bottom', to: cardRefs.claudePulse, toEdge: 'top' },
-                  { from: cardRefs.claudePulse, fromEdge: 'bottom', to: cardRefs.contentDigest, toEdge: 'top' },
-                  { from: cardRefs.contentDigest, fromEdge: 'bottom', to: cardRefs.projectOSPredict, toEdge: 'top' },
-                ] : [
-                  // Desktop: grafo complejo
-                  // Fila 1: Life OS ↔ Career Ops (horizontal)
-                  { from: cardRefs.lifeOS, fromEdge: 'right', to: cardRefs.careerOps, toEdge: 'left' },
-                  // Fila 1 → Fila 2: diagonales hacia omarmostafa.org + chatbot
-                  { from: cardRefs.lifeOS, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
-                  { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
-                  // Fila 2: omarmostafa.org ↔ chatbot (horizontal)
-                  { from: cardRefs.santiferIo, fromEdge: 'right', to: cardRefs.selfHealingChatbot, toEdge: 'left' },
-                  // Fila 2 → Fila 3: hacia tools
-                  { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.claudeEye, toEdge: 'top' },
                   { from: cardRefs.selfHealingChatbot, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
-                  // Fila 3 → Fila 4
-                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.claudePulse, toEdge: 'top' },
-                  { from: cardRefs.claudeable, fromEdge: 'bottom', to: cardRefs.contentDigest, toEdge: 'top' },
-                  // Fila 4 → Fila 5: diagonales hacia ProjectOS
-                  { from: cardRefs.claudePulse, fromEdge: 'bottom', to: cardRefs.projectOSPredict, toEdge: 'top', toRatio: 0.25 },
-                  { from: cardRefs.contentDigest, fromEdge: 'bottom', to: cardRefs.projectOSPredict, toEdge: 'top', toRatio: 0.75 },
+                  { from: cardRefs.claudeable, fromEdge: 'bottom', to: cardRefs.lifeOS, toEdge: 'top' },
+                ] : [
+                  // Desktop: project graph
+                  // Row 1: N4B ↔ Compound (horizontal)
+                  { from: cardRefs.claudeEye, fromEdge: 'right', to: cardRefs.careerOps, toEdge: 'left' },
+                  // Row 1 → Row 2: diagonals to portfolio + Tamara
+                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
+                  { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
+                  // Row 2: portfolio ↔ Tamara (horizontal)
+                  { from: cardRefs.santiferIo, fromEdge: 'right', to: cardRefs.selfHealingChatbot, toEdge: 'left' },
+                  // Row 2 → Row 3
+                  { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
+                  { from: cardRefs.selfHealingChatbot, fromEdge: 'bottom', to: cardRefs.lifeOS, toEdge: 'top' },
+                  // Row 3: Lynq ↔ Life OS (horizontal)
+                  { from: cardRefs.claudeable, fromEdge: 'right', to: cardRefs.lifeOS, toEdge: 'left' },
                 ]
 
                 const paths = connections.map(conn => {
@@ -2436,17 +2421,17 @@ function App() {
                   ))}
                 </svg>
 
-                {/* Fila 1: Life OS + Career Ops */}
+                {/* Row 1: N4B + Compound SNBL */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
                   <AnimatedSection delay={0.1}>
-                    <ProjectCard project={lifeOS} cardRef={cardRefs.lifeOS} />
+                    <ProjectCard project={claudeEye} cardRef={cardRefs.claudeEye} />
                   </AnimatedSection>
                   <AnimatedSection delay={0.15}>
                     <ProjectCard project={careerOps} cardRef={cardRefs.careerOps} />
                   </AnimatedSection>
                 </div>
 
-                {/* Fila 2: omarmostafa.org + Self-Healing Chatbot (highlight) */}
+                {/* Row 2: omarmostafa.org (highlight) + Tamara Partners Portal (highlight) */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
                   <AnimatedSection delay={0.2}>
                     <ProjectCard project={santiferIo} variant="highlight" cardRef={cardRefs.santiferIo} />
@@ -2456,30 +2441,13 @@ function App() {
                   </AnimatedSection>
                 </div>
 
-                {/* Fila 3: Claude Eye + Claudeable — tools */}
+                {/* Row 3: Lynq + Life OS */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
-                  <AnimatedSection delay={0.25}>
-                    <ProjectCard project={claudeEye} variant="tool-static" cardRef={cardRefs.claudeEye} />
-                  </AnimatedSection>
                   <AnimatedSection delay={0.3}>
                     <ProjectCard project={claudeable} variant="tool-static" cardRef={cardRefs.claudeable} />
                   </AnimatedSection>
-                </div>
-
-                {/* Fila 4: Claude Pulse + Content Digest */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
                   <AnimatedSection delay={0.35}>
-                    <ProjectCard project={claudePulse} variant="tool-static" cardRef={cardRefs.claudePulse} />
-                  </AnimatedSection>
-                  <AnimatedSection delay={0.4}>
-                    <ProjectCard project={contentDigest} cardRef={cardRefs.contentDigest} />
-                  </AnimatedSection>
-                </div>
-
-                {/* Fila 5: ProjectOS Predict (full width) */}
-                <div className="relative z-10">
-                  <AnimatedSection delay={0.45}>
-                    <ProjectCard project={projectOSPredict} cardRef={cardRefs.projectOSPredict} />
+                    <ProjectCard project={lifeOS} cardRef={cardRefs.lifeOS} />
                   </AnimatedSection>
                 </div>
               </div>
