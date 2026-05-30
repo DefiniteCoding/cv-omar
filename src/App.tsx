@@ -1468,7 +1468,7 @@ function App() {
         <div className="absolute bottom-0 left-[max(0px,calc(50%-40rem))] w-[550px] h-[550px] rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 hidden sm:block animate-[hero-glow_11s_ease-in-out_infinite_reverse]" style={{ backgroundColor: 'hsl(var(--hero-orb-accent))' }} />
 
         <div className="relative max-w-5xl mx-auto px-6 pt-20 pb-12 md:pt-32 md:pb-16">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div className={`flex flex-col items-center gap-8 md:gap-12 ${lang === 'ar' ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
             {/* Photo */}
             <motion.div
               initial={hydrated ? { opacity: 0, scale: 0.8 } : false}
@@ -1502,7 +1502,7 @@ function App() {
               initial={hydrated ? { opacity: 0, x: -20 } : false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center md:text-left"
+              className={`text-center ${lang === 'ar' ? 'md:text-right' : 'md:text-left'}`}
             >
               <p className="text-lg text-muted-foreground mb-2">
                 {lang === 'en' ? "Hi, I'm" : 'مرحباً، أنا'}{' '}
@@ -1534,7 +1534,7 @@ function App() {
                 )}
               </h1>
 
-              <div className="flex flex-wrap justify-center md:justify-start gap-3">
+              <div className={`flex flex-wrap gap-3 justify-center ${lang === 'ar' ? 'md:justify-end' : 'md:justify-start'}`}>
                 {t.pillLabels.map((label, i) => (
                   <span
                     key={label}
