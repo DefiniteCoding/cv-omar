@@ -1,0 +1,22 @@
+[
+  {
+    "article_id": "portfolio",
+    "section": "overview",
+    "content": "This Portfolio — Case Study: Why I Built an AI Portfolio Instead of Updating My LinkedIn\nOmar Mostafa Mohaseb built omarmostafa.org in 3 days in May 2026 by forking Santiago Fernández's open-source portfolio (cv-santiago) and directing Claude Code to migrate all content, adapt the architecture, and add his own case studies.\n\nThe portfolio is a production AI system: AI chatbot speaking in first person (Claude API, streaming SSE, agentic RAG), voice mode (OpenAI Realtime API), semantic search over case study content (Supabase pgvector), 71 automated evals running on every deploy, an ops observability dashboard (Langfuse), and a daily eval cron. The entire build was directed using Claude Code.\n\nThe thesis: LinkedIn is a form that shows credentials. It can't show how Omar works with AI tools, the reasoning behind product decisions, technical fluency, or voice and brand. The portfolio does all four — through interaction, not description."
+  },
+  {
+    "article_id": "portfolio",
+    "section": "why-not-linkedin",
+    "content": "What LinkedIn Can't Show\nLinkedIn is optimised for credentials, not demonstration. Four specific gaps:\n\n1. Technical fluency: Omar can read code, write specs at API level, prototype with Claude Code and Cursor, and debug integration issues. LinkedIn lets you list skills. Showing is different.\n\n2. AI-native workflow: Omar uses Claude Code for prototyping, Cursor for codebase exploration, Figma MCP for design context. This workflow changes what's buildable. LinkedIn can't show a workflow.\n\n3. Product thinking: Every case study in this portfolio shows the decision behind the outcome — staged KYB sequencing, right-sizing a product tour tool, negotiating custom vendor pricing. LinkedIn shows bullet points, not reasoning.\n\n4. Brand and voice: Omar is an Egyptian PM in Dubai, building fintech infrastructure for MENA, who prototypes with AI tools and thinks in systems. That doesn't fit a LinkedIn headline. A 10-minute portfolio interaction communicates it completely."
+  },
+  {
+    "article_id": "portfolio",
+    "section": "how-built",
+    "content": "How the Portfolio Was Built\nBuilt in 3 days, May 2026. Foundation: fork of cv-santiago (Santiago Fernández's open-source portfolio). The fork decision was itself a PM judgment: cv-santiago had already solved every hard engineering problem — streaming SSE, WebRTC voice, pgvector RAG, Langfuse observability, eval pipeline. Building from scratch would have taken weeks for an inferior result.\n\nMigration work (all directed via Claude Code):\n- Phase 1: Identity migration — 30+ files, name/email/location/domain replaced throughout\n- Phase 2: Content migration — professional experience, skills, chatbot prompt rewritten in Omar's voice\n- Phase 3: AI persona migration — 71 evals rewritten to test facts about NymCard/Tamara/Loughborough\n- Phase 4: Infrastructure migration — Vercel → Netlify (netlify.toml, serverless functions, CSP headers)\n\nThe migration was itself a demonstration: Claude Code handled the pattern-matching and mechanical work; Omar directed what was correct and what needed product judgment."
+  },
+  {
+    "article_id": "portfolio",
+    "section": "system-stack",
+    "content": "The Portfolio System\nomarmostafa.org is a complete product, not a document. Components:\n\n- AI Chatbot: Claude API, streaming SSE, first-person voice, agentic RAG (searches case study content before responding), 6-layer jailbreak defense, every conversation traced in Langfuse\n- Voice Mode: OpenAI Realtime API (WebRTC), spoken conversation with the AI version of Omar, voice tuned for natural conversational rhythm\n- Agentic RAG: Supabase pgvector, semantic search over indexed case study content, grounded answers not hallucinations\n- 71 Automated Evals: LLM-as-judge, runs on every deploy, tests factual accuracy / persona / safety / RAG quality / boundaries — deploy blocked if any fail\n- Ops Dashboard: Langfuse observability, conversation traces, eval results, cost breakdown, RAG stats\n- Daily Eval Cron: Netlify scheduled function, nightly scoring of recent conversations, alert on quality degradation\n\nStack: React 19, TypeScript, Vite, Tailwind CSS, Netlify. Backend: Netlify serverless functions. AI: Claude API (Anthropic), OpenAI Realtime API, Supabase pgvector, Langfuse."
+  }
+]
