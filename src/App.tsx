@@ -2382,12 +2382,12 @@ function App() {
 
             return (
               <div ref={(el) => { containerRef.current = el; visibilityRef(el) }} className="mb-12 relative">
-                {/* SVG de conexiones - absoluto, z-0 para quedar detrás */}
+                {/* SVG connection lines — hidden in RTL (Arabic) since edge positions are LTR-only */}
                 <svg
                   className="absolute inset-0 pointer-events-none"
                   style={{ zIndex: 0, overflow: 'visible' }}
                 >
-                  {lines.map((d, i) => (
+                  {lang !== 'ar' && lines.map((d, i) => (
                     <path
                       key={i}
                       d={d}
