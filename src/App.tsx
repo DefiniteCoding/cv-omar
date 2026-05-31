@@ -2146,7 +2146,6 @@ function App() {
 
             // Separar proyectos
             const allProjects = t.projects.items as readonly Project[]
-            const lifeOS = allProjects.find(p => p.title === 'Life OS')!
             const careerOps = allProjects.find(p => p.title === 'Compound SNBL')!
             const santiferIo = allProjects.find(p => p.title === 'omarmostafa.org')!
             const selfHealingChatbot = allProjects.find(p => p.title === 'Tamara Partners Portal 2.0')!
@@ -2163,7 +2162,6 @@ function App() {
             // Refs para cada tarjeta (para calcular posiciones de conexiones)
             const containerRef = useRef<HTMLDivElement>(null)
             const cardRefs = {
-              lifeOS: useRef<HTMLDivElement>(null),
               careerOps: useRef<HTMLDivElement>(null),
               santiferIo: useRef<HTMLDivElement>(null),
               selfHealingChatbot: useRef<HTMLDivElement>(null),
@@ -2214,7 +2212,6 @@ function App() {
                   { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
                   { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
                   { from: cardRefs.selfHealingChatbot, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
-                  { from: cardRefs.claudeable, fromEdge: 'bottom', to: cardRefs.lifeOS, toEdge: 'top' },
                 ] : [
                   // Desktop: project graph
                   // Row 1: N4B ↔ Compound (horizontal)
@@ -2224,11 +2221,8 @@ function App() {
                   { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
                   // Row 2: portfolio ↔ Tamara (horizontal)
                   { from: cardRefs.santiferIo, fromEdge: 'right', to: cardRefs.selfHealingChatbot, toEdge: 'left' },
-                  // Row 2 → Row 3
+                  // Row 2 → Row 3: Lynq
                   { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
-                  { from: cardRefs.selfHealingChatbot, fromEdge: 'bottom', to: cardRefs.lifeOS, toEdge: 'top' },
-                  // Row 3: Lynq ↔ Life OS (horizontal)
-                  { from: cardRefs.claudeable, fromEdge: 'right', to: cardRefs.lifeOS, toEdge: 'left' },
                 ]
 
                 const paths = connections.map(conn => {
@@ -2423,13 +2417,10 @@ function App() {
                   </AnimatedSection>
                 </div>
 
-                {/* Row 3: Lynq + Life OS */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
+                {/* Row 3: Lynq (full width) */}
+                <div className="grid grid-cols-1 gap-6 mb-6 relative z-10">
                   <AnimatedSection delay={0.3}>
                     <ProjectCard project={claudeable} variant="tool-static" cardRef={cardRefs.claudeable} />
-                  </AnimatedSection>
-                  <AnimatedSection delay={0.35}>
-                    <ProjectCard project={lifeOS} cardRef={cardRefs.lifeOS} />
                   </AnimatedSection>
                 </div>
               </div>
