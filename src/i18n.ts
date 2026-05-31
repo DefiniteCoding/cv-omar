@@ -240,8 +240,8 @@ const omContent = {
       role: 'Product Lead & Consultant',
       period: 'Mar 2025 – Dec 2025',
       badge: 'Part-Time',
-      url: '',
-      urlLabel: '',
+      url: 'https://getcompound.co',
+      urlLabel: 'getcompound.co',
       desc: 'Defined and launched a Save Now, Buy Later (SNBL) product: savings plans, eligibility rules, and payout systems. Delivered customer mobile app, embeddable checkout widget, admin backoffice portal, and API documentation.',
       pressLabel: '',
       press: [] as { name: string; src: string; url: string; height: number; width: number }[],
@@ -453,6 +453,12 @@ const omContent = {
         org: 'Loughborough University',
         title: 'BSc, Electrical and Communications Engineering',
         desc: 'Loughborough, United Kingdom',
+      },
+      {
+        year: '2024',
+        org: 'Unlearn',
+        title: 'Product Management Live Cohort',
+        desc: '🥇 Placed 1st in Demo Day · Product Management certification program focused on real-world PM frameworks, shipped product thinking, and stakeholder communication.',
       },
     ] as { year: string; org: string; title: string; desc: string; projectLink?: string; projectLabel?: string; testimonial?: { quote: string; photo: string; author: string; role: string } }[],
   },
@@ -831,7 +837,23 @@ const arContent = {
     slides: 'الشرائح',
     aiFluency: { ...omContent.speaking.aiFluency, title: 'إدارة المنتج بمساعدة الذكاء الاصطناعي', badge: 'BaaS · أدوات الذكاء الاصطناعي', desc: 'استخدام أدوات الذكاء الاصطناعي لتسريع تسليم منتجات الفينتك.' },
   },
-  education: { title: 'التعليم', items: omContent.education.items },
+  education: {
+    title: 'التعليم',
+    items: [
+      {
+        year: '2012 – 2017',
+        org: 'Loughborough University',
+        title: 'بكالوريوس هندسة كهربائية واتصالات',
+        desc: 'لوبوروه، المملكة المتحدة',
+      },
+      {
+        year: '2024',
+        org: 'Unlearn',
+        title: 'دورة إدارة المنتجات المباشرة',
+        desc: '🥇 المركز الأول في يوم العرض · برنامج شهادة إدارة المنتجات',
+      },
+    ] as typeof omContent.education.items,
+  },
   certifications: { title: 'الشهادات', items: [] as { year: string; title: string; org: string; logo: string; url: string }[] },
   skills: {
     title: 'المهارات',

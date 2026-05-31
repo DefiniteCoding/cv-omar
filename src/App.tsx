@@ -1598,6 +1598,7 @@ function App() {
                   <img src="/nymcard-logo.png" alt="NymCard" className="w-10 h-10 shrink-0 rounded-lg" width={40} height={40} loading="lazy" decoding="async" />
                   <h3 className="font-display text-2xl font-bold">{t.experience.zinkee.company}</h3>
                 </div>
+                <a href="https://nymcard.com" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">nymcard.com<ExternalLink className="w-3 h-3" /></a>
                 <span className="text-sm text-muted-foreground">{t.experience.zinkee.location}</span>
               </div>
               <p className="text-primary font-medium mb-1">{t.experience.zinkee.role}</p>
@@ -1678,8 +1679,8 @@ function App() {
                   </div>
                   <h3 className="font-display text-2xl font-bold">{t.experience.santifer.company}</h3>
                 </div>
-                <a href="https://tamara.co" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
-                  tamara.co
+                <a href="https://tamara.com" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
+                  tamara.com
                 </a>
                 <span className="text-sm text-muted-foreground">{t.experience.santifer.location}</span>
               </div>
@@ -1695,8 +1696,8 @@ function App() {
               </ul>
 
               {/* Trusted By - Corporate Logos */}
+              {t.experience.santifer.trustedBy.logos.length > 0 && (
               <div className="pt-4 border-t border-border/50">
-                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">{t.experience.santifer.trustedBy.label}</p>
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-8">
                   {t.experience.santifer.trustedBy.logos.map((logo, i) => (
                     <div key={i} className="flex items-center gap-2 hover:opacity-90 transition-opacity duration-200">
@@ -1710,6 +1711,7 @@ function App() {
                   ))}
                 </div>
               </div>
+              )}
 
               {/* Deep dive CTA */}
               <Link to={t.experience.santifer.caseStudyUrl} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
@@ -1744,7 +1746,12 @@ function App() {
                         package: <Package className="w-4 h-4" />,
                         messageSquare: <MessageSquare className="w-4 h-4" />,
                         receipt: <Receipt className="w-4 h-4" />,
-                        calendarCheck: <CalendarCheck className="w-4 h-4" />
+                        calendarCheck: <CalendarCheck className="w-4 h-4" />,
+                        zap: <Zap className="w-4 h-4" />,
+                        fileText: <FileText className="w-4 h-4" />,
+                        gitBranch: <GitBranch className="w-4 h-4" />,
+                        userCheck: <UserCheck className="w-4 h-4" />,
+                        bot: <Bot className="w-4 h-4" />,
                       }
                       return (
                         <li key={i} className="flex items-start gap-3">
@@ -2427,49 +2434,6 @@ function App() {
             )
           })()}
 
-          {/* Claude Code Power User */}
-          <AnimatedSection delay={0.3}>
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center shrink-0">
-                  <Sparkles className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="font-display font-bold">{t.claudeCode.title}</h3>
-                    <span className="badge px-2 py-0.5 bg-accent/10 text-accent">{t.claudeCode.badge}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{t.claudeCode.desc}</p>
-                  {t.claudeCode.highlights && (
-                    <ul className="mt-3 space-y-1.5">
-                      {(t.claudeCode.highlights as readonly string[]).map((h: string, i: number) => (
-                        <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                          <span className="text-accent mt-0.5 shrink-0">›</span>
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {t.claudeCode.certs && (
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {t.claudeCode.certs.map((cert: { title: string; url: string }, i: number) => (
-                        <a
-                          key={i}
-                          href={cert.url}
-                          target="_blank"
-                          rel="noopener noreferrer nofollow"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent/10 text-xs text-muted-foreground hover:text-accent hover:bg-accent/20 transition-colors"
-                        >
-                          <BadgeCheck className="w-3.5 h-3.5" />
-                          {cert.title}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
         </div>
       </section>
 
