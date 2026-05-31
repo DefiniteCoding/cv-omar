@@ -251,7 +251,7 @@ const omContent = {
     santifer: {
       company: 'Tamara',
       location: 'Dubai, UAE',
-      role: 'Product Manager → Integration Delivery Manager',
+      role: 'Integration Delivery Manager → Product Manager',
       period: 'Oct 2022 – Jan 2025 · Buy Now Pay Later (BNPL)',
       caseStudyUrl: '/tamara-partners-portal-2',
       caseStudyLabel: 'View Tamara Case Study',
@@ -694,7 +694,7 @@ const arContent = {
     },
     santifer: {
       ...omContent.experience.santifer,
-      role: 'مدير منتج → مدير تسليم التكامل',
+      role: 'مدير تسليم التكامل → مدير منتج',
       period: 'أكتوبر 2022 – يناير 2025 · الشراء الآن والدفع لاحقاً (BNPL)',
       caseStudyLabel: 'اقرأ دراسة حالة Tamara',
       caseStudyUrl: '/tamara-partners-portal',
