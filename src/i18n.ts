@@ -116,7 +116,7 @@ const omContent = {
       },
       {
         name: 'Technical',
-        items: ['REST APIs', 'JSON', 'SQL', 'Postman', 'Kibana', 'Git'],
+        items: ['REST APIs', 'JSON', 'SQL', 'Postman', 'Kibana', 'Git', 'OpenAPI / YAML', 'Technical Writing', 'Markdown'],
       },
       {
         name: 'FinTech Domain',
@@ -124,7 +124,7 @@ const omContent = {
       },
       {
         name: 'AI & Low-Code',
-        items: ['Claude Code', 'Cursor', 'Windsurf', 'Google Antigravity', 'Figma MCP', 'Prompt Engineering'],
+        items: ['Claude Code', 'Cursor', 'Google Antigravity', 'Figma MCP', 'Prompt Engineering'],
       },
     ],
   },
@@ -260,7 +260,9 @@ const omContent = {
       highlights: [
         'Launched Partners Portal 2.0 — reduced merchant support queries by 30%, lifted satisfaction by 25%',
         'Delivered 15+ merchant-requested features through cross-functional squad leadership',
-        'Revamped API developer reference portal — reduced integration GTM time by 25%',
+        'Built Tamara Postman Collection (1,650 forks since May 2023) and OpenAPI YAML spec — cut integration GTM time by 25%',
+        'Authored Tamara\'s public-facing developer docs on docs.tamara.co using Markdown on readme.com',
+        'Built a fully working Figma prototype to demo the Tamara checkout flow — live at docs.tamara.co',
         'Enabled 100M+ SAR GMV through technical merchant consulting and integration delivery',
         'Deployed e-commerce plugins (Magento, WooCommerce, Shopify) for MENA merchants',
         'Conducted technical consulting for enterprise merchant integrations across KSA, UAE, Bahrain',
@@ -356,7 +358,7 @@ const omContent = {
     },
     lico: {
       company: 'Mondia Pay',
-      location: 'Cairo, Egypt (Remote)',
+      location: 'Cairo, Egypt',
       role: 'Senior Integration Operations Engineer',
       period: 'Nov 2020 – Sep 2022 · Carrier Billing & Digital Content',
       desc: "Integrated 100+ global merchants (Spotify, OSN, Tinder, Anghami) onto Mondia Pay's carrier billing platform across MENA, Europe, and Africa. Revamped the Mondia Pay API documentation and merchant integration guides.",
@@ -600,9 +602,9 @@ const arContent = {
     title: 'المنظومة التقنية',
     categories: [
       { name: 'المنتج', items: ['JIRA', 'Figma', 'Notion', 'Confluence', 'Miro'] },
-      { name: 'التقني', items: ['REST APIs', 'JSON', 'SQL', 'Postman', 'Kibana', 'Git'] },
+      { name: 'التقني', items: ['REST APIs', 'JSON', 'SQL', 'Postman', 'Kibana', 'Git', 'OpenAPI / YAML', 'الكتابة التقنية', 'Markdown'] },
       { name: 'مجال الفينتك', items: ['Visa Direct', 'KYB/KYC (Onfido, PRM)', 'إصدار البطاقات', 'إدارة FX', 'الامتثال CBUAE'] },
-      { name: 'الذكاء الاصطناعي', items: ['Claude Code', 'Cursor', 'Windsurf', 'Google Antigravity', 'Figma MCP', 'هندسة المطالبات'] },
+      { name: 'الذكاء الاصطناعي', items: ['Claude Code', 'Cursor', 'Google Antigravity', 'Figma MCP', 'هندسة المطالبات'] },
     ],
   },
   projects: {
@@ -701,7 +703,9 @@ const arContent = {
       highlights: [
         'إطلاق Partners Portal 2.0 — خفّض استفسارات دعم التجار 30% ورفع الرضا 25%',
         'تسليم أكثر من 15 ميزة مطلوبة من التجار عبر قيادة فرق متعددة التخصصات',
-        'إعادة تصميم بوابة مرجع API للمطورين — خفّض وقت الوصول للسوق 25%',
+        'بناء مجموعة Postman الخاصة بـ Tamara (1,650 fork منذ مايو 2023) وملف OpenAPI YAML — خفّض وقت التكامل 25%',
+        'تأليف توثيق Tamara العام للمطورين على docs.tamara.co باستخدام Markdown على منصة readme.com',
+        'بناء نموذج Figma تفاعلي كامل لعرض تدفق الدفع — متاح على docs.tamara.co',
         'تمكين أكثر من 100 مليون ريال GMV عبر الاستشارات التقنية وتسليم التكامل',
         'نشر إضافات التجارة الإلكترونية (Magento وWooCommerce وShopify) لتجار منطقة الشرق الأوسط',
         'تقديم استشارات تقنية لتكاملات التجار المؤسسيين في السعودية والإمارات والبحرين',
@@ -790,7 +794,7 @@ const arContent = {
     },
     lico: {
       ...omContent.experience.lico,
-      location: 'القاهرة، مصر (عن بُعد)',
+      location: 'القاهرة، مصر',
       role: 'مهندس عمليات تكامل أول',
       desc: 'تكامل أكثر من 100 تاجر عالمي (Spotify وOSN وTinder وAnghami) على منصة Mondia Pay عبر منطقة الشرق الأوسط وأوروبا وأفريقيا. إعادة تصميم توثيق API وأدلة تكامل التجار.',
     },

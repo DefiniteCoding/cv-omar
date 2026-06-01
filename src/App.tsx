@@ -1984,6 +1984,7 @@ function App() {
                   </div>
                   <h3 className="font-display text-2xl font-bold">{t.experience.everis.company}</h3>
                 </div>
+                <span className="text-sm text-muted-foreground">{lang === 'ar' ? 'القاهرة، مصر' : 'Cairo, Egypt'}</span>
               </div>
               <p className="text-primary font-medium mb-1">{t.experience.everis.role}</p>
               <p className="text-sm text-muted-foreground mb-2">{t.experience.everis.period}</p>
