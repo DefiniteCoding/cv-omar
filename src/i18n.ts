@@ -10,9 +10,9 @@ export const seo = {
 };
 
 const omContent = {
-  greeting: 'who builds BaaS and Embedded Finance products',
-  greetingRoles: ['BaaS Product Manager', 'Fintech Specialist', 'Embedded Finance Lead', 'AI-Assisted Builder'],
-  pillLabels: ['BaaS', 'Product Manager', 'Fintech'],
+  greeting: 'who ships payment and banking products across',
+  greetingRoles: ['Fintech Product Manager', 'Payments & BaaS PM', 'Embedded Finance Lead', 'Developer Experience PM'],
+  pillLabels: ['8+ Years in Fintech', 'Dubai, UAE', '3 Products Shipped'],
   email: 'omarmostafapm@gmail.com',
   role: '',
   story: {
@@ -149,8 +149,8 @@ const omContent = {
     items: [
       {
         title: 'Nym4Business (N4B)',
-        badge: 'NymCard · In Production',
-        badgeBuilding: 'Shipping',
+        badge: 'NymCard · Shipped',
+        badgeBuilding: 'Shipped',
         desc: 'White-label Corporate BaaS platform sold to financial institutions across MENA. Features multi-tier corporate hierarchy, card issuance, expense management, KYB/IDV onboarding (Onfido + PRM), and Visa Direct cross-border payments.',
         tech: ['BaaS', 'Card Issuing', 'Visa Direct', 'KYB/KYC', 'Corporate Hierarchy'],
         link: '',
@@ -159,7 +159,7 @@ const omContent = {
       },
       {
         title: 'Lynq',
-        badge: 'NymCard · In Production',
+        badge: 'NymCard · Shipped',
         badgeBuilding: '',
         desc: 'Direct-to-SME banking product (getlynq.ae). Enables UAE-based businesses to manage corporate spend, issue cards, track expenses, and move money — all in one platform built on NymCard BaaS.',
         tech: ['SME Banking', 'Corporate Cards', 'Expense Tracking', 'UAE Compliance'],
@@ -236,7 +236,7 @@ const omContent = {
     careerOps: {
       company: 'Compound',
       logo: '/compound-logo.png',
-      location: 'Remote · Part-Time',
+      location: 'Remote',
       role: 'Product Lead & Consultant',
       period: 'Mar 2025 – Dec 2025',
       badge: 'Part-Time',
@@ -292,25 +292,32 @@ const omContent = {
         footer: 'View Tamara Partners Portal Case Study',
       },
       jacobo: {
-        title: 'API Developer Reference Portal',
-        badge: 'IDM Deliverable · Launched',
+        title: 'Developer Documentation & API Reference Portal',
+        badge: 'Integration PM · Launched',
         github: '',
         stars: '',
         forks: '',
-        desc: "Revamped Tamara's API documentation and developer experience. Reduced integration GTM time by 25% and enabled 100M+ SAR GMV through improved developer tooling.",
+        desc: "Owned Tamara's full developer documentation surface — from Postman collection to OpenAPI spec to public-facing docs. Reduced integration GTM time by 25% and enabled 100M+ SAR GMV through improved developer tooling.",
+        metrics: [
+          { value: '1,650', label: 'Postman collection forks' },
+          { value: '-25%', label: 'integration GTM time' },
+          { value: '100M+', label: 'SAR GMV enabled' },
+        ],
         items: [
-          { icon: 'fileText', text: 'End-to-end API reference with code samples in 4 languages' },
-          { icon: 'zap', text: 'Sandbox environment setup guides and test credential flows' },
-          { icon: 'gitBranch', text: 'Webhook integration guides with retry logic documentation' },
-          { icon: 'package', text: 'SDK quickstarts for JS, PHP, Python, and Ruby' },
-          { icon: 'userCheck', text: 'Technical consulting for enterprise merchant integrations' },
+          { icon: 'package', text: 'Postman Collection — 1,650 forks since May 2023, covering all merchant API endpoints' },
+          { icon: 'gitBranch', text: 'OpenAPI YAML spec — machine-readable contract for all merchant integration endpoints' },
+          { icon: 'fileText', text: 'Public developer docs on docs.tamara.co — authored in Markdown on readme.com platform' },
+          { icon: 'zap', text: 'Interactive Figma checkout flow prototype — live at docs.tamara.co/docs/demo-the-flow' },
+          { icon: 'userCheck', text: 'End-to-end API reference with code samples in JS, PHP, Python, and Ruby' },
+          { icon: 'bot', text: 'Deployed Magento 2, WooCommerce, and Shopify plugins for MENA merchants' },
+          { icon: 'network', text: 'Enterprise technical consulting — KSA, UAE, and Bahrain merchant integrations' },
         ],
         soldWith: 'View API Portal Case Study',
         caseStudyUrl: '/tamara-partners-portal-2',
       },
       webSeo: {
         title: 'E-Commerce Plugins & Integration Toolkit',
-        badge: 'IDM Deliverable · MENA Merchants',
+        badge: 'Integration PM · MENA Merchants',
         github: '',
         stars: '',
         forks: '',
@@ -552,9 +559,9 @@ const omContent = {
 
 const arContent = {
   ...omContent,
-  greeting: 'مدير منتج متخصص في البنية التحتية للخدمات المصرفية والتمويل المدمج',
-  greetingRoles: ['مدير منتج BaaS', 'متخصص فينتك', 'قائد تمويل مدمج', 'منتج بمساعدة الذكاء الاصطناعي'],
-  pillLabels: ['BaaS', 'مدير المنتج', 'فينتك'],
+  greeting: 'يبني منتجات الدفع والخدمات المصرفية والفينتك عبر',
+  greetingRoles: ['مدير منتج فينتك', 'مدير منتجات الدفع والـBaaS', 'قائد التمويل المدمج', 'مدير تجربة المطورين'],
+  pillLabels: ['٨+ سنوات في الفينتك', 'دبي، الإمارات', '٣ منتجات مُشحونة'],
   location: 'دبي، الإمارات',
   roles: ['مدير منتج - الخدمات المصرفية كخدمة', 'مدير منتج فينتك', 'قائد التمويل المدمج'],
   story: {
@@ -562,7 +569,7 @@ const arContent = {
     context: '+٨ سنوات في شحن منتجات مالية تتعامل مع أموال حقيقية.',
     reflections: ['يعمل. ويصل للمستخدمين فعلاً.', '...والتجار يستخدمونه.'],
     hookParagraphs: [['مدير منتج. ومفكر منظومي.'], ['ما يحركني يتجاوز الدور الوظيفي.', '*بناء* +منتجات تدوم+.']],
-    why: 'في Tamara أطلقت Partners Portal 2.0 الذي خفّض استفسارات الدعم بنسبة 30% ورفع الرضا بنسبة 25%. في NymCard أقود منتج BaaS للشركات الصغيرة والمتوسطة في الإمارات.',
+    why: 'في تمارا أطلقت Partners Portal 2.0 الذي خفّض استفسارات الدعم بنسبة 30% ورفع الرضا بنسبة 25%/n. في NymCard أقود منتج BaaS للشركات الصغيرة والمتوسطة في الإمارات.',
     seeking: ['ما زلت أشعر أنني في البداية فقط.', 'أنظمة معقدة. فينتك عالية المخاطر. ملكية شاملة.', 'مستعد للفصل القادم.'],
     nav: [
       { icon: 'briefcase', label: 'مسيرتي', href: '#experience' },
@@ -617,8 +624,8 @@ const arContent = {
     items: [
       {
         title: 'Nym4Business (N4B)',
-        badge: 'NymCard · في الإنتاج',
-        badgeBuilding: 'جارٍ الشحن',
+        badge: 'NymCard · تم الشحن',
+        badgeBuilding: 'تم الشحن',
         desc: 'منصة BaaS مؤسسية بيضاء العلامة التجارية تُباع للمؤسسات المالية في منطقة الشرق الأوسط. تشمل الهيكل المؤسسي متعدد المستويات وإصدار البطاقات وإدارة المصروفات وإعداد KYB/IDV والمدفوعات عبر الحدود.',
         tech: ['BaaS', 'Card Issuing', 'Visa Direct', 'KYB/KYC', 'Corporate Hierarchy'],
         link: '',
@@ -627,7 +634,7 @@ const arContent = {
       },
       {
         title: 'Lynq',
-        badge: 'NymCard · في الإنتاج',
+        badge: 'NymCard · تم الشحن',
         badgeBuilding: '',
         desc: 'منتج مصرفي مباشر للشركات الصغيرة والمتوسطة (getlynq.ae). يتيح للشركات الإماراتية إدارة المصروفات المؤسسية وإصدار البطاقات وتتبع النفقات وتحريك الأموال — كل ذلك في منصة واحدة.',
         tech: ['SME Banking', 'Corporate Cards', 'Expense Tracking', 'UAE Compliance'],
@@ -688,7 +695,8 @@ const arContent = {
     },
     careerOps: {
       ...omContent.experience.careerOps,
-      location: 'عن بُعد · دوام جزئي',
+      badge: 'دوام جزئي',
+      location: 'عن بُعد',
       role: 'قائد المنتج ومستشار',
       desc: 'تعريف وإطلاق منتج "ادخر الآن واشترِ لاحقاً" (SNBL): خطط الادخار وقواعد الأهلية وأنظمة الصرف. تسليم تطبيق الجوال للعملاء وأداة الدفع المدمجة وبوابة الإدارة الخلفية وتوثيق API.',
       caseStudyLabel: 'اقرأ دراسة حالة Compound',
@@ -696,7 +704,8 @@ const arContent = {
     },
     santifer: {
       ...omContent.experience.santifer,
-      role: 'مدير تسليم التكامل → مدير منتج',
+      location: 'دبي، الإمارات',
+      role: 'مدير تسليم التكامل ← مدير منتج',
       period: 'أكتوبر 2022 – يناير 2025 · الشراء الآن والدفع لاحقاً (BNPL)',
       caseStudyLabel: 'اقرأ دراسة حالة Tamara',
       caseStudyUrl: '/tamara-partners-portal',
@@ -733,23 +742,30 @@ const arContent = {
       },
       jacobo: {
         ...omContent.experience.santifer.jacobo,
-        title: 'بوابة مرجع API للمطورين',
-        badge: 'تسليم مدير التكامل · تم الإطلاق',
-        desc: 'إعادة تصميم توثيق API وتجربة المطورين في Tamara. خفّض وقت الوصول للسوق 25% ومكّن أكثر من 100 مليون ريال GMV.',
+        title: 'توثيق المطورين وبوابة مرجع API',
+        badge: 'مدير التكامل · تم الإطلاق',
+        desc: 'أدرت كامل سطح توثيق المطورين في Tamara — من مجموعة Postman إلى مواصفات OpenAPI إلى التوثيق العام. خفّض وقت الوصول للسوق 25% ومكّن أكثر من 100 مليون ريال GMV.',
         soldWith: 'اقرأ دراسة حالة بوابة API',
         caseStudyUrl: '/tamara-partners-portal',
+        metrics: [
+          { value: '1,650', label: 'نسخة من مجموعة Postman' },
+          { value: '-25%', label: 'وقت التكامل' },
+          { value: '+100M', label: 'ريال GMV مُمكَّن' },
+        ],
         items: [
-          { icon: 'fileText', text: 'مرجع API شامل مع نماذج كود بـ 4 لغات' },
-          { icon: 'package', text: 'أدلة إعداد بيئة sandbox وتدفقات بيانات الاعتماد التجريبية' },
-          { icon: 'gitBranch', text: 'أدلة تكامل webhooks مع توثيق منطق إعادة المحاولة' },
-          { icon: 'package', text: 'quickstarts للـ SDK: JS وPHP وPython وRuby' },
-          { icon: 'userCheck', text: 'استشارات تقنية لتكاملات التجار المؤسسيين' },
+          { icon: 'package', text: 'مجموعة Postman — 1,650 نسخة منذ مايو 2023، تغطي جميع نقاط API' },
+          { icon: 'gitBranch', text: 'مواصفات OpenAPI YAML — عقد قابل للقراءة الآلية لجميع نقاط تكامل التجار' },
+          { icon: 'fileText', text: 'توثيق عام على docs.tamara.co — تأليف بـ Markdown على منصة readme.com' },
+          { icon: 'zap', text: 'نموذج Figma تفاعلي لتدفق الدفع — متاح على docs.tamara.co' },
+          { icon: 'userCheck', text: 'مرجع API شامل مع نماذج كود بـ JS وPHP وPython وRuby' },
+          { icon: 'bot', text: 'نشر إضافات Magento 2 وWooCommerce وShopify لتجار المنطقة' },
+          { icon: 'network', text: 'استشارات تقنية مؤسسية — السعودية والإمارات والبحرين' },
         ],
       },
       webSeo: {
         ...omContent.experience.santifer.webSeo,
         title: 'إضافات التجارة الإلكترونية وحزمة التكامل',
-        badge: 'تسليم مدير التكامل · تجار منطقة الشرق الأوسط',
+        badge: 'مدير التكامل · تجار منطقة الشرق الأوسط',
         desc: 'نشر إضافات التجارة الإلكترونية الخاصة بـ Tamara عبر Magento وWooCommerce وShopify لتجار منطقة الشرق الأوسط.',
         codeAvailable: 'اقرأ دراسة حالة تسليم التكامل',
         caseStudyUrl: '/tamara-partners-portal',
@@ -795,11 +811,13 @@ const arContent = {
     lico: {
       ...omContent.experience.lico,
       location: 'القاهرة، مصر',
+      period: 'نوفمبر 2020 – سبتمبر 2022 · الفوترة عبر شبكات الهاتف والمحتوى الرقمي',
       role: 'مهندس عمليات تكامل أول',
       desc: 'تكامل أكثر من 100 تاجر عالمي (Spotify وOSN وTinder وAnghami) على منصة Mondia Pay عبر منطقة الشرق الأوسط وأوروبا وأفريقيا. إعادة تصميم توثيق API وأدلة تكامل التجار.',
     },
     everis: {
       ...omContent.experience.everis,
+      period: 'فبراير 2018 – نوفمبر 2020 · تقنية المؤسسات',
       role: 'مهندس دعم تقني',
       desc: 'تقديم دعم تقني على مستوى المؤسسات لقاعدة عملاء Dell التجارية عبر مصر، وحل المشكلات المعقدة في الخوادم والتخزين والبنية التحتية للشبكات.',
     },

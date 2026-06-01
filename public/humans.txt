@@ -5,7 +5,7 @@ Contact: omarmostafapm@gmail.com
 Site: https://omarmostafa.org
 Location: Dubai, UAE
 LinkedIn: https://linkedin.com/in/omar-mostafa-mohaseb
-GitHub: https://github.com/omarmostafa
+GitHub: https://github.com/definitecoding
 
 /* THANKS */
 AI Pair: Claude Code (Anthropic)

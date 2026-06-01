@@ -118,7 +118,7 @@ export default function CareerOps({ lang = 'en' }: { lang?: Lang }) {
         <PressFeatures lang={lang} />
       </div>
 
-      <GitHubRepoBadge repo="santifer/career-ops" stars="47.9K" forks="10.0K" lang={lang} />
+      <GitHubRepoBadge repo="santifer/career-ops" stars="48.1K" forks="10.0K" lang={lang} />
 
       <Callout className="bg-accent/10 border-accent/40">{t.tldr}</Callout>
 

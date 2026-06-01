@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useReducer, useRef } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
-import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Users, Globe, Bot, Zap, Database, Layout, BadgeCheck, FolderGit2, Sparkles, Download, Github, Package, MessageSquare, Receipt, CalendarCheck, FileText, GitBranch, GitFork, Star, Network, Calendar, Percent, UserCheck, Image, TrendingUp, Timer, SkipForward, ThumbsUp, MessageCircle, Share2, ChevronRight, List, ArrowUp, Brain, Target, Inbox, Compass, GitMerge } from 'lucide-react'
+import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Users, Globe, Bot, Zap, Database, Layout, BadgeCheck, FolderGit2, Download, Github, Package, MessageSquare, Receipt, CalendarCheck, FileText, GitBranch, GitFork, Star, Network, UserCheck, TrendingUp, SkipForward, ThumbsUp, MessageCircle, Share2, ChevronRight, ChevronLeft, List, ArrowUp, Brain, Target, Inbox, Compass, GitMerge } from 'lucide-react'
 import { translations, seo, type Lang } from './i18n'
 import { useHomeSeo } from './articles/use-article-seo'
 import { getTechIcon } from './tech-icons'
@@ -10,7 +10,7 @@ import { getTechIcon } from './tech-icons'
 function LinkedInLogo({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
     </svg>
   )
 }
@@ -43,42 +43,6 @@ function useInView(threshold = 0.1) {
   return { ref: setRef, isInView }
 }
 
-const HEAL_PARTICLES = [
-  { char: '+', left: '10%', delay: '0s', dur: '2.8s', size: '24px' },
-  { char: '·', left: '30%', delay: '0.6s', dur: '2.2s', size: '20px' },
-  { char: '✦', left: '55%', delay: '1.2s', dur: '3s', size: '18px' },
-  { char: '0', left: '75%', delay: '0.3s', dur: '2.5s', size: '22px' },
-  { char: '+', left: '90%', delay: '1.8s', dur: '2.6s', size: '20px' },
-  { char: '1', left: '20%', delay: '2.1s', dur: '2.4s', size: '22px' },
-  { char: '·', left: '65%', delay: '0.9s', dur: '3.2s', size: '18px' },
-  { char: '✦', left: '45%', delay: '1.5s', dur: '2.7s', size: '20px' },
-]
-
-function BeamPill({ children }: { children: React.ReactNode }) {
-  const hydrated = useHydrated()
-  return (
-    <span className={`relative inline-block pl-0 pr-0 ${hydrated ? 'beam-pill' : ''}`}>
-      <span className="relative z-10">{children}</span>
-      {hydrated && HEAL_PARTICLES.map((p, i) => (
-        <span
-          key={i}
-          className="absolute pointer-events-none select-none"
-          style={{
-            left: p.left,
-            bottom: '50%',
-            fontSize: p.size,
-            color: '#4ade80',
-            opacity: 0,
-            animation: `heal-float ${p.dur} ease-out ${p.delay} infinite`,
-          }}
-          aria-hidden="true"
-        >
-          {p.char}
-        </span>
-      ))}
-    </span>
-  )
-}
 
 // Inject animation styles once (avoids hydration mismatch from inline <style> in h1)
 const HERO_STYLES_ID = 'hero-beam-styles'
@@ -139,7 +103,7 @@ const GRID = 24                // matches CSS dot grid size
 const SNAKE_COUNT = 3
 const SNAKE_LENGTH = 8         // dots per trail
 const TICK_MS = 180            // movement speed (lower = faster)
-const DIRS: [number, number][] = [[1,0],[-1,0],[0,1],[0,-1]]
+const DIRS: [number, number][] = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 
 function GridSnakes() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -344,10 +308,10 @@ function HomeToc({ lang }: { lang: Lang }) {
   const tocNav = (
     <nav aria-label="Table of contents" className="relative">
       {/* Vertical track — spans from first dot center to last dot center */}
-      <div className="absolute left-[5.5px] top-[14px] w-px bg-border" style={{ height: 'calc(100% - 28px)' }} />
+      <div className={`absolute ${lang === 'ar' ? 'right-[5.5px]' : 'left-[5.5px]'} top-[14px] w-px bg-border`} style={{ height: 'calc(100% - 28px)' }} />
       {/* Animated progress fill */}
       <motion.div
-        className="absolute left-[5.5px] top-[14px] w-px bg-primary origin-top"
+        className={`absolute ${lang === 'ar' ? 'right-[5.5px]' : 'left-[5.5px]'} top-[14px] w-px bg-primary origin-top`}
         initial={{ scaleY: 0 }}
         animate={{ scaleY: progressFrac }}
         style={{ height: 'calc(100% - 28px)' }}
@@ -360,21 +324,19 @@ function HomeToc({ lang }: { lang: Lang }) {
           return (
             <li key={section.id} className="flex items-center gap-3">
               <motion.span
-                className={`relative z-10 w-3 h-3 rounded-full border-2 shrink-0 transition-colors duration-300 ${
-                  isActive ? 'border-primary bg-primary shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]'
+                className={`relative z-10 w-3 h-3 rounded-full border-2 shrink-0 transition-colors duration-300 ${isActive ? 'border-primary bg-primary shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]'
                   : isPast ? 'border-primary/50 bg-card'
-                  : 'border-border bg-card'
-                }`}
+                    : 'border-border bg-card'
+                  }`}
                 animate={isActive ? { scale: [1, 1.3, 1] } : { scale: 1 }}
                 transition={{ duration: 0.3 }}
               />
               <button
                 onClick={() => scrollTo(section.id)}
-                className={`text-left text-[13px] tracking-wide py-1 transition-all duration-300 ${
-                  isActive ? 'text-primary font-semibold translate-x-0.5'
+                className={`text-[13px] tracking-wide py-1 transition-all duration-300 ${lang === 'ar' ? 'text-right' : 'text-left'} ${isActive ? `text-primary font-semibold ${lang === 'ar' ? '-translate-x-0.5' : 'translate-x-0.5'}`
                   : isPast ? 'text-foreground/70'
-                  : 'text-muted-foreground/60 hover:text-foreground/80'
-                }`}
+                    : 'text-muted-foreground/60 hover:text-foreground/80'
+                  }`}
               >
                 {section[lang]}
               </button>
@@ -391,11 +353,11 @@ function HomeToc({ lang }: { lang: Lang }) {
         <>
           {/* Desktop: sticky sidebar */}
           <motion.div
-            initial={hasRevealed ? { opacity: 0, x: -12 } : false}
+            initial={hasRevealed ? { opacity: 0, x: lang === 'ar' ? 12 : -12 } : false}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -12 }}
+            exit={{ opacity: 0, x: lang === 'ar' ? 12 : -12 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden xl:block fixed top-24 left-[max(1rem,calc(50%-46rem))] w-48 max-h-[calc(100vh-8rem)] overflow-visible z-30"
+            className={`hidden xl:block fixed top-24 w-48 max-h-[calc(100vh-8rem)] overflow-visible z-30 ${lang === 'ar' ? 'right-[max(1rem,calc(50%-46rem))]' : 'left-[max(1rem,calc(50%-46rem))]'}`}
           >
             {tocNav}
           </motion.div>
@@ -1305,9 +1267,9 @@ function StorySection({ t }: { t: (typeof translations)[Lang] }) {
           transition={scrollSkipped
             ? { duration: 0 }
             : {
-                height: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-                opacity: { duration: 0.4, delay: 0.1 }
-              }
+              height: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+              opacity: { duration: 0.4, delay: 0.1 }
+            }
           }
           style={{ overflow: 'hidden' }}
         >
@@ -1335,13 +1297,12 @@ function StorySection({ t }: { t: (typeof translations)[Lang] }) {
                   initial={{ opacity: 0, y: 15 }}
                   animate={typewriterComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                   transition={{ duration: 0.6, delay: typewriterComplete ? 0.3 + i * 0.2 : 0, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className={`transition-opacity duration-[2500ms] ease-in-out ${dimOpacity} ${
-                    i === 2
-                      ? 'font-display text-lg md:text-2xl font-bold text-gradient-theme leading-snug'
-                      : i === 1
-                        ? 'font-display text-lg md:text-2xl text-muted-foreground leading-snug'
-                        : 'font-display text-lg md:text-2xl font-bold text-foreground leading-snug'
-                  }`}
+                  className={`transition-opacity duration-[2500ms] ease-in-out ${dimOpacity} ${i === 2
+                    ? 'font-display text-lg md:text-2xl font-bold text-gradient-theme leading-snug'
+                    : i === 1
+                      ? 'font-display text-lg md:text-2xl text-muted-foreground leading-snug'
+                      : 'font-display text-lg md:text-2xl font-bold text-foreground leading-snug'
+                    }`}
                 >
                   {line}
                 </motion.p>
@@ -1356,35 +1317,35 @@ function StorySection({ t }: { t: (typeof translations)[Lang] }) {
             transition={{ duration: 0.6, delay: typewriterComplete ? 0.9 : 0, ease: [0.25, 0.46, 0.45, 0.94] }}
             className={`flex flex-wrap justify-center gap-3 mt-10 mb-12 transition-opacity duration-[2500ms] ease-in-out ${textDimmed && !textRevealed ? 'opacity-15' : 'opacity-100'}`}
           >
-          {t.story.nav.map((item) => {
-            const icons: Record<string, React.ReactNode> = {
-              briefcase: <Briefcase className="w-4 h-4" />,
-              folder: <FolderGit2 className="w-4 h-4" />,
-              mail: <Mail className="w-4 h-4" />,
-              bot: <Bot className="w-4 h-4" />
-            }
-            const isHighlight = 'highlight' in item && item.highlight
-            const handleClick = (e: React.MouseEvent) => {
-              if (item.href === '#chat') {
-                e.preventDefault()
-                window.dispatchEvent(new Event('openChat'))
+            {t.story.nav.map((item) => {
+              const icons: Record<string, React.ReactNode> = {
+                briefcase: <Briefcase className="w-4 h-4" />,
+                folder: <FolderGit2 className="w-4 h-4" />,
+                mail: <Mail className="w-4 h-4" />,
+                bot: <Bot className="w-4 h-4" />
               }
-            }
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={handleClick}
-                className={isHighlight
-                  ? "flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-theme text-white border border-transparent hover:brightness-110 hover:shadow-xl hover:shadow-primary/30 active:brightness-95 transition-all duration-200 text-sm font-medium shadow-lg shadow-primary/25"
-                  : "flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 text-sm font-medium"
+              const isHighlight = 'highlight' in item && item.highlight
+              const handleClick = (e: React.MouseEvent) => {
+                if (item.href === '#chat') {
+                  e.preventDefault()
+                  window.dispatchEvent(new Event('openChat'))
                 }
-              >
-                {icons[item.icon]}
-                {item.label}
-              </a>
-            )
-          })}
+              }
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={handleClick}
+                  className={isHighlight
+                    ? "flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-theme text-white border border-transparent hover:brightness-110 hover:shadow-xl hover:shadow-primary/30 active:brightness-95 transition-all duration-200 text-sm font-medium shadow-lg shadow-primary/25"
+                    : "flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 text-sm font-medium"
+                  }
+                >
+                  {icons[item.icon]}
+                  {item.label}
+                </a>
+              )
+            })}
           </motion.div>
         </motion.div>
       </div>
@@ -1396,33 +1357,33 @@ function CertLogo({ logo }: { logo: string }) {
   const logos: Record<string, React.ReactNode> = {
     anthropic: (
       <svg viewBox="0 0 92.2 65" className="w-6 h-6" fill="currentColor" aria-hidden="true">
-        <path d="M66.5,0H52.4l25.7,65h14.1L66.5,0z M25.7,0L0,65h14.4l5.3-13.6h26.9L51.8,65h14.4L40.5,0C40.5,0,25.7,0,25.7,0z M24.3,39.3l8.8-22.8l8.8,22.8H24.3z"/>
+        <path d="M66.5,0H52.4l25.7,65h14.1L66.5,0z M25.7,0L0,65h14.4l5.3-13.6h26.9L51.8,65h14.4L40.5,0C40.5,0,25.7,0,25.7,0z M24.3,39.3l8.8-22.8l8.8,22.8H24.3z" />
       </svg>
     ),
     airtable: (
       <svg viewBox="0 0 200 170" className="w-6 h-6" aria-hidden="true">
-        <path fill="#FCB400" d="M90.039 12.368 24.079 39.66c-3.667 1.519-3.63 6.729.062 8.192l66.235 26.266a24.58 24.58 0 0 0 18.12 0l66.236-26.266c3.69-1.463 3.729-6.673.062-8.192l-65.96-27.292a24.58 24.58 0 0 0-18.795 0"/>
-        <path fill="#18BFFF" d="M105.312 88.46v65.617c0 3.12 3.147 5.258 6.048 4.108l73.806-28.648a4.42 4.42 0 0 0 2.79-4.108V59.813c0-3.121-3.147-5.258-6.048-4.108l-73.806 28.648a4.42 4.42 0 0 0-2.79 4.108"/>
-        <path fill="#F82B60" d="m88.078 91.846-21.904 10.576-2.224 1.075-46.238 22.155c-2.93 1.414-6.672-.722-6.672-3.978V60.088c0-1.178.604-2.195 1.414-2.96a5 5 0 0 1 1.12-.84c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087"/>
-        <path fill="#8B8B8B" d="m88.078 91.846-21.904 10.576-53.72-45.295a5 5 0 0 1 1.12-.839c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087"/>
+        <path fill="#FCB400" d="M90.039 12.368 24.079 39.66c-3.667 1.519-3.63 6.729.062 8.192l66.235 26.266a24.58 24.58 0 0 0 18.12 0l66.236-26.266c3.69-1.463 3.729-6.673.062-8.192l-65.96-27.292a24.58 24.58 0 0 0-18.795 0" />
+        <path fill="#18BFFF" d="M105.312 88.46v65.617c0 3.12 3.147 5.258 6.048 4.108l73.806-28.648a4.42 4.42 0 0 0 2.79-4.108V59.813c0-3.121-3.147-5.258-6.048-4.108l-73.806 28.648a4.42 4.42 0 0 0-2.79 4.108" />
+        <path fill="#F82B60" d="m88.078 91.846-21.904 10.576-2.224 1.075-46.238 22.155c-2.93 1.414-6.672-.722-6.672-3.978V60.088c0-1.178.604-2.195 1.414-2.96a5 5 0 0 1 1.12-.84c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087" />
+        <path fill="#8B8B8B" d="m88.078 91.846-21.904 10.576-53.72-45.295a5 5 0 0 1 1.12-.839c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087" />
       </svg>
     ),
     make: (
       <svg viewBox="0 0 24 24" className="w-6 h-6" aria-hidden="true">
         <defs>
           <linearGradient gradientUnits="userSpaceOnUse" id="make-fill-0" x1="1.5" x2="12" y1="19.5" y2="0">
-            <stop stopColor="#F0F"/><stop offset=".17" stopColor="#E90CF9"/><stop offset=".54" stopColor="#C023ED"/><stop offset="1" stopColor="#B02DE9"/>
+            <stop stopColor="#F0F" /><stop offset=".17" stopColor="#E90CF9" /><stop offset=".54" stopColor="#C023ED" /><stop offset="1" stopColor="#B02DE9" />
           </linearGradient>
           <linearGradient gradientUnits="userSpaceOnUse" id="make-fill-1" x1="0" x2="24" y1="24" y2="0">
-            <stop stopColor="#B02DE9"/><stop offset="1" stopColor="#6D00CC"/>
+            <stop stopColor="#B02DE9" /><stop offset="1" stopColor="#6D00CC" />
           </linearGradient>
           <linearGradient gradientUnits="userSpaceOnUse" id="make-fill-2" x1="0" x2="24" y1="24" y2="0">
-            <stop stopColor="#F0F"/><stop offset=".3" stopColor="#B02DE9"/><stop offset="1" stopColor="#6021C3"/>
+            <stop stopColor="#F0F" /><stop offset=".3" stopColor="#B02DE9" /><stop offset="1" stopColor="#6021C3" />
           </linearGradient>
         </defs>
-        <path d="M6.989 4.036L.062 17.818a.577.577 0 00.257.774l3.733 1.876a.577.577 0 00.775-.256L11.753 6.43a.577.577 0 00-.257-.775L7.763 3.78a.575.575 0 00-.774.257z" fill="url(#make-fill-0)"/>
-        <path d="M19.245 3.832h4.179c.318 0 .577.26.577.577v15.425a.578.578 0 01-.577.578h-4.179a.578.578 0 01-.577-.578V4.41c0-.318.259-.577.577-.577z" fill="url(#make-fill-1)"/>
-        <path d="M12.815 4.085L9.85 19.108a.576.576 0 00.453.677l4.095.826c.314.063.62-.14.681-.454l2.964-15.022a.577.577 0 00-.453-.677l-4.096-.827a.577.577 0 00-.68.454z" fill="url(#make-fill-2)"/>
+        <path d="M6.989 4.036L.062 17.818a.577.577 0 00.257.774l3.733 1.876a.577.577 0 00.775-.256L11.753 6.43a.577.577 0 00-.257-.775L7.763 3.78a.575.575 0 00-.774.257z" fill="url(#make-fill-0)" />
+        <path d="M19.245 3.832h4.179c.318 0 .577.26.577.577v15.425a.578.578 0 01-.577.578h-4.179a.578.578 0 01-.577-.578V4.41c0-.318.259-.577.577-.577z" fill="url(#make-fill-1)" />
+        <path d="M12.815 4.085L9.85 19.108a.576.576 0 00.453.677l4.095.826c.314.063.62-.14.681-.454l2.964-15.022a.577.577 0 00-.453-.677l-4.096-.827a.577.577 0 00-.68.454z" fill="url(#make-fill-2)" />
       </svg>
     ),
   }
@@ -1514,32 +1475,21 @@ function App() {
                 <span className="text-gradient-theme">{hydrated ? roleText : t.greetingRoles[0]}</span>{hydrated && <span className="inline-block w-[3px] h-[0.85em] bg-primary rounded-sm translate-y-[2px]" style={{ animation: 'blink 1s step-end infinite' }} />}
                 <br />
                 {t.greeting}
-                {lang === 'en' && (
-                  <>
-                    <br />
-                    {'in '}<BeamPill>BaaS <span className="opacity-60">+</span> Embedded Finance <span className="opacity-60">+</span> MENA</BeamPill>
-                  </>
-                )}
+                <br />
+                {lang === 'en'
+                  ? <>BaaS <span className="opacity-60">·</span> BNPL <span className="opacity-60">·</span> Payments <span className="opacity-60">·</span> Cards</>
+                  : <>الخدمات المصرفية كخدمة <span className="opacity-60">·</span> اشتر الآن وادفع لاحقاً <span className="opacity-60">·</span> المدفوعات <span className="opacity-60">·</span> البطاقات</>
+                }
               </h1>
 
               <div className={`flex flex-wrap gap-3 justify-center ${lang === 'ar' ? 'md:justify-end' : 'md:justify-start'}`}>
-                <a
-                  href="https://www.linkedin.com/in/omar-mostafa-mohaseb"
-                  target="_blank"
-                  rel="me noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm border border-[#0A66C2]/50 bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/70"
-                >
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  LinkedIn
-                </a>
                 {t.pillLabels.map((label, i) => (
                   <span
                     key={label}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${
-                      hydrated && i === roleIndex
-                        ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
-                        : 'border border-[#20d6ee]/30 bg-background/80 text-muted-foreground'
-                    }`}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm ${hydrated && i === roleIndex
+                      ? 'border border-[#20d6ee] bg-[#20d6ee]/15 text-foreground scale-105'
+                      : 'border border-[#20d6ee]/30 bg-background/80 text-muted-foreground'
+                      }`}
                   >
                     {label}
                   </span>
@@ -1607,7 +1557,7 @@ function App() {
               {t.experience.zinkee.caseStudyUrl && (
                 <Link to={t.experience.zinkee.caseStudyUrl} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
                   <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.zinkee.caseStudyLabel}</span>
-                  <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
+                  {lang === 'ar' ? <ChevronLeft className="w-4 h-4 group-hover/cta:-translate-x-0.5 transition-transform duration-200" /> : <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />}
                 </Link>
               )}
             </div>
@@ -1630,10 +1580,10 @@ function App() {
                 >
                   {t.experience.careerOps.urlLabel}
                 </a>
+                <span className="text-sm text-muted-foreground">{t.experience.careerOps.location}</span>
               </div>
               <p className="text-primary font-medium mb-1">{t.experience.careerOps.role}</p>
-              <p className="text-sm text-muted-foreground mb-1">{t.experience.careerOps.period}</p>
-              <p className="text-sm text-muted-foreground mb-2">{t.experience.careerOps.location}</p>
+              <p className="text-sm text-muted-foreground mb-2">{t.experience.careerOps.period}</p>
               <p className="text-muted-foreground whitespace-pre-line mb-6">{t.experience.careerOps.desc}</p>
 
               {/* As Featured In - Press Logos */}
@@ -1666,6 +1616,7 @@ function App() {
               {/* Deep dive CTA */}
               <Link to={lang === 'en' ? '/compound-save-now-buy-later' : '/compound-snbl'} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
                 <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.careerOps.caseStudyLabel}</span>
+                {lang === 'ar' ? <ChevronLeft className="w-4 h-4 group-hover/cta:-translate-x-0.5 transition-transform duration-200" /> : <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />}
               </Link>
             </div>
           </AnimatedSection>
@@ -1698,25 +1649,26 @@ function App() {
 
               {/* Trusted By - Corporate Logos */}
               {t.experience.santifer.trustedBy.logos.length > 0 && (
-              <div className="pt-4 border-t border-border/50">
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-8">
-                  {t.experience.santifer.trustedBy.logos.map((logo, i) => (
-                    <div key={i} className="flex items-center gap-2 hover:opacity-90 transition-opacity duration-200">
-                      {'src' in logo ? (
-                        <img src={logo.src} alt={logo.name} className="h-5 w-auto shrink-0 invert opacity-60 hover:opacity-80 dark:invert-0 dark:opacity-70 dark:hover:opacity-90" loading="lazy" width={20} height={20} />
-                      ) : (
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 shrink-0 opacity-60 dark:opacity-70" aria-hidden="true" dangerouslySetInnerHTML={{ __html: logo.icon }} />
-                      )}
-                      <span className="text-sm font-medium opacity-60 dark:opacity-70">{logo.name}</span>
-                    </div>
-                  ))}
+                <div className="pt-4 border-t border-border/50">
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-8">
+                    {t.experience.santifer.trustedBy.logos.map((logo, i) => (
+                      <div key={i} className="flex items-center gap-2 hover:opacity-90 transition-opacity duration-200">
+                        {'src' in logo ? (
+                          <img src={logo.src} alt={logo.name} className="h-5 w-auto shrink-0 invert opacity-60 hover:opacity-80 dark:invert-0 dark:opacity-70 dark:hover:opacity-90" loading="lazy" width={20} height={20} />
+                        ) : (
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 shrink-0 opacity-60 dark:opacity-70" aria-hidden="true" dangerouslySetInnerHTML={{ __html: logo.icon }} />
+                        )}
+                        <span className="text-sm font-medium opacity-60 dark:opacity-70">{logo.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
               )}
 
               {/* Deep dive CTA */}
               <Link to={t.experience.santifer.caseStudyUrl} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
                 <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.santifer.caseStudyLabel}</span>
+                {lang === 'ar' ? <ChevronLeft className="w-4 h-4 group-hover/cta:-translate-x-0.5 transition-transform duration-200" /> : <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />}
               </Link>
             </div>
           </AnimatedSection>
@@ -1742,25 +1694,6 @@ function App() {
               <p className="text-sm text-muted-foreground mb-4">{t.experience.lico.period}</p>
               <p className="text-muted-foreground">{t.experience.lico.desc}</p>
 
-              {/* Testimonial */}
-              <a href="https://www.linkedin.com/in/omar-mostafa-mohaseb/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
-                <blockquote className="mt-6 p-4 rounded-xl bg-accent/5 border border-accent/10 group-hover:border-[hsl(var(--linkedin)/0.3)] transition-colors">
-                  <p className="text-sm text-muted-foreground italic mb-4">
-                    "{t.experience.lico.testimonial.quote}"
-                  </p>
-                  <footer className="flex items-center gap-3">
-                    <picture>
-                      <source srcSet="/juan-sabate.webp" type="image/webp" />
-                      <img src="/juan-sabate.jpeg" alt={t.experience.lico.testimonial.author} className="w-10 h-10 rounded-full object-cover" width={40} height={40} loading="lazy" decoding="async" />
-                    </picture>
-                    <div className="flex-1">
-                      <span className="text-sm font-medium text-foreground block">{t.experience.lico.testimonial.author}</span>
-                      <span className="text-xs text-muted-foreground">{t.experience.lico.testimonial.role}</span>
-                    </div>
-                    <LinkedInLogo className="w-4 h-4 text-[hsl(var(--linkedin))]" />
-                  </footer>
-                </blockquote>
-              </a>
             </div>
           </AnimatedSection>
 
@@ -1782,37 +1715,6 @@ function App() {
               <p className="text-sm text-muted-foreground mb-2">{t.experience.everis.period}</p>
               <p className="text-muted-foreground">{t.experience.everis.desc}</p>
             </div>
-            <div className="mt-6 p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
-                  <Bot className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-display font-bold mb-2">{t.experience.everis.tesauro.title}</h4>
-                  <p className="text-sm text-muted-foreground">{t.experience.everis.tesauro.desc}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Testimonial */}
-            <a href="https://www.linkedin.com/in/omar-mostafa-mohaseb/details/recommendations/" target="_blank" rel="noopener noreferrer" className="block group">
-              <blockquote className="mt-6 p-4 rounded-xl bg-primary/5 border border-primary/10 group-hover:border-[hsl(var(--linkedin)/0.3)] transition-colors">
-                <p className="text-sm text-muted-foreground italic mb-4">
-                  "{t.experience.everis.testimonial.quote}"
-                </p>
-                <footer className="flex items-center gap-3">
-                  <picture>
-                    <source srcSet="/manuel-lopez.webp" type="image/webp" />
-                    <img src="/manuel-lopez.jpeg" alt={t.experience.everis.testimonial.author} className="w-10 h-10 rounded-full object-cover" width={40} height={40} loading="lazy" decoding="async" />
-                  </picture>
-                  <div className="flex-1">
-                    <span className="text-sm font-medium text-foreground block">{t.experience.everis.testimonial.author}</span>
-                    <span className="text-xs text-muted-foreground">{t.experience.everis.testimonial.role}</span>
-                  </div>
-                  <LinkedInLogo className="w-4 h-4 text-[hsl(var(--linkedin))]" />
-                </footer>
-              </blockquote>
-            </a>
           </AnimatedSection>
         </div>
       </section>
@@ -1835,7 +1737,7 @@ function App() {
                 className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
                 omar-mostafa-mohaseb
               </a>
@@ -1897,21 +1799,18 @@ function App() {
                           return (
                             <div
                               key={i}
-                              className={`flex items-start gap-3 p-3 rounded-lg border transition-colors ${
-                                isOpen ? 'bg-accent/5 border-accent/20 hover:border-accent/40' : 'bg-card/60 border-border/50 hover:border-border'
-                              }`}
+                              className={`flex items-start gap-3 p-3 rounded-lg border transition-colors ${isOpen ? 'bg-accent/5 border-accent/20 hover:border-accent/40' : 'bg-card/60 border-border/50 hover:border-border'
+                                }`}
                             >
-                              <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 ${
-                                isOpen ? 'bg-accent/10 text-accent' : 'bg-muted text-muted-foreground'
-                              }`}>
+                              <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 ${isOpen ? 'bg-accent/10 text-accent' : 'bg-muted text-muted-foreground'
+                                }`}>
                                 {iconMap[agent.icon]}
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-baseline gap-2 flex-wrap">
                                   <span className="font-semibold text-sm text-foreground">{agent.name}</span>
-                                  <span className={`text-[10px] uppercase tracking-wider ${
-                                    isOpen ? 'text-accent' : 'text-muted-foreground/70'
-                                  }`}>{agent.tag}</span>
+                                  <span className={`text-[10px] uppercase tracking-wider ${isOpen ? 'text-accent' : 'text-muted-foreground/70'
+                                    }`}>{agent.tag}</span>
                                 </div>
                                 <p className="text-xs text-muted-foreground mt-0.5">{agent.desc}</p>
                               </div>
@@ -1935,9 +1834,9 @@ function App() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center shrink-0">
                       <svg viewBox="0 0 200 170" className="w-6 h-6" aria-hidden="true">
-                        <path fill="#FCB400" d="M90.039 12.368 24.079 39.66c-3.667 1.519-3.63 6.729.062 8.192l66.235 26.266a24.58 24.58 0 0 0 18.12 0l66.236-26.266c3.69-1.463 3.729-6.673.062-8.192l-65.96-27.292a24.58 24.58 0 0 0-18.795 0"/>
-                        <path fill="#18BFFF" d="M105.312 88.46v65.617c0 3.12 3.147 5.258 6.048 4.108l73.806-28.648a4.42 4.42 0 0 0 2.79-4.108V59.813c0-3.121-3.147-5.258-6.048-4.108l-73.806 28.648a4.42 4.42 0 0 0-2.79 4.108"/>
-                        <path fill="#F82B60" d="m88.078 91.846-21.904 10.576-2.224 1.075-46.238 22.155c-2.93 1.414-6.672-.722-6.672-3.978V60.088c0-1.178.604-2.195 1.414-2.96a5 5 0 0 1 1.12-.84c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087"/>
+                        <path fill="#FCB400" d="M90.039 12.368 24.079 39.66c-3.667 1.519-3.63 6.729.062 8.192l66.235 26.266a24.58 24.58 0 0 0 18.12 0l66.236-26.266c3.69-1.463 3.729-6.673.062-8.192l-65.96-27.292a24.58 24.58 0 0 0-18.795 0" />
+                        <path fill="#18BFFF" d="M105.312 88.46v65.617c0 3.12 3.147 5.258 6.048 4.108l73.806-28.648a4.42 4.42 0 0 0 2.79-4.108V59.813c0-3.121-3.147-5.258-6.048-4.108l-73.806 28.648a4.42 4.42 0 0 0-2.79 4.108" />
+                        <path fill="#F82B60" d="m88.078 91.846-21.904 10.576-2.224 1.075-46.238 22.155c-2.93 1.414-6.672-.722-6.672-3.978V60.088c0-1.178.604-2.195 1.414-2.96a5 5 0 0 1 1.12-.84c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087" />
                       </svg>
                     </div>
                   </div>
@@ -1969,7 +1868,7 @@ function App() {
                   </ul>
                   <Link to={t.experience.santifer.caseStudyUrl} className="inline-flex items-center gap-2 mt-auto pt-6 text-sm font-medium text-gold hover:text-gold/80 transition-colors duration-200 group/cta">
                     <span className="px-4 py-2 rounded-lg bg-gold/10 border border-gold/30 group-hover/cta:bg-gold/20 group-hover/cta:border-gold/50 transition-all duration-200">{t.experience.santifer.businessOS.footer}</span>
-                    <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
+                    {lang === 'ar' ? <ChevronLeft className="w-4 h-4 group-hover/cta:-translate-x-0.5 transition-transform duration-200" /> : <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />}
                   </Link>
                 </div>
                 <div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 lg:gap-3 mt-4 lg:mt-0">
@@ -1984,156 +1883,52 @@ function App() {
             </div>
           </AnimatedSection>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {/* Large card - AI Agent */}
-            <AnimatedSection delay={0.15} className="col-span-2 row-span-2">
-              <div className="h-full p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 hover:border-primary/40 transition-colors duration-200 group flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-primary" />
+          {/* Documentation & API Reference Portal — Full Width Hero Card */}
+          <AnimatedSection delay={0.2} className="mb-8">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/5 to-transparent border border-primary/30 hover:border-primary/50 transition-colors duration-200 group">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                <div className="flex-1 flex flex-col">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                      <Bot className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="badge px-3 py-1 bg-primary/20 text-primary">{t.experience.santifer.jacobo.badge}</span>
                   </div>
-                  <span className="badge px-3 py-1 bg-primary/10 text-primary">{t.experience.santifer.jacobo.badge}</span>
+                  <h4 className="font-display text-2xl font-bold mb-4">{t.experience.santifer.jacobo.title}</h4>
+                  <p className="text-muted-foreground mb-6">{t.experience.santifer.jacobo.desc}</p>
+                  <ul className="text-sm text-muted-foreground space-y-2">
+                    {t.experience.santifer.jacobo.items.map((item, i) => {
+                      const iconMap: Record<string, React.ReactNode> = {
+                        package: <Package className="w-4 h-4" />,
+                        gitBranch: <GitBranch className="w-4 h-4" />,
+                        fileText: <FileText className="w-4 h-4" />,
+                        zap: <Zap className="w-4 h-4" />,
+                        userCheck: <UserCheck className="w-4 h-4" />,
+                        bot: <Bot className="w-4 h-4" />,
+                        network: <Network className="w-4 h-4" />,
+                      }
+                      return (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="text-primary mt-0.5">{iconMap[item.icon]}</span>
+                          <span>{item.text}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
-                <h4 className="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">{t.experience.santifer.jacobo.title}</h4>
-                <p className="text-muted-foreground text-sm mb-4">{t.experience.santifer.jacobo.desc}</p>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  {t.experience.santifer.jacobo.items.map((item, i) => {
-                    const icons: Record<string, React.ReactNode> = {
-                      network: <Network className="w-4 h-4" />,
-                      calendar: <Calendar className="w-4 h-4" />,
-                      percent: <Percent className="w-4 h-4" />,
-                      package: <Package className="w-4 h-4" />,
-                      userCheck: <UserCheck className="w-4 h-4" />
-                    }
-                    return (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-primary mt-0.5 shrink-0">{icons[item.icon]}</span>
-                        <span>{item.text}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-                <Link to={t.experience.santifer.jacobo.caseStudyUrl} className="inline-flex items-center gap-2 mt-auto pt-4 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
-                  <span className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 group-hover/cta:bg-primary/20 group-hover/cta:border-primary/50 transition-all duration-200">{t.experience.santifer.jacobo.soldWith}</span>
-                  <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
-                </Link>
+                <div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 lg:gap-3 mt-4 lg:mt-0">
+                  {t.experience.santifer.jacobo.metrics.map((metric, i) => (
+                    <div key={i} className="text-center p-2 lg:p-4 rounded-xl bg-background/50 border border-primary/20">
+                      <div className="font-display text-lg lg:text-2xl font-bold text-primary">{metric.value}</div>
+                      <div className="text-[10px] lg:text-xs text-muted-foreground leading-tight">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </AnimatedSection>
+            </div>
+          </AnimatedSection>
 
-            {/* Large card - Web Programática + SEO */}
-            <AnimatedSection delay={0.2} className="col-span-2 row-span-2">
-              <div className="h-full p-6 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20 hover:border-accent/40 transition-colors duration-200 group flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <Layout className="w-6 h-6 text-accent" />
-                  </div>
-                  <span className="badge px-3 py-1 bg-accent/10 text-accent">{t.experience.santifer.webSeo.badge}</span>
-                </div>
-                <h4 className="font-display text-xl font-bold mb-2 group-hover:text-accent transition-colors">{t.experience.santifer.webSeo.title}</h4>
-                <p className="text-muted-foreground text-sm mb-4">{t.experience.santifer.webSeo.desc}</p>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  {t.experience.santifer.webSeo.items.map((item, i) => {
-                    const icons: Record<string, React.ReactNode> = {
-                      fileText: <FileText className="w-4 h-4" />,
-                      image: <Image className="w-4 h-4" />,
-                      trendingUp: <TrendingUp className="w-4 h-4" />,
-                      gitBranch: <GitBranch className="w-4 h-4" />,
-                      bot: <Bot className="w-4 h-4" />
-                    }
-                    return (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-accent mt-0.5 shrink-0">{icons[item.icon]}</span>
-                        <span>{item.text}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-                <Link to={t.experience.santifer.webSeo.caseStudyUrl} className="inline-flex items-center gap-2 mt-auto pt-4 text-sm font-medium text-accent hover:text-accent/80 transition-colors duration-200 group/cta">
-                  <span className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 group-hover/cta:bg-accent/20 group-hover/cta:border-accent/50 transition-all duration-200">{t.experience.santifer.webSeo.codeAvailable}</span>
-                  <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
-                </Link>
-              </div>
-            </AnimatedSection>
 
-            {/* EXIT milestone — only render when content exists */}
-            {t.experience.santifer.exit && (
-              <AnimatedSection delay={0.25} className="col-span-2">
-                <div className="h-full p-5 rounded-2xl bg-gradient-to-r from-success/10 to-success/5 border border-success/30 hover:border-success/50 transition-colors duration-200">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Zap className="w-5 h-5 text-success" />
-                    <span className="font-display font-bold text-success">{t.experience.santifer.exit}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{t.experience.santifer.exitDesc}</p>
-                </div>
-              </AnimatedSection>
-            )}
-
-            {/* ERP card */}
-            <AnimatedSection delay={0.3}>
-              <Link to={t.experience.santifer.erp.caseStudyUrl} className="block h-full p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col group/card">
-                <Database className="w-5 h-5 text-primary mb-3" />
-                <p className="font-medium text-sm mb-1">{t.experience.santifer.erp.title}</p>
-                <p className="text-sm text-muted-foreground">{t.experience.santifer.erp.desc}</p>
-                <div className="flex items-center justify-between mt-auto pt-3">
-                  <span className="text-xs font-medium text-primary">{t.experience.santifer.erp.metric}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all duration-200" />
-                </div>
-              </Link>
-            </AnimatedSection>
-
-            {/* GPTs card */}
-            <AnimatedSection delay={0.35}>
-              <Link to={t.experience.santifer.gpts.caseStudyUrl} className="block h-full p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col group/card">
-                <Bot className="w-5 h-5 text-accent mb-3" />
-                <p className="font-medium text-sm mb-1">{t.experience.santifer.gpts.title}</p>
-                <p className="text-sm text-muted-foreground">{t.experience.santifer.gpts.desc}</p>
-                <div className="flex items-center justify-between mt-auto pt-3">
-                  <span className="text-xs font-medium text-primary">{t.experience.santifer.gpts.metric}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all duration-200" />
-                </div>
-              </Link>
-            </AnimatedSection>
-
-            {/* Reservas card */}
-            <AnimatedSection delay={0.4}>
-              <Link to={t.experience.santifer.reservas.caseStudyUrl} className="block h-full p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col group/card">
-                <Timer className="w-5 h-5 text-primary mb-3" />
-                <p className="font-medium text-sm mb-1">{t.experience.santifer.reservas.title}</p>
-                <p className="text-sm text-muted-foreground">{t.experience.santifer.reservas.desc}</p>
-                <div className="flex items-center justify-between mt-auto pt-3">
-                  <span className="text-xs font-medium text-accent">{t.experience.santifer.reservas.metric}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all duration-200" />
-                </div>
-              </Link>
-            </AnimatedSection>
-
-            {/* CRM card */}
-            <AnimatedSection delay={0.45}>
-              <Link to={t.experience.santifer.crm.caseStudyUrl} className="block h-full p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col group/card">
-                <Users className="w-5 h-5 text-accent mb-3" />
-                <p className="font-medium text-sm mb-1">{t.experience.santifer.crm.title}</p>
-                <p className="text-sm text-muted-foreground">{t.experience.santifer.crm.desc}</p>
-                <div className="flex items-center justify-between mt-auto pt-3">
-                  <span className="text-xs font-medium text-primary">{t.experience.santifer.crm.metric}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all duration-200" />
-                </div>
-              </Link>
-            </AnimatedSection>
-
-            {/* GenAI Marketing card */}
-            <AnimatedSection delay={0.5}>
-              <Link to={t.experience.santifer.genAI.caseStudyUrl} className="block h-full p-5 rounded-2xl bg-card border border-border hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col group/card">
-                <Sparkles className="w-5 h-5 text-primary mb-3" />
-                <p className="font-medium text-sm mb-1">{t.experience.santifer.genAI.title}</p>
-                <p className="text-sm text-muted-foreground">{t.experience.santifer.genAI.desc}</p>
-                <div className="flex items-center justify-between mt-auto pt-3">
-                  <span className="text-xs font-medium text-accent">{t.experience.santifer.genAI.metric}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all duration-200" />
-                </div>
-              </Link>
-            </AnimatedSection>
-          </div>
 
           {/* Projects Grid with Dependency Lines */}
           {(() => {
@@ -2157,7 +1952,6 @@ function App() {
             const allProjects = t.projects.items as readonly Project[]
             const careerOps = allProjects.find(p => p.title === 'Compound SNBL')!
             const santiferIo = allProjects.find(p => p.title === 'omarmostafa.org')!
-            const selfHealingChatbot = allProjects.find(p => p.title === 'Tamara Partners Portal 2.0')!
             const claudeEye = allProjects.find(p => p.title === 'Nym4Business (N4B)')!
             const claudeable = allProjects.find(p => p.title === 'Lynq')!
 
@@ -2173,7 +1967,6 @@ function App() {
             const cardRefs = {
               careerOps: useRef<HTMLDivElement>(null),
               santiferIo: useRef<HTMLDivElement>(null),
-              selfHealingChatbot: useRef<HTMLDivElement>(null),
               claudeEye: useRef<HTMLDivElement>(null),
               claudeable: useRef<HTMLDivElement>(null),
             }
@@ -2217,21 +2010,18 @@ function App() {
                 // En desktop: grafo complejo con conexiones horizontales y diagonales
                 const connections: Connection[] = isMobile ? [
                   // Mobile: simple vertical flow
-                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.careerOps, toEdge: 'top' },
+                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
+                  { from: cardRefs.claudeable, fromEdge: 'bottom', to: cardRefs.careerOps, toEdge: 'top' },
                   { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
-                  { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
-                  { from: cardRefs.selfHealingChatbot, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
                 ] : [
                   // Desktop: project graph
-                  // Row 1: N4B ↔ Compound (horizontal)
-                  { from: cardRefs.claudeEye, fromEdge: 'right', to: cardRefs.careerOps, toEdge: 'left' },
-                  // Row 1 → Row 2: diagonals to portfolio + Tamara
-                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
-                  { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.selfHealingChatbot, toEdge: 'top' },
-                  // Row 2: portfolio ↔ Tamara (horizontal)
-                  { from: cardRefs.santiferIo, fromEdge: 'right', to: cardRefs.selfHealingChatbot, toEdge: 'left' },
-                  // Row 2 → Row 3: Lynq
-                  { from: cardRefs.santiferIo, fromEdge: 'bottom', to: cardRefs.claudeable, toEdge: 'top' },
+                  // Row 1: N4B ↔ Lynq (horizontal)
+                  { from: cardRefs.claudeEye, fromEdge: 'right', to: cardRefs.claudeable, toEdge: 'left' },
+                  // Row 1 → Row 2: N4B + Lynq down to Compound
+                  { from: cardRefs.claudeEye, fromEdge: 'bottom', to: cardRefs.careerOps, toEdge: 'top' },
+                  { from: cardRefs.claudeable, fromEdge: 'bottom', to: cardRefs.careerOps, toEdge: 'top' },
+                  // Row 2 → Row 3: Compound down to omarmostafa.org
+                  { from: cardRefs.careerOps, fromEdge: 'bottom', to: cardRefs.santiferIo, toEdge: 'top' },
                 ]
 
                 const paths = connections.map(conn => {
@@ -2290,26 +2080,23 @@ function App() {
               return (
                 <div
                   ref={cardRef}
-                  className={`h-full p-6 rounded-2xl transition-colors duration-200 flex flex-col ${hasHover ? 'group' : ''} ${
-                    isHighlight
-                      ? 'bg-gradient-to-br from-accent/5 to-transparent border-2 border-accent/50 hover:border-accent/70'
-                      : isTool
+                  className={`h-full p-6 rounded-2xl transition-colors duration-200 flex flex-col ${hasHover ? 'group' : ''} ${isHighlight
+                    ? 'bg-gradient-to-br from-accent/5 to-transparent border-2 border-accent/50 hover:border-accent/70'
+                    : isTool
                       ? `bg-card border border-tool/30 ${hasHover ? 'hover:border-tool/50' : ''}`
                       : 'bg-card border border-border hover:border-primary/30'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className={`font-display text-xl font-bold transition-colors ${
-                      isTool ? 'group-hover:text-tool' : 'group-hover:text-primary'
-                    }`}>{project.title}</h3>
+                    <h3 className={`font-display text-xl font-bold transition-colors ${isTool ? 'group-hover:text-tool' : 'group-hover:text-primary'
+                      }`}>{project.title}</h3>
                     <div className="flex items-center gap-2">
-                      <span className={`badge px-2 py-0.5 ${
-                        isTool
-                          ? 'bg-tool/10 text-tool'
-                          : isHighlight
+                      <span className={`badge px-2 py-0.5 ${isTool
+                        ? 'bg-tool/10 text-tool'
+                        : isHighlight
                           ? 'bg-accent/10 text-accent'
                           : 'bg-primary/10 text-primary'
-                      }`}>{project.badge}</span>
+                        }`}>{project.badge}</span>
                       {project.badgeBuilding && (
                         <span className="badge px-2 py-0.5 bg-success/5 text-success flex items-center gap-1.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse-dot"></span>
@@ -2323,11 +2110,10 @@ function App() {
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech) => (
-                      <span key={tech} className={`px-2 py-1 rounded-md text-xs ${
-                        isTool
-                          ? 'bg-tool/10 text-tool'
-                          : 'bg-muted text-muted-foreground'
-                      }`}>{tech}</span>
+                      <span key={tech} className={`px-2 py-1 rounded-md text-xs ${isTool
+                        ? 'bg-tool/10 text-tool'
+                        : 'bg-muted text-muted-foreground'
+                        }`}>{tech}</span>
                     ))}
                   </div>
                   <div className="flex flex-col gap-3 mt-auto">
@@ -2337,7 +2123,7 @@ function App() {
                         className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors duration-200 group/cta"
                       >
                         <span className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 group-hover/cta:bg-accent/20 group-hover/cta:border-accent/50 transition-all duration-200">{project.caseStudyLabel}</span>
-                        <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />
+                        {lang === 'ar' ? <ChevronLeft className="w-4 h-4 group-hover/cta:-translate-x-0.5 transition-transform duration-200" /> : <ChevronRight className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform duration-200" />}
                       </Link>
                     )}
                     {project.link && (
@@ -2346,9 +2132,8 @@ function App() {
                           href={(project as { linkUrl?: string }).linkUrl ?? `https://${project.link}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`inline-flex items-center gap-2 text-xs ${
-                            isTool ? 'text-tool hover:text-tool' : 'text-primary'
-                          } hover:underline`}
+                          className={`inline-flex items-center gap-2 text-xs ${isTool ? 'text-tool hover:text-tool' : 'text-primary'
+                            } hover:underline`}
                         >
                           {project.link.includes('github.com') ? (
                             <>
@@ -2406,30 +2191,27 @@ function App() {
                   ))}
                 </svg>
 
-                {/* Row 1: N4B + Compound SNBL */}
+                {/* Row 1: N4B + Lynq */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
                   <AnimatedSection delay={0.1}>
                     <ProjectCard project={claudeEye} cardRef={cardRefs.claudeEye} />
                   </AnimatedSection>
                   <AnimatedSection delay={0.15}>
+                    <ProjectCard project={claudeable} cardRef={cardRefs.claudeable} />
+                  </AnimatedSection>
+                </div>
+
+                {/* Row 2: Compound SNBL (full width) */}
+                <div className="grid grid-cols-1 gap-6 mb-6 relative z-10">
+                  <AnimatedSection delay={0.2}>
                     <ProjectCard project={careerOps} cardRef={cardRefs.careerOps} />
                   </AnimatedSection>
                 </div>
 
-                {/* Row 2: omarmostafa.org (highlight) + Tamara Partners Portal (highlight) */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6 relative z-10">
-                  <AnimatedSection delay={0.2}>
-                    <ProjectCard project={santiferIo} variant="highlight" cardRef={cardRefs.santiferIo} />
-                  </AnimatedSection>
-                  <AnimatedSection delay={0.25}>
-                    <ProjectCard project={selfHealingChatbot} variant="highlight" cardRef={cardRefs.selfHealingChatbot} />
-                  </AnimatedSection>
-                </div>
-
-                {/* Row 3: Lynq (full width) */}
+                {/* Row 3: omarmostafa.org (full width) */}
                 <div className="grid grid-cols-1 gap-6 mb-6 relative z-10">
-                  <AnimatedSection delay={0.3}>
-                    <ProjectCard project={claudeable} variant="tool-static" cardRef={cardRefs.claudeable} />
+                  <AnimatedSection delay={0.25}>
+                    <ProjectCard project={santiferIo} variant="highlight" cardRef={cardRefs.santiferIo} />
                   </AnimatedSection>
                 </div>
               </div>
@@ -2465,9 +2247,9 @@ function App() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 flex-wrap mb-1">
                         <span className="text-base md:text-lg font-bold text-foreground">santifer | AI Builder</span>
-                        <svg viewBox="0 0 22 22" className="w-5 h-5 text-[#1d9bf0] shrink-0" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.893.143.636-.131 1.221-.437 1.69-.883.445-.47.751-1.054.882-1.69.132-.633.083-1.29-.14-1.898.587-.273 1.084-.704 1.438-1.244.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"/></svg>
+                        <svg viewBox="0 0 22 22" className="w-5 h-5 text-[#1d9bf0] shrink-0" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.893.143.636-.131 1.221-.437 1.69-.883.445-.47.751-1.054.882-1.69.132-.633.083-1.29-.14-1.898.587-.273 1.084-.704 1.438-1.244.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z" /></svg>
                         <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 ml-auto" fill="currentColor" opacity={0.4}>
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                       </div>
                       <p className="text-sm text-muted-foreground mb-3">@santifer</p>
@@ -2484,10 +2266,10 @@ function App() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 flex-wrap mb-1">
                             <span className="text-base md:text-lg font-bold text-foreground">{t.xPost.quoteAuthor}</span>
-                            <svg viewBox="0 0 22 22" className="w-5 h-5 text-[#1d9bf0] shrink-0" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.893.143.636-.131 1.221-.437 1.69-.883.445-.47.751-1.054.882-1.69.132-.633.083-1.29-.14-1.898.587-.273 1.084-.704 1.438-1.244.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"/></svg>
-                            <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="#FF6600"><rect x="4" y="4" width="16" height="16" rx="2"/><text x="12" y="17" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">Y</text></svg>
+                            <svg viewBox="0 0 22 22" className="w-5 h-5 text-[#1d9bf0] shrink-0" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.893.143.636-.131 1.221-.437 1.69-.883.445-.47.751-1.054.882-1.69.132-.633.083-1.29-.14-1.898.587-.273 1.084-.704 1.438-1.244.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z" /></svg>
+                            <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="#FF6600"><rect x="4" y="4" width="16" height="16" rx="2" /><text x="12" y="17" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">Y</text></svg>
                             <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 ml-auto" fill="currentColor" opacity={0.4}>
-                              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                             </svg>
                           </div>
                           <p className="text-sm text-muted-foreground mb-2">{t.xPost.quoteHandle} · {t.xPost.quoteRole}</p>
@@ -2561,45 +2343,45 @@ function App() {
 
           {/* Reddit Posts */}
           <div className="grid md:grid-cols-2 gap-4">
-          {t.redditPosts?.map((rp, i) => (
-            <AnimatedSection key={rp.url} delay={0.15 + i * 0.1}>
-              <div className="h-full">
-                <a
-                  href={rp.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col p-5 rounded-2xl bg-card border border-border/50 border-t-2 border-t-[#FF4500] hover:border-border transition-colors group h-full"
-                >
-                  <div className="flex gap-3">
-                    <img src="/foto-avatar.webp" alt="" role="presentation" width={384} height={384} className="w-10 h-10 rounded-full shrink-0 mt-0.5" />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-start gap-2">
-                        <p className="text-sm text-foreground leading-relaxed">{rp.hook}<span className="text-muted-foreground">...</span> <span className="text-[#FF4500] group-hover:text-[#FF4500] transition-colors">{lang === 'ar' ? 'المزيد' : 'read more'}</span></p>
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 mt-0.5" fill="#FF4500">
-                          <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
-                        </svg>
+            {t.redditPosts?.map((rp, i) => (
+              <AnimatedSection key={rp.url} delay={0.15 + i * 0.1}>
+                <div className="h-full">
+                  <a
+                    href={rp.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col p-5 rounded-2xl bg-card border border-border/50 border-t-2 border-t-[#FF4500] hover:border-border transition-colors group h-full"
+                  >
+                    <div className="flex gap-3">
+                      <img src="/foto-avatar.webp" alt="" role="presentation" width={384} height={384} className="w-10 h-10 rounded-full shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex justify-between items-start gap-2">
+                          <p className="text-sm text-foreground leading-relaxed">{rp.hook}<span className="text-muted-foreground">...</span> <span className="text-[#FF4500] group-hover:text-[#FF4500] transition-colors">{lang === 'ar' ? 'المزيد' : 'read more'}</span></p>
+                          <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 mt-0.5" fill="#FF4500">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-border/50 flex items-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1.5">
-                      <ArrowUp className="w-3.5 h-3.5" />
-                      {rp.upvotes}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      {rp.comments}
-                    </span>
-                    <span className="text-muted-foreground/60">{rp.subreddit}</span>
-                    <span className="ml-auto text-[#FF4500] group-hover:underline flex items-center gap-1.5 transition-colors">
-                      {rp.cta}
-                      <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </AnimatedSection>
-          ))}
+                    <div className="mt-4 pt-3 border-t border-border/50 flex items-center gap-4 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1.5">
+                        <ArrowUp className="w-3.5 h-3.5" />
+                        {rp.upvotes}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        {rp.comments}
+                      </span>
+                      <span className="text-muted-foreground/60">{rp.subreddit}</span>
+                      <span className="ml-auto text-[#FF4500] group-hover:underline flex items-center gap-1.5 transition-colors">
+                        {rp.cta}
+                        <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
 
           <div className="h-6" />
@@ -2642,11 +2424,11 @@ function App() {
             ))}
           </div>
 
-          
+
           {/* Separator */}
           <div className="my-10 border-t border-border/40" />
 
-{/* Teaching / Speaking cards */}
+          {/* Teaching / Speaking cards */}
           <div className="grid md:grid-cols-2 gap-6">
             {t.speaking.items.map((talk: { year: string; event: string; eventUrl: string; title: string; desc: string; pdf: string; featured: boolean; materialUrl?: string; materialLabel?: string }, i: number) => (
               <AnimatedSection key={i} delay={0.1 + i * 0.1}>
@@ -2830,23 +2612,23 @@ function App() {
                   const group = i < 4 ? 0 : i < 8 ? 1 : i < 11 ? 2 : 3
                   const isAlt = group % 2 === 1
                   return (
-                  <AnimatedSection key={i} delay={0.1 + i * 0.05}>
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                      className={`flex items-center gap-4 p-4 hover:border-accent/30 transition-colors duration-200 group cursor-pointer ${isAlt ? 'bg-muted/40' : 'bg-card'}`}
-                    >
-                      <span className="text-sm font-mono text-accent font-medium">{cert.year}</span>
-                      <div className="flex-1">
-                        <p className="font-medium group-hover:text-accent transition-colors">{cert.title}</p>
-                        <p className="text-sm text-muted-foreground">{cert.org}</p>
-                      </div>
-                      <div className="opacity-60 group-hover:opacity-100 transition-opacity">
-                        <CertLogo logo={cert.logo} />
-                      </div>
-                    </a>
-                  </AnimatedSection>
+                    <AnimatedSection key={i} delay={0.1 + i * 0.05}>
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        className={`flex items-center gap-4 p-4 hover:border-accent/30 transition-colors duration-200 group cursor-pointer ${isAlt ? 'bg-muted/40' : 'bg-card'}`}
+                      >
+                        <span className="text-sm font-mono text-accent font-medium">{cert.year}</span>
+                        <div className="flex-1">
+                          <p className="font-medium group-hover:text-accent transition-colors">{cert.title}</p>
+                          <p className="text-sm text-muted-foreground">{cert.org}</p>
+                        </div>
+                        <div className="opacity-60 group-hover:opacity-100 transition-opacity">
+                          <CertLogo logo={cert.logo} />
+                        </div>
+                      </a>
+                    </AnimatedSection>
                   )
                 })}
               </div>
@@ -2955,6 +2737,16 @@ function App() {
               >
                 <LinkedInLogo className="w-4 h-4 text-[hsl(var(--linkedin))]" />
                 LinkedIn
+                <ExternalLink className="w-3 h-3" aria-hidden="true" />
+              </a>
+              <a
+                href="https://github.com/DefiniteCoding"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:border-primary/50 transition-colors duration-200 hover:bg-primary/5"
+              >
+                <Github className="w-4 h-4" />
+                GitHub
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
             </div>
