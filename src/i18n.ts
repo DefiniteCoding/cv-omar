@@ -1,6 +1,6 @@
 export const seo = {
   ar: {
-    title: 'عمر مصطفى محاسب | مدير منتج - الخدمات المصرفية كخدمة والتمويل المدمج',
+    title: 'عمر مصطفى محسب | مدير منتج - الخدمات المصرفية كخدمة والتمويل المدمج',
     description: 'مدير منتج بخبرة +8 سنوات في التمويل المدمج وBaaS وبرامج البطاقات والبنية التحتية المالية. أطلق منتجات في NymCard وCompound وTamara.',
   },
   en: {
@@ -12,7 +12,7 @@ export const seo = {
 const omContent = {
   greeting: 'who ships payment and banking products across',
   greetingRoles: ['Fintech Product Manager', 'Payments & BaaS PM', 'Embedded Finance Lead', 'Developer Experience PM'],
-  pillLabels: ['8+ Years in Fintech', 'Dubai, UAE', '3 Products Shipped'],
+  pillLabels: ['8+ Years in Fintech', '100M+ SAR GMV', '3 Products Shipped', '🇦🇪 Dubai, UAE'],
   email: 'omarmostafapm@gmail.com',
   role: '',
   story: {
@@ -25,7 +25,7 @@ const omContent = {
         '*Shipping* +products that last+.',
       ],
     ],
-    why: "At Tamara I launched Partners Portal 2.0 that cut merchant support queries by 30% and lifted satisfaction by 25%. At NymCard I lead BaaS product for SMEs across the UAE.",
+    why: "At Tamara I launched Partners Portal 2.0 that cut merchant support queries by 30% and lifted satisfaction by 25%.\nAt NymCard I lead BaaS product for SMEs across the UAE.",
     seeking: [
       "Still feels like I'm just getting started.",
       'Complex systems. High-stakes fintech. End-to-end.',
@@ -150,7 +150,8 @@ const omContent = {
       {
         title: 'Nym4Business (N4B)',
         badge: 'NymCard · Shipped',
-        badgeBuilding: 'Shipped',
+        badgeBuilding: '',
+        logo: '/nymcard-logo.png',
         desc: 'White-label Corporate BaaS platform sold to financial institutions across MENA. Features multi-tier corporate hierarchy, card issuance, expense management, KYB/IDV onboarding (Onfido + PRM), and Visa Direct cross-border payments.',
         tech: ['BaaS', 'Card Issuing', 'Visa Direct', 'KYB/KYC', 'Corporate Hierarchy'],
         link: '',
@@ -161,6 +162,7 @@ const omContent = {
         title: 'Lynq',
         badge: 'NymCard · Shipped',
         badgeBuilding: '',
+        logo: '/lynq-logo.png',
         desc: 'Direct-to-SME banking product (getlynq.ae). Enables UAE-based businesses to manage corporate spend, issue cards, track expenses, and move money — all in one platform built on NymCard BaaS.',
         tech: ['SME Banking', 'Corporate Cards', 'Expense Tracking', 'UAE Compliance'],
         link: 'getlynq.ae',
@@ -169,6 +171,7 @@ const omContent = {
         title: 'Compound SNBL',
         badge: 'Compound · Shipped',
         badgeBuilding: '',
+        logo: '/compound-logo.png',
         desc: 'Save Now, Buy Later product for Compound. Defined savings plans, SNBL eligibility rules, and payout systems. Delivered customer mobile app, embeddable checkout widget, admin backoffice portal, and API documentation.',
         tech: ['SNBL', 'Embedded Finance', 'Mobile App', 'Checkout Widget', 'API Docs'],
         link: '',
@@ -179,6 +182,7 @@ const omContent = {
         title: 'omarmostafa.org',
         badge: 'This Portfolio',
         badgeBuilding: '',
+        logo: '/favicon.png',
         desc: 'Interactive AI-augmented CV with Claude API streaming chatbot, agentic RAG, 6-layer security, 71 automated evals, and voice mode. Built entirely with Claude Code and Figma MCP.',
         tech: ['React 19', 'TypeScript', 'Claude API', 'Supabase', 'Tailwind', 'Netlify'],
         link: 'omarmostafa.org',
@@ -292,7 +296,7 @@ const omContent = {
         footer: 'View Tamara Partners Portal Case Study',
       },
       jacobo: {
-        title: 'Developer Documentation & API Reference Portal',
+        title: 'Tamara Docs & API Reference Portal',
         badge: 'Integration PM · Launched',
         github: '',
         stars: '',
@@ -559,18 +563,18 @@ const omContent = {
 
 const arContent = {
   ...omContent,
-  greeting: 'يبني منتجات الدفع والخدمات المصرفية والفينتك عبر',
-  greetingRoles: ['مدير منتج فينتك', 'مدير منتجات الدفع والـBaaS', 'قائد التمويل المدمج', 'مدير تجربة المطورين'],
-  pillLabels: ['٨+ سنوات في الفينتك', 'دبي، الإمارات', '٣ منتجات مُشحونة'],
+  greeting: 'يبني منتجات التقنية المالية عبر',
+  greetingRoles: ['مدير منتجات التقنية المالية', 'مدير المنتجات المصرفية كخدمة والمدفوعات', 'قائد منتجات تمويل مدمج', 'مدير منتجات تجربة مطورين'],
+  pillLabels: ['٨+ سنوات في التقنية المالية', '+١٠٠ مليون ريال GMV', '٣ منتجات مُشحونة', '🇦🇪 دبي، الإمارات'],
   location: 'دبي، الإمارات',
-  roles: ['مدير منتج - الخدمات المصرفية كخدمة', 'مدير منتج فينتك', 'قائد التمويل المدمج'],
+  roles: ['مدير منتج - الخدمات المصرفية كخدمة', 'مدير منتج التقنية المالية', 'قائد التمويل المدمج'],
   story: {
     ...omContent.story,
     context: '+٨ سنوات في شحن منتجات مالية تتعامل مع أموال حقيقية.',
     reflections: ['يعمل. ويصل للمستخدمين فعلاً.', '...والتجار يستخدمونه.'],
     hookParagraphs: [['مدير منتج. ومفكر منظومي.'], ['ما يحركني يتجاوز الدور الوظيفي.', '*بناء* +منتجات تدوم+.']],
-    why: 'في تمارا أطلقت Partners Portal 2.0 الذي خفّض استفسارات الدعم بنسبة 30% ورفع الرضا بنسبة 25%/n. في NymCard أقود منتج BaaS للشركات الصغيرة والمتوسطة في الإمارات.',
-    seeking: ['ما زلت أشعر أنني في البداية فقط.', 'أنظمة معقدة. فينتك عالية المخاطر. ملكية شاملة.', 'مستعد للفصل القادم.'],
+    why: 'في تمارا أطلقت Partners Portal 2.0 الذي خفّض استفسارات الدعم بنسبة 30% ورفع الرضا بنسبة 25%.\nفي NymCard أقود منتج الخدمات المصرفية كخدمة للشركات الصغيرة والمتوسطة في الإمارات.',
+    seeking: ['ما زلت أشعر أنني في البداية فقط.', 'أنظمة معقدة. التقنية المالية عالية المخاطر. ملكية شاملة.', 'مستعد للفصل القادم.'],
     nav: [
       { icon: 'briefcase', label: 'مسيرتي', href: '#experience' },
       { icon: 'folder', label: 'ما أبنيه', href: '#projects' },
@@ -610,7 +614,7 @@ const arContent = {
     categories: [
       { name: 'المنتج', items: ['JIRA', 'Figma', 'Notion', 'Confluence', 'Miro'] },
       { name: 'التقني', items: ['REST APIs', 'JSON', 'SQL', 'Postman', 'Kibana', 'Git', 'OpenAPI / YAML', 'الكتابة التقنية', 'Markdown'] },
-      { name: 'مجال الفينتك', items: ['Visa Direct', 'KYB/KYC (Onfido, PRM)', 'إصدار البطاقات', 'إدارة FX', 'الامتثال CBUAE'] },
+      { name: 'مجال التقنية المالية', items: ['Visa Direct', 'KYB/KYC (Onfido, PRM)', 'إصدار البطاقات', 'إدارة FX', 'الامتثال CBUAE'] },
       { name: 'الذكاء الاصطناعي', items: ['Claude Code', 'Cursor', 'Google Antigravity', 'Figma MCP', 'هندسة المطالبات'] },
     ],
   },
@@ -625,7 +629,8 @@ const arContent = {
       {
         title: 'Nym4Business (N4B)',
         badge: 'NymCard · تم الشحن',
-        badgeBuilding: 'تم الشحن',
+        badgeBuilding: '',
+        logo: '/nymcard-logo.png',
         desc: 'منصة BaaS مؤسسية بيضاء العلامة التجارية تُباع للمؤسسات المالية في منطقة الشرق الأوسط. تشمل الهيكل المؤسسي متعدد المستويات وإصدار البطاقات وإدارة المصروفات وإعداد KYB/IDV والمدفوعات عبر الحدود.',
         tech: ['BaaS', 'Card Issuing', 'Visa Direct', 'KYB/KYC', 'Corporate Hierarchy'],
         link: '',
@@ -636,6 +641,7 @@ const arContent = {
         title: 'Lynq',
         badge: 'NymCard · تم الشحن',
         badgeBuilding: '',
+        logo: '/lynq-logo.png',
         desc: 'منتج مصرفي مباشر للشركات الصغيرة والمتوسطة (getlynq.ae). يتيح للشركات الإماراتية إدارة المصروفات المؤسسية وإصدار البطاقات وتتبع النفقات وتحريك الأموال — كل ذلك في منصة واحدة.',
         tech: ['SME Banking', 'Corporate Cards', 'Expense Tracking', 'UAE Compliance'],
         link: 'getlynq.ae',
@@ -644,6 +650,7 @@ const arContent = {
         title: 'Compound SNBL',
         badge: 'Compound · تم الشحن',
         badgeBuilding: '',
+        logo: '/compound-logo.png',
         desc: 'منتج "ادخر الآن واشترِ لاحقاً" لـ Compound. تعريف خطط الادخار وقواعد الأهلية وأنظمة الصرف. تسليم تطبيق جوال العملاء وأداة الدفع المدمجة وبوابة الإدارة الخلفية وتوثيق API.',
         tech: ['SNBL', 'Embedded Finance', 'Mobile App', 'Checkout Widget', 'API Docs'],
         link: '',
@@ -654,6 +661,7 @@ const arContent = {
         title: 'omarmostafa.org',
         badge: 'هذا الموقع',
         badgeBuilding: '',
+        logo: '/favicon.png',
         desc: 'سيرة ذاتية تفاعلية بمساعدة الذكاء الاصطناعي مع chatbot يعتمد Claude API (streaming) وRAG أعماقي وأمان 6 طبقات و71 تقييماً آلياً ووضع صوتي. مبني بالكامل بـ Claude Code وFigma MCP.',
         tech: ['React 19', 'TypeScript', 'Claude API', 'Supabase', 'Tailwind', 'Netlify'],
         link: 'omarmostafa.org',
@@ -673,7 +681,7 @@ const arContent = {
   claudeCode: {
     ...omContent.claudeCode,
     title: 'سير العمل بمساعدة الذكاء الاصطناعي',
-    badge: 'فاعلية عالية · الفينتك يلتقي الذكاء الاصطناعي',
+    badge: 'فاعلية عالية · التقنية المالية يلتقي الذكاء الاصطناعي',
     desc: 'أستخدم أدوات الذكاء الاصطناعي ليس فقط لكتابة وثائق المتطلبات — بل لنمذجة ميزات BaaS وتوليد مواصفات API والتنسيق مع التصميم عبر Figma MCP وبناء الأدوات الداخلية.',
     highlights: [
       'نمذجة المنتج: Claude Code + Figma MCP للانتقال من المفهوم إلى نموذج تفاعلي في ساعات',
@@ -742,7 +750,7 @@ const arContent = {
       },
       jacobo: {
         ...omContent.experience.santifer.jacobo,
-        title: 'توثيق المطورين وبوابة مرجع API',
+        title: 'Tamara Docs وبوابة مرجع API',
         badge: 'مدير التكامل · تم الإطلاق',
         desc: 'أدرت كامل سطح توثيق المطورين في Tamara — من مجموعة Postman إلى مواصفات OpenAPI إلى التوثيق العام. خفّض وقت الوصول للسوق 25% ومكّن أكثر من 100 مليون ريال GMV.',
         soldWith: 'اقرأ دراسة حالة بوابة API',
@@ -857,20 +865,20 @@ const arContent = {
     ...omContent.speaking,
     title: 'المشاركات',
     slides: 'الشرائح',
-    aiFluency: { ...omContent.speaking.aiFluency, title: 'إدارة المنتج بمساعدة الذكاء الاصطناعي', badge: 'BaaS · أدوات الذكاء الاصطناعي', desc: 'استخدام أدوات الذكاء الاصطناعي لتسريع تسليم منتجات الفينتك.' },
+    aiFluency: { ...omContent.speaking.aiFluency, title: 'إدارة المنتج بمساعدة الذكاء الاصطناعي', badge: 'BaaS · أدوات الذكاء الاصطناعي', desc: 'استخدام أدوات الذكاء الاصطناعي لتسريع تسليم منتجات التقنية المالية.' },
   },
   education: {
     title: 'التعليم',
     items: [
       {
         year: '2012 – 2017',
-        org: 'Loughborough University',
-        title: 'بكالوريوس هندسة كهربائية واتصالات',
-        desc: 'لوبوروه، المملكة المتحدة',
+        org: 'جامعة لوفبوروه',
+        title: 'بكالوريوس هندسة الكهرباء والاتصالات',
+        desc: 'لوفبوروه، المملكة المتحدة',
       },
       {
-        year: '2024',
-        org: 'Unlearn',
+        year: '2024-2025',
+        org: 'Unlearn Product',
         title: 'دورة إدارة المنتجات المباشرة',
         desc: '🥇 المركز الأول في يوم العرض · برنامج شهادة إدارة المنتجات',
       },
@@ -890,8 +898,8 @@ const arContent = {
   },
   cta: {
     title: 'لنتحدث',
-    desc: 'أبني منتجات BaaS والتمويل المدمج في منطقة الشرق الأوسط. إذا كان لديك تحدٍّ صعب في الفينتك — دعنا نتحدث.',
-    contact: 'تواصل',
+    desc: 'أبني منتجات BaaS والتمويل المدمج في منطقة الشرق الأوسط. إذا كان لديك تحدٍّ صعب في التقنية المالية — دعنا نتحدث.',
+    contact: 'تواصل معي',
   },
   ui: {
     languageBanner: 'This site is also available in English',

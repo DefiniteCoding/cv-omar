@@ -1217,7 +1217,7 @@ function StorySection({ t }: { t: (typeof translations)[Lang] }) {
   }, [typewriterComplete])
 
   return (
-    <section ref={sectionRef} id="about" className="relative py-16 md:py-24">
+    <section ref={sectionRef} id="about" className="relative py-10 md:py-16">
       {/* Vignette horizontal: tapa puntos en el centro, se ven en los bordes */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(90deg, transparent 0%, hsl(var(--background)) 25%, hsl(var(--background)) 75%, transparent 100%)',
@@ -1278,9 +1278,13 @@ function StorySection({ t }: { t: (typeof translations)[Lang] }) {
             animate={typewriterComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
             transition={{ duration: 0.6, delay: typewriterComplete ? 0.1 : 0, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <p className={`text-base md:text-lg text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto transition-opacity duration-[2500ms] ease-in-out ${textDimmed ? (textRevealed ? 'opacity-50' : 'opacity-15') : 'opacity-100'}`}>
-              {t.story.why}
-            </p>
+            <div className={`text-center max-w-3xl mx-auto transition-opacity duration-[2500ms] ease-in-out ${textDimmed ? (textRevealed ? 'opacity-50' : 'opacity-15') : 'opacity-100'}`}>
+              {t.story.why.split('\n').map((line, i) => (
+                <p key={i} className="text-base md:text-xl font-semibold text-foreground leading-relaxed mb-1">
+                  {line}
+                </p>
+              ))}
+            </div>
           </motion.div>
 
           <div className="mt-6 text-center max-w-3xl mx-auto">
@@ -1478,11 +1482,11 @@ function App() {
                 <br />
                 {lang === 'en'
                   ? <>BaaS <span className="opacity-60">·</span> BNPL <span className="opacity-60">·</span> Payments <span className="opacity-60">·</span> Cards</>
-                  : <>الخدمات المصرفية كخدمة <span className="opacity-60">·</span> اشتر الآن وادفع لاحقاً <span className="opacity-60">·</span> المدفوعات <span className="opacity-60">·</span> البطاقات</>
+                  : <>الخدمات المصرفية كخدمة <span className="opacity-60">·</span> اشتر الان وادفع لاحقاً <span className="opacity-60">·</span> مدفوعات <span className="opacity-60">·</span> بطاقات</>
                 }
               </h1>
 
-              <div className={`flex flex-wrap gap-3 justify-center ${lang === 'ar' ? 'md:justify-end' : 'md:justify-start'}`}>
+              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                 {t.pillLabels.map((label, i) => (
                   <span
                     key={label}
@@ -1506,7 +1510,7 @@ function App() {
       <StorySection t={t} />
 
       {/* Experience - Con preámbulo de competencias */}
-      <section id="experience" className="py-16 md:py-24 bg-muted/30" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 2000px' }}>
+      <section id="experience" className="py-10 md:py-16 bg-muted/30" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 2000px' }}>
         <div className="max-w-5xl mx-auto px-6">
           <AnimatedSection>
             <h2 className="font-display text-2xl font-semibold mb-8 flex items-center gap-3">
@@ -1542,7 +1546,7 @@ function App() {
 
           {/* Zinkee */}
           <AnimatedSection delay={0.1}>
-            <div className="mb-20">
+            <div className="mb-10">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <img src="/nymcard-logo.png" alt="NymCard" className="w-10 h-10 shrink-0 rounded-lg" width={40} height={40} loading="lazy" decoding="async" />
@@ -1565,7 +1569,7 @@ function App() {
 
           {/* career-ops - Open Source */}
           <AnimatedSection delay={0.1}>
-            <div className="mb-20">
+            <div className="mb-10">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <img src={t.experience.careerOps.logo} alt="career-ops" className="w-10 h-10 shrink-0 rounded-lg" width={40} height={40} loading="lazy" decoding="async" />
@@ -1584,34 +1588,36 @@ function App() {
               </div>
               <p className="text-primary font-medium mb-1">{t.experience.careerOps.role}</p>
               <p className="text-sm text-muted-foreground mb-2">{t.experience.careerOps.period}</p>
-              <p className="text-muted-foreground whitespace-pre-line mb-6">{t.experience.careerOps.desc}</p>
+              <p className="text-muted-foreground whitespace-pre-line">{t.experience.careerOps.desc}</p>
 
               {/* As Featured In - Press Logos */}
-              <div className="pt-4 border-t border-border/50">
-                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">{t.experience.careerOps.pressLabel}</p>
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-3 md:gap-x-10">
-                  {t.experience.careerOps.press.map((p) => (
-                    <a
-                      key={p.name}
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                      aria-label={`${p.name} — featured article on career-ops`}
-                      className="group inline-flex items-center"
-                    >
-                      <img
-                        src={p.src}
-                        alt={p.name}
-                        width={p.width}
-                        height={p.height}
-                        style={{ height: `${p.height}px` }}
-                        className="press-logo w-auto opacity-55 group-hover:opacity-100 transition-opacity duration-300"
-                        loading="lazy"
-                      />
-                    </a>
-                  ))}
+              {t.experience.careerOps.press.length > 0 && (
+                <div className="pt-4 border-t border-border/50">
+                  <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">{t.experience.careerOps.pressLabel}</p>
+                  <div className="flex flex-wrap items-center gap-x-8 gap-y-3 md:gap-x-10">
+                    {t.experience.careerOps.press.map((p) => (
+                      <a
+                        key={p.name}
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        aria-label={`${p.name} — featured article on career-ops`}
+                        className="group inline-flex items-center"
+                      >
+                        <img
+                          src={p.src}
+                          alt={p.name}
+                          width={p.width}
+                          height={p.height}
+                          style={{ height: `${p.height}px` }}
+                          className="press-logo w-auto opacity-55 group-hover:opacity-100 transition-opacity duration-300"
+                          loading="lazy"
+                        />
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Deep dive CTA */}
               <Link to={lang === 'en' ? '/compound-save-now-buy-later' : '/compound-snbl'} className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 group/cta">
@@ -1623,7 +1629,7 @@ function App() {
 
           {/* Santifer iRepair - Bento Grid */}
           <AnimatedSection delay={0.1}>
-            <div className="mb-12">
+            <div className="mb-8">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#1D3D6F] shrink-0">
@@ -1638,7 +1644,7 @@ function App() {
               </div>
               <p className="text-primary font-medium mb-1">{t.experience.santifer.role}</p>
               <p className="text-sm text-muted-foreground mb-4">{t.experience.santifer.period}</p>
-              <ul className="text-sm text-muted-foreground space-y-1 mb-6">
+              <ul className="text-sm text-muted-foreground space-y-1">
                 {t.experience.santifer.highlights.map((h, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="text-primary mt-1">•</span>
@@ -1674,8 +1680,8 @@ function App() {
           </AnimatedSection>
 
           {/* LICO Cosmetics */}
-          <AnimatedSection delay={0.5} className="mt-20">
-            <div className="mb-20">
+          <AnimatedSection delay={0.5} className="mt-8">
+            <div className="mb-10">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#F5F3EE] flex items-center justify-center shrink-0">
@@ -1690,7 +1696,7 @@ function App() {
                 </a>
                 <span className="text-sm text-muted-foreground">{t.experience.lico.location}</span>
               </div>
-              <p className="text-accent font-medium mb-1">{t.experience.lico.role}</p>
+              <p className="text-primary font-medium mb-1">{t.experience.lico.role}</p>
               <p className="text-sm text-muted-foreground mb-4">{t.experience.lico.period}</p>
               <p className="text-muted-foreground">{t.experience.lico.desc}</p>
 
@@ -1699,7 +1705,7 @@ function App() {
 
           {/* Everis */}
           <AnimatedSection delay={0.6}>
-            <div className="mb-20">
+            <div className="mb-10">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-white flex items-center justify-center shrink-0 p-1.5">
@@ -1720,7 +1726,7 @@ function App() {
       </section>
 
       {/* Projects & Claude Code */}
-      <section id="projects" className="py-16 md:py-24" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1500px' }}>
+      <section id="projects" className="py-10 md:py-16" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1500px' }}>
         <div className="max-w-5xl mx-auto px-6">
           <AnimatedSection>
             <div className="flex items-center justify-between mb-12">
@@ -1832,12 +1838,8 @@ function App() {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 200 170" className="w-6 h-6" aria-hidden="true">
-                        <path fill="#FCB400" d="M90.039 12.368 24.079 39.66c-3.667 1.519-3.63 6.729.062 8.192l66.235 26.266a24.58 24.58 0 0 0 18.12 0l66.236-26.266c3.69-1.463 3.729-6.673.062-8.192l-65.96-27.292a24.58 24.58 0 0 0-18.795 0" />
-                        <path fill="#18BFFF" d="M105.312 88.46v65.617c0 3.12 3.147 5.258 6.048 4.108l73.806-28.648a4.42 4.42 0 0 0 2.79-4.108V59.813c0-3.121-3.147-5.258-6.048-4.108l-73.806 28.648a4.42 4.42 0 0 0-2.79 4.108" />
-                        <path fill="#F82B60" d="m88.078 91.846-21.904 10.576-2.224 1.075-46.238 22.155c-2.93 1.414-6.672-.722-6.672-3.978V60.088c0-1.178.604-2.195 1.414-2.96a5 5 0 0 1 1.12-.84c1.104-.663 2.68-.84 4.02-.31L87.71 83.76c3.564 1.414 3.844 6.408.368 8.087" />
-                      </svg>
+                    <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                      <img src="/tamara-logo.png" alt="Tamara" className="w-full h-full object-cover" />
                     </div>
                   </div>
                   <h4 className="font-display text-2xl font-bold mb-4">{t.experience.santifer.businessOS.title}</h4>
@@ -1889,8 +1891,8 @@ function App() {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
-                      <Bot className="w-6 h-6 text-primary" />
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 bg-[#1D3D6F] flex items-center justify-center p-2">
+                      <img src="/tamara-docs-logo.png" alt="Tamara Docs" className="w-full h-full object-contain" />
                     </div>
                     <span className="badge px-3 py-1 bg-primary/20 text-primary">{t.experience.santifer.jacobo.badge}</span>
                   </div>
@@ -1940,6 +1942,7 @@ function App() {
               desc: string
               tech: readonly string[]
               link: string
+              logo?: string
               isDependency?: boolean
               dependencyRole?: string
               caseStudyUrl?: string
@@ -2088,10 +2091,17 @@ function App() {
                     }`}
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className={`font-display text-xl font-bold transition-colors ${isTool ? 'group-hover:text-tool' : 'group-hover:text-primary'
-                      }`}>{project.title}</h3>
-                    <div className="flex items-center gap-2">
-                      <span className={`badge px-2 py-0.5 ${isTool
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      {project.logo && (
+                        <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+                          <img src={project.logo} alt="" className="w-full h-full object-cover" loading="lazy" />
+                        </div>
+                      )}
+                      <h3 className={`font-display text-xl font-bold transition-colors ${isTool ? 'group-hover:text-tool' : 'group-hover:text-primary'
+                        }`}>{project.title}</h3>
+                    </div>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className={`badge px-2 py-0.5 whitespace-nowrap ${isTool
                         ? 'bg-tool/10 text-tool'
                         : isHighlight
                           ? 'bg-accent/10 text-accent'
@@ -2222,7 +2232,7 @@ function App() {
       </section>
 
       {/* Sharing — Teaching + LinkedIn */}
-      <section id="speaking" className="py-16 md:py-24 bg-muted/30" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 800px' }}>
+      <section id="speaking" className="py-10 md:py-16 bg-muted/30" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 800px' }}>
         <div className="max-w-5xl mx-auto px-6">
           <AnimatedSection>
             <h2 className="font-display text-2xl font-semibold mb-8 flex items-center gap-3">
@@ -2526,7 +2536,7 @@ function App() {
       </section>
 
       {/* Education & Certifications */}
-      <section id="education" className="py-16 md:py-24" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1000px' }}>
+      <section id="education" className="py-10 md:py-16" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1000px' }}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Education */}
@@ -2638,7 +2648,7 @@ function App() {
       </section>
 
       {/* Skills */}
-      <section id="tech" className="py-16 md:py-24 bg-muted/30" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 600px' }}>
+      <section id="tech" className="py-10 md:py-16 bg-muted/30" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 600px' }}>
         <div className="max-w-5xl mx-auto px-6">
           <AnimatedSection>
             <h2 className="font-display text-2xl font-semibold mb-12 flex items-center gap-3">
@@ -2706,7 +2716,7 @@ function App() {
       </section>
 
       {/* Footer CTA */}
-      <footer id="contact" className="relative py-16 md:py-24">
+      <footer id="contact" className="relative py-10 md:py-16">
         {/* Vignette horizontal — zona limpia central, puntos en bordes */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: 'linear-gradient(90deg, transparent 0%, hsl(var(--background)) 25%, hsl(var(--background)) 75%, transparent 100%)',
