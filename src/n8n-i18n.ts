@@ -32,6 +32,12 @@ export const n8nContent = {
     slug: 'n8n-para-pms',
     altSlug: 'n8n-for-pms',
     readingTime: '5 min de lectura',
+    credit: {
+      label: 'Originally created by Santiago',
+      body: 'This content was originally created by Santiago (santifer.io) and is published here with full attribution. The workflows, templates, and tutorials are his work.',
+      url: 'https://santifer.io',
+      linkLabel: 'Visit santifer.io →',
+    },
     seo: {
       title: 'n8n para PMs: Cheat Sheet + Templates IA Gratis | omarmostafa.org',
       description: 'Cheat sheet de n8n para Product Managers: automatiza sprint reports y clasifica feedback con IA. 2 templates importables gratis. Tutorial paso a paso.',
@@ -249,6 +255,12 @@ export const n8nContent = {
     slug: 'n8n-for-pms',
     altSlug: 'n8n-para-pms',
     readingTime: '5 min read',
+    credit: {
+      label: 'Originally created by Santiago',
+      body: 'This content was originally created by Santiago (santifer.io) and is published here with full attribution. The workflows, templates, and tutorials are his work.',
+      url: 'https://santifer.io',
+      linkLabel: 'Visit santifer.io →',
+    },
     seo: {
       title: 'n8n for PMs: Cheat Sheet + Free AI Templates | omarmostafa.org',
       description: 'n8n cheat sheet for Product Managers: automate sprint reports and classify feedback with AI. 2 free importable workflow templates. Step-by-step tutorial.',

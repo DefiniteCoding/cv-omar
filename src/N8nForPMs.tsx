@@ -68,6 +68,13 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
           readingTime={t.readingTime}
         />
 
+        {/* Santiago credit banner */}
+        <div className="mb-8 rounded-xl border border-amber-500/30 bg-amber-500/5 px-5 py-4 flex flex-col gap-1">
+          <p className="text-sm font-semibold text-amber-600 dark:text-amber-400">{t.credit.label}</p>
+          <p className="text-sm text-muted-foreground">{t.credit.body}</p>
+          <a href={t.credit.url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-amber-600 dark:text-amber-400 hover:underline">{t.credit.linkLabel}</a>
+        </div>
+
         {/* Content */}
         <article className="prose-custom">
 

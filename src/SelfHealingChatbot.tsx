@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react'
-import { type N8nLang as Lang } from './n8n-i18n'
+type Lang = 'ar' | 'en'
 import { buildJsonLdFromRegistry } from './articles/json-ld'
 import { useArticleSeo } from './articles/use-article-seo'
 import {
@@ -93,14 +93,15 @@ const stackIcons: Record<string, React.ReactNode> = {
 // buildJsonLd
 // ---------------------------------------------------------------------------
 function buildJsonLd(lang: Lang) {
-  return buildJsonLdFromRegistry('self-healing-chatbot', lang, chatbotContent[lang])
+  const content = chatbotContent[lang as keyof typeof chatbotContent] ?? chatbotContent.en
+  return buildJsonLdFromRegistry('self-healing-chatbot', lang, content)
 }
 
 // ===========================================================================
 // MAIN COMPONENT
 // ===========================================================================
 export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
-  const t = chatbotContent[lang]
+  const t = (chatbotContent[lang as keyof typeof chatbotContent] ?? chatbotContent.en)
 
   useArticleSeo({
     lang,
@@ -113,7 +114,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
     modifiedTime: '2026-05-10',
     articleTags: 'LLMOps,self-healing chatbot,agentic RAG,jailbreak defense,Langfuse,evals,closed-loop,prompt injection',
     jsonLd: buildJsonLd(lang),
-    xDefaultSlug: 'chatbot-que-se-cura-solo',
+    xDefaultSlug: 'self-healing-chatbot',
   })
 
   const s = t.sections
@@ -132,7 +133,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         readingTime={t.readingTime}
       />
       <a href="#architecture" className="inline-flex items-center gap-2 -mt-4 mb-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-        {lang === 'ar' ? 'Ver demo interactiva de la arquitectura →' : 'See interactive architecture demo →'}
+        {'See interactive architecture demo →'}
       </a>
 
       <img
@@ -176,7 +177,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         <H3>{s.evolution.beforeAfter.heading}</H3>
         <img
           src="/chatbot/diagram-before-after.webp"
-          alt={lang === 'ar' ? 'Día 1 vs Hoy: 80 líneas → sistema completo, 0 capas → 6, 0 tests → 71, sin observabilidad → Langfuse full stack' : 'Day 1 vs Today: 80 lines → full system, 0 layers → 6, 0 tests → 71, no observability → Langfuse full stack'}
+          alt="Day 1 vs Today: 80 lines → full system, 0 layers → 6, 0 tests → 71, no observability → Langfuse full stack"
           className="w-full rounded-xl my-8"
           width={1400}
           height={782}
@@ -189,18 +190,15 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         <H2 id="architecture">{s.architecture.heading}</H2>
         <Prose>{s.architecture.body}</Prose>
         <ArchitectureDiagram
-          src={lang === 'ar' ? '/chatbot/architecture-diagram.html' : '/chatbot/architecture-diagram-en.html'}
+          src="/chatbot/architecture-diagram-en.html"
           thumbnail="/chatbot/diagram-thumbnail.webp"
-          alt={lang === 'ar'
-            ? 'Diagrama interactivo: 10 fases de la arquitectura del chatbot con audio narrado, zoom y pan'
-            : 'Interactive diagram: 10 phases of the chatbot architecture with narrated audio, zoom and pan'}
-          label={lang === 'ar' ? 'Arquitectura Interactiva' : 'Interactive Architecture'}
-          subtitle={lang === 'ar' ? '10 fases · audio narrado · zoom + pan' : '10 phases · narrated audio · zoom + pan'}
+          alt="Interactive diagram: 10 phases of the chatbot architecture with narrated audio, zoom and pan"
+          label="Interactive Architecture"
+          subtitle="10 phases · narrated audio · zoom + pan"
         />
-        <Prose className="text-xs !text-muted-foreground/60 -mt-4 mb-6">{lang === 'ar'
-          ? 'Este diagrama se generó con una skill de Claude Code que lee el JSON de arquitectura y produce un HTML interactivo con audio narrado, pan/zoom y dark mode. La misma filosofía que el chatbot: automatizar lo repetitivo.'
-          : 'This diagram was generated with a Claude Code skill that reads the architecture JSON and produces an interactive HTML with narrated audio, pan/zoom, and dark mode. Same philosophy as the chatbot: automate the repetitive.'
-        }</Prose>
+        <Prose className="text-xs !text-muted-foreground/60 -mt-4 mb-6">
+          {'This diagram was generated with a Claude Code skill that reads the architecture JSON and produces an interactive HTML with narrated audio, pan/zoom, and dark mode. Same philosophy as the chatbot: automate the repetitive.'}
+        </Prose>
         <CardStack items={s.architecture.layers.map(l => ({
           title: l.title,
           detail: l.detail,
@@ -209,7 +207,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         <H3>{s.architecture.lifecycleHeading}</H3>
         <img
           src="/chatbot/diagram-request-lifecycle.webp"
-          alt={lang === 'ar' ? 'Request lifecycle: Message → Decide (Sonnet) → Search (pgvector) → Rerank (Haiku) → Generate (Sonnet) → Score (Haiku, 0ms added)' : 'Request lifecycle: Message → Decide (Sonnet) → Search (pgvector) → Rerank (Haiku) → Generate (Sonnet) → Score (Haiku, 0ms added)'}
+          alt="Request lifecycle: Message → Decide (Sonnet) → Search (pgvector) → Rerank (Haiku) → Generate (Sonnet) → Score (Haiku, 0ms added)"
           className="w-full rounded-xl my-8"
           width={1400}
           height={594}
@@ -238,24 +236,24 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           hdSrc="/chatbot/dashboard-evals.webp"
           width={1613}
           height={1056}
-          alt={lang === 'ar' ? 'Dashboard LLMOps: tab Evals — 95.8% pass rate, 71 tests, 10 categorías con barras de progreso por categoría' : 'LLMOps Dashboard: Evals tab — 95.8% pass rate, 71 tests, 10 categories with per-category progress bars'}
-          caption={lang === 'ar' ? 'Tab Evals: 95.8% pass rate en 71 tests, desglose por categoría' : 'Evals tab: 95.8% pass rate across 71 tests, breakdown by category'}
+          alt="LLMOps Dashboard: Evals tab — 95.8% pass rate, 71 tests, 10 categories with per-category progress bars"
+          caption="Evals tab: 95.8% pass rate across 71 tests, breakdown by category"
         />
         <DiagramZoom
           src="/chatbot/dashboard-conversations.webp"
           hdSrc="/chatbot/dashboard-conversations.webp"
           width={1613}
           height={1056}
-          alt={lang === 'ar' ? 'Dashboard LLMOps: tab Conversations — lista de conversaciones reales con coste, tags, idioma y detalle de traza con spans' : 'LLMOps Dashboard: Conversations tab — real conversation list with cost, tags, language, and trace detail with spans'}
-          caption={lang === 'ar' ? 'Tab Conversations: conversaciones reales con coste por traza, tags automáticos y spans de latencia' : 'Conversations tab: real conversations with per-trace cost, auto-tags, and latency spans'}
+          alt="LLMOps Dashboard: Conversations tab — real conversation list with cost, tags, language, and trace detail with spans"
+          caption="Conversations tab: real conversations with per-trace cost, auto-tags, and latency spans"
         />
         <DiagramZoom
           src="/chatbot/dashboard-security.webp"
           hdSrc="/chatbot/dashboard-security.webp"
           width={1613}
           height={1056}
-          alt={lang === 'ar' ? 'Dashboard LLMOps: tab Security — 96.7% safety, funnel de seguridad, intentos de jailbreak recientes con detalle' : 'LLMOps Dashboard: Security tab — 96.7% safety, security funnel, recent jailbreak attempts with detail'}
-          caption={lang === 'ar' ? 'Tab Security: funnel de seguridad, 96.7% safety score, jailbreak attempts en tiempo real' : 'Security tab: security funnel, 96.7% safety score, real-time jailbreak attempts'}
+          alt="LLMOps Dashboard: Security tab — 96.7% safety, security funnel, recent jailbreak attempts with detail"
+          caption="Security tab: security funnel, 96.7% safety score, real-time jailbreak attempts"
         />
 
         {/* ================================================================ */}
@@ -266,7 +264,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         <Prose>{s.howItWasBuilt.narrative}</Prose>
         <img
           src="/chatbot/diagram-mma-phases.webp"
-          alt={lang === 'ar' ? 'The MMA Loop: Measure (Cost, Score, CI Gate) → Manage (Prompt Registry, Regression Test) → Automate (Red Team, Trace-to-Eval)' : 'The MMA Loop: Measure (Cost, Score, CI Gate) → Manage (Prompt Registry, Regression Test) → Automate (Red Team, Trace-to-Eval)'}
+          alt="The MMA Loop: Measure (Cost, Score, CI Gate) → Manage (Prompt Registry, Regression Test) → Automate (Red Team, Trace-to-Eval)"
           className="w-full rounded-xl my-8"
           width={1400}
           height={782}
@@ -313,7 +311,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           src="/chatbot/diagram-defense-layers-1400w.webp"
           srcSet="/chatbot/diagram-defense-layers-1400w.webp 1400w, /chatbot/diagram-defense-layers.webp 5504w"
           sizes="(max-width: 768px) 100vw, 672px"
-          alt={lang === 'ar' ? '6 capas de defensa: Keywords (50+ patrones) → Canary Tokens (UUID trap) → Fingerprinting (12 frases) → Anti-Extract → Safety Score (Haiku real-time) → Red Team (ataques evolutivos)' : '6 defense layers: Keywords (50+ patterns) → Canary Tokens (UUID trap) → Fingerprinting (12 phrases) → Anti-Extract → Safety Score (Haiku real-time) → Red Team (evolving attacks)'}
+          alt="6 defense layers: Keywords (50+ patterns) → Canary Tokens (UUID trap) → Fingerprinting (12 phrases) → Anti-Extract → Safety Score (Haiku real-time) → Red Team (evolving attacks)"
           className="w-full max-w-2xl mx-auto rounded-xl my-8"
           width={1400}
           height={781}
@@ -345,7 +343,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
 
         <img
           src="/chatbot/diagram-evals-donut.webp"
-          alt={lang === 'ar' ? '71 tests: RAG 16, Factual 9, Boundaries 7, Quality 7, Safety 7, Voice 6, Language 5, Multi-turn 5, Source Badges 5, Persona 4' : '71 tests: RAG 16, Factual 9, Boundaries 7, Quality 7, Safety 7, Voice 6, Language 5, Multi-turn 5, Source Badges 5, Persona 4'}
+          alt="71 tests: RAG 16, Factual 9, Boundaries 7, Quality 7, Safety 7, Voice 6, Language 5, Multi-turn 5, Source Badges 5, Persona 4"
           className="w-full max-w-lg mx-auto rounded-xl my-8"
           width={1400}
           height={1400}
@@ -370,7 +368,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
 
         <img
           src="/chatbot/diagram-closed-loop.webp"
-          alt={lang === 'ar' ? 'Closed-loop: Deploy → Score → Detect → Generate Test → CI Gate → Push → Deploy' : 'Closed-loop: Deploy → Score → Detect → Generate Test → CI Gate → Push → Deploy'}
+          alt="Closed-loop: Deploy → Score → Detect → Generate Test → CI Gate → Push → Deploy"
           className="w-full rounded-xl my-8"
           width={1400}
           height={782}
@@ -416,16 +414,12 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     loading="lazy"
-                    title={lang === 'ar'
-                      ? 'Demo: chatbot con modo texto streaming y cambio a modo voz en vivo'
-                      : 'Demo: chatbot with text streaming and live voice mode switch'}
+                    title="Demo: chatbot with text streaming and live voice mode switch"
                   />
                 )}
               </div>
               <figcaption className="px-4 py-2 text-sm text-muted-foreground text-center bg-card">
-                {lang === 'ar'
-                  ? 'Demo: modo texto con streaming → cambio a modo voz en tiempo real'
-                  : 'Demo: text mode with streaming → live voice mode switch'}
+                {'Demo: text mode with streaming → live voice mode switch'}
               </figcaption>
             </figure>
           )
@@ -435,31 +429,27 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           <figure>
             <img
               src="/chatbot/voice-mode-ui.webp"
-              alt={lang === 'ar'
-                ? 'Modo voz: VoiceOrb animado, timer 1:45, source badges enlazando a Agente IA Jacobo y Business OS'
-                : 'Voice mode: animated VoiceOrb, 1:45 timer, source badges linking to AI Agent Jacobo and Business OS'}
+              alt="Voice mode: animated VoiceOrb, 1:45 timer, source badges linking to case studies"
               className="rounded-2xl w-full"
               width={390}
               height={560}
               loading="lazy"
             />
             <figcaption className="mt-2 text-xs text-muted-foreground text-center">
-              {lang === 'ar' ? 'Modo voz' : 'Voice mode'}
+              Voice mode
             </figcaption>
           </figure>
           <figure>
             <img
               src="/chatbot/text-mode-ui.webp"
-              alt={lang === 'ar'
-                ? 'Modo texto: respuesta sobre Jacobo con source badges, botón de micrófono para cambiar a voz'
-                : 'Text mode: response about Jacobo with source badges, microphone button to switch to voice'}
+              alt="Text mode: response with source badges, microphone button to switch to voice"
               className="rounded-2xl w-full"
               width={390}
               height={560}
               loading="lazy"
             />
             <figcaption className="mt-2 text-xs text-muted-foreground text-center">
-              {lang === 'ar' ? 'Modo texto' : 'Text mode'}
+              Text mode
             </figcaption>
           </figure>
         </div>
@@ -495,7 +485,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         {/* Easter egg */}
         <details className="mx-auto mt-12 max-w-md cursor-pointer text-center text-sm text-muted-foreground">
           <summary className="select-none hover:text-foreground transition-colors">
-            {lang === 'ar' ? '¿Escuchaste eso?' : 'Did you hear that?'}
+            {'Did you hear that?'}
           </summary>
           <img
             src="/chatbot/yo-dawg-rag.webp"

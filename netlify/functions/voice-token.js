@@ -78,7 +78,7 @@ async function checkRateLimit(ip) {
 // Voice affect blocks (language-specific speech style + contact)
 // ---------------------------------------------------------------------------
 
-const VOICE_AFFECT_ES = `## Voice affect (speech style)
+const VOICE_AFFECT_AR = `## Voice affect (speech style)
 
 - Language: English. ALWAYS respond in English (Arabic localization is future work — both routes currently serve English).
 - Voice: warm, conversational, confident. Like a casual chat with a recruiter over a video call.
@@ -213,7 +213,7 @@ export default async function handler(req) {
     }
 
     // Compose prompt: base rules + language-specific voice affect
-    const voiceAffect = lang === 'en' ? VOICE_AFFECT_EN : VOICE_AFFECT_ES
+    const voiceAffect = lang === 'en' ? VOICE_AFFECT_EN : VOICE_AFFECT_AR
     const instructions = `${VOICE_BASE_PROMPT}\n\n${voiceAffect}`
 
     // Request ephemeral token from OpenAI Realtime API
