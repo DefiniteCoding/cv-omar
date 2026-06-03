@@ -106,6 +106,11 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'WebPage', name: 'Compound — Save now. Shop smarter.', url: 'https://www.getcompound.co' },
         { '@type': 'NewsArticle', name: 'Save Now, Buy Later Fintech Compound Launches — The Fintech Times', url: 'https://thefintechtimes.com/save-now-buy-later-fintech-compound-launches-to-help-consumers-save-for-purchases/' },
       ],
+      mentions: [
+        { '@type': 'Organization', name: 'Compound', url: 'https://www.getcompound.co' },
+        { '@type': 'Thing', name: 'Save Now Buy Later' },
+        { '@type': 'SoftwareApplication', name: 'Claude Code', url: 'https://claude.ai' },
+      ],
     },
   },
   {
@@ -165,6 +170,15 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'SoftwareApplication', name: 'GuideSail', url: 'https://getguidesail.com' },
       ],
       extra: { proficiencyLevel: 'Expert' },
+      citation: [
+        { '@type': 'WebPage', name: 'Tamara — Buy Now Pay Later MENA', url: 'https://tamara.co' },
+        { '@type': 'WebPage', name: 'GuideSail — Product Tour Platform', url: 'https://getguidesail.com' },
+      ],
+      mentions: [
+        { '@type': 'Organization', name: 'Tamara', url: 'https://tamara.co' },
+        { '@type': 'SoftwareApplication', name: 'GuideSail', url: 'https://getguidesail.com' },
+        { '@type': 'Thing', name: 'Buy Now Pay Later' },
+      ],
     },
   },
   {
@@ -225,6 +239,11 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'TechArticle', name: 'Langfuse — Open Source LLM Engineering Platform', url: 'https://langfuse.com/docs' },
         { '@type': 'TechArticle', name: 'Supabase pgvector — Vector Embeddings Documentation', url: 'https://supabase.com/docs/guides/ai/vector-embeddings' },
       ],
+      mentions: [
+        { '@type': 'SoftwareApplication', name: 'Claude Code', url: 'https://claude.ai' },
+        { '@type': 'SoftwareApplication', name: 'Langfuse', url: 'https://langfuse.com' },
+        { '@type': 'SoftwareApplication', name: 'Supabase', url: 'https://supabase.com' },
+      ],
     },
   },
   {
@@ -278,7 +297,7 @@ export const articleRegistry: ArticleConfig[] = [
     component: () => import('../SelfHealingChatbot.tsx'),
     seoMeta: {
       datePublished: '2026-03-11',
-      dateModified: '2026-05-30',
+      dateModified: '2026-06-03',
       keywords: ['LLMOps', 'self-healing chatbot', 'agentic RAG', 'jailbreak defense', 'Langfuse', 'evals', 'closed-loop', 'prompt injection', 'voice mode', 'OpenAI Realtime', 'pgvector', 'CI gate', 'trace-to-eval', 'AI portfolio'],
       articleType: 'TechArticle',
       articleTags: 'LLMOps,self-healing chatbot,agentic RAG,jailbreak defense,Langfuse,evals,closed-loop,voice mode',
@@ -291,6 +310,17 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'Thing', name: 'Prompt Injection', url: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/' },
       ],
       extra: { proficiencyLevel: 'Expert' },
+      citation: [
+        { '@type': 'TechArticle', name: 'Langfuse — Open Source LLM Engineering Platform', url: 'https://langfuse.com/docs' },
+        { '@type': 'WebPage', name: 'OWASP Top 10 for LLM Applications', url: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/' },
+        { '@type': 'TechArticle', name: 'OpenAI Realtime API Documentation', url: 'https://platform.openai.com/docs/guides/realtime' },
+      ],
+      mentions: [
+        { '@type': 'SoftwareApplication', name: 'Langfuse', url: 'https://langfuse.com' },
+        { '@type': 'SoftwareApplication', name: 'Supabase', url: 'https://supabase.com' },
+        { '@type': 'Thing', name: 'LLMOps' },
+        { '@type': 'Thing', name: 'Retrieval-Augmented Generation' },
+      ],
     },
   },
   {
@@ -375,6 +405,17 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'Thing', name: 'Card Issuing' },
       ],
       extra: { proficiencyLevel: 'Expert' },
+      citation: [
+        { '@type': 'WebPage', name: 'NymCard — Banking-as-a-Service Platform', url: 'https://nymcard.com' },
+        { '@type': 'WebPage', name: 'Lynq — Corporate Finance Platform', url: 'https://lynq.ae' },
+        { '@type': 'WebPage', name: 'Banking as a Service — Wikipedia', url: 'https://en.wikipedia.org/wiki/Banking_as_a_service' },
+      ],
+      mentions: [
+        { '@type': 'Organization', name: 'NymCard', url: 'https://nymcard.com' },
+        { '@type': 'Organization', name: 'Mawarid Finance', url: 'https://mawaridfinance.ae' },
+        { '@type': 'Thing', name: 'Banking as a Service', url: 'https://en.wikipedia.org/wiki/Banking_as_a_service' },
+        { '@type': 'Thing', name: 'Know Your Business (KYB)' },
+      ],
     },
   },
 ]
