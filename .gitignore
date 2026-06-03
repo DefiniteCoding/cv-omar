@@ -48,6 +48,11 @@ linkedin-post.md
 # Test artifacts
 test-results/
 chatbot/.playwright-mcp/
+.playwright-mcp/
+
+# SEO audit working docs
+.seo-audit/
+.seo-audit-v2/
 
 # Stray screenshots in root
 /*.png
@@ -55,3 +60,15 @@ chatbot/.playwright-mcp/
 # RAG
 .rag-hashes.json
 scripts/chunks/
+
+# Personal / source files — do not commit
+Favicon-orig.JPG
+IMG_3977.JPG
+favicon.jpg
+"Omar Mostafa Resume.pdf"
+SVG/
+codebase_deviation_analysis.md
+docs/codebase_deviation_analysis.md
+
+# Planning docs
+implementation_plan.md
