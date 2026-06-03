@@ -94,7 +94,7 @@ const stackIcons: Record<string, React.ReactNode> = {
 // ---------------------------------------------------------------------------
 function buildJsonLd(lang: Lang) {
   const content = chatbotContent[lang as keyof typeof chatbotContent] ?? chatbotContent.en
-  return buildJsonLdFromRegistry('self-healing-chatbot', lang, content)
+  return buildJsonLdFromRegistry('chatbot', lang, content)
 }
 
 // ===========================================================================
@@ -111,7 +111,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
     description: t.seo.description,
     image: 'https://omarmostafa.org/chatbot/og-self-healing-chatbot.webp',
     publishedTime: '2026-03-11',
-    modifiedTime: '2026-05-10',
+    modifiedTime: '2026-06-03',
     articleTags: 'LLMOps,self-healing chatbot,agentic RAG,jailbreak defense,Langfuse,evals,closed-loop,prompt injection',
     jsonLd: buildJsonLd(lang),
     xDefaultSlug: 'self-healing-chatbot',
@@ -129,7 +129,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         subtitle={t.header.subtitle}
         date={t.header.date}
         dateISO="2026-03-11"
-        dateModifiedISO="2026-05-10"
+        dateModifiedISO="2026-06-03"
         readingTime={t.readingTime}
       />
       <a href="#architecture" className="inline-flex items-center gap-2 -mt-4 mb-6 text-sm font-medium text-primary hover:text-primary/80 transition-colors">

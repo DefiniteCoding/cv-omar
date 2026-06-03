@@ -31,6 +31,8 @@ import { nymcardContent } from '../src/nymcard-i18n.ts';
 import { tamaraContent } from '../src/tamara-i18n.ts';
 import { portfolioContent } from '../src/portfolio-i18n.ts';
 import { compoundContent } from '../src/compound-i18n.ts';
+import { chatbotContent } from '../src/chatbot-i18n.ts';
+import { n8nContent } from '../src/n8n-i18n.ts';
 
 // Map article id → i18n content for JSON-LD generation
 const i18nMap: Record<string, Record<string, { header: { h1: string }; nav: { breadcrumbHome: string; breadcrumbCurrent: string }; faq: { items: readonly { q: string; a: string }[] } }>> = {
@@ -38,6 +40,8 @@ const i18nMap: Record<string, Record<string, { header: { h1: string }; nav: { br
   'tamara': tamaraContent,
   'portfolio': portfolioContent,
   'compound': compoundContent,
+  'chatbot': { en: chatbotContent.en, ar: chatbotContent.en },
+  'n8n': n8nContent,
 };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

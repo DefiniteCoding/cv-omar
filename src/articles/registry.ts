@@ -345,6 +345,27 @@ export const articleRegistry: ArticleConfig[] = [
     ragReady: false,
     xDefaultSlug: 'n8n-for-pms',
     component: () => import('../N8nForPMs.tsx'),
+    seoMeta: {
+      datePublished: '2026-02-24',
+      dateModified: '2026-06-03',
+      keywords: ['n8n', 'product manager automation', 'no-code workflow', 'sprint report automation', 'AI feedback classification', 'n8n for PMs', 'workflow templates', 'n8n cheat sheet', 'product management automation', 'Marily Nika'],
+      articleType: 'Article',
+      articleTags: 'n8n,product manager,automation,AI,workflow,no-code',
+      images: ['https://omarmostafa.org/workflows/n8n-ai-feedback-classification-workflow.webp'],
+      about: [
+        { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io', applicationCategory: 'Automation Tool' },
+        { '@type': 'Thing', name: 'Workflow Automation' },
+        { '@type': 'Person', name: 'Marily Nika', url: 'https://maven.com/marily-nika' },
+      ],
+      citation: [
+        { '@type': 'WebPage', name: 'n8n — Workflow Automation Platform', url: 'https://n8n.io' },
+        { '@type': 'WebPage', name: 'Marily Nika\'s AI Product Academy', url: 'https://maven.com/marily-nika/ai-pm-bootcamp' },
+      ],
+      mentions: [
+        { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io' },
+        { '@type': 'Person', name: 'Santiago', url: 'https://santifer.io' },
+      ],
+    },
   },
   {
     id: 'nymcard',

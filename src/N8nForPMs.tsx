@@ -27,7 +27,7 @@ import {
 
 function buildJsonLd(lang: N8nLang) {
   const t = n8nContent[lang]
-  return buildJsonLdFromRegistry('n8n-for-pms', lang, t, {
+  return buildJsonLdFromRegistry('n8n', lang, t, {
     headline: t.header.h1 + ' — Cheat Sheet',
   })
 }
@@ -43,7 +43,7 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
     description: t.seo.description,
     image: 'https://omarmostafa.org/workflows/n8n-ai-feedback-classification-workflow.webp',
     publishedTime: '2026-02-24',
-    modifiedTime: '2026-05-10',
+    modifiedTime: '2026-06-03',
     articleTags: 'n8n,product manager,automation,AI,workflow,no-code',
     jsonLd: buildJsonLd(lang),
     xDefaultSlug: 'n8n-para-pms',
@@ -64,7 +64,7 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
           subtitle={t.header.subtitle}
           date={t.header.date}
           dateISO="2026-02-24"
-          dateModifiedISO="2026-05-10"
+          dateModifiedISO="2026-06-03"
           readingTime={t.readingTime}
         />
 
