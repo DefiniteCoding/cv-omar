@@ -22,10 +22,7 @@ interface BadgeConfig {
 }
 
 // Repos with GitHubRepoBadge in article components
-const BADGE_REPOS: BadgeConfig[] = [
-  { owner: 'santifer', repo: 'career-ops', file: 'src/CareerOps.tsx', label: 'career-ops (badge)' },
-  { owner: 'santifer', repo: 'jacobo-workflows', file: 'src/JacoboAgent.tsx', label: 'jacobo-workflows (badge)' },
-]
+const BADGE_REPOS: BadgeConfig[] = []
 
 // Repos with stars/forks in i18n.ts project cards.
 // `extraLinks` allows matching cards that link to a custom domain (e.g. career-ops.org)
@@ -37,13 +34,7 @@ interface I18nRepo {
   extraLinks?: string[]
 }
 const I18N_REPOS: I18nRepo[] = [
-  { owner: 'santifer', repo: 'career-ops', label: 'career-ops (i18n)', extraLinks: ['career-ops.org'] },
-  { owner: 'santifer', repo: 'cv-santiago', label: 'cv-santiago (i18n)' },
-  { owner: 'santifer', repo: 'claude-pulse', label: 'claude-pulse (i18n)' },
-  { owner: 'santifer', repo: 'claude-eye', label: 'claude-eye (i18n)' },
-  { owner: 'santifer', repo: 'claudeable', label: 'claudeable (i18n)' },
-  { owner: 'santifer', repo: 'jacobo-workflows', label: 'jacobo-workflows (i18n)' },
-  { owner: 'santifer', repo: 'santifer-irepair', label: 'santifer-irepair (i18n)' },
+  { owner: 'DefiniteCoding', repo: 'cv-omar', label: 'cv-omar (i18n)' },
 ]
 
 function formatCount(n: number): string {
@@ -63,7 +54,7 @@ async function fetchGitHubStats(owner: string, repo: string): Promise<{ stars: n
   try {
     const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
       headers: {
-        'User-Agent': 'santifer-build/1.0',
+        'User-Agent': 'cv-omar-build/1.0',
         ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
       },
     })
@@ -183,81 +174,7 @@ async function main() {
     anyChanged = true
   }
 
-  // 3. Update hero stats in App.tsx (comment markers: hero-stats:owner/repo:stars/forks)
-  const APP_PATH = resolve(__dirname, '../src/App.tsx')
-  let appTsx = readFileSync(APP_PATH, 'utf-8')
-  let appChanged = false
-
-  for (const repo of [{ owner: 'santifer', repo: 'career-ops', label: 'career-ops (hero)' }]) {
-    const stats = await fetchGitHubStats(repo.owner, repo.repo)
-    if (!stats) continue
-
-    const s = formatCount(stats.stars)
-    const f = formatCount(stats.forks)
-
-    const starsRegex = new RegExp(
-      `(hero-stats:${repo.repo}:stars \\*/\\}<span[^>]*>)[^<]+(<\\/span>)`,
-    )
-    const forksRegex = new RegExp(
-      `(hero-stats:${repo.repo}:forks \\*/\\}<span[^>]*>)[^<]+(<\\/span>)`,
-    )
-
-    const newApp = appTsx
-      .replace(starsRegex, `$1${s}$2`)
-      .replace(forksRegex, `$1${f}$2`)
-
-    if (newApp !== appTsx) {
-      appTsx = newApp
-      appChanged = true
-      console.log(`  ✓ ${repo.label}: ${s} stars, ${f} forks`)
-    } else {
-      console.log(`  ⏭ ${repo.label}: no changes (${s} stars, ${f} forks)`)
-    }
-  }
-
-  if (appChanged) {
-    writeFileSync(APP_PATH, appTsx, 'utf-8')
-    anyChanged = true
-  }
-
-  // 4. Update career-ops star count in SEO meta descriptions (i18n.ts + index.html)
-  const careerOpsStats = await fetchGitHubStats('santifer', 'career-ops')
-  if (careerOpsStats) {
-    const starLabel = formatCount(careerOpsStats.stars) + '+'
-
-    // i18n.ts — ES and EN description patterns: "(XXK+ estrellas en GitHub)" / "(XXK+ GitHub stars)"
-    const esMetaRegex = /(\()\d+[\d.]*K\+\s*estrellas en GitHub(\))/g
-    const enMetaRegex = /(\()\d+[\d.]*K\+\s*GitHub stars(\))/g
-
-    const newI18nMeta = readFileSync(I18N_PATH, 'utf-8')
-      .replace(esMetaRegex, `$1${starLabel} estrellas en GitHub$2`)
-      .replace(enMetaRegex, `$1${starLabel} GitHub stars$2`)
-
-    if (newI18nMeta !== readFileSync(I18N_PATH, 'utf-8')) {
-      writeFileSync(I18N_PATH, newI18nMeta, 'utf-8')
-      anyChanged = true
-      console.log(`  ✓ meta descriptions: ${starLabel} stars`)
-    }
-
-    // index.html — same patterns in meta tags + interactionStatistic counts on SoftwareSourceCode
-    const INDEX_PATH = resolve(__dirname, '../index.html')
-    const indexContent = readFileSync(INDEX_PATH, 'utf-8')
-    const starsCounterRegex = /("name": "GitHub Stars", "userInteractionCount": )\d+/
-    const forksCounterRegex = /("name": "GitHub Forks", "userInteractionCount": )\d+/
-    const newIndex = indexContent
-      .replace(esMetaRegex, `$1${starLabel} estrellas en GitHub$2`)
-      .replace(enMetaRegex, `$1${starLabel} GitHub stars$2`)
-      .replace(starsCounterRegex, `$1${careerOpsStats.stars}`)
-      .replace(forksCounterRegex, `$1${careerOpsStats.forks}`)
-
-    if (newIndex !== indexContent) {
-      writeFileSync(INDEX_PATH, newIndex, 'utf-8')
-      anyChanged = true
-      console.log(`  ✓ index.html updated: meta + interactionStatistic`)
-    }
-  }
-
-  // 5. Universal sweep: update ANY career-ops star/fork reference in all content files
+  // 3. Universal sweep: update ANY cv-omar star/fork reference in all content files
   // Patterns: "35K+ stars", "35K+ estrellas", "35K+ ⭐", "35K+ GitHub stars", "35K stars", "35K estrellas",
   //           "7.1K+ forks", "5K+ forks"
   if (careerOpsStats) {
@@ -266,11 +183,10 @@ async function main() {
     const forkLabel = formatCount(careerOpsStats.forks)
     const forkLabelPlus = forkLabel + '+'
 
-    // Files to sweep — all i18n content + about + career-ops-i18n + chatbot prompt
+    // Files to sweep — all i18n content + about + chatbot prompt
     const sweepFiles = [
       resolve(__dirname, '../src/i18n.ts'),
       resolve(__dirname, '../src/about-i18n.ts'),
-      resolve(__dirname, '../src/career-ops-i18n.ts'),
       resolve(__dirname, '../public/llms.txt'),
       resolve(__dirname, '../public/humans.txt'),
       resolve(__dirname, '../chatbot-prompt.txt'),

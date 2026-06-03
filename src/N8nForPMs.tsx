@@ -310,10 +310,10 @@ export default function N8nForPMs({ lang = 'en' }: { lang?: N8nLang }) {
           <CaseStudyCta
             heading={lang === 'ar' ? '¿Qué automaticé con esas 170 horas?' : 'What did I automate with those 170 hours?'}
             body={lang === 'ar'
-              ? 'Estos workflows son una fracción de un sistema más amplio: 12 bases de Airtable, 50+ automatizaciones y un agente IA que gestiona clientes 24/7. Todo documentado en el case study del Business OS.'
-              : 'These workflows are a fraction of a larger system: 12 Airtable bases, 50+ automations, and an AI agent handling customers 24/7. All documented in the Business OS case study.'}
-            ctaLabel={lang === 'ar' ? 'Ver Business OS →' : 'Read Business OS →'}
-            ctaHref={lang === 'ar' ? '/business-os-para-airtable' : '/business-os-for-airtable'}
+              ? 'Estos workflows son una fracción de lo que es posible con n8n. Para ver cómo se combina con IA, RAG y observabilidad en producción, explora el case study del chatbot.'
+              : 'These workflows are a fraction of what\'s possible with n8n. To see how it combines with AI, RAG, and production observability, explore the self-healing chatbot case study.'}
+            ctaLabel={lang === 'ar' ? 'Ver el Chatbot →' : 'Read the Chatbot Case Study →'}
+            ctaHref={lang === 'ar' ? '/self-healing-chatbot' : '/self-healing-chatbot'}
           />
 
           {/* FAQ */}

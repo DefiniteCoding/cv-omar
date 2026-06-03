@@ -26,24 +26,22 @@ const FIX_MODE = process.argv.includes('--fix')
 
 /** Map article id → source file (relative to root) */
 const SOURCE_MAP: Record<string, string> = {
-  'n8n-for-pms': 'src/N8nForPMs.tsx',
-  'jacobo': 'src/JacoboAgent.tsx',
-  'business-os': 'src/BusinessOS.tsx',
-  'programmatic-seo': 'src/ProgrammaticSeo.tsx',
-  'santifer-irepair': 'src/SantiferIRepair.tsx',
-  'self-healing-chatbot': 'src/SelfHealingChatbot.tsx',
-  'career-ops': 'src/CareerOps.tsx',
+  'compound': 'src/Compound.tsx',
+  'tamara': 'src/Tamara.tsx',
+  'portfolio': 'src/Portfolio.tsx',
+  'nymcard': 'src/NymCard.tsx',
+  'chatbot': 'src/SelfHealingChatbot.tsx',
+  'n8n': 'src/N8nForPMs.tsx',
 }
 
 /** Map article id → i18n source file (relative to root). Content edits go here. */
 const I18N_MAP: Record<string, string> = {
-  'n8n-for-pms': 'src/n8n-i18n.ts',
-  'jacobo': 'src/jacobo-i18n.ts',
-  'business-os': 'src/business-os-i18n.ts',
-  'programmatic-seo': 'src/pseo-i18n.ts',
-  'santifer-irepair': 'src/santifer-irepair-i18n.ts',
-  'self-healing-chatbot': 'src/chatbot-i18n.ts',
-  'career-ops': 'src/career-ops-i18n.ts',
+  'compound': 'src/compound-i18n.ts',
+  'tamara': 'src/tamara-i18n.ts',
+  'portfolio': 'src/portfolio-i18n.ts',
+  'nymcard': 'src/nymcard-i18n.ts',
+  'chatbot': 'src/chatbot-i18n.ts',
+  'n8n': 'src/n8n-i18n.ts',
 }
 
 const REGISTRY_PATH = 'src/articles/registry.ts'
